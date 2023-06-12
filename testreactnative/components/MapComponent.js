@@ -1,32 +1,14 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import Mapbox from '@rnmapbox/maps';
-
-Mapbox.setAccessToken('pk.eyJ1IjoiZmFya2FzMTA3MCIsImEiOiJjbGlzb2p6cTgwZ25wM25vN21ybzRlcjN3In0.7JbOZgr7nNADoWOwNsbWww');
+import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
 
 const MapComponent = () => {
   return (
-    <View style={styles.page}>
-      <View style={styles.container}>
-        <Mapbox.MapView style={styles.map} />
-      </View>
+    <View>
+      <Text>MapComponent</Text>
     </View>
-  );
+  )
 }
 
-export default MapComponent;
+export default MapComponent
 
-const styles = StyleSheet.create({
-  page: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  container: {
-    height: 300,
-    width: 300,
-  },
-  map: {
-    flex: 1
-  }
-});
+const styles = StyleSheet.create({})
