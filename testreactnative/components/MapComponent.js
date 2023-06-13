@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import MapView from "react-native-maps";
 import * as Location from "expo-location";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 export default function MapComponent() {
   const [position, setPosition] = useState({
@@ -63,7 +64,9 @@ export default function MapComponent() {
         region={position}
       />
       <TouchableOpacity style={styles.button} onPress={handleResetLocation}>
-        <Text style={styles.buttonText}>Vissza a helyzetemre</Text>
+        <Text style={styles.buttonText}>
+          <MaterialIcons name="my-location" size={38} color="#FFF" />
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -78,12 +81,12 @@ const styles = StyleSheet.create({
   },
   button: {
     position: "absolute",
-    bottom: 16,
-    right: 16,
+    bottom: 20,
+    right: 25,
     backgroundColor: "#007AFF",
-    borderRadius: 8,
-    paddingVertical: 8,
-    paddingHorizontal: 16,
+    borderRadius: 40,
+    paddingVertical: 15,
+    paddingHorizontal: 15,
   },
   buttonText: {
     color: "white",
