@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import MapView from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import * as Location from "expo-location";
-import { StyleSheet, View, TouchableOpacity, Text,Image } from "react-native";
+import { StyleSheet, View, TouchableOpacity, Text, Image } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Marker } from "react-native-maps";
 export default function MapComponent() {
@@ -10,39 +10,39 @@ export default function MapComponent() {
       name: "Esterházy Vineyard",
       latitude: 47.677493,
       longitude: 16.574725,
-      id:1
+      id: 1,
     },
     {
       name: "Taschner Vineyard",
       latitude: 47.680965,
       longitude: 16.595614,
-      id:2
+      id: 2,
     },
     {
       name: "Pfneiszl Vineyard",
       latitude: 47.698976,
       longitude: 16.551085,
-      id:3
+      id: 3,
     },
     {
       name: "Söptei Vineyard",
       latitude: 47.676683,
       longitude: 16.579596,
-      id:4
+      id: 4,
     },
     {
       name: "Liszkay Vineyard",
       latitude: 47.665987,
       longitude: 16.561179,
-      id:5
+      id: 5,
     },
   ];
-  
+
   const [position, setPosition] = useState({
     latitude: 10,
     longitude: 10,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
+    latitudeDelta: 0.1,
+    longitudeDelta: 0.1,
   });
 
   const mapRef = useRef(null);
@@ -64,8 +64,8 @@ export default function MapComponent() {
           let cor = {
             latitude: location.coords.latitude,
             longitude: location.coords.longitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
+            latitudeDelta: 0.1,
+            longitudeDelta: 0.1,
           };
           setPosition(cor);
         }
@@ -82,8 +82,8 @@ export default function MapComponent() {
       mapRef.current.animateToRegion({
         latitude: position.latitude,
         longitude: position.longitude,
-        latitudeDelta: 0.0222,
-        longitudeDelta: 0.0421,
+        latitudeDelta: 0.005,
+        longitudeDelta: 0.005,
       });
     }
   };
@@ -96,28 +96,62 @@ export default function MapComponent() {
         showsUserLocation={true}
         showsPointsOfInterest={false}
         region={position}
-        showsPointsOfInterest={false}
-        
+        provider={PROVIDER_GOOGLE}
+        customMapStyle={[
+          {
+            featureType: "administrative",
+            elementType: "labels",
+            stylers: [
+              {
+                visibility: "off",
+              },
+            ],
+          },
+          {
+            featureType: "poi",
+            stylers: [
+              {
+                visibility: "off",
+              },
+            ],
+          },
+          {
+            featureType: "road",
+            elementType: "labels.icon",
+            stylers: [
+              {
+                visibility: "off",
+              },
+            ],
+          },
+          {
+            featureType: "transit",
+            stylers: [
+              {
+                visibility: "off",
+              },
+            ],
+          },
+        ]}
       >
-        {vineyards.map((vineyard,index)=>{
-          return(
+        {vineyards.map((vineyard, index) => {
+          return (
             <Marker
-            key={index}
-            coordinate={{latitude:vineyard.latitude,
-              longitude: vineyard.longitude,}}
-            title={vineyard.name}
-            description={"description"}
-            resizeMode='contain'
-            style={{width: 35,height: 35}}
-            icon={require('./marker.png')}
-         >
-          
-         </Marker>
-          )
+              key={index}
+              coordinate={{
+                latitude: vineyard.latitude,
+                longitude: vineyard.longitude,
+              }}
+              title={vineyard.name}
+              description={"description"}
+              resizeMode="contain"
+              style={{ width: 35, height: 35 }}
+              icon={require("./marker.png")}
+            ></Marker>
+          );
         })}
-        
       </MapView>
-      
+
       <TouchableOpacity style={styles.button} onPress={handleResetLocation}>
         <Text style={styles.buttonText}>
           <MaterialIcons name="my-location" size={38} color="#FFF" />
