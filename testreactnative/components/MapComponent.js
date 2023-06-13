@@ -94,6 +94,7 @@ export default function MapComponent() {
         ref={mapRef}
         style={styles.map}
         showsUserLocation={true}
+        showsPointsOfInterest={false}
         region={position}
         showsPointsOfInterest={false}
         
