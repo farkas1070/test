@@ -181,17 +181,7 @@ export default function MapComponent() {
           style={styles.swiperContainer}
           showsPagination={false}
           ref={swiperRef}
-          onIndexChanged={(index) => {
-            if (index !== activeMarkerIndex) {
-              setActiveMarkerIndex(index);
-              mapRef.current.animateToRegion({
-                latitude: vineyards[index].latitude,
-                longitude: vineyards[index].longitude,
-                latitudeDelta: 0.005,
-                longitudeDelta: 0.005,
-              });
-            }
-          }}
+         
         >
           {vineyards.map((vineyard, index) => {
             return (
