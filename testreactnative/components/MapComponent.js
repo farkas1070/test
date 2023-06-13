@@ -82,7 +82,7 @@ export default function MapComponent() {
       mapRef.current.animateToRegion({
         latitude: position.latitude,
         longitude: position.longitude,
-        latitudeDelta: 0.0922,
+        latitudeDelta: 0.0222,
         longitudeDelta: 0.0421,
       });
     }
