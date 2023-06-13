@@ -185,8 +185,11 @@ const styles = StyleSheet.create({
   },
   carousel: {
     position: "absolute",
-    height:'30%',
-    bottom: 0,
+    height:'25%',
+    bottom: 15,
+    right:15,
+    left:15,
+    borderRadius:10,
     backgroundColor:'white'
   },
   button: {
