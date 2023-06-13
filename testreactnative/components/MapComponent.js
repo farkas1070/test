@@ -6,6 +6,7 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Marker } from "react-native-maps";
 import Swiper from 'react-native-swiper';
 export default function MapComponent() {
+
   const vineyards = [
     {
       name: "Esterházy Vineyard",
@@ -50,7 +51,15 @@ export default function MapComponent() {
     latitudeDelta: 0.1,
     longitudeDelta: 0.1,
   });
+  
+  const swiperRef = useRef(null);
 
+  const handleMarkerPress = (index) => {
+    
+    if (swiperRef.current) {
+      swiperRef.current.scrollTo(index);
+    }
+  };
   const mapRef = useRef(null);
 
   useEffect(() => {
@@ -82,6 +91,7 @@ export default function MapComponent() {
       };
     })();
   }, []);
+  
 
   const handleResetLocation = () => {
     if (mapRef.current) {
@@ -153,6 +163,7 @@ export default function MapComponent() {
               resizeMode="contain"
               style={{ width: 35, height: 35 }}
               icon={require("./marker.png")}
+              onPress={() => {handleMarkerPress(index)}}
             ></Marker>
           );
         })}
@@ -163,14 +174,21 @@ export default function MapComponent() {
             <MaterialIcons name="my-location" size={38} color="#FFF" />
           </Text>
         </TouchableOpacity>
-        <Swiper style={styles.swiperContainer} showsPagination={false}>
-          {vineyards.map((vineyard) => {
+        <Swiper 
+          style={styles.swiperContainer}
+          showsPagination={false}
+          ref={swiperRef}
+          
+         
+         >
+          {vineyards.map((vineyard,index) => {
             return (
-              <View style={{display:'flex',justifyContent:'center'}}>
+              <View key={index} style={{display:'flex',justifyContent:'center',width:'100%',height:'100%'}}>
                 
                 <Image
                   style={styles.image}
                   source={{ uri: vineyard.image }}
+
                 />
                 </View>
                 
@@ -221,9 +239,9 @@ const styles = StyleSheet.create({
     justifyContent:'center'
   },
   image: {
-
-    width:100,
-    height:100,
+    
+    width:'40%',
+    height:'80%',
     borderRadius:30
   },
   buttonText: {
