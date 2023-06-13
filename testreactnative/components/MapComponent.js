@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import MapView from "react-native-maps";
 import * as Location from "expo-location";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
@@ -7,14 +7,11 @@ export default function MapComponent() {
   const [position, setPosition] = useState({
     latitude: 10,
     longitude: 10,
-  });
-
-  const [initialRegionValue, setInitialRegionValue] = useState({
-    latitude: 47.6803625,
-    longitude: 16.5721739,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   });
+
+  const mapRef = useRef(null);
 
   useEffect(() => {
     (async () => {
@@ -23,9 +20,8 @@ export default function MapComponent() {
         setErrorMsg("Permission to access location was denied");
         return;
       }
-      foregroundSubscrition = Location.watchPositionAsync(
+      const foregroundSubscription = Location.watchPositionAsync(
         {
-          // Tracking options
           accuracy: Location.Accuracy.High,
           distanceInterval: 10,
         },
@@ -34,28 +30,37 @@ export default function MapComponent() {
           let cor = {
             latitude: location.coords.latitude,
             longitude: location.coords.longitude,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
           };
           setPosition(cor);
         }
       );
+
+      return () => {
+        foregroundSubscription.remove();
+      };
     })();
   }, []);
 
   const handleResetLocation = () => {
-    setInitialRegionValue((prevState) => ({
-      ...prevState,
-      latitude: position.latitude,
-      longitude: position.longitude,
-    }));
+    if (mapRef.current) {
+      mapRef.current.animateToRegion({
+        latitude: position.latitude,
+        longitude: position.longitude,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      });
+    }
   };
 
   return (
     <View style={styles.container}>
       <MapView
-        initialRegion={initialRegionValue}
+        ref={mapRef}
         style={styles.map}
         showsUserLocation={true}
-        showsMyLocationButton={true}
+        region={position}
       />
       <TouchableOpacity style={styles.button} onPress={handleResetLocation}>
         <Text style={styles.buttonText}>Vissza a helyzetemre</Text>
@@ -69,8 +74,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   map: {
-    width: "100%",
-    height: "100%",
+    flex: 1,
   },
   button: {
     position: "absolute",
