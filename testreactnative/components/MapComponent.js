@@ -5,6 +5,39 @@ import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 export default function MapComponent() {
+  const vineyards = [
+    {
+      name: "Esterházy Vineyard",
+      latitude: 47.677493,
+      longitude: 16.574725,
+      id:1
+    },
+    {
+      name: "Taschner Vineyard",
+      latitude: 47.680965,
+      longitude: 16.595614,
+      id:2
+    },
+    {
+      name: "Pfneiszl Vineyard",
+      latitude: 47.698976,
+      longitude: 16.551085,
+      id:3
+    },
+    {
+      name: "Söptei Vineyard",
+      latitude: 47.676683,
+      longitude: 16.579596,
+      id:4
+    },
+    {
+      name: "Liszkay Vineyard",
+      latitude: 47.665987,
+      longitude: 16.561179,
+      id:5
+    },
+  ];
+  
   const [position, setPosition] = useState({
     latitude: 10,
     longitude: 10,
