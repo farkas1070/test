@@ -4,41 +4,46 @@ import * as Location from "expo-location";
 import { StyleSheet, View, TouchableOpacity, Text, Image } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Marker } from "react-native-maps";
-import Swiper from 'react-native-swiper';
-export default function MapComponent() {
+import Swiper from "react-native-swiper";
 
+export default function MapComponent() {
   const vineyards = [
     {
       name: "Esterházy Vineyard",
-      image: 'https://www.hallwines.com/media/wysiwyg/hall/vineyards/Vineyard_BBS_1515_768px.jpg',
+      image:
+        "https://www.hallwines.com/media/wysiwyg/hall/vineyards/Vineyard_BBS_1515_768px.jpg",
       latitude: 47.677493,
       longitude: 16.574725,
       id: 1,
     },
     {
       name: "Taschner Vineyard",
-      image: 'https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dmluZXlhcmR8ZW58MHx8MHx8fDA%3D&w=1000&q=80',
+      image:
+        "https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dmluZXlhcmR8ZW58MHx8MHx8fDA%3D&w=1000&q=80",
       latitude: 47.680965,
       longitude: 16.595614,
       id: 2,
     },
     {
       name: "Pfneiszl Vineyard",
-      image: 'https://www.hallwines.com/media/wysiwyg/hall/vineyards/Vineyard_BBS_1515_768px.jpg',
+      image:
+        "https://www.hallwines.com/media/wysiwyg/hall/vineyards/Vineyard_BBS_1515_768px.jpg",
       latitude: 47.698976,
       longitude: 16.551085,
       id: 3,
     },
     {
       name: "Söptei Vineyard",
-      image: 'https://i.insider.com/615fd15a5ae4fe0018a708e6?width=1136&format=jpeg',
+      image:
+        "https://i.insider.com/615fd15a5ae4fe0018a708e6?width=1136&format=jpeg",
       latitude: 47.676683,
       longitude: 16.579596,
       id: 4,
     },
     {
       name: "Liszkay Vineyard",
-      image: 'https://images.squarespace-cdn.com/content/v1/58ae0e6c3e00be7a0f66a26b/1658164270174-VJ4NPBPNQ6WGRCIPVY15/IMG_20191101_140942142_HDR.jpg',
+      image:
+        "https://images.squarespace-cdn.com/content/v1/58ae0e6c3e00be7a0f66a26b/1658164270174-VJ4NPBPNQ6WGRCIPVY15/IMG_20191101_140942142_HDR.jpg",
       latitude: 47.665987,
       longitude: 16.561179,
       id: 5,
@@ -51,15 +56,15 @@ export default function MapComponent() {
     latitudeDelta: 0.1,
     longitudeDelta: 0.1,
   });
-  
+
   const swiperRef = useRef(null);
+  const [activeMarkerIndex, setActiveMarkerIndex] = useState(null);
 
   const handleMarkerPress = (index) => {
-    
-    if (swiperRef.current) {
-      swiperRef.current.scrollTo(index);
-    }
+    setActiveMarkerIndex(index);
+    swiperRef.current.scrollBy(index - activeMarkerIndex, true);
   };
+
   const mapRef = useRef(null);
 
   useEffect(() => {
@@ -75,7 +80,6 @@ export default function MapComponent() {
           distanceInterval: 10,
         },
         (location) => {
-          console.log(location);
           let cor = {
             latitude: location.coords.latitude,
             longitude: location.coords.longitude,
@@ -91,7 +95,6 @@ export default function MapComponent() {
       };
     })();
   }, []);
-  
 
   const handleResetLocation = () => {
     if (mapRef.current) {
@@ -110,7 +113,6 @@ export default function MapComponent() {
         ref={mapRef}
         style={styles.map}
         showsUserLocation={true}
-        showsPointsOfInterest={false}
         region={position}
         provider={PROVIDER_GOOGLE}
         customMapStyle={[
@@ -161,9 +163,10 @@ export default function MapComponent() {
               title={vineyard.name}
               description={"description"}
               resizeMode="contain"
-              style={{ width: 35, height: 35 }}
               icon={require("./marker.png")}
-              onPress={() => {handleMarkerPress(index)}}
+              onPress={() => {
+                handleMarkerPress(index + 1);
+              }}
             ></Marker>
           );
         })}
@@ -174,33 +177,40 @@ export default function MapComponent() {
             <MaterialIcons name="my-location" size={38} color="#FFF" />
           </Text>
         </TouchableOpacity>
-        <Swiper 
+        <Swiper
           style={styles.swiperContainer}
           showsPagination={false}
           ref={swiperRef}
-          
-         
-         >
-          {vineyards.map((vineyard,index) => {
+          onIndexChanged={(index) => {
+            if (index !== activeMarkerIndex) {
+              setActiveMarkerIndex(index);
+              mapRef.current.animateToRegion({
+                latitude: vineyards[index].latitude,
+                longitude: vineyards[index].longitude,
+                latitudeDelta: 0.005,
+                longitudeDelta: 0.005,
+              });
+            }
+          }}
+        >
+          {vineyards.map((vineyard, index) => {
             return (
-              <View key={index} style={{display:'flex',justifyContent:'center',width:'100%',height:'100%'}}>
-                
-                <Image
-                  style={styles.image}
-                  source={{ uri: vineyard.image }}
-
-                />
-                </View>
-                
-              
-            )
+              <View
+                key={index}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  width: "100%",
+                  height: "100%",
+                }}
+              >
+                <Image style={styles.image} source={{ uri: vineyard.image }} />
+                <Text>{vineyard.name}</Text>
+              </View>
+            );
           })}
-
-
         </Swiper>
-
       </View>
-
     </View>
   );
 }
@@ -214,16 +224,14 @@ const styles = StyleSheet.create({
   },
   carousel: {
     position: "absolute",
-    height: '25%',
+    height: "25%",
     bottom: 30,
     right: 15,
     left: 15,
     borderRadius: 10,
-    backgroundColor: 'white'
+    backgroundColor: "white",
   },
-  swiperContainer:{
-   
-  },
+  swiperContainer: {},
   button: {
     position: "absolute",
     top: -100,
@@ -234,15 +242,13 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 15,
   },
-  slide:{
-    
-    justifyContent:'center'
+  slide: {
+    justifyContent: "center",
   },
   image: {
-    
-    width:'40%',
-    height:'80%',
-    borderRadius:30
+    width: "40%",
+    height: "80%",
+    borderRadius: 30,
   },
   buttonText: {
     color: "white",
