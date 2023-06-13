@@ -181,7 +181,6 @@ export default function MapComponent() {
           style={styles.swiperContainer}
           showsPagination={false}
           ref={swiperRef}
-         
         >
           {vineyards.map((vineyard, index) => {
             return (
