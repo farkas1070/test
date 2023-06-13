@@ -3,10 +3,20 @@ import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import * as Location from "expo-location";
 import { StyleSheet, View, TouchableOpacity, Text, Image } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import { Marker } from "react-native-maps";
-import Swiper from "react-native-swiper";
+import { Marker, Callout } from "react-native-maps";
+import Mapstyle from "./Mapstyle";
+import Carousel from "react-native-snap-carousel-v4";
 
 export default function MapComponent() {
+  const mapRef = useRef(null);
+  const carouselRef = useRef(null);
+  const [activeMarkerIndex, setActiveMarkerIndex] = useState(0);
+  const [position, setPosition] = useState({
+    latitude: 10,
+    longitude: 10,
+    latitudeDelta: 0.1,
+    longitudeDelta: 0.1,
+  });
   const vineyards = [
     {
       name: "Esterházy Vineyard",
@@ -50,22 +60,21 @@ export default function MapComponent() {
     },
   ];
 
-  const [position, setPosition] = useState({
-    latitude: 10,
-    longitude: 10,
-    latitudeDelta: 0.1,
-    longitudeDelta: 0.1,
-  });
-
-  const swiperRef = useRef(null);
-  const [activeMarkerIndex, setActiveMarkerIndex] = useState(null);
-
   const handleMarkerPress = (index) => {
     setActiveMarkerIndex(index);
-    swiperRef.current.scrollBy(index - activeMarkerIndex, true);
+    carouselRef.current.snapToItem(index);
   };
 
-  const mapRef = useRef(null);
+  const handleResetLocation = () => {
+    if (mapRef.current) {
+      mapRef.current.animateToRegion({
+        latitude: position.latitude,
+        longitude: position.longitude,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01,
+      });
+    }
+  };
 
   useEffect(() => {
     (async () => {
@@ -83,8 +92,8 @@ export default function MapComponent() {
           let cor = {
             latitude: location.coords.latitude,
             longitude: location.coords.longitude,
-            latitudeDelta: 0.1,
-            longitudeDelta: 0.1,
+            latitudeDelta: 0.01,
+            longitudeDelta: 0.01,
           };
           setPosition(cor);
         }
@@ -96,17 +105,6 @@ export default function MapComponent() {
     })();
   }, []);
 
-  const handleResetLocation = () => {
-    if (mapRef.current) {
-      mapRef.current.animateToRegion({
-        latitude: position.latitude,
-        longitude: position.longitude,
-        latitudeDelta: 0.005,
-        longitudeDelta: 0.005,
-      });
-    }
-  };
-
   return (
     <View style={styles.container}>
       <MapView
@@ -115,42 +113,7 @@ export default function MapComponent() {
         showsUserLocation={true}
         region={position}
         provider={PROVIDER_GOOGLE}
-        customMapStyle={[
-          {
-            featureType: "administrative",
-            elementType: "labels",
-            stylers: [
-              {
-                visibility: "off",
-              },
-            ],
-          },
-          {
-            featureType: "poi",
-            stylers: [
-              {
-                visibility: "off",
-              },
-            ],
-          },
-          {
-            featureType: "road",
-            elementType: "labels.icon",
-            stylers: [
-              {
-                visibility: "off",
-              },
-            ],
-          },
-          {
-            featureType: "transit",
-            stylers: [
-              {
-                visibility: "off",
-              },
-            ],
-          },
-        ]}
+        customMapStyle={Mapstyle}
       >
         {vineyards.map((vineyard, index) => {
           return (
@@ -160,45 +123,58 @@ export default function MapComponent() {
                 latitude: vineyard.latitude,
                 longitude: vineyard.longitude,
               }}
-              title={vineyard.name}
-              description={"description"}
               resizeMode="contain"
-              icon={require("./marker.png")}
+              icon={
+                activeMarkerIndex === index
+                  ? require("./active_marker.png") // Az aktív jelölő ikonjának útvonala
+                  : require("./marker.png") // A többi jelölő ikonjának útvonala
+              }
               onPress={() => {
                 handleMarkerPress(index);
               }}
-            ></Marker>
+            >
+              <Callout>
+                <Text>{vineyard.name}</Text>
+              </Callout>
+            </Marker>
           );
         })}
       </MapView>
       <View style={styles.carousel}>
         <TouchableOpacity style={styles.button} onPress={handleResetLocation}>
           <Text style={styles.buttonText}>
-            <MaterialIcons name="my-location" size={38} color="#FFF" />
+            <MaterialIcons name="my-location" size={28} color="#FFF" />
           </Text>
         </TouchableOpacity>
-        <Swiper
-          style={styles.swiperContainer}
-          showsPagination={false}
-          ref={swiperRef}
-        >
-          {vineyards.map((vineyard, index) => {
+        <Carousel
+          ref={carouselRef}
+          layout="default"
+          data={vineyards}
+          renderItem={({ item, index }) => {
             return (
-              <View
-                key={index}
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  width: "100%",
-                  height: "100%",
-                }}
-              >
-                <Image style={styles.image} source={{ uri: vineyard.image }} />
-                <Text>{vineyard.name}</Text>
+              <View key={index} style={styles.slide}>
+                <View style={styles.slideContent}>
+                  <Image style={styles.image} source={{ uri: item.image }} />
+                  <View style={styles.textContainer}>
+                    <Text style={styles.text}>{item.name}</Text>
+                    <Text style={styles.text}>{"description"}</Text>
+                  </View>
+                </View>
               </View>
             );
-          })}
-        </Swiper>
+          }}
+          sliderWidth={400}
+          itemWidth={400}
+          onSnapToItem={(index) => {
+            mapRef.current.animateToRegion({
+              latitude: vineyards[index].latitude,
+              longitude: vineyards[index].longitude,
+              latitudeDelta: 0.05,
+              longitudeDelta: 0.05,
+            });
+            setActiveMarkerIndex(index);
+          }}
+        />
       </View>
     </View>
   );
@@ -213,19 +189,17 @@ const styles = StyleSheet.create({
   },
   carousel: {
     position: "absolute",
-    height: "25%",
+    height: "20%",
     bottom: 30,
     right: 15,
     left: 15,
-    borderRadius: 10,
-    backgroundColor: "white",
+    borderRadius: 20,
+    backgroundColor: "rgba(255,255,255,0.9)",
   },
-  swiperContainer: {},
   button: {
     position: "absolute",
-    top: -100,
-
-    right: 25,
+    top: -75,
+    right: 15,
     backgroundColor: "#007AFF",
     borderRadius: 40,
     paddingVertical: 15,
@@ -234,10 +208,25 @@ const styles = StyleSheet.create({
   slide: {
     justifyContent: "center",
   },
+  slideContent: {
+    display: "flex",
+    flexDirection: "row",
+    height: "100%",
+  },
+  textContainer: {
+    width: "65%",
+    height: "100%",
+  },
+  text: {
+    fontSize: 16,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
   image: {
-    width: "40%",
-    height: "80%",
-    borderRadius: 30,
+    width: "35%",
+    height: "100%",
+    borderTopLeftRadius: 20,
+    borderBottomLeftRadius: 20,
   },
   buttonText: {
     color: "white",
