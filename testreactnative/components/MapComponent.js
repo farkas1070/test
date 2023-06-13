@@ -3,7 +3,7 @@ import MapView from "react-native-maps";
 import * as Location from "expo-location";
 import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-
+import { Marker } from "react-native-maps";
 export default function MapComponent() {
   const vineyards = [
     {
@@ -95,7 +95,19 @@ export default function MapComponent() {
         style={styles.map}
         showsUserLocation={true}
         region={position}
-      />
+      >
+        {vineyards.map((vineyard)=>{
+          return(
+            <Marker
+            coordinate={{latitude:vineyard.latitude,
+              longitude: vineyard.longitude,}}
+            title={vineyard.name}
+            description={"description"}
+         />
+          )
+        })}
+      </MapView>
+      
       <TouchableOpacity style={styles.button} onPress={handleResetLocation}>
         <Text style={styles.buttonText}>
           <MaterialIcons name="my-location" size={38} color="#FFF" />
