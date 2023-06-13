@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import MapView from "react-native-maps";
 import * as Location from "expo-location";
-import { StyleSheet, View, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, View, TouchableOpacity, Text,Image } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Marker } from "react-native-maps";
 export default function MapComponent() {
@@ -95,17 +95,26 @@ export default function MapComponent() {
         style={styles.map}
         showsUserLocation={true}
         region={position}
+        showsPointsOfInterest={false}
+        
       >
-        {vineyards.map((vineyard)=>{
+        {vineyards.map((vineyard,index)=>{
           return(
             <Marker
+            key={index}
             coordinate={{latitude:vineyard.latitude,
               longitude: vineyard.longitude,}}
             title={vineyard.name}
             description={"description"}
-         />
+            resizeMode='contain'
+            style={{width: 35,height: 35}}
+            icon={require('./marker.png')}
+         >
+          
+         </Marker>
           )
         })}
+        
       </MapView>
       
       <TouchableOpacity style={styles.button} onPress={handleResetLocation}>
