@@ -2,7 +2,7 @@ import React,{useState}from 'react';
 import MapView from 'react-native-maps';
 import { StyleSheet, View } from 'react-native';
 
-export default function App() {
+export default function MapComponent() {
 
   const [initialRegionValue, setInitialRegionValue] = useState({
     latitude: 47.6803625,
