@@ -165,7 +165,7 @@ export default function MapComponent() {
               resizeMode="contain"
               icon={require("./marker.png")}
               onPress={() => {
-                handleMarkerPress(index + 1);
+                handleMarkerPress(index);
               }}
             ></Marker>
           );
