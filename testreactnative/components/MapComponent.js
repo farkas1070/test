@@ -4,6 +4,7 @@ import * as Location from "expo-location";
 import { StyleSheet, View, TouchableOpacity, Text, Image } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Marker } from "react-native-maps";
+import Swiper from 'react-native-swiper';
 export default function MapComponent() {
   const vineyards = [
     {
@@ -151,12 +152,26 @@ export default function MapComponent() {
           );
         })}
       </MapView>
-
+      <View style={styles.carousel}>
       <TouchableOpacity style={styles.button} onPress={handleResetLocation}>
         <Text style={styles.buttonText}>
           <MaterialIcons name="my-location" size={38} color="#FFF" />
         </Text>
       </TouchableOpacity>
+        <Swiper style={styles.swiperContainer}>
+          <View style={styles.slide}>
+            <Text>Slide 1</Text>
+          </View>
+          <View style={styles.slide}>
+            <Text>Slide 2</Text>
+          </View>
+          <View style={styles.slide}>
+            <Text>Slide 3</Text>
+          </View>
+        </Swiper>
+
+      </View>
+      
     </View>
   );
 }
@@ -168,9 +183,16 @@ const styles = StyleSheet.create({
   map: {
     flex: 1,
   },
+  carousel: {
+    position: "absolute",
+    height:'30%',
+    bottom: 0,
+    backgroundColor:'white'
+  },
   button: {
     position: "absolute",
-    bottom: 20,
+    top: -100,
+    
     right: 25,
     backgroundColor: "#007AFF",
     borderRadius: 40,
