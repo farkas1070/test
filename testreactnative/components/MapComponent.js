@@ -6,10 +6,13 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Mapstyle from "./Mapstyle";
 import Carousel from "react-native-snap-carousel-v4";
 import {useWindowDimensions} from 'react-native';
-import { sights,vineyards } from "./Data";
+import { pointsOfInterest} from "./Data";
 import {styles} from "./Styles"
-
+import VineyardImage from "./marker.png"
+import SightImage from './yellowmarker.png'
+import ActiveMarker from "./active_marker.png"
 export default function MapComponent() {
+
   const mapRef = useRef(null);
   const carouselRef = useRef(null);
   const {width} = useWindowDimensions();
@@ -39,9 +42,9 @@ export default function MapComponent() {
       });
     }
   };
-  function jumpToVineyards(){
-    if (vineyards.length > 0 && mapRef.current) {
-      const coordinates = vineyards.map(marker => ({
+  function jumpTopointsOfInterest(){
+    if (pointsOfInterest.length > 0 && mapRef.current) {
+      const coordinates = pointsOfInterest.map(marker => ({
         latitude: marker.latitude,
         longitude: marker.longitude,
       }));
@@ -52,7 +55,21 @@ export default function MapComponent() {
       });
     }
   }
-  
+  function returnMarkerIcon(type){
+    
+
+    switch (type) {
+      case 'sight':
+        return SightImage
+      case 'vineyard':
+        return VineyardImage
+      
+
+      
+    
+    
+}
+  }
 
   useEffect(() => {
     (async () => {
@@ -89,55 +106,32 @@ export default function MapComponent() {
         ref={mapRef}
         style={styles.map}
         initialRegion={position}
-        onMapReady={jumpToVineyards}
+        onMapReady={jumpTopointsOfInterest}
         showsUserLocation={true}
         provider={PROVIDER_GOOGLE}
         customMapStyle={Mapstyle}
       >
-        {vineyards.map((vineyard, index) => {
+        
+        {pointsOfInterest.map((poi, index) => {
           return (
             <Marker
               key={index}
               coordinate={{
-                latitude: vineyard.latitude,
-                longitude: vineyard.longitude,
+                latitude: poi.latitude,
+                longitude: poi.longitude,
               }}
               resizeMode="contain"
               icon={
                 activeMarkerIndex === index
-                  ? require("./active_marker.png")
-                  : require("./marker.png")
+                ? ActiveMarker
+                : returnMarkerIcon(poi.type)
               }
               onPress={() => {
                 handleMarkerPress(index);
               }}
             >
               <Callout>
-                <Text>{vineyard.name}</Text>
-              </Callout>
-            </Marker>
-          );
-        })}
-        {sights.map((sight, index) => {
-          return (
-            <Marker
-              key={index}
-              coordinate={{
-                latitude: sight.latitude,
-                longitude: sight.longitude,
-              }}
-              resizeMode="contain"
-              icon={
-                activeMarkerIndex === index
-                  ? require("./active_marker.png")
-                  : require("./yellowmarker.png")
-              }
-              onPress={() => {
-                handleMarkerPress(index);
-              }}
-            >
-              <Callout>
-                <Text>{sight.name}</Text>
+                <Text>{poi.name}</Text>
               </Callout>
             </Marker>
           );
@@ -152,7 +146,7 @@ export default function MapComponent() {
         <Carousel
           ref={carouselRef}
           layout="default"
-          data={vineyards}
+          data={pointsOfInterest}
           renderItem={({ item, index }) => {
             return (
               <View key={index} style={styles.slide}>
@@ -170,8 +164,8 @@ export default function MapComponent() {
           itemWidth={width}
           onSnapToItem={(index) => {
             mapRef.current.animateToRegion({
-              latitude: vineyards[index].latitude,
-              longitude: vineyards[index].longitude,
+              latitude: pointsOfInterest[index].latitude,
+              longitude: pointsOfInterest[index].longitude,
               latitudeDelta: 0.05,
               longitudeDelta: 0.05,
             });
