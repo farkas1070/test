@@ -5,11 +5,12 @@ import * as Location from "expo-location";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Mapstyle from "./Mapstyle";
 import Carousel from "react-native-snap-carousel-v4";
+import {useWindowDimensions} from 'react-native';
 
 export default function MapComponent() {
   const mapRef = useRef(null);
   const carouselRef = useRef(null);
-  const windowWidth = Dimensions.get('window').width;
+  const {height, width} = useWindowDimensions();
   const [activeMarkerIndex, setActiveMarkerIndex] = useState(0);
   const [position, setPosition] = useState({
     latitude: 10,
@@ -164,8 +165,8 @@ export default function MapComponent() {
               </View>
             );
           }}
-          sliderWidth={400}
-          itemWidth={400}
+          sliderWidth={width}
+          itemWidth={width}
           onSnapToItem={(index) => {
             mapRef.current.animateToRegion({
               latitude: vineyards[index].latitude,
@@ -191,11 +192,11 @@ const styles = StyleSheet.create({
   carousel: {
     position: "absolute",
     height: "20%",
+
     bottom: 30,
     
-    
     borderRadius: 20,
-    backgroundColor: "rgba(255,255,255,0)",
+    
   },
   button: {
     position: "absolute",
@@ -210,7 +211,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor:'rgba(255,255,255,0.9)',
     borderRadius:20,
-    width:'90%'
+
   },
   slideContent: {
     display: "flex",
