@@ -6,61 +6,22 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Mapstyle from "./Mapstyle";
 import Carousel from "react-native-snap-carousel-v4";
 import {useWindowDimensions} from 'react-native';
-
+import { sights,vineyards } from "./Data";
+import {styles} from "./Styles"
 export default function MapComponent() {
   const mapRef = useRef(null);
   const carouselRef = useRef(null);
   const {height, width} = useWindowDimensions();
   const [activeMarkerIndex, setActiveMarkerIndex] = useState(0);
+
   const [position, setPosition] = useState({
-    latitude: 10,
-    longitude: 10,
+    latitude: 47.6828354,
+    longitude: 16.5813035,
     latitudeDelta: 0.1,
     longitudeDelta: 0.1,
   });
-
-  const vineyards = [
-    {
-      name: "Esterházy Vineyard",
-      image:
-        "https://www.hallwines.com/media/wysiwyg/hall/vineyards/Vineyard_BBS_1515_768px.jpg",
-      latitude: 47.677493,
-      longitude: 16.574725,
-      id: 1,
-    },
-    {
-      name: "Taschner Vineyard",
-      image:
-        "https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dmluZXlhcmR8ZW58MHx8MHx8fDA%3D&w=1000&q=80",
-      latitude: 47.680965,
-      longitude: 16.595614,
-      id: 2,
-    },
-    {
-      name: "Pfneiszl Vineyard",
-      image:
-        "https://www.hallwines.com/media/wysiwyg/hall/vineyards/Vineyard_BBS_1515_768px.jpg",
-      latitude: 47.698976,
-      longitude: 16.551085,
-      id: 3,
-    },
-    {
-      name: "Söptei Vineyard",
-      image:
-        "https://i.insider.com/615fd15a5ae4fe0018a708e6?width=1136&format=jpeg",
-      latitude: 47.676683,
-      longitude: 16.579596,
-      id: 4,
-    },
-    {
-      name: "Liszkay Vineyard",
-      image:
-        "https://images.squarespace-cdn.com/content/v1/58ae0e6c3e00be7a0f66a26b/1658164270174-VJ4NPBPNQ6WGRCIPVY15/IMG_20191101_140942142_HDR.jpg",
-      latitude: 47.665987,
-      longitude: 16.561179,
-      id: 5,
-    },
-  ];
+ 
+ 
 
   const handleMarkerPress = (index) => {
     setActiveMarkerIndex(index);
@@ -77,6 +38,20 @@ export default function MapComponent() {
       });
     }
   };
+  function jumpToVineyards(){
+    if (vineyards.length > 0 && mapRef.current) {
+      const coordinates = vineyards.map(marker => ({
+        latitude: marker.latitude,
+        longitude: marker.longitude,
+      }));
+      
+      mapRef.current.fitToCoordinates(coordinates, {
+        edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
+        animated: false,
+      });
+    }
+  }
+  
 
   useEffect(() => {
     (async () => {
@@ -97,7 +72,7 @@ export default function MapComponent() {
             latitudeDelta: 0.01,
             longitudeDelta: 0.01,
           };
-          setPosition(cor);
+          setPosition(cor)
         }
       );
 
@@ -112,8 +87,9 @@ export default function MapComponent() {
       <MapView
         ref={mapRef}
         style={styles.map}
+        initialRegion={position}
+        onMapReady={jumpToVineyards}
         showsUserLocation={true}
-        region={position}
         provider={PROVIDER_GOOGLE}
         customMapStyle={Mapstyle}
       >
@@ -137,6 +113,30 @@ export default function MapComponent() {
             >
               <Callout>
                 <Text>{vineyard.name}</Text>
+              </Callout>
+            </Marker>
+          );
+        })}
+        {sights.map((sight, index) => {
+          return (
+            <Marker
+              key={index}
+              coordinate={{
+                latitude: sight.latitude,
+                longitude: sight.longitude,
+              }}
+              resizeMode="contain"
+              icon={
+                activeMarkerIndex === index
+                  ? require("./active_marker.png")
+                  : require("./yellowmarker.png")
+              }
+              onPress={() => {
+                handleMarkerPress(index);
+              }}
+            >
+              <Callout>
+                <Text>{sight.name}</Text>
               </Callout>
             </Marker>
           );
@@ -182,60 +182,3 @@ export default function MapComponent() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  map: {
-    flex: 1,
-  },
-  carousel: {
-    position: "absolute",
-    height: "20%",
-    
-    bottom: 30,
-    
-    borderRadius: 20,
-    
-  },
-  button: {
-    position: "absolute",
-    top: -75,
-    right: 15,
-    backgroundColor: "#007AFF",
-    borderRadius: 40,
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-  },
-  slide: {
-    justifyContent: "center",
-    backgroundColor:'rgba(255,255,255,0.9)',
-    borderRadius:20,
-
-  },
-  slideContent: {
-    display: "flex",
-    flexDirection: "row",
-    height: "100%",
-  },
-  textContainer: {
-    width: "65%",
-    height: "100%",
-  },
-  text: {
-    fontSize: 16,
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  image: {
-    width: "35%",
-    height: "100%",
-    borderTopLeftRadius: 20,
-    borderBottomLeftRadius: 20,
-  },
-  buttonText: {
-    color: "white",
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-});
