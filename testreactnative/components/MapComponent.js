@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { StyleSheet, View, TouchableOpacity, Text, Image } from "react-native";
+import { StyleSheet, View, TouchableOpacity, Text, Image,Dimensions} from "react-native";
 import MapView, { Marker, Callout, PROVIDER_GOOGLE } from "react-native-maps";
 import * as Location from "expo-location";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
@@ -9,6 +9,7 @@ import Carousel from "react-native-snap-carousel-v4";
 export default function MapComponent() {
   const mapRef = useRef(null);
   const carouselRef = useRef(null);
+  const windowWidth = Dimensions.get('window').width;
   const [activeMarkerIndex, setActiveMarkerIndex] = useState(0);
   const [position, setPosition] = useState({
     latitude: 10,
@@ -191,10 +192,10 @@ const styles = StyleSheet.create({
     position: "absolute",
     height: "20%",
     bottom: 30,
-    right: 15,
-    left: 15,
+    
+    
     borderRadius: 20,
-    backgroundColor: "rgba(255,255,255,0.9)",
+    backgroundColor: "rgba(255,255,255,0)",
   },
   button: {
     position: "absolute",
@@ -207,6 +208,9 @@ const styles = StyleSheet.create({
   },
   slide: {
     justifyContent: "center",
+    backgroundColor:'rgba(255,255,255,0.9)',
+    borderRadius:20,
+    width:'90%'
   },
   slideContent: {
     display: "flex",
