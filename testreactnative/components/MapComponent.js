@@ -11,13 +11,15 @@ import {styles} from "./Styles"
 import VineyardImage from "./marker.png"
 import SightImage from './yellowmarker.png'
 import ActiveMarker from "./active_marker.png"
+import { get } from './app/controllers/PointOfInterestController';
+
 export default function MapComponent() {
 
   const mapRef = useRef(null);
   const carouselRef = useRef(null);
   const {width} = useWindowDimensions();
   const [activeMarkerIndex, setActiveMarkerIndex] = useState(0);
-
+  const [data, setData] = useState(null);
   const [position, setPosition] = useState({
     latitude: 47.6828354,
     longitude: 16.5813035,
@@ -70,6 +72,16 @@ export default function MapComponent() {
     
 }
   }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await get();
+      setData(response);
+      console.log(response)
+    };
+
+    fetchData();
+  }, []);
 
   useEffect(() => {
     (async () => {
