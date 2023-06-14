@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
-import * as Location from "expo-location";
 import { StyleSheet, View, TouchableOpacity, Text, Image } from "react-native";
+import MapView, { Marker, Callout, PROVIDER_GOOGLE } from "react-native-maps";
+import * as Location from "expo-location";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import { Marker, Callout } from "react-native-maps";
 import Mapstyle from "./Mapstyle";
 import Carousel from "react-native-snap-carousel-v4";
 
@@ -17,6 +16,7 @@ export default function MapComponent() {
     latitudeDelta: 0.1,
     longitudeDelta: 0.1,
   });
+
   const vineyards = [
     {
       name: "Esterházy Vineyard",
@@ -126,8 +126,8 @@ export default function MapComponent() {
               resizeMode="contain"
               icon={
                 activeMarkerIndex === index
-                  ? require("./active_marker.png") // Az aktív jelölő ikonjának útvonala
-                  : require("./marker.png") // A többi jelölő ikonjának útvonala
+                  ? require("./active_marker.png")
+                  : require("./marker.png")
               }
               onPress={() => {
                 handleMarkerPress(index);
