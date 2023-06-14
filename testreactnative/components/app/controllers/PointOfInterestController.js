@@ -9,7 +9,7 @@ import axios from 'axios';
  * 2. You have to change the access IP from localhost
  * to the IP of the machine Strapi is running on.
  */
-const url = 'http://localhost:1337/api/pois';
+const url = 'http://10.0.0.113:1337/api/pois';
 
 export const get = async () => {
     try {

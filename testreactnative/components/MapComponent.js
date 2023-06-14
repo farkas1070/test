@@ -1,33 +1,36 @@
 import React, { useState, useEffect, useRef } from "react";
-import { StyleSheet, View, TouchableOpacity, Text, Image,Dimensions} from "react-native";
+import {
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  Text,
+  Image,
+  Dimensions,
+} from "react-native";
 import MapView, { Marker, Callout, PROVIDER_GOOGLE } from "react-native-maps";
 import * as Location from "expo-location";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Mapstyle from "./Mapstyle";
 import Carousel from "react-native-snap-carousel-v4";
-import {useWindowDimensions} from 'react-native';
-import { pointsOfInterest} from "./Data";
-import {styles} from "./Styles"
-import VineyardImage from "./marker.png"
-import SightImage from './yellowmarker.png'
-import ActiveMarker from "./active_marker.png"
-import { get } from './app/controllers/PointOfInterestController';
+import { useWindowDimensions } from "react-native";
+import { styles } from "./Styles";
+import VineyardImage from "./marker.png";
+import SightImage from "./yellowmarker.png";
+import ActiveMarker from "./active_marker.png";
+import { get } from "./app/controllers/PointOfInterestController";
 
 export default function MapComponent() {
-
   const mapRef = useRef(null);
   const carouselRef = useRef(null);
-  const {width} = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const [activeMarkerIndex, setActiveMarkerIndex] = useState(0);
-  const [data, setData] = useState(null);
+  const [pointsOfInterest, setpointsOfInterest] = useState([]);
   const [position, setPosition] = useState({
     latitude: 47.6828354,
     longitude: 16.5813035,
     latitudeDelta: 0.1,
     longitudeDelta: 0.1,
   });
- 
- 
 
   const handleMarkerPress = (index) => {
     setActiveMarkerIndex(index);
@@ -44,40 +47,35 @@ export default function MapComponent() {
       });
     }
   };
-  function jumpTopointsOfInterest(){
+  function jumpTopointsOfInterest() {
     if (pointsOfInterest.length > 0 && mapRef.current) {
-      const coordinates = pointsOfInterest.map(marker => ({
+      const coordinates = pointsOfInterest.map((marker) => ({
         latitude: marker.latitude,
         longitude: marker.longitude,
       }));
-      
+
       mapRef.current.fitToCoordinates(coordinates, {
         edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
         animated: false,
       });
     }
   }
-  function returnMarkerIcon(type){
-    
-
+  function returnMarkerIcon(type) {
     switch (type) {
-      case 'sight':
-        return SightImage
-      case 'vineyard':
-        return VineyardImage
-      
-
-      
-    
-    
-}
+      case "sight":
+        return SightImage;
+      case "vineyard":
+        return VineyardImage;
+    }
   }
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await get();
-      setData(response);
-      console.log(response)
+      response.data.forEach((element) => {
+        setpointsOfInterest((oldArray) => [...oldArray, element.attributes]);
+      });
+      console.log(pointsOfInterest);
     };
 
     fetchData();
@@ -102,7 +100,7 @@ export default function MapComponent() {
             latitudeDelta: 0.01,
             longitudeDelta: 0.01,
           };
-          setPosition(cor)
+          setPosition(cor);
         }
       );
 
@@ -123,7 +121,6 @@ export default function MapComponent() {
         provider={PROVIDER_GOOGLE}
         customMapStyle={Mapstyle}
       >
-        
         {pointsOfInterest.map((poi, index) => {
           return (
             <Marker
@@ -135,8 +132,8 @@ export default function MapComponent() {
               resizeMode="contain"
               icon={
                 activeMarkerIndex === index
-                ? ActiveMarker
-                : returnMarkerIcon(poi.type)
+                  ? ActiveMarker
+                  : returnMarkerIcon(poi.type)
               }
               onPress={() => {
                 handleMarkerPress(index);
@@ -188,4 +185,3 @@ export default function MapComponent() {
     </View>
   );
 }
-
