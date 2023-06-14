@@ -8,10 +8,11 @@ import Carousel from "react-native-snap-carousel-v4";
 import {useWindowDimensions} from 'react-native';
 import { sights,vineyards } from "./Data";
 import {styles} from "./Styles"
+
 export default function MapComponent() {
   const mapRef = useRef(null);
   const carouselRef = useRef(null);
-  const {height, width} = useWindowDimensions();
+  const {width} = useWindowDimensions();
   const [activeMarkerIndex, setActiveMarkerIndex] = useState(0);
 
   const [position, setPosition] = useState({
