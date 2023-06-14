@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
   carousel: {
     position: "absolute",
     height: "20%",
-
+    
     bottom: 30,
     
     borderRadius: 20,
