@@ -115,7 +115,6 @@ export default function MapComponent() {
       <MapView
         ref={mapRef}
         style={styles.map}
-        initialRegion={position}
         onMapReady={jumpTopointsOfInterest}
         showsUserLocation={true}
         provider={PROVIDER_GOOGLE}
