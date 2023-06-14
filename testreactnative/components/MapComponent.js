@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
-  StyleSheet,
   View,
   TouchableOpacity,
   Text,
   Image,
-  Dimensions,
 } from "react-native";
 import MapView, { Marker, Callout, PROVIDER_GOOGLE } from "react-native-maps";
 import * as Location from "expo-location";
