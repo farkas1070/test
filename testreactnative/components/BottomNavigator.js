@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Events from "../views/events/Events"
-import Map from "../views/map/Map"
+import Events from "../views/events/Events";
+import Map from "../views/map/Map";
 import Wineries from '../views/wineries/Wineries';
 import Home from "../views/home/Home";
 import { Ionicons } from '@expo/vector-icons';
+
 const Tab = createBottomTabNavigator();
 
 const BottomNavigator = () => {
@@ -19,10 +20,8 @@ const BottomNavigator = () => {
           tabBarIcon: () => (
             <Ionicons name="home-outline" size={24} color="black" />
           ),
-          headerStyle: {
-            backgroundColor: '#f4511e',
-          },
-          headerTintColor: '#fff',
+          
+          headerTintColor: 'black',
           headerTitleAlign: 'center',
           headerTitleStyle: {
             
@@ -30,12 +29,12 @@ const BottomNavigator = () => {
           },
           headerLeft: () => (
             <View style={{ paddingLeft: 10 }}>
-              <Ionicons name="menu" size={24} color="white" />
+              <Ionicons name="menu" size={24} color="black" />
             </View>
           ),
           headerRight: () => (
             <View style={{ paddingRight: 10 }}>
-              <Ionicons name="ios-notifications" size={24} color="white" />
+              <Ionicons name="information-circle-outline" size={24} color="black" />
             </View>
           ),
         }}

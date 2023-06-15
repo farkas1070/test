@@ -10,10 +10,21 @@ import axios from 'axios';
  * to the IP of the machine Strapi is running on.
  */
 const url = 'http://10.0.0.113:1337/api/pois';
+const url2 = 'https://soproniborvidek.nemethmark.com/wp-json/wp/v2/wineries?_embed&per_page=100';
 
 export const get = async () => {
     try {
       const response = await axios.get(`${url}`);
+      const data = response.data;
+      return data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      return null;
+    }
+  };
+  export const getBorászatok = async () => {
+    try {
+      const response = await axios.get(`${url2}`);
       const data = response.data;
       return data;
     } catch (error) {

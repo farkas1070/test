@@ -1,14 +1,24 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet} from "react-native";
+export const styles = StyleSheet.create({
+    maincontainer: {
+      flex: 1,
+      backgroundColor:'beige',
+      justifyContent:'center',
+      alignItems:'center',
+      width:'100%',
+      height:'100%'
+    },
+    image: {
+      width: 100,
+      height:100,
+      resizeMode:'contain',
+      borderTopLeftRadius: 20,
+      borderBottomLeftRadius: 20,
+    },
 
-const WineriesStyle = () => {
-  return (
-    <View>
-      <Text>WineriesStyle</Text>
-    </View>
-  )
-}
-
-export default WineriesStyle
-
-const styles = StyleSheet.create({})
+    scrollview:{
+      width:'100%',
+      padding:20
+    }
+    
+  });

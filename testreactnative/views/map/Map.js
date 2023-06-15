@@ -70,6 +70,7 @@ const Map = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await get();
+      console.log(response)
       response.data.forEach((element) => {
         setpointsOfInterest((oldArray) => [...oldArray, element.attributes]);
       });
