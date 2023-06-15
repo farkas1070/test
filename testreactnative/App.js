@@ -1,13 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
-import Home from "./views/home/Home";
 import Winery from "./views/winery/Winery";
-import Wineries from "./views/wineries/Wineries";
 import Event from "./views/event/Event";
-import Events from "./views/events/Events";
-import Map from "./views/map/Map";
 import BottomNavigator from "./components/BottomNavigator";
 
 
