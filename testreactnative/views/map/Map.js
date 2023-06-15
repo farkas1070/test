@@ -57,19 +57,6 @@ const Map = () => {
     }
   }
 
-<<<<<<< Updated upstream
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await get();
-      console.log(response)
-      response.data.forEach((element) => {
-        setpointsOfInterest((oldArray) => [...oldArray, element.attributes]);
-      });
-    };
-
-    fetchData();
-  }, []);
-=======
   const filterMarkers = (type) => {
     if (type === "sight") {
       return pointsOfInterest.filter((poi) => poi.type === "sight");
@@ -79,7 +66,6 @@ const Map = () => {
       return pointsOfInterest;
     }
   };
->>>>>>> Stashed changes
 
   useEffect(() => {
     (async () => {

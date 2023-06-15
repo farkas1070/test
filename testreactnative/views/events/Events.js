@@ -1,6 +1,7 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React,{useState} from 'react'
+import { StyleSheet, Text, View } from "react-native";
+import React, { useState } from "react";
 import { Calendar, LocaleConfig } from "react-native-calendars";
+
 const Events = () => {
   const [selected, setSelected] = useState("");
   return (
@@ -16,11 +17,9 @@ const Events = () => {
         }}
       />
       <Text>{selected}</Text>
-
     </View>
-  )
-}
+  );
+};
 
-export default Events
-
-const styles = StyleSheet.create({})
+export default Events;
+const styles = StyleSheet.create({});
