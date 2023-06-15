@@ -1,4 +1,4 @@
-const Mapstyle = [
+export const Mapstyle= [
     {
       featureType: "administrative",
       elementType: "labels",
@@ -34,5 +34,3 @@ const Mapstyle = [
       ],
     },
   ];
-
-  export default Mapstyle;
