@@ -19,6 +19,25 @@ const BottomNavigator = () => {
           tabBarIcon: () => (
             <Ionicons name="home-outline" size={24} color="black" />
           ),
+          headerStyle: {
+            backgroundColor: '#f4511e',
+          },
+          headerTintColor: '#fff',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            
+            textAlign: 'center',
+          },
+          headerLeft: () => (
+            <View style={{ paddingLeft: 10 }}>
+              <Ionicons name="menu" size={24} color="white" />
+            </View>
+          ),
+          headerRight: () => (
+            <View style={{ paddingRight: 10 }}>
+              <Ionicons name="ios-notifications" size={24} color="white" />
+            </View>
+          ),
         }}
       />
       <Tab.Screen

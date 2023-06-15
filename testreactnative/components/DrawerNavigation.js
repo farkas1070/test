@@ -25,6 +25,7 @@ const DrawerNavigator = () => (
         ),
       }}
     />
+    
   </Drawer.Navigator>
 );
 

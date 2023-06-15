@@ -4,14 +4,14 @@ import { styles } from "./HomeStyle";
 import Header from "./components/Header"
 const Home = () => {
   return (
-    <SafeAreaView style={styles.maincontainer}>
+    <View style={styles.maincontainer}>
       <View>
         <Text>Üdvözlünk a Soproni Borvidékek appban!</Text>
         <Text>Mit szeretnél csinálni?</Text>
       </View>
       
       
-    </SafeAreaView>
+    </View>
   )
 }
 
