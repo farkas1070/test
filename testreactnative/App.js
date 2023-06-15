@@ -12,6 +12,7 @@ import Events from "./views/events/Events";
 import Map from "./views/map/Map";
 import BottomNavigator from "./components/BottomNavigator";
 
+
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (

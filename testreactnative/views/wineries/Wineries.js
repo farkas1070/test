@@ -23,7 +23,7 @@ const Wineries = () => {
         };
       });
       setpointsOfInterest(extractedData);
-      console.log(extractedData)
+      
     };
 
     fetchData();

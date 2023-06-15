@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
       height: 200,
       borderTopLeftRadius: 8,
       borderTopRightRadius: 8,
-      resizeMode: 'cover',
+      resizeMode: 'contain',
     },
     cardContent: {
       padding: 16,
