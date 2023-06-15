@@ -23,6 +23,13 @@
     },
     "latitude": {
       "type": "float"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
