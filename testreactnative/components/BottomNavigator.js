@@ -46,6 +46,7 @@ const BottomNavigator = () => {
           tabBarIcon: () => (
             <Ionicons name="map-outline" size={24} color="black" />
           ),
+          headerShown: false,
         }}
       />
       <Tab.Screen

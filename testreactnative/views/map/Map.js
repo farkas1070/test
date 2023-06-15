@@ -19,6 +19,7 @@ import { get } from "../../controllers/PointOfInterestController";
 
 const Map = () => {
   const mapRef = useRef(null);
+  const markerRef = useRef(null);
   const carouselRef = useRef(null);
   const { width } = useWindowDimensions();
   const [activeMarkerIndex, setActiveMarkerIndex] = useState(0);
@@ -29,6 +30,7 @@ const Map = () => {
     latitudeDelta: 0.1,
     longitudeDelta: 0.1,
   });
+  const [filter, setFilter] = useState("all");
 
   const handleMarkerPress = (index) => {
     setActiveMarkerIndex(index);
@@ -45,19 +47,7 @@ const Map = () => {
       });
     }
   };
-  function jumpTopointsOfInterest() {
-    if (pointsOfInterest.length > 0 && mapRef.current) {
-      const coordinates = pointsOfInterest.map((marker) => ({
-        latitude: marker.latitude,
-        longitude: marker.longitude,
-      }));
 
-      mapRef.current.fitToCoordinates(coordinates, {
-        edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
-        animated: false,
-      });
-    }
-  }
   function returnMarkerIcon(type) {
     switch (type) {
       case "sight":
@@ -67,6 +57,7 @@ const Map = () => {
     }
   }
 
+<<<<<<< Updated upstream
   useEffect(() => {
     const fetchData = async () => {
       const response = await get();
@@ -78,6 +69,17 @@ const Map = () => {
 
     fetchData();
   }, []);
+=======
+  const filterMarkers = (type) => {
+    if (type === "sight") {
+      return pointsOfInterest.filter((poi) => poi.type === "sight");
+    } else if (type === "vineyard") {
+      return pointsOfInterest.filter((poi) => poi.type === "vineyard");
+    } else {
+      return pointsOfInterest;
+    }
+  };
+>>>>>>> Stashed changes
 
   useEffect(() => {
     (async () => {
@@ -108,19 +110,48 @@ const Map = () => {
     })();
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await get();
+      response.data.forEach((element) => {
+        setpointsOfInterest((oldArray) => [...oldArray, element.attributes]);
+      });
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const jumpToPointOfInterest = () => {
+      if (pointsOfInterest.length > 0 && mapRef.current) {
+        const coordinates = pointsOfInterest.map((marker) => ({
+          latitude: marker.latitude,
+          longitude: marker.longitude,
+        }));
+
+        mapRef.current.fitToCoordinates(coordinates, {
+          edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
+          animated: true,
+        });
+      }
+    };
+    jumpToPointOfInterest();
+  }, [pointsOfInterest]);
+
   return (
     <View style={styles.container}>
       <MapView
         ref={mapRef}
         style={styles.map}
-        onMapReady={jumpTopointsOfInterest}
         showsUserLocation={true}
         provider={PROVIDER_GOOGLE}
         customMapStyle={Mapstyle}
       >
-        {pointsOfInterest.map((poi, index) => {
+        {filterMarkers(filter).map((poi, index) => {
           return (
             <Marker
+              id={index}
+              ref={markerRef}
               key={index}
               coordinate={{
                 latitude: poi.latitude,
@@ -136,13 +167,41 @@ const Map = () => {
                 handleMarkerPress(index);
               }}
             >
-              <Callout>
+              <Callout style={styles.callout}>
                 <Text>{poi.name}</Text>
               </Callout>
             </Marker>
           );
         })}
       </MapView>
+      <View style={styles.filterButtonContainer}>
+        <TouchableOpacity
+          style={
+            filter === "vineyard"
+              ? styles.filterButtonActive
+              : styles.filterButton
+          }
+          onPress={() => {
+            filter !== "vineyard" ? setFilter("vineyard") : setFilter("all");
+          }}
+        >
+          <Text style={styles.buttonText}>
+            <MaterialIcons name="wine-bar" size={28} color="#FFF" />
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={
+            filter === "sight" ? styles.filterButtonActive : styles.filterButton
+          }
+          onPress={() => {
+            filter !== "sight" ? setFilter("sight") : setFilter("all");
+          }}
+        >
+          <Text style={styles.buttonText}>
+            <MaterialIcons name="wb-shade" size={28} color="#FFF" />
+          </Text>
+        </TouchableOpacity>
+      </View>
       <View style={styles.carousel}>
         <TouchableOpacity style={styles.button} onPress={handleResetLocation}>
           <Text style={styles.buttonText}>
@@ -152,7 +211,7 @@ const Map = () => {
         <Carousel
           ref={carouselRef}
           layout="default"
-          data={pointsOfInterest}
+          data={filterMarkers(filter)}
           renderItem={({ item, index }) => {
             return (
               <View key={index} style={styles.slide}>
@@ -170,8 +229,8 @@ const Map = () => {
           itemWidth={width}
           onSnapToItem={(index) => {
             mapRef.current.animateToRegion({
-              latitude: pointsOfInterest[index].latitude,
-              longitude: pointsOfInterest[index].longitude,
+              latitude: filterMarkers(filter)[index].latitude,
+              longitude: filterMarkers(filter)[index].longitude,
               latitudeDelta: 0.05,
               longitudeDelta: 0.05,
             });
