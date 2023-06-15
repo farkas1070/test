@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_pozicio_pozicios",
+  "info": {
+    "displayName": "pozicio",
+    "icon": "pinMap"
+  },
+  "options": {},
+  "attributes": {
+    "long": {
+      "type": "float"
+    },
+    "lat": {
+      "type": "float"
+    }
+  }
+}

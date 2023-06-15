@@ -1,10 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-<<<<<<< Updated upstream
-import MapComponent from "./components/MapComponent";
-=======
->>>>>>> Stashed changes
+
+
+
 import Home from "./views/home/Home";
 import Winery from "./views/winery/Winery";
 import Wineries from "./views/wineries/Wineries";
