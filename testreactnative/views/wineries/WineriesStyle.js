@@ -20,4 +20,13 @@ export const styles = StyleSheet.create({
     width: "100%",
     padding: 20,
   },
+  textinput: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    width: "90%",
+    borderRadius: 20,
+    backgroundColor: "white",
+  },
 });

@@ -4,15 +4,11 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Winery from "./views/winery/Winery";
 import Event from "./views/event/Event";
 import BottomNavigator from "./components/BottomNavigator";
-import { PointOfInterestProvider } from "./context/PointOfInterestContext.js"
+import { PointOfInterestProvider } from "./context/PointOfInterestContext.js";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     <PointOfInterestProvider>
       <NavigationContainer>
         <Stack.Navigator
@@ -29,10 +25,6 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </PointOfInterestProvider>
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
   );
 }
 

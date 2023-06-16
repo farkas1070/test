@@ -3,9 +3,6 @@ export const pointsOfInterestContext = createContext();
 import { getBorászatok } from "../controllers/PointOfInterestController";
 
 export const PointOfInterestProvider = (props) => {
-<<<<<<< Updated upstream
-    const [pointsOfInterest, setpointsOfInterest] = useState([]);
-=======
   const [pointsOfInterest, setpointsOfInterest] = useState([]);
 
   useEffect(() => {
@@ -21,8 +18,6 @@ export const PointOfInterestProvider = (props) => {
       });
       setpointsOfInterest(extractedData);
     };
->>>>>>> Stashed changes
-
     fetchData();
   }, []);
 
