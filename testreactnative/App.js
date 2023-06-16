@@ -9,10 +9,7 @@ import { PointOfInterestProvider } from "./context/PointOfInterestContext.js"
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
     <PointOfInterestProvider>
       <NavigationContainer>
         <Stack.Navigator
@@ -29,10 +26,7 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </PointOfInterestProvider>
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
   );
 }
 
