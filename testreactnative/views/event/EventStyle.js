@@ -1,14 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-
-const EventStyle = () => {
-  return (
-    <View>
-      <Text>EventStyle</Text>
-    </View>
-  )
-}
-
-export default EventStyle
-
-const styles = StyleSheet.create({})
+import { StyleSheet } from "react-native";
+export const styles = StyleSheet.create({
+  image: {
+    width: "100%",
+    height: 200,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+    resizeMode: "contain",
+  },
+});

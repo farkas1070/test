@@ -4,7 +4,6 @@ import Placeholder from "../../assets/placeholder.png";
 import { styles } from "./EventStyle";
 
 const Event = ({ route }) => {
-  console.log(route.params.title);
   return (
     <ScrollView>
       <Image
