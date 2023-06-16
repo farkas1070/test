@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Events from "../views/events/Events";
@@ -55,6 +55,24 @@ const BottomNavigator = () => {
         options={{
           tabBarIcon: () => (
             <Ionicons name="calendar-outline" size={24} color="black" />
+          ),
+          
+          headerTintColor: 'black',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            
+            textAlign: 'center',
+          },
+          headerLeft: () => (
+            <View style={{ paddingLeft: 10 }}>
+              <Ionicons name="menu" size={24} color="black" />
+            </View>
+          ),
+          headerRight: () => (
+            <View style={{ paddingRight: 10 }}>
+              <Ionicons name="information-circle-outline" size={24} color="black" />
+              
+            </View>
           ),
         }}
       />

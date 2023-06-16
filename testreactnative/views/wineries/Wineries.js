@@ -1,32 +1,17 @@
 import { Text, View, ScrollView, Image } from "react-native";
-import React, { useEffect, useState } from "react";
-import { getBorászatok } from "../../controllers/PointOfInterestController";
+import React, { useEffect, useState,useContext } from "react";
+
 import { styles } from "./WineriesStyle";
 import Card from "./components/Card";
+import { pointsOfInterestContext } from "../../context/PointOfInterestContext.js"
 const Wineries = () => {
-  const [pointsOfInterest, setpointsOfInterest] = useState([]);
+  const [pointsOfInterest, setpointsOfInterest] = useContext(pointsOfInterestContext);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await getBorászatok();
-
-      const extractedData = response.map((item) => {
-        return {
-          title: item.title.rendered,
-          content: item.content.rendered,
-          logo: item?.acf?.banner?.boraszat_logo?.sizes?.medium,
-        };
-      });
-      setpointsOfInterest(extractedData);
-ges
-    };
-
-    fetchData();
-  }, []);
+  
 
   return (
     <View style={styles.maincontainer}>
-      <></>
+      
       <ScrollView style={styles.scrollview}>
         {pointsOfInterest.map((item, index) => {
           return <Card item={item} index={index} />;

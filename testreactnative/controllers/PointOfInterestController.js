@@ -22,7 +22,7 @@ export const get = async () => {
       return null;
     }
   };
-  export const getBorászatok = async () => {
+export const getBorászatok = async () => {
     try {
       const response = await axios.get(`${url2}`);
       const data = response.data;

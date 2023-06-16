@@ -1,7 +1,6 @@
-import {  SafeAreaView, Text, View } from 'react-native'
+import {  Text, View } from 'react-native'
 import React from 'react'
 import { styles } from "./HomeStyle";
-import Header from "./components/Header"
 
 const Home = () => {
   
