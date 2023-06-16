@@ -12,7 +12,7 @@ const Events = () => {
   const [selected, setSelected] = useState("");
   const [showListFirst, setShowListFirst] = useState(true)
   const [currentDate, setCurrentDate] = useState('');
-  const [news, setNews] = useState([])
+  const [events, setEvents] = useState([])
   useEffect(() => {
     const fetchData = async () => {
       const response = await getEsemények();
@@ -25,7 +25,7 @@ const Events = () => {
           image: item?.image?.sizes?.medium?.url,
         };
       });
-      setNews(extractedData);
+      setEvents(extractedData);
       console.log(extractedData);
     };
 
@@ -59,7 +59,7 @@ const Events = () => {
       {
         showListFirst ?
           <ScrollView >
-            {news.map((item, index) => {
+            {events.map((item, index) => {
               return (
                 <View key={index} style={styles.singlenews}>
                   <Image style={styles.image} source={item.image ? { uri: item.image } : Placeholder} />

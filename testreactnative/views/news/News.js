@@ -29,7 +29,9 @@ const News = () => {
     <ScrollView style={styles.maincontainer}>
       {News.map((item)=>{
         return(
-            <View style={styles.card}><Text>{item.title}</Text></View>
+            <View style={styles.card}>
+                <Text>{item.title}</Text>
+            </View>
         )
       })}
     </ScrollView>
