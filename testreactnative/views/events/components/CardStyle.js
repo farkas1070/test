@@ -1,13 +1,6 @@
 import { StyleSheet} from "react-native";
 export const styles = StyleSheet.create({
-    maincontainer: {
-      flex: 1,
-      backgroundColor:'white',
-      width:'100%',
-      height:'100%',
-    },
     singlenews:{
-      
       height:200,
       backgroundColor:'beige',
       margin:10,
@@ -36,14 +29,6 @@ export const styles = StyleSheet.create({
     text:{
       textAlign: 'center',
     },
-    textinput: {
-      height: 40,
-      margin: 12,
-      borderWidth: 1,
-      padding: 10,
-      width: "70%",
-      borderRadius: 20,
-      backgroundColor: "white",
-    },
+
     
   });

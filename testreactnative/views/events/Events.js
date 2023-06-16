@@ -12,7 +12,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./EventsStyle";
 import { getEsemények } from "../../controllers/PointOfInterestController";
 import { CalendarList } from "react-native-calendars";
-import Placeholder from "../../assets/placeholder.png";
+import Card from "./components/Card";
 
 const Events = () => {
   const [selected, setSelected] = useState("");
@@ -94,15 +94,7 @@ const Events = () => {
         <ScrollView>
           {filterItems().map((item, index) => {
             return (
-              <View key={index} style={styles.singlenews}>
-                <Image
-                  style={styles.image}
-                  source={item.image ? { uri: item.image } : Placeholder}
-                />
-                <View style={styles.innerview}>
-                  <Text style={styles.text}>{item.title}</Text>
-                </View>
-              </View>
+              <Card item={item} index={index} key={index} />
             );
           })}
         </ScrollView>

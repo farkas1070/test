@@ -1,14 +1,23 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { Text, Image, ScrollView } from "react-native";
+import React from "react";
+import Placeholder from "../../assets/placeholder.png";
+import { styles } from "./EventStyle";
 
-const Event = () => {
+const Event = ({ route }) => {
+  console.log(route.params.title);
   return (
-    <View>
-      <Text>Event</Text>
-    </View>
-  )
-}
+    <ScrollView>
+      <Image
+        style={styles.image}
+        source={
+          route.params.item.image
+            ? { uri: route.params.item.image }
+            : Placeholder
+        }
+      />
+      <Text>{route.params.item.title}</Text>
+    </ScrollView>
+  );
+};
 
-export default Event
-
-const styles = StyleSheet.create({})
+export default Event;
