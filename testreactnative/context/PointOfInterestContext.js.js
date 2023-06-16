@@ -8,10 +8,6 @@ import { getBorászatok } from "../controllers/PointOfInterestController";
 
 export const PointOfInterestProvider = (props) => {
     const [pointsOfInterest, setpointsOfInterest] = useState([]);
-  
-
-
-  
 
     useEffect(() => {
       const fetchData = async () => {

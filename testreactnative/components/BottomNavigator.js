@@ -6,7 +6,7 @@ import Map from "../views/map/Map";
 import Wineries from '../views/wineries/Wineries';
 import Home from "../views/home/Home";
 import { Ionicons } from '@expo/vector-icons';
-
+import News from "../views/news/News";
 const Tab = createBottomTabNavigator();
 
 const BottomNavigator = () => {
@@ -83,6 +83,16 @@ const BottomNavigator = () => {
           tabBarIcon: () => (
             <Ionicons name="wine-outline" size={24} color="black" />
           ),
+        }}
+      />
+      <Tab.Screen
+        name="News"
+        component={News}
+        options={{
+          tabBarIcon: () => (
+            <Ionicons name="newspaper-outline" size={24} color="black" />
+          ),
+          headerShown: false,
         }}
       />
     </Tab.Navigator>
