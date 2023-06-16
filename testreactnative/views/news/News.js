@@ -1,7 +1,8 @@
-import {  Text, View,ScrollView } from 'react-native'
+import {  Text, View,ScrollView ,Image} from 'react-native'
 import React,{useEffect,useState} from 'react'
 import { getHírek } from "../../controllers/PointOfInterestController";
 import { styles } from "./NewsStyle";
+import Placeholder from "../../assets/placeholder.png"
 
 const News = () => {
     const [News,setNews] = useState([])
@@ -15,11 +16,11 @@ const News = () => {
               title: item.title.rendered,
               excerpt: item.excerpt.rendered,
               content: item.content.rendered,
-              image: item._embedded
+              image: item?._embedded['wp:featuredmedia']?.media_details?.sizes?.full
             };
           });
           setNews(extractedData);
-          
+          console.log(extractedData);
         };
     
         fetchData();
@@ -27,11 +28,18 @@ const News = () => {
 
   return (
     <ScrollView style={styles.maincontainer}>
-      {News.map((item)=>{
+      {News.map((item,index)=>{
         return(
-            <View style={styles.card}>
+            <View key={index} style={styles.card}>
+                <View> 
+                    <Image
+                    style={styles.image}
+                    source={item.logo ? { uri: item.logo } : Placeholder}
+                    />
+                </View>
                 
-                <Text>{item.title}</Text>
+                <Text numberOfLines={3} style={{lineHeight: 30,textAlign: 'center',}}>{item.title}</Text>
+                
             </View>
         )
       })}
