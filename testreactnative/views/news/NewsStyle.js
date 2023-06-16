@@ -9,7 +9,9 @@ export const styles = StyleSheet.create({
     
     card: {
       width:'100%',
-      height:'30%',
+      height:100,
+      justifyContent:'center',
+      alignItems:'center',
       backgroundColor: '#fff',
       borderRadius: 8,
       marginBottom: 16,
