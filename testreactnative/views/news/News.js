@@ -16,8 +16,9 @@ const News = () => {
               title: item.title.rendered,
               excerpt: item.excerpt.rendered,
               content: item.content.rendered,
-              image: item?._embedded['wp:featuredmedia']?.media_details?.sizes?.full
+              image: item._embedded['wp:featuredmedia']?.media_details?.sizes?.full?.source_url
             };
+            
           });
           setNews(extractedData);
           console.log(extractedData);
@@ -34,7 +35,7 @@ const News = () => {
                 <View> 
                     <Image
                     style={styles.image}
-                    source={item.logo ? { uri: item.logo } : Placeholder}
+                    source={item.image ? { uri: item.image } : Placeholder}
                     />
                 </View>
                 
