@@ -9,7 +9,7 @@ import { PointOfInterestProvider } from "./context/PointOfInterestContext.js"
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
-<<<<<<< Updated upstream
+
     <PointOfInterestProvider>
       <NavigationContainer>
         <Stack.Navigator
@@ -26,22 +26,7 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </PointOfInterestProvider>
-=======
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="BottomTab"
-        screenOptions={{ headerShown: true }}
-      >
-        <Stack.Screen name="Event" component={Event} />
-        <Stack.Screen name="Winery" component={Winery} />
-        <Stack.Screen
-          name="BottomTab"
-          component={BottomNavigator}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
->>>>>>> Stashed changes
+
   );
 }
 

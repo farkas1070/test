@@ -3,12 +3,12 @@ import React, { useState } from "react";
 import { Calendar, LocaleConfig } from "react-native-calendars";
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from "./EventsStyle";
-import { getBorászatok } from "../../controllers/PointOfInterestController";
+import { getHírek } from "../../controllers/PointOfInterestController";
 const Events = () => {
 
   const [selected, setSelected] = useState("");
   const [showListFirst,setShowListFirst] = useState(true)
-
+  const [news, setNews] = useState([])
   function showDifferentLayout(){
     console.log("mukodik")
   }
