@@ -92,7 +92,7 @@ const BottomNavigator = () => {
           tabBarIcon: () => (
             <Ionicons name="newspaper-outline" size={24} color="black" />
           ),
-          headerShown: false,
+          
         }}
       />
     </Tab.Navigator>

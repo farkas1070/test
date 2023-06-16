@@ -15,7 +15,7 @@ const News = () => {
               title: item.title.rendered,
               excerpt: item.excerpt.rendered,
               content: item.content.rendered,
-              
+              image: item._embedded
             };
           });
           setNews(extractedData);
@@ -30,6 +30,7 @@ const News = () => {
       {News.map((item)=>{
         return(
             <View style={styles.card}>
+                
                 <Text>{item.title}</Text>
             </View>
         )
