@@ -18,6 +18,7 @@ const News = () => {
               content: item.content.rendered,
               image: item?._embedded["wp:featuredmedia"]?.[0]?.source_url,
             };
+            
           });
           setNews(extractedData);
           console.log(extractedData);
