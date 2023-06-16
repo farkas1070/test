@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const url = 'http://10.0.0.113:1337/api/pois';
 const url2 = 'https://soproniborvidek.nemethmark.com/wp-json/wp/v2/wineries?_embed&per_page=100';
-const url3 = 'https://soproniborvidek.nemethmark.com/wp-json/tribe/events/v1/events?fbclid=IwAR24Rfi0wsaERL2G7ZWmu4cV6db6ilT6xuwuDBwb44cT9fIUtczC7v3o2cM';
+const url3 = 'https://soproniborvidek.effixdev.com/wp-json/tribe/events/v1/events/?page=1&per_page=50&start_date=2020-06-16%2000%3A00%3A00&end_date=2025-06-16%2023%3A59%3A59&status=publish&fbclid=IwAR0aMf0stRm9O43LVog8yDtdS8FJoDrRRE-Pst82PM-QF06CnTubn9Mjo0Y';
 
 export const get = async () => {
     try {
