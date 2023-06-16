@@ -23,6 +23,7 @@ const Wineries = () => {
   };
 
   return (
+
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.maincontainer}>
         <TextInput
@@ -39,6 +40,9 @@ const Wineries = () => {
         </ScrollView>
       </View>
     </TouchableWithoutFeedback>
+
+    
+
   );
 };
 

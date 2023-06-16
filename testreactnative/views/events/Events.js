@@ -3,8 +3,10 @@ import React, { useState, useEffect } from "react";
 import { Calendar, LocaleConfig } from "react-native-calendars";
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from "./EventsStyle";
-import { getHírek } from "../../controllers/PointOfInterestController";
+import { getEsemények } from "../../controllers/PointOfInterestController";
 import { CalendarList } from 'react-native-calendars';
+import Placeholder from "../../assets/placeholder.png"
+
 const Events = () => {
 
   const [selected, setSelected] = useState("");
@@ -13,8 +15,8 @@ const Events = () => {
   const [news, setNews] = useState([])
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getHírek();
-      console.log(response)
+      const response = await getEsemények();
+      
       const extractedData = response.events.map((item) => {
         return {
           start_date: item.start_date,
@@ -24,7 +26,7 @@ const Events = () => {
         };
       });
       setNews(extractedData);
-
+      console.log(extractedData);
     };
 
     fetchData();
@@ -60,7 +62,7 @@ const Events = () => {
             {news.map((item, index) => {
               return (
                 <View key={index} style={styles.singlenews}>
-                  <Image style={styles.image} source={{ uri: item.image }} />
+                  <Image style={styles.image} source={item.image ? { uri: item.image } : Placeholder} />
                   <View style={styles.innerview}>
                     <Text style={styles.text} >{item.title}</Text>
                   </View>

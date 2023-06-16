@@ -1,14 +1,20 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-
-const NewsStyle = () => {
-  return (
-    <View>
-      <Text>NewsStyle</Text>
-    </View>
-  )
-}
-
-export default NewsStyle
-
-const styles = StyleSheet.create({})
+import { StyleSheet} from "react-native";
+export const styles = StyleSheet.create({
+    maincontainer: {
+        flex: 1,
+        backgroundColor: "beige",
+        width: "100%",
+        height: "100%",
+      },
+    
+    card: {
+      width:'100%',
+      height:'30%',
+      backgroundColor: '#fff',
+      borderRadius: 8,
+      marginBottom: 16,
+      elevation: 2,
+    },
+    
+    
+  });
