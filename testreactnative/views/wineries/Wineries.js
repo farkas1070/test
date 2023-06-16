@@ -14,7 +14,7 @@ const Wineries = () => {
   const [pointsOfInterest, setPointsOfInterest] = useContext(
     pointsOfInterestContext
   );
-  const [searchText, setSearchText] = useState("Puk");
+  const [searchText, setSearchText] = useState("");
 
   const filterItems = () => {
     return pointsOfInterest.filter((item) =>
@@ -23,7 +23,6 @@ const Wineries = () => {
   };
 
   return (
-
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.maincontainer}>
         <TextInput
@@ -40,9 +39,6 @@ const Wineries = () => {
         </ScrollView>
       </View>
     </TouchableWithoutFeedback>
-
-    
-
   );
 };
 

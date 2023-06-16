@@ -17,7 +17,6 @@ export const PointOfInterestProvider = (props) => {
         };
       });
       setpointsOfInterest(extractedData);
-      
     };
     fetchData();
   }, []);
