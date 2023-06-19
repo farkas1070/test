@@ -13,6 +13,7 @@ import { styles } from "./EventsStyle";
 import { getEsemények } from "../../controllers/PointOfInterestController";
 import { CalendarList } from "react-native-calendars";
 import Card from "./components/Card";
+import moment from "moment";
 
 const Events = () => {
   const [selected, setSelected] = useState("");
@@ -51,6 +52,17 @@ const Events = () => {
     );
   };
 
+  const getEventDetails = (event) => {
+    const formattedDate = moment(event.start_date).format("YYYY-MM-DD");
+    if (formattedDate === selected) {
+      return (
+        <View>
+          <Text>{event.title}</Text>
+        </View>
+      );
+    }
+  };
+
   return (
     <View style={styles.maincontainer}>
       <View style={{ paddingRight: 10, flexDirection: "row" }}>
@@ -87,16 +99,15 @@ const Events = () => {
       {showListFirst ? (
         <ScrollView>
           {filterItems().map((item, index) => {
-            return (
-              <Card item={item} index={index} key={index} />
-            );
+            return <Card item={item} index={index} key={index} />;
           })}
         </ScrollView>
       ) : (
         <Calendar
-          onDayPress={(day) => {
-            setSelected(day.dateString);
+          onMonthChange={(month) => {
+            console.log("month changed", month.month);
           }}
+<<<<<<< HEAD
           
           markedDates={{
             "2023-06-11": {
@@ -111,6 +122,23 @@ const Events = () => {
               selectedColor: "blue",
             },
           }}
+=======
+          initialDate={currentDate}
+          markedDates={(() => {
+            const marked = {};
+            events.forEach((event) => {
+              const formattedDate = moment(event.start_date).format(
+                "YYYY-MM-DD"
+              );
+              marked[formattedDate] = {
+                selected: true,
+                marked: true,
+                selectedColor: "blue",
+              };
+            });
+            return marked;
+          })()}
+>>>>>>> 0a9edf2313dd4b9c555d8b2233613327aa35ffd9
         />
       )}
 
