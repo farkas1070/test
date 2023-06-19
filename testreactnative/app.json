@@ -25,9 +25,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "plugins": [
-      "react-native-background-fetch"
-    ]
+    }
+    
   }
 }
