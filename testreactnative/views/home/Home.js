@@ -3,9 +3,7 @@ import React from 'react'
 import { styles } from "./HomeStyle";
 
 const Home = () => {
-  
 
-  
   return (
     <View style={styles.maincontainer}>
       <View>
