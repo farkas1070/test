@@ -17,7 +17,7 @@ import Card from "./components/Card";
 const Events = () => {
   const [selected, setSelected] = useState("");
   const [showListFirst, setShowListFirst] = useState(true);
-  const [currentDate, setCurrentDate] = useState("");
+  
   const [events, setEvents] = useState([]);
   const [searchText, setSearchText] = useState("");
   useEffect(() => {
@@ -39,13 +39,7 @@ const Events = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    setCurrentDate(`${year}-${month}-${day}`);
-  }, []);
+  
 
   function showDifferentLayout() {
     setShowListFirst(!showListFirst);
@@ -103,7 +97,7 @@ const Events = () => {
           onDayPress={(day) => {
             setSelected(day.dateString);
           }}
-          initialDate={currentDate}
+          
           markedDates={{
             "2023-06-11": {
               selected: true,
