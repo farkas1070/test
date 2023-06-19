@@ -7,7 +7,7 @@ import {
   TextInput,
 } from "react-native";
 import React, { useState, useEffect } from "react";
-import { Calendar, LocaleConfig } from "react-native-calendars";
+import { Calendar, Agenda, LocaleConfig } from "react-native-calendars";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./EventsStyle";
 import { getEsemények } from "../../controllers/PointOfInterestController";
@@ -103,46 +103,24 @@ const Events = () => {
           })}
         </ScrollView>
       ) : (
-        <Calendar
-          onMonthChange={(month) => {
-            console.log("month changed", month.month);
-          }}
-<<<<<<< HEAD
-          
-          markedDates={{
-            "2023-06-11": {
-              selected: true,
-              marked: true,
-              selectedColor: "blue",
-            },
-            "2023-06-10": { marked: true },
-            "2023-06-12": {
-              selected: true,
-              marked: true,
-              selectedColor: "blue",
-            },
-          }}
-=======
-          initialDate={currentDate}
-          markedDates={(() => {
-            const marked = {};
-            events.forEach((event) => {
-              const formattedDate = moment(event.start_date).format(
-                "YYYY-MM-DD"
-              );
-              marked[formattedDate] = {
-                selected: true,
-                marked: true,
-                selectedColor: "blue",
-              };
-            });
-            return marked;
-          })()}
->>>>>>> 0a9edf2313dd4b9c555d8b2233613327aa35ffd9
-        />
-      )}
 
-      <Text>{selected}</Text>
+        
+
+        <Agenda
+        selected="2022-12-01"
+        items={{
+          '2022-12-01': [{name: 'Cycling'}, {name: 'Walking'}, {name: 'Running'}],
+          '2022-12-02': [{name: 'Writing'}]
+        }}
+        renderItem={(item, isFirst) => (
+          <TouchableOpacity style={styles.item}>
+            <Text style={styles.itemText}>{item.name}</Text>
+          </TouchableOpacity>
+        )}
+      />
+
+      )}
+      
     </View>
   );
 };

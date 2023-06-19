@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Winery from "./views/winery/Winery";
 import Event from "./views/event/Event";
+import New from "./views/new/New";
 import BottomNavigator from "./components/BottomNavigator";
 import { PointOfInterestProvider } from "./context/PointOfInterestContext.js";
 
@@ -17,6 +18,7 @@ export default function App() {
         >
           <Stack.Screen name="Event" component={Event} />
           <Stack.Screen name="Winery" component={Winery} />
+          <Stack.Screen name="New" component={New} />
           <Stack.Screen
             name="BottomTab"
             component={BottomNavigator}

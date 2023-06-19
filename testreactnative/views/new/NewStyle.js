@@ -1,12 +1,10 @@
-import { Text, View } from 'react-native'
-import React from 'react'
-
-const NewStyle = () => {
-  return (
-    <View>
-      <Text>NewStyle</Text>
-    </View>
-  )
-}
-
-export default NewStyle
+import { StyleSheet } from "react-native";
+export const styles = StyleSheet.create({
+  image: {
+    width: "100%",
+    height: 200,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+    resizeMode: "contain",
+  },
+});

@@ -1,52 +1,51 @@
-import {  Text, View,ScrollView ,Image} from 'react-native'
-import React,{useEffect,useState} from 'react'
+import { TextInput, View, ScrollView, Image } from "react-native";
+import React, { useEffect, useState } from "react";
 import { getHírek } from "../../controllers/PointOfInterestController";
 import { styles } from "./NewsStyle";
-import Placeholder from "../../assets/placeholder.png"
+import Card from "./components/Card";
 
 const News = () => {
-    const [News,setNews] = useState([])
+  const [News, setNews] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
-    useEffect(() => {
-        const fetchData = async () => {
-          const response = await getHírek();
-    
-          const extractedData = response.map((item) => {
-            return {
-              title: item.title.rendered,
-              excerpt: item.excerpt.rendered,
-              content: item.content.rendered,
-              image: item?._embedded["wp:featuredmedia"]?.[0]?.source_url,
-            };
-            
-          });
-          setNews(extractedData);
-          console.log(extractedData);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getHírek();
+
+      const extractedData = response.map((item) => {
+        return {
+          title: item.title.rendered,
+          excerpt: item.excerpt.rendered,
+          content: item.content.rendered,
+          image: item?._embedded["wp:featuredmedia"]?.[0]?.source_url,
         };
-    
-        fetchData();
-      }, []);
+      });
+      setNews(extractedData);
+    };
+
+    fetchData();
+  }, []);
+
+  function filterItems() {
+    return News.filter((item) => item.title.toLowerCase().includes(searchText.toLowerCase()));
+  }
 
   return (
-    <ScrollView style={styles.maincontainer}>
-      {News.map((item,index)=>{
-        return(
-            <View key={index} style={styles.card}>
-                <View> 
-                    <Image
-                    style={styles.image}
-                    source={item.image ? { uri: item.image } : Placeholder}
-                    />
-                </View>
-                
-                <Text numberOfLines={3} style={{lineHeight: 30,textAlign: 'center',}}>{item.title}</Text>
-                
-            </View>
-        )
-      })}
-    </ScrollView>
-  )
-}
+    <View style={styles.maincontainer}>
+      <TextInput
+          style={styles.textinput}
+          placeholder="Keresés"
+          placeholderTextColor="#000"
+          value={searchText}
+          onChangeText={(value) => setSearchText(value)}
+        />
+      <ScrollView style={styles.maincontainer}>
+        {filterItems().map((item, index) => {
+          return <Card item={item} index={index} key={index} />;
+        })}
+      </ScrollView>
+    </View>
+  );
+};
 
-export default News
-
+export default News;
