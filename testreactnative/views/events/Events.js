@@ -6,39 +6,22 @@ import {
   Image,
   TextInput,
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import { Calendar, Agenda, LocaleConfig } from "react-native-calendars";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./EventsStyle";
-import { getEsemények } from "../../controllers/PointOfInterestController";
+import { getEvents } from "../../controllers/WordpressProvider";
 import { CalendarList } from "react-native-calendars";
 import Card from "./components/Card";
 import moment from "moment";
-
+import { EventsContext } from "../../context/PointOfInterestContext.js";
 const Events = () => {
   const [selected, setSelected] = useState("");
   const [showListFirst, setShowListFirst] = useState(true);
   
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useContext(EventsContext)
   const [searchText, setSearchText] = useState("");
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await getEsemények();
-
-      const extractedData = response.events.map((item) => {
-        return {
-          start_date: item.start_date,
-          end_date: item.end_date,
-          title: item.title,
-          image: item?.image?.sizes?.medium?.url,
-        };
-      });
-      setEvents(extractedData);
-      console.log(extractedData);
-    };
-
-    fetchData();
-  }, []);
+  
 
   
 

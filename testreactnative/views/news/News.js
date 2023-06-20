@@ -1,30 +1,14 @@
 import { TextInput, View, ScrollView, Image } from "react-native";
-import React, { useEffect, useState } from "react";
-import { getHírek } from "../../controllers/PointOfInterestController";
+import React, { useEffect, useState,useContext } from "react";
+import { getNews } from "../../controllers/WordpressProvider";
 import { styles } from "./NewsStyle";
 import Card from "./components/Card";
-
+import { NewsContext } from "../../context/PointOfInterestContext.js";
 const News = () => {
-  const [News, setNews] = useState([]);
+  const [News, setNews] = useContext(NewsContext)
   const [searchText, setSearchText] = useState("");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await getHírek();
-
-      const extractedData = response.map((item) => {
-        return {
-          title: item.title.rendered,
-          excerpt: item.excerpt.rendered,
-          content: item.content.rendered,
-          image: item?._embedded["wp:featuredmedia"]?.[0]?.source_url,
-        };
-      });
-      setNews(extractedData);
-    };
-
-    fetchData();
-  }, []);
+  
 
   function filterItems() {
     return News.filter((item) => item.title.toLowerCase().includes(searchText.toLowerCase()));
