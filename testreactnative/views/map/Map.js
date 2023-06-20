@@ -5,7 +5,7 @@ import {
   Image,
   useWindowDimensions,
 } from "react-native";
-import React, { useState, useEffect, useRef,useContext } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import MapView, { Marker, Callout, PROVIDER_GOOGLE } from "react-native-maps";
 import * as Location from "expo-location";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
@@ -96,15 +96,15 @@ const Map = () => {
     })();
   }, []);
 
-  
-
   useEffect(() => {
     const jumpToPointOfInterest = () => {
       if (pointsOfInterest.length > 0 && mapRef.current) {
-        const coordinates = pointsOfInterest.map((marker) => ({
-          latitude: marker.map.lat,
-          longitude: marker.map.lng,
-        }));
+        const coordinates = pointsOfInterest
+          .filter((poi) => poi.map.lat !== undefined)
+          .map((marker) => ({
+            latitude: marker.map.lat,
+            longitude: marker.map.lng,
+          }));
 
         mapRef.current.fitToCoordinates(coordinates, {
           edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
@@ -124,32 +124,34 @@ const Map = () => {
         provider={PROVIDER_GOOGLE}
         customMapStyle={Mapstyle}
       >
-        {filterMarkers(filter).map((poi, index) => {
-          return (
-            <Marker
-              id={index}
-              ref={markerRef}
-              key={index}
-              coordinate={{
-                latitude: poi.map.lat,
-                longitude: poi.map.lng,
-              }}
-              resizeMode="contain"
-              icon={
-                activeMarkerIndex === index
-                  ? ActiveMarker
-                  : returnMarkerIcon(poi.type)
-              }
-              onPress={() => {
-                handleMarkerPress(index);
-              }}
-            >
-              <Callout style={styles.callout}>
-                <Text>{poi.name}</Text>
-              </Callout>
-            </Marker>
-          );
-        })}
+        {filterMarkers(filter)
+          .filter((poi) => poi.map.lat !== undefined)
+          .map((poi, index) => {
+            return (
+              <Marker
+                id={index}
+                ref={markerRef}
+                key={index}
+                coordinate={{
+                  latitude: poi.map.lat,
+                  longitude: poi.map.lng,
+                }}
+                resizeMode="contain"
+                icon={
+                  activeMarkerIndex === index
+                    ? ActiveMarker
+                    : returnMarkerIcon(poi.type)
+                }
+                onPress={() => {
+                  handleMarkerPress(index);
+                }}
+              >
+                <Callout style={styles.callout}>
+                  <Text>{poi.name}</Text>
+                </Callout>
+              </Marker>
+            );
+          })}
       </MapView>
       <View style={styles.filterButtonContainer}>
         <TouchableOpacity
@@ -193,9 +195,9 @@ const Map = () => {
             return (
               <View key={index} style={styles.slide}>
                 <View style={styles.slideContent}>
-                  <Image style={styles.image} source={{ uri: item.image }} />
+                  <Image style={styles.image} source={{ uri: item.logo }} />
                   <View style={styles.textContainer}>
-                    <Text style={styles.text}>{item.name}</Text>
+                    <Text style={styles.text}>{item.title}</Text>
                     <Text style={styles.text}>{"description"}</Text>
                   </View>
                 </View>
@@ -206,8 +208,8 @@ const Map = () => {
           itemWidth={width}
           onSnapToItem={(index) => {
             mapRef.current.animateToRegion({
-              latitude: filterMarkers(filter)[index].latitude,
-              longitude: filterMarkers(filter)[index].longitude,
+              latitude: filterMarkers(filter)[index].map.lat,
+              longitude: filterMarkers(filter)[index].map.lng,
               latitudeDelta: 0.05,
               longitudeDelta: 0.05,
             });
