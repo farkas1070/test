@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Text, View, Button, Platform } from "react-native";
+import { Text, View, Button, Platform, TouchableOpacity } from "react-native";
 
 import * as Notifications from "expo-notifications";
 import * as TaskManager from "expo-task-manager";
@@ -25,11 +25,12 @@ Notifications.setNotificationHandler({
 });
 
 export default function App() {
+  
   const [expoPushToken, setExpoPushToken] = useState("");
   const [notification, setNotification] = useState(false);
   const notificationListener = useRef();
   const responseListener = useRef();
-
+  
   useEffect(() => {
     registerForPushNotificationsAsync().then((token) =>
       setExpoPushToken(token)
@@ -61,6 +62,7 @@ export default function App() {
         justifyContent: "space-around",
       }}
     >
+      <TouchableOpacity><Text>ds</Text></TouchableOpacity>
       <Text>Your expo push token: {expoPushToken}</Text>
       <View style={{ alignItems: "center", justifyContent: "center" }}>
         <Text>

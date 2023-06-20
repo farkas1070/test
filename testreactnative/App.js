@@ -6,6 +6,7 @@ import Event from "./views/event/Event";
 import New from "./views/new/New";
 import BottomNavigator from "./components/BottomNavigator";
 import { PointOfInterestProvider } from "./context/PointOfInterestContext.js";
+import DrawerNavigator from "./components/DrawerNavigation";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -21,7 +22,7 @@ export default function App() {
           <Stack.Screen name="New" component={New} />
           <Stack.Screen
             name="BottomTab"
-            component={BottomNavigator}
+            component={DrawerNavigator}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

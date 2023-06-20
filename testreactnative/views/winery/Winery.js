@@ -4,6 +4,8 @@ import { styles } from "./WineryStyle";
 import Placeholder from "../../assets/placeholder.png";
 import RenderHtml from "react-native-render-html";
 import { useWindowDimensions } from "react-native";
+import { tagsStyles } from "./ContentStyle";
+
 const Winery = ({ route }) => {
   const { width } = useWindowDimensions();
   const winery = route.params.item
