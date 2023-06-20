@@ -3,7 +3,6 @@ import { Text, View, Button, Platform, TouchableOpacity } from "react-native";
 
 import * as Notifications from "expo-notifications";
 import * as TaskManager from "expo-task-manager";
-import { Expo } from 'expo-server-sdk';
 
 
 
