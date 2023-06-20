@@ -63,7 +63,7 @@ const Map = () => {
     } else if (type === "wineries") {
       return pointsOfInterest.filter((poi) => poi.type === "wineries");
     } else {
-      return pointsOfInterest;
+      return pointsOfInterest.filter((point) => point.map.lat !== undefined);
     }
   };
 
@@ -124,34 +124,32 @@ const Map = () => {
         provider={PROVIDER_GOOGLE}
         customMapStyle={Mapstyle}
       >
-        {filterMarkers(filter)
-          .filter((poi) => poi.map.lat !== undefined)
-          .map((poi, index) => {
-            return (
-              <Marker
-                id={index}
-                ref={markerRef}
-                key={index}
-                coordinate={{
-                  latitude: poi.map.lat,
-                  longitude: poi.map.lng,
-                }}
-                resizeMode="contain"
-                icon={
-                  activeMarkerIndex === index
-                    ? ActiveMarker
-                    : returnMarkerIcon(poi.type)
-                }
-                onPress={() => {
-                  handleMarkerPress(index);
-                }}
-              >
-                <Callout style={styles.callout}>
-                  <Text>{poi.name}</Text>
-                </Callout>
-              </Marker>
-            );
-          })}
+        {filterMarkers(filter).map((poi, index) => {
+          return (
+            <Marker
+              id={index}
+              ref={markerRef}
+              key={index}
+              coordinate={{
+                latitude: poi.map.lat,
+                longitude: poi.map.lng,
+              }}
+              resizeMode="contain"
+              icon={
+                activeMarkerIndex === index
+                  ? ActiveMarker
+                  : returnMarkerIcon(poi.type)
+              }
+              onPress={() => {
+                handleMarkerPress(index);
+              }}
+            >
+              <Callout style={styles.callout}>
+                <Text>{poi.name}</Text>
+              </Callout>
+            </Marker>
+          );
+        })}
       </MapView>
       <View style={styles.filterButtonContainer}>
         <TouchableOpacity
@@ -190,7 +188,9 @@ const Map = () => {
         <Carousel
           ref={carouselRef}
           layout="default"
-          data={filterMarkers(filter)}
+          data={filterMarkers(filter).filter(
+            (poi) => poi.map.lat !== undefined
+          )}
           renderItem={({ item, index }) => {
             return (
               <View key={index} style={styles.slide}>
