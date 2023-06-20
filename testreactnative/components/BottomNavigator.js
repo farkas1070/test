@@ -81,7 +81,7 @@ const BottomNavigator = () => {
           ),
           headerRight: () => (
             <View style={{ paddingRight: 10 }}>
-              <Ionicons name="menu" size={24} color="black" />
+              <Ionicons name="menu" size={24} color="black" onPress={()=>{openMenu()}} />
               
             </View>
           ),
@@ -110,7 +110,7 @@ const BottomNavigator = () => {
           ),
           headerRight: () => (
             <View style={{ paddingRight: 10 }}>
-              <Ionicons name="menu" size={24} color="black" />
+              <Ionicons name="menu" size={24} color="black" onPress={()=>{openMenu()}} />
               
             </View>
           ),
@@ -139,7 +139,7 @@ const BottomNavigator = () => {
           ),
           headerRight: () => (
             <View style={{ paddingRight: 10 }}>
-              <Ionicons name="menu" size={24} color="black" />
+              <Ionicons name="menu" size={24} color="black" onPress={()=>{openMenu()}} />
               
             </View>
           ),

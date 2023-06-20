@@ -3,18 +3,9 @@ import { Text, View, Button, Platform, TouchableOpacity } from "react-native";
 
 import * as Notifications from "expo-notifications";
 import * as TaskManager from "expo-task-manager";
+import { Expo } from 'expo-server-sdk';
 
-const BACKGROUND_NOTIFICATION_TASK = "BACKGROUND-NOTIFICATION-TASK";
 
-TaskManager.defineTask(
-  BACKGROUND_NOTIFICATION_TASK,
-  ({ data, error, executionInfo }) => {
-    console.log("Received a notification in the background!");
-    // Do something with the notification data
-  }
-);
-
-Notifications.registerTaskAsync(BACKGROUND_NOTIFICATION_TASK);
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({

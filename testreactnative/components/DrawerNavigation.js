@@ -9,7 +9,7 @@ import Valami2 from "./Valami2";
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => (
-  <Drawer.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+  <Drawer.Navigator initialRouteName="Home" screenOptions={{ headerShown: false,drawerPosition: "right", }}>
     <Drawer.Screen
       name="Home"
       component={BottomNavigator}

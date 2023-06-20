@@ -7,25 +7,14 @@ import New from "./views/new/New";
 import BottomNavigator from "./components/BottomNavigator";
 import { PointOfInterestProvider } from "./context/PointOfInterestContext.js";
 import DrawerNavigator from "./components/DrawerNavigation";
+import { Ionicons } from "@expo/vector-icons";
+import StackNavigator from "./components/StackNavigator";
 
-const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <PointOfInterestProvider>
       <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="BottomTab"
-          screenOptions={{ headerShown: true }}
-        >
-          <Stack.Screen name="Event" component={Event} />
-          <Stack.Screen name="Winery" component={Winery} />
-          <Stack.Screen name="New" component={New} />
-          <Stack.Screen
-            name="BottomTab"
-            component={DrawerNavigator}
-            options={{ headerShown: false }}
-          />
-        </Stack.Navigator>
+        <StackNavigator />
       </NavigationContainer>
     </PointOfInterestProvider>
   );
