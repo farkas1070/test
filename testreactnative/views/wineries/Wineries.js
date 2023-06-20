@@ -11,9 +11,7 @@ import Card from "./components/Card";
 import { WineriesContext } from "../../context/PointOfInterestContext.js";
 
 const Wineries = () => {
-  const [wineries, setWineries] = useContext(
-    WineriesContext
-  );
+  const [wineries, setWineries] = useContext(WineriesContext);
   const [searchText, setSearchText] = useState("");
 
   const filterItems = () => {

@@ -1,3 +1,4 @@
+
 import axios from "axios";
 
 const getDataByUrl = async ( url ) => {
@@ -52,5 +53,6 @@ export const getNews = async () => {
     };
   });
 };
+
 
 

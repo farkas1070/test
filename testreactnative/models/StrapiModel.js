@@ -1,14 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
 
 const StrapiModel = () => {
   return (
     <View>
       <Text>StrapiModel</Text>
     </View>
-  )
-}
+  );
+};
 
-export default StrapiModel
+export default StrapiModel;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

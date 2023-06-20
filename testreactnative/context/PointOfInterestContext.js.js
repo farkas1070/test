@@ -30,15 +30,15 @@ export const PointOfInterestProvider = (props) => {
 
     fetchWineries();
     fetchEvents();
-    fetchNews()
+    fetchNews();
   }, []);
 
   return (
     <WineriesContext.Provider value={[Wineries, setWineries]}>
       <NewsContext.Provider value={[news, setNews]}>
         <EventsContext.Provider value={[events, setEvents]}>
-      {props.children}
-      </EventsContext.Provider>
+          {props.children}
+        </EventsContext.Provider>
       </NewsContext.Provider>
     </WineriesContext.Provider>
   );

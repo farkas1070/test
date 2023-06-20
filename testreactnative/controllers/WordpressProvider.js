@@ -2,9 +2,7 @@ import axios from "axios";
 
 
 
-
-
-export const getDataByUrl = async ( url ) => {
+export const getDataByUrl = async (url) => {
   try {
     const response = await axios.get(`${url}`);
     const data = response.data;
@@ -16,7 +14,7 @@ export const getDataByUrl = async ( url ) => {
 };
 
 export const getWineries = async () => {
-  const data =  await getDataByUrl(
+  const data = await getDataByUrl(
     "https://soproniborvidek.nemethmark.com/wp-json/wp/v2/wineries?_embed&per_page=100"
   );
   return data.map((item) => {
@@ -24,10 +22,8 @@ export const getWineries = async () => {
       title: item.title.rendered,
       content: item.content.rendered,
       logo: item?.acf?.banner?.boraszat_logo?.sizes?.medium,
-      
     };
   });
-  
 };
 export const getEvents = async () => {
   const data = await getDataByUrl(
