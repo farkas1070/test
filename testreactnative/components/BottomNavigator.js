@@ -7,16 +7,25 @@ import Wineries from "../views/wineries/Wineries";
 import Home from "../views/home/Home";
 import { Ionicons } from "@expo/vector-icons";
 import News from "../views/news/News";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 const Tab = createBottomTabNavigator();
 
 const BottomNavigator = () => {
   const navigation = useNavigation();
   const openMenu = () => {
     navigation.openDrawer();
-}
+  };
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarActiveTintColor: "black",
+        tabBarInactiveTintColor: "gray",
+        tabBarLabelStyle: {
+          fontSize: 11,
+          fontWeight: "bold",
+        },
+      }}
+    >
       <Tab.Screen
         name="Kezdőlap"
         component={Home}
@@ -41,8 +50,14 @@ const BottomNavigator = () => {
           ),
           headerRight: () => (
             <View style={{ paddingRight: 10 }}>
-              <Ionicons name="menu" size={24} color="black" onPress={()=>{openMenu()}} />
-              
+              <Ionicons
+                name="menu"
+                size={24}
+                color="black"
+                onPress={() => {
+                  openMenu();
+                }}
+              />
             </View>
           ),
         }}
@@ -81,8 +96,12 @@ const BottomNavigator = () => {
           ),
           headerRight: () => (
             <View style={{ paddingRight: 10 }}>
+<<<<<<< Updated upstream
               <Ionicons name="menu" size={24} color="black" onPress={()=>{openMenu()}} />
               
+=======
+              <Ionicons name="menu" size={24} color="black" />
+>>>>>>> Stashed changes
             </View>
           ),
         }}
@@ -110,8 +129,12 @@ const BottomNavigator = () => {
           ),
           headerRight: () => (
             <View style={{ paddingRight: 10 }}>
+<<<<<<< Updated upstream
               <Ionicons name="menu" size={24} color="black" onPress={()=>{openMenu()}} />
               
+=======
+              <Ionicons name="menu" size={24} color="black" />
+>>>>>>> Stashed changes
             </View>
           ),
         }}
@@ -139,8 +162,12 @@ const BottomNavigator = () => {
           ),
           headerRight: () => (
             <View style={{ paddingRight: 10 }}>
+<<<<<<< Updated upstream
               <Ionicons name="menu" size={24} color="black" onPress={()=>{openMenu()}} />
               
+=======
+              <Ionicons name="menu" size={24} color="black" />
+>>>>>>> Stashed changes
             </View>
           ),
         }}
