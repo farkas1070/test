@@ -6,23 +6,19 @@ import {
   Image,
   TextInput,
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Agenda, LocaleConfig } from "react-native-calendars";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./EventsStyle";
-import { getEsemények } from "../../controllers/PointOfInterestController";
 import Card from "./components/Card";
 import moment from "moment";
 import { EventsContext } from "../../context/PointOfInterestContext.js";
+
 const Events = () => {
-  const [selected, setSelected] = useState("");
   const [showListFirst, setShowListFirst] = useState(true);
   const [currentDate, setCurrentDate] = useState("2023-06-20");
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useContext(EventsContext);
   const [searchText, setSearchText] = useState("");
-  
-
-  
 
   function showDifferentLayout() {
     setShowListFirst(!showListFirst);
@@ -88,9 +84,6 @@ const Events = () => {
           })}
         </ScrollView>
       ) : (
-
-        
-
         <Agenda
           selected={currentDate}
           items={events.reduce((acc, event) => {
