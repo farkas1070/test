@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const poiurl = "http://10.0.0.113:1337/api/pois";
+
 
 
 
