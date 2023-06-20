@@ -16,14 +16,6 @@ export const styles = StyleSheet.create({
       justifyContent:'center',
       alignItems: 'center',
     },
-    image: {
-      width: '100%',
-      height: '100%',
-      resizeMode: "contain",
-      position: "absolute",
-      borderTopLeftRadius: 20,
-      borderBottomLeftRadius: 20,
-    },
     innerview:{
       backgroundColor:'rgba(255,255,255,0.7)',
       width:'50%',
@@ -45,5 +37,43 @@ export const styles = StyleSheet.create({
       borderRadius: 20,
       backgroundColor: "white",
     },
-    
+    item: {
+      backgroundColor: "white",
+      flex: 1,
+      borderRadius: 5,
+      padding: 10,
+      marginRight: 10,
+      marginTop: 17,
+    },
+    card: {
+      width: "100%",
+      height: 150,
+      justifyContent: "space-between",
+      alignItems: "center",
+      backgroundColor: "#fff",
+      borderRadius: 8,
+      marginBottom: 16,
+      elevation: 2,
+    },
+    itemText: {
+      fontSize: 18,
+      color: "black",
+      fontWeight: "bold",
+    },
+    image: {
+      width: 200,
+      height: 100,
+      borderRadius: 8,
+    },
+    dateText: {
+      fontSize: 12,
+      color: "black",
+
+    },
+    textCointainer: {
+      textAlign: "center",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+
   });
