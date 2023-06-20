@@ -59,9 +59,13 @@ const Map = () => {
 
   const filterMarkers = (type) => {
     if (type === "sight") {
-      return pointsOfInterest.filter((poi) => poi.type === "sight");
+      return pointsOfInterest.filter(
+        (poi) => poi.type === "sight" && poi.map.lat !== undefined
+      );
     } else if (type === "wineries") {
-      return pointsOfInterest.filter((poi) => poi.type === "wineries");
+      return pointsOfInterest.filter(
+        (poi) => poi.type === "wineries" && poi.map.lat !== undefined
+      );
     } else {
       return pointsOfInterest.filter((point) => point.map.lat !== undefined);
     }
@@ -113,7 +117,7 @@ const Map = () => {
       }
     };
     jumpToPointOfInterest();
-  }, [pointsOfInterest]);
+  }, []);
 
   return (
     <View style={styles.container}>
