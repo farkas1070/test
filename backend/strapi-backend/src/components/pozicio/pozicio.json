@@ -2,11 +2,12 @@
   "collectionName": "components_pozicio_pozicios",
   "info": {
     "displayName": "pozicio",
-    "icon": "pinMap"
+    "icon": "pinMap",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "long": {
+    "lng": {
       "type": "float"
     },
     "lat": {

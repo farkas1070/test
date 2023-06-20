@@ -13,7 +13,7 @@ const BottomNavigator = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="Home"
+        name="Kezdőlap"
         component={Home}
         options={{
           tabBarIcon: () => (
@@ -27,11 +27,6 @@ const BottomNavigator = () => {
           },
           headerLeft: () => (
             <View style={{ paddingLeft: 10 }}>
-              <Ionicons name="menu" size={24} color="black" />
-            </View>
-          ),
-          headerRight: () => (
-            <View style={{ paddingRight: 10 }}>
               <Ionicons
                 name="information-circle-outline"
                 size={24}
@@ -39,10 +34,16 @@ const BottomNavigator = () => {
               />
             </View>
           ),
+          headerRight: () => (
+            <View style={{ paddingRight: 10 }}>
+              <Ionicons name="menu" size={24} color="black" />
+              
+            </View>
+          ),
         }}
       />
       <Tab.Screen
-        name="Map"
+        name="Térkép"
         component={Map}
         options={{
           tabBarIcon: () => (
@@ -52,7 +53,7 @@ const BottomNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Events"
+        name="Események"
         component={Events}
         options={{
           tabBarIcon: () => (
@@ -66,11 +67,6 @@ const BottomNavigator = () => {
           },
           headerLeft: () => (
             <View style={{ paddingLeft: 10 }}>
-              <Ionicons name="menu" size={24} color="black" />
-            </View>
-          ),
-          headerRight: () => (
-            <View style={{ paddingRight: 10 }}>
               <Ionicons
                 name="information-circle-outline"
                 size={24}
@@ -78,23 +74,69 @@ const BottomNavigator = () => {
               />
             </View>
           ),
+          headerRight: () => (
+            <View style={{ paddingRight: 10 }}>
+              <Ionicons name="menu" size={24} color="black" />
+              
+            </View>
+          ),
         }}
       />
       <Tab.Screen
-        name="Wineries"
+        name="Borászatok"
         component={Wineries}
         options={{
           tabBarIcon: () => (
             <Ionicons name="wine-outline" size={24} color="black" />
           ),
+          headerTintColor: "black",
+          headerTitleAlign: "center",
+          headerTitleStyle: {
+            textAlign: "center",
+          },
+          headerLeft: () => (
+            <View style={{ paddingLeft: 10 }}>
+              <Ionicons
+                name="information-circle-outline"
+                size={24}
+                color="black"
+              />
+            </View>
+          ),
+          headerRight: () => (
+            <View style={{ paddingRight: 10 }}>
+              <Ionicons name="menu" size={24} color="black" />
+              
+            </View>
+          ),
         }}
       />
       <Tab.Screen
-        name="News"
+        name="Hírek"
         component={News}
         options={{
           tabBarIcon: () => (
             <Ionicons name="newspaper-outline" size={24} color="black" />
+          ),
+          headerTintColor: "black",
+          headerTitleAlign: "center",
+          headerTitleStyle: {
+            textAlign: "center",
+          },
+          headerLeft: () => (
+            <View style={{ paddingLeft: 10 }}>
+              <Ionicons
+                name="information-circle-outline"
+                size={24}
+                color="black"
+              />
+            </View>
+          ),
+          headerRight: () => (
+            <View style={{ paddingRight: 10 }}>
+              <Ionicons name="menu" size={24} color="black" />
+              
+            </View>
           ),
         }}
       />
