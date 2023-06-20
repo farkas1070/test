@@ -15,7 +15,7 @@ import { Mapstyle } from "./CustomMapStyle";
 import VineyardImage from "../../assets/marker.png";
 import SightImage from "../../assets/yellowmarker.png";
 import ActiveMarker from "../../assets/active_marker.png";
-import { get } from "../../controllers/PointOfInterestController";
+import { get } from "../../controllers/StrapiProvider";
 
 const Map = () => {
   const mapRef = useRef(null);

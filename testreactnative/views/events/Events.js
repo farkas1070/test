@@ -13,38 +13,16 @@ import { styles } from "./EventsStyle";
 import { getEsemények } from "../../controllers/PointOfInterestController";
 import Card from "./components/Card";
 import moment from "moment";
-
+import { EventsContext } from "../../context/PointOfInterestContext.js";
 const Events = () => {
   const [selected, setSelected] = useState("");
   const [showListFirst, setShowListFirst] = useState(true);
   const [currentDate, setCurrentDate] = useState("2023-06-20");
   const [events, setEvents] = useState([]);
   const [searchText, setSearchText] = useState("");
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await getEsemények();
+  
 
-      const extractedData = response.events.map((item) => {
-        return {
-          start_date: item.start_date,
-          end_date: item.end_date,
-          title: item.title,
-          image: item?.image?.sizes?.medium?.url,
-        };
-      });
-      setEvents(extractedData);
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    setCurrentDate(`${year}-${month}-${day}`);
-  }, []);
+  
 
   function showDifferentLayout() {
     setShowListFirst(!showListFirst);
@@ -110,6 +88,9 @@ const Events = () => {
           })}
         </ScrollView>
       ) : (
+
+        
+
         <Agenda
           selected={currentDate}
           items={events.reduce((acc, event) => {

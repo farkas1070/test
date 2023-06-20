@@ -8,16 +8,16 @@ import {
 import React, { useState, useContext } from "react";
 import { styles } from "./WineriesStyle";
 import Card from "./components/Card";
-import { pointsOfInterestContext } from "../../context/PointOfInterestContext.js";
+import { WineriesContext } from "../../context/PointOfInterestContext.js";
 
 const Wineries = () => {
-  const [pointsOfInterest, setPointsOfInterest] = useContext(
-    pointsOfInterestContext
+  const [wineries, setWineries] = useContext(
+    WineriesContext
   );
   const [searchText, setSearchText] = useState("");
 
   const filterItems = () => {
-    return pointsOfInterest.filter((item) =>
+    return wineries.filter((item) =>
       item.title.toLowerCase().includes(searchText.toLowerCase())
     );
   };
