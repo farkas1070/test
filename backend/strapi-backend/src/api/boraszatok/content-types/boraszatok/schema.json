@@ -51,7 +51,7 @@
         "audios"
       ]
     },
-    "pozicio": {
+    "map": {
       "type": "component",
       "repeatable": false,
       "component": "pozicio.pozicio"

@@ -6,20 +6,33 @@ import RenderHtml from "react-native-render-html";
 import { useWindowDimensions } from "react-native";
 const Winery = ({ route }) => {
   const { width } = useWindowDimensions();
+  const winery = route.params.item
   const source = {
-    html: route.params.item.content,
-  };
+    html: winery.content
 
+  };
+  
   return (
     <ScrollView>
       <Image
         style={styles.image}
         source={
-          route.params.item.logo ? { uri: route.params.item.logo } : Placeholder
+          winery.logo ? { uri: winery.logo } : Placeholder
         }
       />
-      <Text>{route.params.item.title}</Text>
-      <RenderHtml contentWidth={width} source={source} />
+      <Text>{winery.title}</Text>
+      <Text>tulajdonos: {winery.owner_name === ""? "nincs megadva":winery.owner_name}</Text>
+      <Text>Cím: {winery.connection.adress === undefined? "nincs megadva":winery.connection.adress }</Text>
+      <Text>Telefon: {winery.connection.telephone == ""? "nincs megadva":winery.connection.telephone}</Text>
+      <Text>Facebook: {winery.connection.social.facebook == ""? "nincs megadva":winery.connection.social.facebook}</Text>
+      <Text>Intagram: {winery.connection.social.instagram == ""? "nincs megadva":winery.connection.social.instagram}</Text>
+      <Text>LinkedIn: {winery.connection.social.linkedin == ""? "nincs megadva":winery.connection.social.linkedin}</Text>
+      <Text>Weboldal: {winery.connection.website}</Text>
+      <RenderHtml
+      contentWidth={width}
+      source={source}
+      tagsStyles={tagsStyles}
+    />
     </ScrollView>
   );
 };

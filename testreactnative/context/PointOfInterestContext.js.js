@@ -17,6 +17,7 @@ export const PointOfInterestProvider = (props) => {
   useEffect(() => {
     const fetchWineries = async () => {
       const response = await getWineries();
+      console.log(response)
       setWineries(response);
     };
     const fetchEvents = async () => {

@@ -15,6 +15,7 @@ export const getWineries = async () => {
   const data = await getDataByUrl(
     "https://soproniborvidek.nemethmark.com/wp-json/wp/v2/wineries?_embed&per_page=100"
   );
+
   return data.map((item) => {
     return {
       //kell még kapcsolat, banner, szociális médiák ha van, ha a terkep false akkor nem kell, ha igen akkor lat long
@@ -22,12 +23,12 @@ export const getWineries = async () => {
       content: item?.content?.rendered,
       logo: item?.acf?.banner?.boraszat_logo?.sizes?.medium,
       owner_name: item?.acf?.kapcsolat?.tulajdonos_nev,
-      type: item.type,
-      
+      type: item?.type,
+
       connection: {
         adress: item?.acf?.kapcsolat?.cim,
         telephone: item?.acf?.kapcsolat?.telefon,
-        website: item?.acf?.banner?.website,
+        website: item?.acf?.banner?.weboldal,
 
         social: {
           facebook: item?.acf?.szocialis_mediak?.facebook,
