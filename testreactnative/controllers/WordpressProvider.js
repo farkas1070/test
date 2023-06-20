@@ -1,7 +1,5 @@
 import axios from "axios";
 
-
-
 export const getDataByUrl = async (url) => {
   try {
     const response = await axios.get(`${url}`);
@@ -19,9 +17,28 @@ export const getWineries = async () => {
   );
   return data.map((item) => {
     return {
-      title: item.title.rendered,
-      content: item.content.rendered,
+      //kell még kapcsolat, banner, szociális médiák ha van, ha a terkep false akkor nem kell, ha igen akkor lat long
+      title: item?.title?.rendered,
+      content: item?.content?.rendered,
       logo: item?.acf?.banner?.boraszat_logo?.sizes?.medium,
+      owner_name: item?.acf?.kapcsolat?.tulajdonos_nev,
+      type: item.type,
+      
+      connection: {
+        adress: item?.acf?.kapcsolat?.cim,
+        telephone: item?.acf?.kapcsolat?.telefon,
+        website: item?.acf?.banner?.website,
+
+        social: {
+          facebook: item?.acf?.szocialis_mediak?.facebook,
+          linkedin: item?.acf?.szocialis_mediak?.linkedin,
+          instagram: item?.acf?.szocialis_mediak?.instagram,
+        },
+      },
+      map: {
+        lat: item?.acf?.terkep?.lat,
+        lng: item?.acf?.terkep?.lng,
+      },
     };
   });
 };

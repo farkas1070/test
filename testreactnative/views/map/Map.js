@@ -5,7 +5,7 @@ import {
   Image,
   useWindowDimensions,
 } from "react-native";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef,useContext } from "react";
 import MapView, { Marker, Callout, PROVIDER_GOOGLE } from "react-native-maps";
 import * as Location from "expo-location";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
@@ -15,7 +15,7 @@ import { Mapstyle } from "./CustomMapStyle";
 import VineyardImage from "../../assets/marker.png";
 import SightImage from "../../assets/yellowmarker.png";
 import ActiveMarker from "../../assets/active_marker.png";
-import { get } from "../../controllers/StrapiProvider";
+import { WineriesContext } from "../../context/PointOfInterestContext.js";
 
 const Map = () => {
   const mapRef = useRef(null);
@@ -23,7 +23,7 @@ const Map = () => {
   const carouselRef = useRef(null);
   const { width } = useWindowDimensions();
   const [activeMarkerIndex, setActiveMarkerIndex] = useState(0);
-  const [pointsOfInterest, setpointsOfInterest] = useState([]);
+  const [pointsOfInterest, setpointsOfInterest] = useContext(WineriesContext);
   const [position, setPosition] = useState({
     latitude: 47.6828354,
     longitude: 16.5813035,
@@ -52,7 +52,7 @@ const Map = () => {
     switch (type) {
       case "sight":
         return SightImage;
-      case "vineyard":
+      case "wineries":
         return VineyardImage;
     }
   }
@@ -60,8 +60,8 @@ const Map = () => {
   const filterMarkers = (type) => {
     if (type === "sight") {
       return pointsOfInterest.filter((poi) => poi.type === "sight");
-    } else if (type === "vineyard") {
-      return pointsOfInterest.filter((poi) => poi.type === "vineyard");
+    } else if (type === "wineries") {
+      return pointsOfInterest.filter((poi) => poi.type === "wineries");
     } else {
       return pointsOfInterest;
     }
@@ -96,23 +96,14 @@ const Map = () => {
     })();
   }, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await get();
-      response.data.forEach((element) => {
-        setpointsOfInterest((oldArray) => [...oldArray, element.attributes]);
-      });
-    };
-
-    fetchData();
-  }, []);
+  
 
   useEffect(() => {
     const jumpToPointOfInterest = () => {
       if (pointsOfInterest.length > 0 && mapRef.current) {
         const coordinates = pointsOfInterest.map((marker) => ({
-          latitude: marker.latitude,
-          longitude: marker.longitude,
+          latitude: marker.map.lat,
+          longitude: marker.map.lng,
         }));
 
         mapRef.current.fitToCoordinates(coordinates, {
@@ -140,8 +131,8 @@ const Map = () => {
               ref={markerRef}
               key={index}
               coordinate={{
-                latitude: poi.latitude,
-                longitude: poi.longitude,
+                latitude: poi.map.lat,
+                longitude: poi.map.lng,
               }}
               resizeMode="contain"
               icon={

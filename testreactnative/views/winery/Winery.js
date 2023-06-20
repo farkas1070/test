@@ -4,11 +4,13 @@ import { styles } from "./WineryStyle";
 import Placeholder from "../../assets/placeholder.png";
 import RenderHtml from 'react-native-render-html';
 import { useWindowDimensions } from 'react-native';
+import {tagsStyles} from "./ContentStyle"
 const Winery = ({ route }) => {
   const { width } = useWindowDimensions();
   const source = {
     html: route.params.item.content
   };
+
   return (
     <ScrollView>
       <Image
@@ -18,10 +20,11 @@ const Winery = ({ route }) => {
         }
       />
       <Text>{route.params.item.title}</Text>
-      <Text>{route.params.item.content}</Text>
+      
       <RenderHtml
       contentWidth={width}
       source={source}
+      tagsStyles={tagsStyles}
     />
     </ScrollView>
   );
