@@ -6,7 +6,7 @@ import {
   useWindowDimensions,
 } from "react-native";
 import React, { useState, useEffect, useRef, useContext } from "react";
-import MapView, { Marker, Callout, PROVIDER_GOOGLE } from "react-native-maps";
+import MapView, { Marker, Callout, PROVIDER_GOOGLE, Polyline } from "react-native-maps";
 import * as Location from "expo-location";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Carousel from "react-native-snap-carousel-v4";
@@ -128,6 +128,14 @@ const Map = () => {
         provider={PROVIDER_GOOGLE}
         customMapStyle={Mapstyle}
       >
+        <Polyline
+        coordinates={filterMarkers(filter).map((poi) => ({
+          latitude: poi.map.lat,
+          longitude: poi.map.lng,
+        }
+        ))}
+        >
+        </Polyline>
         {filterMarkers(filter).map((poi, index) => {
           return (
             <Marker

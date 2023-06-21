@@ -4,8 +4,6 @@ import { Text, View, Button, Platform, TouchableOpacity } from "react-native";
 import * as Notifications from "expo-notifications";
 import * as TaskManager from "expo-task-manager";
 
-
-
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowAlert: true,
@@ -15,12 +13,11 @@ Notifications.setNotificationHandler({
 });
 
 export default function App() {
-  
   const [expoPushToken, setExpoPushToken] = useState("");
   const [notification, setNotification] = useState(false);
   const notificationListener = useRef();
   const responseListener = useRef();
-  
+
   useEffect(() => {
     registerForPushNotificationsAsync().then((token) =>
       setExpoPushToken(token)
@@ -52,7 +49,9 @@ export default function App() {
         justifyContent: "space-around",
       }}
     >
-      <TouchableOpacity><Text>ds</Text></TouchableOpacity>
+      <TouchableOpacity>
+        <Text>ds</Text>
+      </TouchableOpacity>
       <Text>Your expo push token: {expoPushToken}</Text>
       <View style={{ alignItems: "center", justifyContent: "center" }}>
         <Text>
@@ -81,7 +80,7 @@ async function schedulePushNotification() {
       body: "Here is the notification body",
       data: { data: "goes here" },
     },
-    trigger: { seconds: 60 },
+    trigger: { seconds: 5 },
   });
 }
 
@@ -107,9 +106,9 @@ async function registerForPushNotificationsAsync() {
     alert("Failed to get push token for push notification!");
     return;
   }
-  token = (await Notifications.getExpoPushTokenAsync({
-    projectId: 'd3f055cc-be3a-4368-95a1-476eb113afb1',
- })).data;
+  token = (
+    await Notifications.getExpoPushTokenAsync()
+  ).data;
   console.log(token);
   return token;
 }
