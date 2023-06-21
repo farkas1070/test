@@ -107,7 +107,9 @@ async function registerForPushNotificationsAsync() {
     alert("Failed to get push token for push notification!");
     return;
   }
-  token = (await Notifications.getExpoPushTokenAsync()).data;
+  token = (await Notifications.getExpoPushTokenAsync({
+    projectId: 'd3f055cc-be3a-4368-95a1-476eb113afb1',
+ })).data;
   console.log(token);
   return token;
 }

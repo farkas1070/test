@@ -31,7 +31,7 @@ const BottomNavigator = () => {
         component={Home}
         options={{
           tabBarIcon: () => (
-            <Ionicons name="home-outline" size={24} color="black" />
+            <Ionicons name="home-outline" size={24} color="black"  />
           ),
 
           headerTintColor: "black",
@@ -96,12 +96,13 @@ const BottomNavigator = () => {
           ),
           headerRight: () => (
             <View style={{ paddingRight: 10 }}>
-<<<<<<< Updated upstream
-              <Ionicons name="menu" size={24} color="black" onPress={()=>{openMenu()}} />
+
               
-=======
-              <Ionicons name="menu" size={24} color="black" />
->>>>>>> Stashed changes
+              
+
+              <Ionicons name="menu" size={24} color="black" onPress={() => {
+                  openMenu();
+                }} />
             </View>
           ),
         }}
@@ -129,12 +130,14 @@ const BottomNavigator = () => {
           ),
           headerRight: () => (
             <View style={{ paddingRight: 10 }}>
-<<<<<<< Updated upstream
-              <Ionicons name="menu" size={24} color="black" onPress={()=>{openMenu()}} />
+
+              <Ionicons name="menu" size={24} color="black" onPress={() => {
+                  openMenu();
+                }} />
               
-=======
-              <Ionicons name="menu" size={24} color="black" />
->>>>>>> Stashed changes
+
+              
+
             </View>
           ),
         }}
@@ -162,12 +165,12 @@ const BottomNavigator = () => {
           ),
           headerRight: () => (
             <View style={{ paddingRight: 10 }}>
-<<<<<<< Updated upstream
-              <Ionicons name="menu" size={24} color="black" onPress={()=>{openMenu()}} />
-              
-=======
-              <Ionicons name="menu" size={24} color="black" />
->>>>>>> Stashed changes
+
+             
+              <Ionicons name="menu" size={24} color="black" onPress={() => {
+                  openMenu();
+                }} />
+
             </View>
           ),
         }}

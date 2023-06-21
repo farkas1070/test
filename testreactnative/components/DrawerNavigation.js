@@ -23,6 +23,7 @@ const DrawerNavigator = () => (
         ),
       }}
     />
+    
     <Drawer.Screen
       name="Valami2"
       component={Valami2}
@@ -49,6 +50,7 @@ const DrawerNavigator = () => (
         ),
       }}
     />
+    
   </Drawer.Navigator>
 );
 

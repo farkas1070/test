@@ -8,7 +8,7 @@ app.post('/send-push', (req, res) => {
   // Prepare the push notification messages
   const messages = [
     {
-      to: '<push_token>', // The Expo push token of the recipient device
+      to: 'ExponentPushToken[45d31XO58T6EE7Sppj_vjY]', // The Expo push token of the recipient device
       sound: 'default',
       body: 'Hello, this is a push notification!',
       data: { additionalData: 'optional' },
