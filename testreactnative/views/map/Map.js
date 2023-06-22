@@ -91,6 +91,14 @@ const Map = () => {
     }
   };
 
+  const filterTours = (name) => {
+    if (name === "None") {
+      return tours;
+    } else {
+      return tours.filter((tour) => tour.name === name);
+    }
+  };
+
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -139,28 +147,6 @@ const Map = () => {
     jumpToPointOfInterest();
   }, []);
 
-  const data = {
-    coordinates: [
-      [16.594073961110723, 47.67724885870879],
-      [16.590089646522387, 47.678480230719146],
-      [16.58362329989555, 47.68056909891254],
-      [16.58283950030446, 47.6794037406556],
-      [16.584243807905153, 47.67832631080711],
-      [16.58434178285438, 47.67740278179937],
-      [16.590187621470562, 47.67344461518431],
-      [16.591461295806937, 47.673136745196274],
-      [16.591722562336543, 47.673268689699455],
-      [16.592016487183372, 47.672916836950066],
-      [16.592734970142203, 47.67208117716248],
-      [16.59374737794684, 47.67190524708113],
-      [16.5947597857525, 47.67236706227973],
-      [16.5947597857525, 47.67300480035988],
-      [16.594171936058956, 47.674280253138704],
-      [16.594531177538897, 47.67663316180574],
-      [16.594171936058956, 47.67724885870879],
-    ],
-  };
-
   return (
     <View style={styles.container}>
       <Modal statusBarTranslucent={true} visible={modalVisible} transparent>
@@ -169,13 +155,22 @@ const Map = () => {
             <MaterialIcons name="close" size={28} color="#FFF" />
           </TouchableOpacity>
           <View style={styles.modalContent}>
-            {tours.map((tour)=>{
-              return(
-                <View style={styles.tourcard}>
-                  <Image style={styles.tourimage} source={{ uri: tour.logo }} />
-                  <Text style={styles.tourtext}>{tour.name}</Text>
-                </View>
-              )
+            {tours.map((tour) => {
+              return (
+                <TouchableOpacity
+                  onPress={() => {
+                    setTourFilter(tour.name);
+                  }}
+                >
+                  <View style={styles.tourcard}>
+                    <Image
+                      style={styles.tourimage}
+                      source={{ uri: tour.logo }}
+                    />
+                    <Text style={styles.tourtext}>{tour.name}</Text>
+                  </View>
+                </TouchableOpacity>
+              );
             })}
           </View>
         </View>
@@ -188,39 +183,29 @@ const Map = () => {
         provider={PROVIDER_GOOGLE}
         customMapStyle={Mapstyle}
       >
-        {tours.map((tour, tourIndex) => (
-        <>
-          <Polyline
-            key={`polyline-${tourIndex}`}
-            coordinates={tour.coordinates.map(coordinate => ({
-              latitude: coordinate[1],
-              longitude: coordinate[0],
-            }))}
-            strokeWidth={4}
-          />
-          {tour.coordinates.map((coordinate, markerIndex) => (
-            <Marker
-              key={`marker-${tourIndex}-${markerIndex}`}
-              coordinate={{ latitude: coordinate[1], longitude: coordinate[0] }}
-              title={tour.name}
-              description={tour.name}
+        {filterTours(tourfilter).map((tour, tourIndex) => (
+          <>
+            <Polyline
+              key={`polyline-${tourIndex}`}
+              coordinates={tour.coordinates.map((coordinate) => ({
+                latitude: coordinate[1],
+                longitude: coordinate[0],
+              }))}
+              strokeWidth={4}
             />
-          ))}
-        </>
-      ))}
-
-        
-        
-        {data.coordinates.map((coordinate, index) => {
-          return (
-            <Marker
-              key={index}
-              coordinate={{ latitude: coordinate[1], longitude: coordinate[0] }}
-              title="Flatiron School Atlanta"
-              description="This is where the magic happens!"
-            />
-          );
-        })}
+            {tour.coordinates.map((coordinate, markerIndex) => (
+              <Marker
+                key={`marker-${tourIndex}-${markerIndex}`}
+                coordinate={{
+                  latitude: coordinate[1],
+                  longitude: coordinate[0],
+                }}
+                title={tour.name}
+                description={tour.name}
+              />
+            ))}
+          </>
+        ))}
         {filterMarkers(filter).map((poi, index) => {
           return (
             <Marker
