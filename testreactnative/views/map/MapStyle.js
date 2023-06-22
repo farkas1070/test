@@ -74,4 +74,23 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 5,
     marginBottom: 10,
   },
+  modalContainer:{
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#00000099",
+  },
+  modalButton:{
+    backgroundColor: "#007AFF",
+    borderRadius: 40,
+    paddingVertical: 5,
+    paddingHorizontal: 5,
+    marginBottom: 10,
+    top: 50,
+    right: 30,
+    position: "absolute",
+  },
+  modalContent:{
+    backgroundColor: "#FFF",
+  },
 });

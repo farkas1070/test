@@ -4,6 +4,7 @@ import {
   Text,
   Image,
   useWindowDimensions,
+  Modal,
 } from "react-native";
 import React, { useState, useEffect, useRef, useContext } from "react";
 import MapView, {
@@ -21,6 +22,7 @@ import VineyardImage from "../../assets/marker.png";
 import SightImage from "../../assets/yellowmarker.png";
 import ActiveMarker from "../../assets/active_marker.png";
 import { WineriesContext } from "../../context/PointOfInterestContext.js";
+import QRScanner from "./components/QRScanner";
 
 const Map = () => {
   const mapRef = useRef(null);
@@ -36,6 +38,15 @@ const Map = () => {
     longitudeDelta: 0.1,
   });
   const [filter, setFilter] = useState("all");
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
 
   const handleMarkerPress = (index) => {
     setActiveMarkerIndex(index);
@@ -51,6 +62,9 @@ const Map = () => {
         longitudeDelta: 0.01,
       });
     }
+  };
+  const handleQRCodeScanned = (data) => {
+    console.log("QR kód értéke:", data);
   };
 
   function returnMarkerIcon(type) {
@@ -148,6 +162,17 @@ const Map = () => {
 
   return (
     <View style={styles.container}>
+      <Modal visible={modalVisible} transparent>
+        <View style={styles.modalContainer}>
+          <TouchableOpacity style={styles.modalButton} onPress={closeModal}>
+            <MaterialIcons name="close" size={28} color="#FFF" />
+          </TouchableOpacity>
+          <View style={styles.modalContent}>
+            
+          </View>
+        </View>
+      </Modal>
+
       <MapView
         ref={mapRef}
         style={styles.map}
@@ -224,6 +249,12 @@ const Map = () => {
         >
           <Text style={styles.buttonText}>
             <MaterialIcons name="wb-shade" size={28} color="#FFF" />
+          </Text>
+        </TouchableOpacity>
+        <QRScanner onQRCodeScanned={handleQRCodeScanned} />
+        <TouchableOpacity style={styles.filterButton} onPress={openModal}>
+          <Text style={styles.buttonText}>
+            <MaterialIcons name="search" size={28} color="#FFF" />
           </Text>
         </TouchableOpacity>
       </View>
