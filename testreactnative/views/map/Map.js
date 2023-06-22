@@ -23,7 +23,7 @@ import SightImage from "../../assets/yellowmarker.png";
 import ActiveMarker from "../../assets/active_marker.png";
 import { WineriesContext } from "../../context/PointOfInterestContext.js";
 import QRScanner from "./components/QRScanner";
-
+import { tours } from "./Winetours";
 const Map = () => {
   const mapRef = useRef(null);
   const markerRef = useRef([]);
@@ -162,13 +162,20 @@ const Map = () => {
 
   return (
     <View style={styles.container}>
-      <Modal visible={modalVisible} transparent>
+      <Modal statusBarTranslucent={true} visible={modalVisible} transparent>
         <View style={styles.modalContainer}>
           <TouchableOpacity style={styles.modalButton} onPress={closeModal}>
             <MaterialIcons name="close" size={28} color="#FFF" />
           </TouchableOpacity>
           <View style={styles.modalContent}>
-            
+            {tours.map((tour)=>{
+              return(
+                <View style={styles.tourcard}>
+                  <Image style={styles.tourimage} source={{ uri: tour.logo }} />
+                  <Text style={styles.tourtext}>{tour.name}</Text>
+                </View>
+              )
+            })}
           </View>
         </View>
       </Modal>

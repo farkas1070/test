@@ -91,6 +91,32 @@ export const styles = StyleSheet.create({
     position: "absolute",
   },
   modalContent:{
-    backgroundColor: "#FFF",
+    
+    width:'100%',
+    height:'70%',
+    padding:10,
+    alignItems:'center'
   },
+  tourcard:{
+    width:'85%',
+    height:90,
+    backgroundColor: "rgba(255,255,255,0.8)",
+    marginTop:10,
+    borderRadius:10,
+    flexDirection:'row',
+
+    justifyContent:'flex-start',
+    alignItems:'center',
+
+
+  },
+  tourimage:{
+    width:80,
+    height:80,
+    marginLeft:30,
+    borderRadius:10,
+  },
+  tourtext:{
+    marginLeft:20
+  }
 });
