@@ -6,7 +6,12 @@ import {
   useWindowDimensions,
 } from "react-native";
 import React, { useState, useEffect, useRef, useContext } from "react";
-import MapView, { Marker, Callout, PROVIDER_GOOGLE, Polyline } from "react-native-maps";
+import MapView, {
+  Marker,
+  Callout,
+  PROVIDER_GOOGLE,
+  Polyline,
+} from "react-native-maps";
 import * as Location from "expo-location";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Carousel from "react-native-snap-carousel-v4";
@@ -19,7 +24,7 @@ import { WineriesContext } from "../../context/PointOfInterestContext.js";
 
 const Map = () => {
   const mapRef = useRef(null);
-  const markerRef = useRef(null);
+  const markerRef = useRef([]);
   const carouselRef = useRef(null);
   const { width } = useWindowDimensions();
   const [activeMarkerIndex, setActiveMarkerIndex] = useState(0);
@@ -119,6 +124,28 @@ const Map = () => {
     jumpToPointOfInterest();
   }, []);
 
+  const data = {
+    coordinates: [
+      [16.594073961110723, 47.67724885870879],
+      [16.590089646522387, 47.678480230719146],
+      [16.58362329989555, 47.68056909891254],
+      [16.58283950030446, 47.6794037406556],
+      [16.584243807905153, 47.67832631080711],
+      [16.58434178285438, 47.67740278179937],
+      [16.590187621470562, 47.67344461518431],
+      [16.591461295806937, 47.673136745196274],
+      [16.591722562336543, 47.673268689699455],
+      [16.592016487183372, 47.672916836950066],
+      [16.592734970142203, 47.67208117716248],
+      [16.59374737794684, 47.67190524708113],
+      [16.5947597857525, 47.67236706227973],
+      [16.5947597857525, 47.67300480035988],
+      [16.594171936058956, 47.674280253138704],
+      [16.594531177538897, 47.67663316180574],
+      [16.594171936058956, 47.67724885870879],
+    ],
+  };
+
   return (
     <View style={styles.container}>
       <MapView
@@ -129,18 +156,27 @@ const Map = () => {
         customMapStyle={Mapstyle}
       >
         <Polyline
-        coordinates={filterMarkers(filter).map((poi) => ({
-          latitude: poi.map.lat,
-          longitude: poi.map.lng,
-        }
-        ))}
-        >
-        </Polyline>
+          coordinates={data.coordinates.map((coordinate) => ({
+            latitude: coordinate[1],
+            longitude: coordinate[0],
+          }))}
+          strokeWidth={4}
+        ></Polyline>
+        {data.coordinates.map((coordinate, index) => {
+          return (
+            <Marker
+              key={index}
+              coordinate={{ latitude: coordinate[1], longitude: coordinate[0] }}
+              title="Flatiron School Atlanta"
+              description="This is where the magic happens!"
+            />
+          );
+        })}
         {filterMarkers(filter).map((poi, index) => {
           return (
             <Marker
               id={index}
-              ref={markerRef}
+              ref={(ref) => (markerRef.current[index] = ref)}
               key={index}
               coordinate={{
                 latitude: poi.map.lat,
@@ -157,7 +193,7 @@ const Map = () => {
               }}
             >
               <Callout style={styles.callout}>
-                <Text>{poi.name}</Text>
+                <Text>{poi.title}</Text>
               </Callout>
             </Marker>
           );
@@ -219,13 +255,14 @@ const Map = () => {
           sliderWidth={width}
           itemWidth={width}
           onSnapToItem={(index) => {
+            setActiveMarkerIndex(index);
+            markerRef.current[index].showCallout();
             mapRef.current.animateToRegion({
               latitude: filterMarkers(filter)[index].map.lat,
               longitude: filterMarkers(filter)[index].map.lng,
               latitudeDelta: 0.05,
               longitudeDelta: 0.05,
             });
-            setActiveMarkerIndex(index);
           }}
         />
       </View>

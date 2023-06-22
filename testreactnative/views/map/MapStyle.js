@@ -53,7 +53,7 @@ export const styles = StyleSheet.create({
   },
   callout: {
     width: 100,
-    height: 100,
+    height: 25,
   },
   filterButtonContainer: {
     position: "absolute",
