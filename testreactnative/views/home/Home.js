@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { Text, View, Button, Platform, TouchableOpacity } from "react-native";
 import * as Notifications from "expo-notifications";
 import * as TaskManager from "expo-task-manager";
-import Constants from "expo-constants";
+import Constants from 'expo-constants';
+
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -106,11 +107,9 @@ async function registerForPushNotificationsAsync() {
     alert("Failed to get push token for push notification!");
     return;
   }
-  token = (
-    await Notifications.getExpoPushTokenAsync({
-      projectId: "d3f055cc-be3a-4368-95a1-476eb113afb1",
-    })
-  ).data;
+  token = (await Notifications.getExpoPushTokenAsync({
+    projectId: 'd3f055cc-be3a-4368-95a1-476eb113afb1',
+ })).data
   console.log(token);
   return token;
 }
