@@ -38,6 +38,7 @@ const Map = () => {
     longitudeDelta: 0.1,
   });
   const [filter, setFilter] = useState("all");
+  const [tourfilter, setTourFilter] = useState("None");
   const [modalVisible, setModalVisible] = useState(false);
 
   const openModal = () => {
@@ -187,13 +188,29 @@ const Map = () => {
         provider={PROVIDER_GOOGLE}
         customMapStyle={Mapstyle}
       >
-        <Polyline
-          coordinates={data.coordinates.map((coordinate) => ({
-            latitude: coordinate[1],
-            longitude: coordinate[0],
-          }))}
-          strokeWidth={4}
-        ></Polyline>
+        {tours.map((tour, tourIndex) => (
+        <>
+          <Polyline
+            key={`polyline-${tourIndex}`}
+            coordinates={tour.coordinates.map(coordinate => ({
+              latitude: coordinate[1],
+              longitude: coordinate[0],
+            }))}
+            strokeWidth={4}
+          />
+          {tour.coordinates.map((coordinate, markerIndex) => (
+            <Marker
+              key={`marker-${tourIndex}-${markerIndex}`}
+              coordinate={{ latitude: coordinate[1], longitude: coordinate[0] }}
+              title={tour.name}
+              description={tour.name}
+            />
+          ))}
+        </>
+      ))}
+
+        
+        
         {data.coordinates.map((coordinate, index) => {
           return (
             <Marker
