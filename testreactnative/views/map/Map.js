@@ -31,6 +31,7 @@ const Map = () => {
   const { width } = useWindowDimensions();
   const [activeMarkerIndex, setActiveMarkerIndex] = useState(0);
   const [pointsOfInterest, setpointsOfInterest] = useContext(WineriesContext);
+  const [showtours, setShowTours] = useState(false);
   const [position, setPosition] = useState({
     latitude: 47.6828354,
     longitude: 16.5813035,
@@ -92,6 +93,9 @@ const Map = () => {
   };
 
   const filterTours = (name) => {
+    
+    
+    
     if (name === "None") {
       return tours;
     } else {
@@ -160,6 +164,9 @@ const Map = () => {
                 <TouchableOpacity
                   onPress={() => {
                     setTourFilter(tour.name);
+                    if (!showtours){
+                      setShowTours(true)
+                    }
                   }}
                 >
                   <View style={styles.tourcard}>
@@ -183,7 +190,7 @@ const Map = () => {
         provider={PROVIDER_GOOGLE}
         customMapStyle={Mapstyle}
       >
-        {filterTours(tourfilter).map((tour, tourIndex) => (
+        { showtours && filterTours(tourfilter).map((tour, tourIndex) => (
           <>
             <Polyline
               key={`polyline-${tourIndex}`}
