@@ -153,17 +153,20 @@ const Map = () => {
 
   return (
     <View style={styles.container}>
-      <Modal statusBarTranslucent={true} visible={modalVisible} transparent>
+      <Modal statusBarTranslucent={true} visible={modalVisible} transparent animationType="fade" >
         <View style={styles.modalContainer}>
           <TouchableOpacity style={styles.modalButton} onPress={closeModal}>
             <MaterialIcons name="close" size={28} color="#FFF" />
           </TouchableOpacity>
           <View style={styles.modalContent}>
+            <Text style={styles.borturatext}>Bortúrák</Text>
             {tours.map((tour) => {
               return (
                 <TouchableOpacity
+                style={styles.modalbutton}
                   onPress={() => {
                     setTourFilter(tour.name);
+                    closeModal();
                     if (!showtours){
                       setShowTours(true)
                     }

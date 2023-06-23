@@ -78,10 +78,10 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#00000099",
+    backgroundColor: "white",
   },
   modalButton:{
-    backgroundColor: "#007AFF",
+    backgroundColor: "rgba(239, 239, 239, 1)",
     borderRadius: 40,
     paddingVertical: 5,
     paddingHorizontal: 5,
@@ -93,14 +93,14 @@ export const styles = StyleSheet.create({
   modalContent:{
     
     width:'100%',
-    height:'70%',
+    height:'80%',
     padding:10,
-    alignItems:'center'
+    alignItems:'center',
   },
   tourcard:{
-    width:'85%',
+    width:'100%',
     height:90,
-    backgroundColor: "rgba(255,255,255,0.8)",
+    backgroundColor: "rgba(239, 239, 239, 1)",
     marginTop:10,
     borderRadius:10,
     flexDirection:'row',
@@ -118,5 +118,13 @@ export const styles = StyleSheet.create({
   },
   tourtext:{
     marginLeft:20
+  },
+  modalbutton:{
+    width:'80%'
+  },
+  borturatext:{
+    color:'black',
+    fontSize:25,
+    marginBottom:20
   }
 });
