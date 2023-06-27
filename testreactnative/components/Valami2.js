@@ -92,7 +92,7 @@ const Valami2 = () => {
   }, [enabled]);
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text>FCM tutorial</Text>
       <Switch
         trackColor={{false: '#767577', true: '#81b0ff'}}
@@ -107,4 +107,10 @@ const Valami2 = () => {
 
 export default Valami2;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    justifyContent: "center",
+  },
+});
