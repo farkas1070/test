@@ -49,7 +49,6 @@ const Valami2 = () => {
       if (requestUserPermission()) {
         //return fcm token for the device
         registerForRemoteMessages();
-        messaging().subscribeToTopic("all").then(()=>console.log("subscribed to topic"))
       } else {
         console.log("failed token status");
       }
@@ -93,6 +92,7 @@ const Valami2 = () => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.switchContainer}>
       <Text>FCM tutorial</Text>
       <Switch
         trackColor={{false: '#767577', true: '#81b0ff'}}
@@ -101,6 +101,7 @@ const Valami2 = () => {
         onValueChange={()=>{setEnabled(!enabled)}}
         value={enabled}
       />
+      </View>
     </View>
   );
 };
@@ -111,6 +112,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    justifyContent: "center",
   },
+  switchContainer:{
+    alignItems:"flex-end",
+    marginTop:50,
+
+  }
+
 });
