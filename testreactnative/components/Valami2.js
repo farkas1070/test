@@ -49,7 +49,8 @@ const Valami2 = () => {
       if (requestUserPermission()) {
         //return fcm token for the device
         registerForRemoteMessages();
-        messaging().subscribeToTopic("all").then(()=>console.log("subscribed to topic"))
+        messaging().subscribeToTopic("events").then(()=>console.log("subscribed to topic"))
+        messaging().subscribeToTopic("news").then(()=>console.log("subscribed to topic"))
       } else {
         console.log("failed token status");
       }

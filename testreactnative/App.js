@@ -9,8 +9,13 @@ import { PointOfInterestProvider } from "./context/PointOfInterestContext.js";
 import DrawerNavigator from "./components/DrawerNavigation";
 import { Ionicons } from "@expo/vector-icons";
 import StackNavigator from "./components/StackNavigator";
+import React,{useEffect} from "react";
+
 
 export default function App() {
+  
+  
+
   return (
     <PointOfInterestProvider>
       <NavigationContainer>
