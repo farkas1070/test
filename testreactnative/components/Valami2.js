@@ -3,14 +3,14 @@ import React, { useEffect, useState } from "react";
 import messaging from "@react-native-firebase/messaging";
 
 const Valami2 = () => {
-  const [notificationEnabled, setNotificationEnabled] = useState(true);
+  const [enabled, setEnabled] =useState(true)
 
   
 
   const requestUserPermission = async () => {
     try {
       const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.CAMERA,
+        PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
         {
           title: "Notification Permission",
           message: "This app requires notification permission.",
@@ -45,15 +45,15 @@ const Valami2 = () => {
 
   useEffect(() => {
     
-    if (notificationEnabled) {
+      if (enabled){
       if (requestUserPermission()) {
         //return fcm token for the device
         registerForRemoteMessages();
         messaging().subscribeToTopic("all").then(()=>console.log("subscribed to topic"))
       } else {
-        console.log("failed token status", authStatus);
+        console.log("failed token status");
       }
-    }
+    
 
     // Register background handler
     messaging().setBackgroundMessageHandler(async (remoteMessage) => {
@@ -86,14 +86,20 @@ const Valami2 = () => {
     });
 
     return unsubscribe;
-  }, [notificationEnabled]);
+  } else {
+    console.log("No permission granted")
+  }
+  }, [enabled]);
 
   return (
     <View>
       <Text>FCM tutorial</Text>
       <Switch
-        value={notificationEnabled}
-        onValueChange={()=>{setNotificationEnabled(!notificationEnabled)}}
+        trackColor={{false: '#767577', true: '#81b0ff'}}
+        thumbColor={enabled ? '#f5dd4b' : '#f4f3f4'}
+        ios_backgroundColor="#3e3e3e"
+        onValueChange={()=>{setEnabled(!enabled)}}
+        value={enabled}
       />
     </View>
   );
