@@ -22,7 +22,7 @@ const StackNavigator = () => {
       console.log(remoteMessage.from)
       const topic = {
         '/topics/events' : 'Események',
-        '/topics/news' : 'Borászatok'
+        '/topics/news' : 'Hírek'
       }
         // Navigate to the desired screen
         navigation.navigate(topic[remoteMessage.from]);
