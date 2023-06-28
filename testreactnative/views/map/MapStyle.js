@@ -126,5 +126,13 @@ export const styles = StyleSheet.create({
     color:'black',
     fontSize:25,
     marginBottom:20
+  },
+  markerimage: {
+    width:40,
+    height:40, 
+    borderRadius:20,
+    borderColor:'white',
+    borderWidth:3,
+    
   }
 });

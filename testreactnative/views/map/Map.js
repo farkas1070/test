@@ -5,8 +5,7 @@ import {
   Image,
   useWindowDimensions,
   Modal,
-  Platform,
-  ActivityIndicator
+  
 } from "react-native";
 import React, { useState, useEffect, useRef, useContext } from "react";
 import MapView, {
@@ -15,6 +14,7 @@ import MapView, {
   PROVIDER_GOOGLE,
   Polyline,
 } from "react-native-maps";
+
 import * as Location from "expo-location";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Carousel from "react-native-snap-carousel-v4";
@@ -27,6 +27,7 @@ import { WineriesContext } from "../../context/PointOfInterestContext.js";
 import QRScanner from "./components/QRScanner";
 import { tours } from "./Winetours";
 import LoadingComponent from "./components/LoadingComponent";
+import Placeholder from "../../assets/placeholder.png"
 const Map = () => {
   const mapRef = useRef(null);
   const markerRef = useRef([]);
@@ -261,16 +262,13 @@ const Map = () => {
                 latitude: poi.map.lat,
                 longitude: poi.map.lng,
               }}
-              resizeMode="contain"
-              icon={
-                activeMarkerIndex === index
-                  ? ActiveMarker
-                  : returnMarkerIcon(poi.type)
-              }
+              
+              
               onPress={() => {
                 handleMarkerPress(index);
               }}
             >
+              <Image source={{uri:poi.logo}} style={styles.markerimage} />
               <Callout style={styles.callout}>
                 <Text>{poi.title}</Text>
               </Callout>
@@ -321,6 +319,7 @@ const Map = () => {
         <Carousel
           ref={carouselRef}
           layout="default"
+          
           data={filterMarkers(filter).filter(
             (poi) => poi.map.lat !== undefined
           )}

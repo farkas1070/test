@@ -21,7 +21,7 @@ export const getWineries = async () => {
       //kell még kapcsolat, banner, szociális médiák ha van, ha a terkep false akkor nem kell, ha igen akkor lat long
       title: item?.title?.rendered,
       content: item?.content?.rendered,
-      logo: item?.acf?.banner?.boraszat_logo?.sizes?.medium,
+      logo: item?.acf?.banner?.boraszat_logo?.sizes?.thumbnail,
       owner_name: item?.acf?.kapcsolat?.tulajdonos_nev,
       type: item?.type,
 
