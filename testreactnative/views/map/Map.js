@@ -5,7 +5,8 @@ import {
   Image,
   useWindowDimensions,
   Modal,
-  Platform
+  Platform,
+  ActivityIndicator
 } from "react-native";
 import React, { useState, useEffect, useRef, useContext } from "react";
 import MapView, {
@@ -25,6 +26,7 @@ import ActiveMarker from "../../assets/active_marker.png";
 import { WineriesContext } from "../../context/PointOfInterestContext.js";
 import QRScanner from "./components/QRScanner";
 import { tours } from "./Winetours";
+import LoadingComponent from "./components/LoadingComponent";
 const Map = () => {
   const mapRef = useRef(null);
   const markerRef = useRef([]);
@@ -172,7 +174,10 @@ const Map = () => {
 
   return (
     <View style={styles.container}>
-      <Modal
+      {
+        pointsOfInterest.length==0? <LoadingComponent /> : 
+        <View style={styles.container}>
+        <Modal
         statusBarTranslucent={true}
         visible={modalVisible}
         transparent
@@ -346,6 +351,9 @@ const Map = () => {
           }}
         />
       </View>
+      </View>
+      }
+      
     </View>
   );
 };
