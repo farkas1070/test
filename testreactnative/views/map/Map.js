@@ -132,24 +132,21 @@ const Map = () => {
     })();
   }, []);
 
-  useEffect(() => {
-    const jumpToPointOfInterest = () => {
-      if (pointsOfInterest.length > 0 && mapRef.current) {
-        const coordinates = pointsOfInterest
-          .filter((poi) => poi.map.lat !== undefined)
-          .map((marker) => ({
-            latitude: marker.map.lat,
-            longitude: marker.map.lng,
-          }));
+  const jumpToPointOfInterest = () => {
+    if (pointsOfInterest.length > 0 && mapRef.current) {
+      const coordinates = pointsOfInterest
+        .filter((poi) => poi.map.lat !== undefined)
+        .map((marker) => ({
+          latitude: marker.map.lat,
+          longitude: marker.map.lng,
+        }));
 
-        mapRef.current.fitToCoordinates(coordinates, {
-          edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
-          animated: true,
-        });
-      }
-    };
-    jumpToPointOfInterest();
-  }, []);
+      mapRef.current.fitToCoordinates(coordinates, {
+        edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
+        animated: true,
+      });
+    }
+  };
 
   useEffect(() => {
     const jumpToCurrentTour = () => {
@@ -223,6 +220,7 @@ const Map = () => {
         showsUserLocation={true}
         provider={PROVIDER_GOOGLE}
         customMapStyle={Mapstyle}
+        onMapReady={jumpToPointOfInterest}
       >
         {showtours &&
           filterTours(tourfilter).map((tour, tourIndex) => (
