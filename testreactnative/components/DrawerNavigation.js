@@ -9,10 +9,11 @@ import Valami2 from "./Valami2";
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => (
-  <Drawer.Navigator initialRouteName="Home" screenOptions={{ headerShown: false,drawerPosition: "right", }}>
+  <Drawer.Navigator initialRouteName="Home" screenOptions={{ drawerPosition: "right", }}>
     <Drawer.Screen
       name="Home"
       component={BottomNavigator}
+      screenOptions={{ headerShown: false }}
       options={{
         drawerIcon: ({ focused, color, size }) => (
           <Ionicons
@@ -21,6 +22,7 @@ const DrawerNavigator = () => (
             color={color}
           />
         ),
+        headerShown: false
       }}
     />
     
