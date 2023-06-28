@@ -5,6 +5,7 @@ import {
   Image,
   useWindowDimensions,
   Modal,
+  Platform
 } from "react-native";
 import React, { useState, useEffect, useRef, useContext } from "react";
 import MapView, {
@@ -32,6 +33,7 @@ const Map = () => {
   const [activeMarkerIndex, setActiveMarkerIndex] = useState(0);
   const [pointsOfInterest, setpointsOfInterest] = useContext(WineriesContext);
   const [showtours, setShowTours] = useState(false);
+  
   const [position, setPosition] = useState({
     latitude: 47.6828354,
     longitude: 16.5813035,
@@ -185,10 +187,13 @@ const Map = () => {
           </TouchableOpacity>
           <View style={styles.modalContent}>
             <Text style={styles.borturatext}>Bortúrák</Text>
-            {tours.map((tour) => {
+            {tours.map((tour,index) => {
               return (
                 <TouchableOpacity
-                  style={styles.modalbutton}
+
+                key={index}
+                style={styles.modalbutton}
+
                   onPress={() => {
                     setTourFilter(tour.name);
                     closeModal();
@@ -204,6 +209,7 @@ const Map = () => {
                     />
                     <Text style={styles.tourtext}>{tour.name}</Text>
                   </View>
+                  
                 </TouchableOpacity>
               );
             })}
