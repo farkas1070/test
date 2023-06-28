@@ -41,6 +41,7 @@ const Map = () => {
   const [filter, setFilter] = useState("all");
   const [tourfilter, setTourFilter] = useState("None");
   const [modalVisible, setModalVisible] = useState(false);
+  const [currentTour, setCurrentTour] = useState(null);
 
   const openModal = () => {
     setModalVisible(true);
@@ -93,9 +94,6 @@ const Map = () => {
   };
 
   const filterTours = (name) => {
-    
-    
-    
     if (name === "None") {
       return tours;
     } else {
@@ -151,9 +149,36 @@ const Map = () => {
     jumpToPointOfInterest();
   }, []);
 
+  useEffect(() => {
+    const jumpToCurrentTour = () => {
+      if (tours.length > 0 && mapRef.current) {
+        const tour = filterTours(tourfilter)[0]; // Az első túrát választjuk ki, módosítsd igény szerint
+        if (tour) {
+          setCurrentTour(tour);
+          const coordinates = tour.coordinates.map((coordinate) => ({
+            latitude: coordinate[1],
+            longitude: coordinate[0],
+          }));
+  
+          mapRef.current.fitToCoordinates(coordinates, {
+            edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
+            animated: true,
+          });
+        }
+      }
+    };
+  
+    jumpToCurrentTour();
+  }, [tourfilter]);
+
   return (
     <View style={styles.container}>
-      <Modal statusBarTranslucent={true} visible={modalVisible} transparent animationType="fade" >
+      <Modal
+        statusBarTranslucent={true}
+        visible={modalVisible}
+        transparent
+        animationType="fade"
+      >
         <View style={styles.modalContainer}>
           <TouchableOpacity style={styles.modalButton} onPress={closeModal}>
             <MaterialIcons name="close" size={28} color="#FFF" />
@@ -163,12 +188,12 @@ const Map = () => {
             {tours.map((tour) => {
               return (
                 <TouchableOpacity
-                style={styles.modalbutton}
+                  style={styles.modalbutton}
                   onPress={() => {
                     setTourFilter(tour.name);
                     closeModal();
-                    if (!showtours){
-                      setShowTours(true)
+                    if (!showtours) {
+                      setShowTours(true);
                     }
                   }}
                 >
@@ -193,29 +218,30 @@ const Map = () => {
         provider={PROVIDER_GOOGLE}
         customMapStyle={Mapstyle}
       >
-        { showtours && filterTours(tourfilter).map((tour, tourIndex) => (
-          <>
-            <Polyline
-              key={`polyline-${tourIndex}`}
-              coordinates={tour.coordinates.map((coordinate) => ({
-                latitude: coordinate[1],
-                longitude: coordinate[0],
-              }))}
-              strokeWidth={4}
-            />
-            {tour.coordinates.map((coordinate, markerIndex) => (
-              <Marker
-                key={`marker-${tourIndex}-${markerIndex}`}
-                coordinate={{
+        {showtours &&
+          filterTours(tourfilter).map((tour, tourIndex) => (
+            <>
+              <Polyline
+                key={`polyline-${tourIndex}`}
+                coordinates={tour.coordinates.map((coordinate) => ({
                   latitude: coordinate[1],
                   longitude: coordinate[0],
-                }}
-                title={tour.name}
-                description={tour.name}
+                }))}
+                strokeWidth={4}
               />
-            ))}
-          </>
-        ))}
+              {tour.coordinates.map((coordinate, markerIndex) => (
+                <Marker
+                  key={`marker-${tourIndex}-${markerIndex}`}
+                  coordinate={{
+                    latitude: coordinate[1],
+                    longitude: coordinate[0],
+                  }}
+                  title={tour.name}
+                  description={tour.name}
+                />
+              ))}
+            </>
+          ))}
         {filterMarkers(filter).map((poi, index) => {
           return (
             <Marker
