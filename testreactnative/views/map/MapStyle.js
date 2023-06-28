@@ -134,7 +134,8 @@ export const styles = StyleSheet.create({
     borderColor:'white',
     borderWidth:3,
     marginBottom:10,
-    transform: [{ translateY: -10 }]
+    position:'relative'
+    
     
     
   }

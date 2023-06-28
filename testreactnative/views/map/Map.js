@@ -271,8 +271,9 @@ const Map = () => {
             >
               
               <Image source={poi.logo ? { uri: poi.logo } : Placeholder} style={styles.markerimage} />
-              
+              <View style={{backgroundColor:'white',height:40,position:'absolute'}}></View>
             
+
               
               <Callout style={styles.callout}>
                 <Text>{poi.title}</Text>
