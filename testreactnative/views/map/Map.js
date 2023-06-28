@@ -252,6 +252,7 @@ const Map = () => {
               
               
               onPress={() => {
+                handleCarouselSnap(index);
                 handleMarkerPress(index);
               }}
             >
