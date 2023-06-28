@@ -47,6 +47,8 @@ const Map = () => {
   const [tourfilter, setTourFilter] = useState("None");
   const [modalVisible, setModalVisible] = useState(false);
   const [currentTour, setCurrentTour] = useState(null);
+  const [currentLatDelta, setCurrentLatDelta] = useState(0.1);
+  const [currentLongDelta, setCurrentLongDelta] = useState(0.1);
 
   const openModal = () => {
     setModalVisible(true);
@@ -66,8 +68,8 @@ const Map = () => {
       mapRef.current.animateToRegion({
         latitude: position.latitude,
         longitude: position.longitude,
-        latitudeDelta: 0.01,
-        longitudeDelta: 0.01,
+        latitudeDelta: currentLatDelta,
+        longitudeDelta: currentLongDelta,
       });
     }
   };
@@ -122,8 +124,8 @@ const Map = () => {
           let cor = {
             latitude: location.coords.latitude,
             longitude: location.coords.longitude,
-            latitudeDelta: 0.01,
-            longitudeDelta: 0.01,
+            latitudeDelta: currentLatDelta,
+            longitudeDelta: currentLongDelta,
           };
           setPosition(cor);
         }
@@ -180,8 +182,8 @@ const Map = () => {
       mapRef.current.animateToRegion({
         latitude: filterMarkers(filter)[index].map.lat,
         longitude: filterMarkers(filter)[index].map.lng,
-        latitudeDelta: 0.01,
-        longitudeDelta: 0.01,
+        latitudeDelta: currentLatDelta,
+        longitudeDelta: currentLongDelta,
       });
     }, 100);
   };
@@ -238,6 +240,10 @@ const Map = () => {
             provider={PROVIDER_GOOGLE}
             customMapStyle={Mapstyle}
             onMapReady={jumpToPointOfInterest}
+            onRegionChangeComplete={async (region) => {
+              setCurrentLatDelta(region.latitudeDelta);
+              setCurrentLongDelta(region.longitudeDelta);
+            }}
           >
             {showtours &&
               filterTours(tourfilter).map((tour, tourIndex) => (
@@ -290,10 +296,7 @@ const Map = () => {
                     }}
                   ></View>
 
-                  <Callout 
-                  style={styles.callout}
-                  tooltip={true}
-                  >
+                  <Callout style={styles.callout} tooltip={true}>
                     <Text>{poi.title}</Text>
                   </Callout>
                 </Marker>

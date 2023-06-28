@@ -4,7 +4,7 @@ import React from 'react'
 const Home = () => {
   return (
     <View>
-      <Text>Home</Text>
+      <Text>**Kurva jol kinezo home screen**</Text>
     </View>
   )
 }

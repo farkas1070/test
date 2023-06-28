@@ -53,7 +53,7 @@ export const styles = StyleSheet.create({
   },
   callout: {
     width: 125,
-    height: 125,
+    height: 75,
     backgroundColor: "rgba(255,255,255,0.8)",
     borderRadius: 30,
     display: "flex",
