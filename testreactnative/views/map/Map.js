@@ -107,34 +107,7 @@ const Map = () => {
     }
   };
 
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        setErrorMsg("Permission to access location was denied");
-        return;
-      }
-      const foregroundSubscription = Location.watchPositionAsync(
-        {
-          accuracy: Location.Accuracy.High,
-          distanceInterval: 10,
-        },
-        (location) => {
-          let cor = {
-            latitude: location.coords.latitude,
-            longitude: location.coords.longitude,
-            latitudeDelta: 0.01,
-            longitudeDelta: 0.01,
-          };
-          setPosition(cor);
-        }
-      );
-
-      return () => {
-        foregroundSubscription.remove();
-      };
-    })();
-  }, []);
+  
 
   const jumpToPointOfInterest = () => {
     if (pointsOfInterest.length > 0 && mapRef.current) {
@@ -173,6 +146,19 @@ const Map = () => {
   
     jumpToCurrentTour();
   }, [tourfilter]);
+
+  const handleCarouselSnap = (index) => {
+    setActiveMarkerIndex(index);
+    markerRef.current[index].showCallout();
+    setTimeout(() => {
+      mapRef.current.animateToRegion({
+        latitude: filterMarkers(filter)[index].map.lat,
+        longitude: filterMarkers(filter)[index].map.lng,
+        latitudeDelta: 0.05,
+        longitudeDelta: 0.05,
+      });
+    }, 100);
+  };
 
   return (
     <View style={styles.container}>
@@ -344,16 +330,7 @@ const Map = () => {
           }}
           sliderWidth={width}
           itemWidth={width}
-          onSnapToItem={(index) => {
-            setActiveMarkerIndex(index);
-            markerRef.current[index].showCallout();
-            mapRef.current.animateToRegion({
-              latitude: filterMarkers(filter)[index].map.lat,
-              longitude: filterMarkers(filter)[index].map.lng,
-              latitudeDelta: 0.05,
-              longitudeDelta: 0.05,
-            });
-          }}
+          onSnapToItem={(index) => {handleCarouselSnap(index)}}
         />
       </View>
       </View>
