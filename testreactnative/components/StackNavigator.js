@@ -1,33 +1,44 @@
-import { StyleSheet, Text, View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import { StyleSheet, View,Alert } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Winery from "../views/winery/Winery";
 import Event from "../views/event/Event";
 import New from "../views/new/New";
+import React,{useEffect} from "react";
+
 import DrawerNavigator from "./DrawerNavigation";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { useEffect } from "react";
 import messaging from "@react-native-firebase/messaging";
 
 const Stack = createNativeStackNavigator();
 const StackNavigator = () => {
   const navigation = useNavigation();
   useEffect(() => {
+
+
     messaging().setBackgroundMessageHandler(async (remoteMessage) => {
       console.log("Message handled in the background!", remoteMessage);
     });
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+    });
+
+    
     // Handle notification opening event
     messaging().onNotificationOpenedApp((remoteMessage) => {
-      console.log(remoteMessage);
+      console.log(remoteMessage.data.dl)
+
       const topic = {
-        events: "Események",
-        news: "Hírek",
-      };
-      // Navigate to the desired screen
-      navigation.navigate(topic[remoteMessage.data.dl]);
+        'events' : 'Események',
+        'news' : 'Hírek'
+      }
+        // Navigate to the desired screen
+        navigation.navigate(topic[remoteMessage.data.dl]);
+      
     });
+    return unsubscribe;
   }, []);
+
   const openMenu = () => {
     navigation.openDrawer();
   };
