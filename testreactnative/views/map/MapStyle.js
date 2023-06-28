@@ -52,8 +52,13 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   callout: {
-    width: 100,
-    height: 25,
+    width: 125,
+    height: 125,
+    backgroundColor: "rgba(255,255,255,0.8)",
+    borderRadius: 30,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   filterButtonContainer: {
     position: "absolute",

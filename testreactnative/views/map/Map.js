@@ -290,7 +290,10 @@ const Map = () => {
                     }}
                   ></View>
 
-                  <Callout style={styles.callout}>
+                  <Callout 
+                  style={styles.callout}
+                  tooltip={true}
+                  >
                     <Text>{poi.title}</Text>
                   </Callout>
                 </Marker>
