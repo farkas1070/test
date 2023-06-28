@@ -5,7 +5,6 @@ import {
   Image,
   useWindowDimensions,
   Modal,
-  
 } from "react-native";
 import React, { useState, useEffect, useRef, useContext } from "react";
 import MapView, {
@@ -27,7 +26,7 @@ import { WineriesContext } from "../../context/PointOfInterestContext.js";
 import QRScanner from "./components/QRScanner";
 import { tours } from "./Winetours";
 import LoadingComponent from "./components/LoadingComponent";
-import Placeholder from "../../assets/placeholder.png"
+import Placeholder from "../../assets/placeholder.png";
 
 const Map = () => {
   const mapRef = useRef(null);
@@ -37,7 +36,7 @@ const Map = () => {
   const [activeMarkerIndex, setActiveMarkerIndex] = useState(0);
   const [pointsOfInterest, setpointsOfInterest] = useContext(WineriesContext);
   const [showtours, setShowTours] = useState(false);
-  
+
   const [position, setPosition] = useState({
     latitude: 47.6828354,
     longitude: 16.5813035,
@@ -107,7 +106,34 @@ const Map = () => {
     }
   };
 
-  
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return;
+      }
+      const foregroundSubscription = Location.watchPositionAsync(
+        {
+          accuracy: Location.Accuracy.High,
+          distanceInterval: 10,
+        },
+        (location) => {
+          let cor = {
+            latitude: location.coords.latitude,
+            longitude: location.coords.longitude,
+            latitudeDelta: 0.01,
+            longitudeDelta: 0.01,
+          };
+          setPosition(cor);
+        }
+      );
+
+      return () => {
+        foregroundSubscription.remove();
+      };
+    })();
+  }, []);
 
   const jumpToPointOfInterest = () => {
     if (pointsOfInterest.length > 0 && mapRef.current) {
@@ -135,7 +161,7 @@ const Map = () => {
             latitude: coordinate[1],
             longitude: coordinate[0],
           }));
-  
+
           mapRef.current.fitToCoordinates(coordinates, {
             edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
             animated: true,
@@ -143,7 +169,7 @@ const Map = () => {
         }
       }
     };
-  
+
     jumpToCurrentTour();
   }, [tourfilter]);
 
@@ -154,189 +180,198 @@ const Map = () => {
       mapRef.current.animateToRegion({
         latitude: filterMarkers(filter)[index].map.lat,
         longitude: filterMarkers(filter)[index].map.lng,
-        latitudeDelta: 0.05,
-        longitudeDelta: 0.05,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01,
       });
     }, 100);
   };
 
   return (
     <View style={styles.container}>
-      {
-        pointsOfInterest.length==0? <LoadingComponent /> : 
+      {pointsOfInterest.length == 0 ? (
+        <LoadingComponent />
+      ) : (
         <View style={styles.container}>
-        <Modal
-        statusBarTranslucent={true}
-        visible={modalVisible}
-        transparent
-        animationType="fade"
-      >
-        <View style={styles.modalContainer}>
-          <TouchableOpacity style={styles.modalButton} onPress={closeModal}>
-            <MaterialIcons name="close" size={28} color="#FFF" />
-          </TouchableOpacity>
-          <View style={styles.modalContent}>
-            <Text style={styles.borturatext}>Bortúrák</Text>
-            {tours.map((tour,index) => {
+          <Modal
+            statusBarTranslucent={true}
+            visible={modalVisible}
+            transparent
+            animationType="fade"
+          >
+            <View style={styles.modalContainer}>
+              <TouchableOpacity style={styles.modalButton} onPress={closeModal}>
+                <MaterialIcons name="close" size={28} color="#FFF" />
+              </TouchableOpacity>
+              <View style={styles.modalContent}>
+                <Text style={styles.borturatext}>Bortúrák</Text>
+                {tours.map((tour, index) => {
+                  return (
+                    <TouchableOpacity
+                      key={index}
+                      style={styles.modalbutton}
+                      onPress={() => {
+                        setTourFilter(tour.name);
+                        closeModal();
+                        if (!showtours) {
+                          setShowTours(true);
+                        }
+                      }}
+                    >
+                      <View style={styles.tourcard}>
+                        <Image
+                          style={styles.tourimage}
+                          source={{ uri: tour.logo }}
+                        />
+                        <Text style={styles.tourtext}>{tour.name}</Text>
+                      </View>
+                    </TouchableOpacity>
+                  );
+                })}
+              </View>
+            </View>
+          </Modal>
+
+          <MapView
+            ref={mapRef}
+            style={styles.map}
+            showsUserLocation={true}
+            provider={PROVIDER_GOOGLE}
+            customMapStyle={Mapstyle}
+            onMapReady={jumpToPointOfInterest}
+          >
+            {showtours &&
+              filterTours(tourfilter).map((tour, tourIndex) => (
+                <>
+                  <Polyline
+                    key={`polyline-${tourIndex}`}
+                    coordinates={tour.coordinates.map((coordinate) => ({
+                      latitude: coordinate[1],
+                      longitude: coordinate[0],
+                    }))}
+                    strokeWidth={4}
+                  />
+                  {tour.coordinates.map((coordinate, markerIndex) => (
+                    <Marker
+                      key={`marker-${tourIndex}-${markerIndex}`}
+                      coordinate={{
+                        latitude: coordinate[1],
+                        longitude: coordinate[0],
+                      }}
+                      title={tour.name}
+                      description={tour.name}
+                    />
+                  ))}
+                </>
+              ))}
+            {filterMarkers(filter).map((poi, index) => {
               return (
-                <TouchableOpacity
-
-                key={index}
-                style={styles.modalbutton}
-
+                <Marker
+                  id={index}
+                  ref={(ref) => (markerRef.current[index] = ref)}
+                  key={index}
+                  coordinate={{
+                    latitude: poi.map.lat,
+                    longitude: poi.map.lng,
+                  }}
                   onPress={() => {
-                    setTourFilter(tour.name);
-                    closeModal();
-                    if (!showtours) {
-                      setShowTours(true);
-                    }
+                    handleCarouselSnap(index);
+                    handleMarkerPress(index);
                   }}
                 >
-                  <View style={styles.tourcard}>
-                    <Image
-                      style={styles.tourimage}
-                      source={{ uri: tour.logo }}
-                    />
-                    <Text style={styles.tourtext}>{tour.name}</Text>
-                  </View>
-                  
-                </TouchableOpacity>
+                  <Image
+                    source={poi.logo ? { uri: poi.logo } : Placeholder}
+                    style={styles.markerimage}
+                  />
+                  <View
+                    style={{
+                      backgroundColor: "white",
+                      height: 40,
+                      position: "absolute",
+                    }}
+                  ></View>
+
+                  <Callout style={styles.callout}>
+                    <Text>{poi.title}</Text>
+                  </Callout>
+                </Marker>
               );
             })}
-          </View>
-        </View>
-      </Modal>
-
-      <MapView
-        ref={mapRef}
-        style={styles.map}
-        showsUserLocation={true}
-        provider={PROVIDER_GOOGLE}
-        customMapStyle={Mapstyle}
-        onMapReady={jumpToPointOfInterest}
-      >
-        {showtours &&
-          filterTours(tourfilter).map((tour, tourIndex) => (
-            <>
-              <Polyline
-                key={`polyline-${tourIndex}`}
-                coordinates={tour.coordinates.map((coordinate) => ({
-                  latitude: coordinate[1],
-                  longitude: coordinate[0],
-                }))}
-                strokeWidth={4}
-              />
-              {tour.coordinates.map((coordinate, markerIndex) => (
-                <Marker
-                  key={`marker-${tourIndex}-${markerIndex}`}
-                  coordinate={{
-                    latitude: coordinate[1],
-                    longitude: coordinate[0],
-                  }}
-                  title={tour.name}
-                  description={tour.name}
-                />
-              ))}
-            </>
-          ))}
-        {filterMarkers(filter).map((poi, index) => {
-          return (
-            <Marker
-              id={index}
-              ref={(ref) => (markerRef.current[index] = ref)}
-              key={index}
-              coordinate={{
-                latitude: poi.map.lat,
-                longitude: poi.map.lng,
-              }}
-              
-              
+          </MapView>
+          <View style={styles.filterButtonContainer}>
+            <TouchableOpacity
+              style={
+                filter === "vineyard"
+                  ? styles.filterButtonActive
+                  : styles.filterButton
+              }
               onPress={() => {
-                handleCarouselSnap(index);
-                handleMarkerPress(index);
+                filter !== "vineyard"
+                  ? setFilter("vineyard")
+                  : setFilter("all");
               }}
             >
-              
-              <Image source={poi.logo ? { uri: poi.logo } : Placeholder} style={styles.markerimage} />
-              <View style={{backgroundColor:'white',height:40,position:'absolute'}}></View>
-            
-
-              
-              <Callout style={styles.callout}>
-                <Text>{poi.title}</Text>
-              </Callout>
-            </Marker>
-          );
-        })}
-      </MapView>
-      <View style={styles.filterButtonContainer}>
-        <TouchableOpacity
-          style={
-            filter === "vineyard"
-              ? styles.filterButtonActive
-              : styles.filterButton
-          }
-          onPress={() => {
-            filter !== "vineyard" ? setFilter("vineyard") : setFilter("all");
-          }}
-        >
-          <Text style={styles.buttonText}>
-            <MaterialIcons name="wine-bar" size={28} color="#FFF" />
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={
-            filter === "sight" ? styles.filterButtonActive : styles.filterButton
-          }
-          onPress={() => {
-            filter !== "sight" ? setFilter("sight") : setFilter("all");
-          }}
-        >
-          <Text style={styles.buttonText}>
-            <MaterialIcons name="wb-shade" size={28} color="#FFF" />
-          </Text>
-        </TouchableOpacity>
-        <QRScanner onQRCodeScanned={handleQRCodeScanned} />
-        <TouchableOpacity style={styles.filterButton} onPress={openModal}>
-          <Text style={styles.buttonText}>
-            <MaterialIcons name="search" size={28} color="#FFF" />
-          </Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.carousel}>
-        <TouchableOpacity style={styles.button} onPress={handleResetLocation}>
-          <Text style={styles.buttonText}>
-            <MaterialIcons name="my-location" size={28} color="#FFF" />
-          </Text>
-        </TouchableOpacity>
-        <Carousel
-          ref={carouselRef}
-          layout="default"
-          
-          data={filterMarkers(filter).filter(
-            (poi) => poi.map.lat !== undefined
-          )}
-          renderItem={({ item, index }) => {
-            return (
-              <View key={index} style={styles.slide}>
-                <View style={styles.slideContent}>
-                  <Image style={styles.image} source={{ uri: item.logo }} />
-                  <View style={styles.textContainer}>
-                    <Text style={styles.text}>{item.title}</Text>
-                    <Text style={styles.text}>{"description"}</Text>
+              <Text style={styles.buttonText}>
+                <MaterialIcons name="wine-bar" size={28} color="#FFF" />
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={
+                filter === "sight"
+                  ? styles.filterButtonActive
+                  : styles.filterButton
+              }
+              onPress={() => {
+                filter !== "sight" ? setFilter("sight") : setFilter("all");
+              }}
+            >
+              <Text style={styles.buttonText}>
+                <MaterialIcons name="wb-shade" size={28} color="#FFF" />
+              </Text>
+            </TouchableOpacity>
+            <QRScanner onQRCodeScanned={handleQRCodeScanned} />
+            <TouchableOpacity style={styles.filterButton} onPress={openModal}>
+              <Text style={styles.buttonText}>
+                <MaterialIcons name="search" size={28} color="#FFF" />
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.carousel}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={handleResetLocation}
+            >
+              <Text style={styles.buttonText}>
+                <MaterialIcons name="my-location" size={28} color="#FFF" />
+              </Text>
+            </TouchableOpacity>
+            <Carousel
+              ref={carouselRef}
+              layout="default"
+              data={filterMarkers(filter).filter(
+                (poi) => poi.map.lat !== undefined
+              )}
+              renderItem={({ item, index }) => {
+                return (
+                  <View key={index} style={styles.slide}>
+                    <View style={styles.slideContent}>
+                      <Image style={styles.image} source={{ uri: item.logo }} />
+                      <View style={styles.textContainer}>
+                        <Text style={styles.text}>{item.title}</Text>
+                        <Text style={styles.text}>{"description"}</Text>
+                      </View>
+                    </View>
                   </View>
-                </View>
-              </View>
-            );
-          }}
-          sliderWidth={width}
-          itemWidth={width}
-          onSnapToItem={(index) => {handleCarouselSnap(index)}}
-        />
-      </View>
-      </View>
-      }
-      
+                );
+              }}
+              sliderWidth={width}
+              itemWidth={width}
+              onSnapToItem={(index) => {
+                handleCarouselSnap(index);
+              }}
+            />
+          </View>
+        </View>
+      )}
     </View>
   );
 };
