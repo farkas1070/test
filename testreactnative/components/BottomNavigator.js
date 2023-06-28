@@ -62,16 +62,7 @@ const BottomNavigator = () => {
           ),
         }}
       />
-      <Tab.Screen
-        name="Térkép"
-        component={Map}
-        options={{
-          tabBarIcon: () => (
-            <Ionicons name="map-outline" size={24} color="black" />
-          ),
-          headerShown: false,
-        }}
-      />
+      
       <Tab.Screen
         name="Események"
         component={Events}
@@ -105,6 +96,16 @@ const BottomNavigator = () => {
                 }} />
             </View>
           ),
+        }}
+      />
+      <Tab.Screen
+        name="Térkép"
+        component={Map}
+        options={{
+          tabBarIcon: () => (
+            <Ionicons name="map-outline" size={24} color="black" />
+          ),
+          headerShown: false,
         }}
       />
       <Tab.Screen
