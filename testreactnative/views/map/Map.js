@@ -28,6 +28,7 @@ import QRScanner from "./components/QRScanner";
 import { tours } from "./Winetours";
 import LoadingComponent from "./components/LoadingComponent";
 import Placeholder from "../../assets/placeholder.png"
+
 const Map = () => {
   const mapRef = useRef(null);
   const markerRef = useRef([]);
@@ -268,7 +269,11 @@ const Map = () => {
                 handleMarkerPress(index);
               }}
             >
-              <Image source={{uri:poi.logo}} style={styles.markerimage} />
+              
+              <Image source={poi.logo ? { uri: poi.logo } : Placeholder} style={styles.markerimage} />
+              
+            
+              
               <Callout style={styles.callout}>
                 <Text>{poi.title}</Text>
               </Callout>

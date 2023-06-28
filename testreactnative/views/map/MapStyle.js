@@ -133,6 +133,9 @@ export const styles = StyleSheet.create({
     borderRadius:20,
     borderColor:'white',
     borderWidth:3,
+    marginBottom:10,
+    transform: [{ translateY: -10 }]
+    
     
   }
 });
