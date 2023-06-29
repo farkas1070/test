@@ -208,7 +208,7 @@ const Map = () => {
             openModal={openModal}
             handleQRCodeScanned={handleQRCodeScanned}
           />
-          {showCurrentWineTour && <CurrentWineTour/>}
+          {showCurrentWineTour && <CurrentWineTour  />}
           
 
           <MapCarousel
