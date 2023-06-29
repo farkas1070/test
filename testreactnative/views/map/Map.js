@@ -1,23 +1,17 @@
 import {
   View,
-  TouchableOpacity,
-  Text,
-  Image,
   useWindowDimensions,
-  Modal,
 } from "react-native";
 import React, { useState, useEffect, useRef, useContext } from "react";
 import * as Location from "expo-location";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import Carousel from "react-native-snap-carousel-v4";
 import { styles } from "./MapStyle";
 import { WineriesContext } from "../../context/PointOfInterestContext.js";
-import QRScanner from "./components/QRScanner";
 import { tours } from "./Winetours";
 import LoadingComponent from "./components/LoadingComponent";
 import MapViewContainer from "./components/MapViewContainer";
-import ToursModal from "./components/ToursModal"
 import MapCarousel from "./components/MapCarousel";
+import ToursModal from "./components/ToursModal";
+import FilterButtons from "./components/FilterButtons";
 
 const Map = () => {
   const mapRef = useRef(null);
@@ -177,8 +171,15 @@ const Map = () => {
         <LoadingComponent />
       ) : (
         <View style={styles.container}>
-           <ToursModal modalVisible={modalVisible} closeModal={closeModal} tours={tours} setTourFilter={setTourFilter} showTours={showtours} setShowTours={setShowTours}/>
-         
+          <ToursModal
+            modalVisible={modalVisible}
+            closeModal={closeModal}
+            tours={tours}
+            setTourFilter={setTourFilter}
+            showTours={showtours}
+            setShowTours={setShowTours}
+          />
+
           <MapViewContainer
             mapRef={mapRef}
             markerRef={markerRef}
@@ -194,48 +195,15 @@ const Map = () => {
             setCurrentLongDelta={setCurrentLongDelta}
           />
 
+          <FilterButtons
+            filter={filter}
+            setFilter={setFilter}
+            openModal={openModal}
+            handleQRCodeScanned={handleQRCodeScanned}
+          />
+
+
          
-
-          
-
-          <View style={styles.filterButtonContainer}>
-            <TouchableOpacity
-              style={
-                filter === "vineyard"
-                  ? styles.filterButtonActive
-                  : styles.filterButton
-              }
-              onPress={() => {
-                filter !== "vineyard"
-                  ? setFilter("vineyard")
-                  : setFilter("all");
-              }}
-            >
-              <Text style={styles.buttonText}>
-                <MaterialIcons name="wine-bar" size={28} color="#FFF" />
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={
-                filter === "sight"
-                  ? styles.filterButtonActive
-                  : styles.filterButton
-              }
-              onPress={() => {
-                filter !== "sight" ? setFilter("sight") : setFilter("all");
-              }}
-            >
-              <Text style={styles.buttonText}>
-                <MaterialIcons name="wb-shade" size={28} color="#FFF" />
-              </Text>
-            </TouchableOpacity>
-            <QRScanner onQRCodeScanned={handleQRCodeScanned} />
-            <TouchableOpacity style={styles.filterButton} onPress={openModal}>
-              <Text style={styles.buttonText}>
-                <MaterialIcons name="search" size={28} color="#FFF" />
-              </Text>
-            </TouchableOpacity>
-          </View>
           <MapCarousel
             data={filterMarkers(filter)}
             activeMarkerIndex={activeMarkerIndex}
@@ -245,6 +213,8 @@ const Map = () => {
             handleResetLocation={handleResetLocation}
             width={width}
           />
+
+          
         </View>
       )}
     </View>

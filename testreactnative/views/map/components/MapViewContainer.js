@@ -75,18 +75,13 @@ const MapViewContainer = ({
               handleCarouselSnap(index);
               handleMarkerPress(index);
             }}
+            
           >
             <Image
               source={poi.logo ? { uri: poi.logo } : Placeholder}
               style={styles.markerimage}
             />
-            <View
-              style={{
-                backgroundColor: "white",
-                height: 40,
-                position: "absolute",
-              }}
-            ></View>
+            
             <Callout style={styles.callout} tooltip={true}>
               <Text>{poi.title}</Text>
             </Callout>

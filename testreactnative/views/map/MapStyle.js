@@ -46,11 +46,7 @@ export const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderBottomLeftRadius: 20,
   },
-  buttonText: {
-    color: "white",
-    fontSize: 16,
-    fontWeight: "bold",
-  },
+  
   callout: {
     width: 125,
     height: 75,
@@ -60,25 +56,8 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  filterButtonContainer: {
-    position: "absolute",
-    top: 50,
-    left: 15,
-  },
-  filterButton: {
-    backgroundColor: "#007",
-    borderRadius: 40,
-    paddingVertical: 5,
-    paddingHorizontal: 5,
-    marginBottom: 10,
-  },
-  filterButtonActive: {
-    backgroundColor: "#007AFF",
-    borderRadius: 40,
-    paddingVertical: 5,
-    paddingHorizontal: 5,
-    marginBottom: 10,
-  },
+  
+  
   
   
  
