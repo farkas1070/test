@@ -39,11 +39,12 @@ const MapCarousel = ({
       </TouchableOpacity>
       <Carousel
         ref={carouselRef}
-        layout="default"
         data={data}
         renderItem={renderItem}
         sliderWidth={width}
         itemWidth={width}
+        inactiveSlideOpacity={1}
+        useScrollView={true}
         onSnapToItem={(index) => {
           handleCarouselSnap(index);
         }}
