@@ -210,6 +210,7 @@ const Map = () => {
               currentTour={currentTour}
               setShowTours={setShowTours}
               setCurrentTour={setCurrentTour}
+              setShowCurrentWineTour={setShowCurrentWineTour}
             />
           )}
 
