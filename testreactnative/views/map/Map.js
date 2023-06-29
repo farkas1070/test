@@ -18,6 +18,7 @@ import QRScanner from "./components/QRScanner";
 import { tours } from "./Winetours";
 import LoadingComponent from "./components/LoadingComponent";
 import MapViewContainer from "./components/MapViewContainer";
+import MapCarousel from "./components/MapCarousel";
 
 const Map = () => {
   const mapRef = useRef(null);
@@ -275,41 +276,15 @@ const Map = () => {
               </Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.carousel}>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={handleResetLocation}
-            >
-              <Text style={styles.buttonText}>
-                <MaterialIcons name="my-location" size={28} color="#FFF" />
-              </Text>
-            </TouchableOpacity>
-            <Carousel
-              ref={carouselRef}
-              layout="default"
-              data={filterMarkers(filter).filter(
-                (poi) => poi.map.lat !== undefined
-              )}
-              renderItem={({ item, index }) => {
-                return (
-                  <View key={index} style={styles.slide}>
-                    <View style={styles.slideContent}>
-                      <Image style={styles.image} source={{ uri: item.logo }} />
-                      <View style={styles.textContainer}>
-                        <Text style={styles.text}>{item.title}</Text>
-                        <Text style={styles.text}>{"description"}</Text>
-                      </View>
-                    </View>
-                  </View>
-                );
-              }}
-              sliderWidth={width}
-              itemWidth={width}
-              onSnapToItem={(index) => {
-                handleCarouselSnap(index);
-              }}
-            />
-          </View>
+          <MapCarousel
+            data={filterMarkers(filter)}
+            activeMarkerIndex={activeMarkerIndex}
+            handleMarkerPress={handleMarkerPress}
+            carouselRef={carouselRef}
+            handleCarouselSnap={handleCarouselSnap}
+            handleResetLocation={handleResetLocation}
+            width={width}
+          />
         </View>
       )}
     </View>
