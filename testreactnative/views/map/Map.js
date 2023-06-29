@@ -7,26 +7,17 @@ import {
   Modal,
 } from "react-native";
 import React, { useState, useEffect, useRef, useContext } from "react";
-import MapView, {
-  Marker,
-  Callout,
-  PROVIDER_GOOGLE,
-  Polyline,
-} from "react-native-maps";
-
 import * as Location from "expo-location";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Carousel from "react-native-snap-carousel-v4";
 import { styles } from "./MapStyle";
-import { Mapstyle } from "./CustomMapStyle";
 import VineyardImage from "../../assets/marker.png";
 import SightImage from "../../assets/yellowmarker.png";
-import ActiveMarker from "../../assets/active_marker.png";
 import { WineriesContext } from "../../context/PointOfInterestContext.js";
 import QRScanner from "./components/QRScanner";
 import { tours } from "./Winetours";
 import LoadingComponent from "./components/LoadingComponent";
-import Placeholder from "../../assets/placeholder.png";
+import MapViewContainer from "./components/MapViewContainer";
 
 const Map = () => {
   const mapRef = useRef(null);
@@ -232,77 +223,20 @@ const Map = () => {
               </View>
             </View>
           </Modal>
-
-          <MapView
-            ref={mapRef}
-            style={styles.map}
-            showsUserLocation={true}
-            provider={PROVIDER_GOOGLE}
-            customMapStyle={Mapstyle}
-            onMapReady={jumpToPointOfInterest}
-            onRegionChangeComplete={async (region) => {
-              setCurrentLatDelta(region.latitudeDelta);
-              setCurrentLongDelta(region.longitudeDelta);
-            }}
-          >
-            {showtours &&
-              filterTours(tourfilter).map((tour, tourIndex) => (
-                <>
-                  <Polyline
-                    key={`polyline-${tourIndex}`}
-                    coordinates={tour.coordinates.map((coordinate) => ({
-                      latitude: coordinate[1],
-                      longitude: coordinate[0],
-                    }))}
-                    strokeWidth={4}
-                  />
-                  {tour.coordinates.map((coordinate, markerIndex) => (
-                    <Marker
-                      key={`marker-${tourIndex}-${markerIndex}`}
-                      coordinate={{
-                        latitude: coordinate[1],
-                        longitude: coordinate[0],
-                      }}
-                      title={tour.name}
-                      description={tour.name}
-                    />
-                  ))}
-                </>
-              ))}
-            {filterMarkers(filter).map((poi, index) => {
-              return (
-                <Marker
-                  id={index}
-                  ref={(ref) => (markerRef.current[index] = ref)}
-                  key={index}
-                  coordinate={{
-                    latitude: poi.map.lat,
-                    longitude: poi.map.lng,
-                  }}
-                  onPress={() => {
-                    handleCarouselSnap(index);
-                    handleMarkerPress(index);
-                  }}
-                >
-                  <Image
-                    source={poi.logo ? { uri: poi.logo } : Placeholder}
-                    style={styles.markerimage}
-                  />
-                  <View
-                    style={{
-                      backgroundColor: "white",
-                      height: 40,
-                      position: "absolute",
-                    }}
-                  ></View>
-
-                  <Callout style={styles.callout} tooltip={true}>
-                    <Text>{poi.title}</Text>
-                  </Callout>
-                </Marker>
-              );
-            })}
-          </MapView>
+          <MapViewContainer
+            mapRef={mapRef}
+            markerRef={markerRef}
+            jumpToPointOfInterest={jumpToPointOfInterest}
+            showtours={showtours}
+            filterTours={filterTours}
+            tourfilter={tourfilter}
+            filterMarkers={filterMarkers}
+            filter={filter}
+            handleCarouselSnap={handleCarouselSnap}
+            handleMarkerPress={handleMarkerPress}
+            setCurrentLatDelta={setCurrentLatDelta}
+            setCurrentLongDelta={setCurrentLongDelta}
+          />
           <View style={styles.filterButtonContainer}>
             <TouchableOpacity
               style={
