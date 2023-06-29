@@ -11,13 +11,14 @@ import * as Location from "expo-location";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Carousel from "react-native-snap-carousel-v4";
 import { styles } from "./MapStyle";
-import VineyardImage from "../../assets/marker.png";
-import SightImage from "../../assets/yellowmarker.png";
 import { WineriesContext } from "../../context/PointOfInterestContext.js";
 import QRScanner from "./components/QRScanner";
 import { tours } from "./Winetours";
 import LoadingComponent from "./components/LoadingComponent";
 import MapViewContainer from "./components/MapViewContainer";
+import ToursModal from "./components/ToursModal"
+
+
 
 const Map = () => {
   const mapRef = useRef(null);
@@ -34,6 +35,7 @@ const Map = () => {
     latitudeDelta: 0.1,
     longitudeDelta: 0.1,
   });
+
   const [filter, setFilter] = useState("all");
   const [tourfilter, setTourFilter] = useState("None");
   const [modalVisible, setModalVisible] = useState(false);
@@ -67,15 +69,6 @@ const Map = () => {
   const handleQRCodeScanned = (data) => {
     console.log("QR kód értéke:", data);
   };
-
-  function returnMarkerIcon(type) {
-    switch (type) {
-      case "sight":
-        return SightImage;
-      case "wineries":
-        return VineyardImage;
-    }
-  }
 
   const filterMarkers = (type) => {
     if (type === "sight") {
@@ -185,44 +178,8 @@ const Map = () => {
         <LoadingComponent />
       ) : (
         <View style={styles.container}>
-          <Modal
-            statusBarTranslucent={true}
-            visible={modalVisible}
-            transparent
-            animationType="fade"
-          >
-            <View style={styles.modalContainer}>
-              <TouchableOpacity style={styles.modalButton} onPress={closeModal}>
-                <MaterialIcons name="close" size={28} color="#FFF" />
-              </TouchableOpacity>
-              <View style={styles.modalContent}>
-                <Text style={styles.borturatext}>Bortúrák</Text>
-                {tours.map((tour, index) => {
-                  return (
-                    <TouchableOpacity
-                      key={index}
-                      style={styles.modalbutton}
-                      onPress={() => {
-                        setTourFilter(tour.name);
-                        closeModal();
-                        if (!showtours) {
-                          setShowTours(true);
-                        }
-                      }}
-                    >
-                      <View style={styles.tourcard}>
-                        <Image
-                          style={styles.tourimage}
-                          source={{ uri: tour.logo }}
-                        />
-                        <Text style={styles.tourtext}>{tour.name}</Text>
-                      </View>
-                    </TouchableOpacity>
-                  );
-                })}
-              </View>
-            </View>
-          </Modal>
+           <ToursModal modalVisible={modalVisible} closeModal={closeModal} tours={tours} setTourFilter={setTourFilter} showTours={showtours} setShowTours={setShowTours}/>
+         
           <MapViewContainer
             mapRef={mapRef}
             markerRef={markerRef}
@@ -237,6 +194,11 @@ const Map = () => {
             setCurrentLatDelta={setCurrentLatDelta}
             setCurrentLongDelta={setCurrentLongDelta}
           />
+
+         
+
+          
+
           <View style={styles.filterButtonContainer}>
             <TouchableOpacity
               style={
