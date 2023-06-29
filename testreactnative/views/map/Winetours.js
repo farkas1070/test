@@ -1,6 +1,8 @@
 export const tours = [
   {
-    name: "tura1",
+    name: "Soproni Kör",
+    duration:'6 óra',
+    tour_mode:'gyalogos',
     logo:'https://img.freepik.com/premium-vector/wine-logo-vector-template_10250-25.jpg?w=2000',
     coordinates: [
       [16.594073961110723, 47.67724885870879],
@@ -24,6 +26,8 @@ export const tours = [
   },
   {
     name: "tura2",
+    duration:'4 óra',
+    tour_mode:'bicikli',
     logo:'https://img.freepik.com/premium-vector/wine-logo-vector-template_10250-21.jpg?w=2000',
     coordinates: [
       [16.592785148543072, 47.687077432559505],
@@ -58,6 +62,8 @@ export const tours = [
   },
   {
     name: "tura3",
+    duration:'8 óra',
+    tour_mode:'gyalogos',
     logo:'https://media.istockphoto.com/id/1039837976/vector/wine-bar-design-template-red-and-white-wine-glasses.jpg?s=612x612&w=0&k=20&c=OD9K2EIxS1cEEGkWEs41OBbE1gJMXXnNH6c9jc8zH3w=',
     coordinates: [
       [16.588340807343428, 47.683001815343545],
