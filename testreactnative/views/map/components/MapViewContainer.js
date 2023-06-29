@@ -10,6 +10,7 @@ import Placeholder from "../../../assets/placeholder.png";
 import { Mapstyle } from "../CustomMapStyle";
 import { styles } from "./MapViewContainerStyle";
 
+
 const MapViewContainer = ({
   mapRef,
   markerRef,
@@ -24,6 +25,7 @@ const MapViewContainer = ({
   setCurrentLatDelta,
   setCurrentLongDelta,
 }) => {
+
   return (
     <MapView
       ref={mapRef}
@@ -76,12 +78,13 @@ const MapViewContainer = ({
               handleCarouselSnap(index);
               handleMarkerPress(index);
             }}
+            
           >
             <Image
               source={poi.logo ? { uri: poi.logo } : Placeholder}
               style={styles.markerimage}
             />
-
+            
             <Callout style={styles.callout} tooltip={true}>
               <Text>{poi.title}</Text>
             </Callout>

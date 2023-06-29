@@ -1,5 +1,5 @@
 import { View, useWindowDimensions } from "react-native";
-import React, { useState, useEffect, useRef, useContext, useMemo } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import * as Location from "expo-location";
 import { styles } from "./MapStyle";
 import { WineriesContext } from "../../context/PointOfInterestContext.js";
@@ -73,7 +73,6 @@ const Map = () => {
       return pointsOfInterest.filter((point) => point.map.lat !== undefined);
     }
   };
-  const filteredMarkers = useMemo(() => filterMarkers(filter), [filter]);
 
   const filterTours = (name) => {
     if (name === "None") {
@@ -82,7 +81,6 @@ const Map = () => {
       return tours.filter((tour) => tour.name === name);
     }
   };
-  const filteredTours = useMemo(() => filterTours(tourfilter), [tourfilter]);
 
   useEffect(() => {
     (async () => {
@@ -132,7 +130,7 @@ const Map = () => {
   useEffect(() => {
     const jumpToCurrentTour = () => {
       if (tours.length > 0 && mapRef.current) {
-        const tour = filteredTours[0];
+        const tour = filterTours(tourfilter)[0]; // Az első túrát választjuk ki, módosítsd igény szerint
         if (tour) {
           setCurrentTour(tour);
           const coordinates = tour.coordinates.map((coordinate) => ({
@@ -156,8 +154,8 @@ const Map = () => {
     markerRef.current[index].showCallout();
     setTimeout(() => {
       mapRef.current.animateToRegion({
-        latitude: filteredMarkers[index].map.lat,
-        longitude: filteredMarkers[index].map.lng,
+        latitude: filterMarkers(filter)[index].map.lat,
+        longitude: filterMarkers(filter)[index].map.lng,
         latitudeDelta: currentLatDelta,
         longitudeDelta: currentLongDelta,
       });
