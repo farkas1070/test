@@ -208,7 +208,11 @@ const Map = () => {
           />
 
           {showCurrentWineTour && currentTour && (
-            <CurrentWineTour currentTour={currentTour} />
+            <CurrentWineTour
+              currentTour={currentTour}
+              setShowTours={setShowTours}
+              setCurrentTour={setCurrentTour}
+            />
           )}
 
           <MapCarousel

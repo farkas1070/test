@@ -3,14 +3,20 @@ import React from "react";
 import { styles } from "./CurrentWineTourStyle";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-const CurrentWineTour = ({ currentTour }) => {
+const CurrentWineTour = ({ currentTour, setShowTours, setCurrentTour }) => {
   return (
     <View style={styles.maincontainer}>
       <View style={styles.container}>
         <Text style={styles.buttonText}>
           Jelenlegi Bortúra: {currentTour.name}
         </Text>
-        <TouchableOpacity style={styles.cancelbutton}>
+        <TouchableOpacity
+          style={styles.cancelbutton}
+          onPress={() => {
+            setShowTours(false);
+            setCurrentTour(null);
+          }}
+        >
           <MaterialCommunityIcons name="cancel" size={24} color="black" />
         </TouchableOpacity>
       </View>

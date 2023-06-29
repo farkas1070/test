@@ -4,7 +4,7 @@ import { styles } from "./ToursModalStyle";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { useNavigation } from "@react-navigation/native";
 
-const ToursModal = ({ modalVisible, closeModal, tours, handleshowTour}) => {
+const ToursModal = ({ modalVisible, closeModal, tours, handleshowTour }) => {
   const navigation = useNavigation();
   return (
     <Modal
