@@ -1,6 +1,6 @@
 export const tours = [
   {
-    name: "Soproni Kör",
+    name: "Borozás a Csengery Utcán",
     duration:'6 óra',
     tour_mode:'gyalogos',
     logo:'https://img.freepik.com/premium-vector/wine-logo-vector-template_10250-25.jpg?w=2000',
@@ -61,7 +61,7 @@ export const tours = [
     ],
   },
   {
-    name: "tura3",
+    name: "Soproni Kör",
     duration:'8 óra',
     tour_mode:'gyalogos',
     logo:'https://media.istockphoto.com/id/1039837976/vector/wine-bar-design-template-red-and-white-wine-glasses.jpg?s=612x612&w=0&k=20&c=OD9K2EIxS1cEEGkWEs41OBbE1gJMXXnNH6c9jc8zH3w=',

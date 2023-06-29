@@ -44,7 +44,7 @@ const MapViewContainer = ({
         filterTours(tourfilter).map((tour, tourIndex) => (
           <>
             <Polyline
-              key={`polyline-${tourIndex}`}
+              key={tourIndex}
               coordinates={tour.coordinates.map((coordinate) => ({
                 latitude: coordinate[1],
                 longitude: coordinate[0],
@@ -53,7 +53,7 @@ const MapViewContainer = ({
             />
             {tour.coordinates.map((coordinate, markerIndex) => (
               <Marker
-                key={`marker-${tourIndex}-${markerIndex}`}
+                key={markerIndex}
                 coordinate={{
                   latitude: coordinate[1],
                   longitude: coordinate[0],
@@ -67,7 +67,7 @@ const MapViewContainer = ({
       {filterMarkers(filter).map((poi, index) => {
         return (
           <Marker
-            id={index}
+            index={index}
             ref={(ref) => (markerRef.current[index] = ref)}
             key={index}
             coordinate={{

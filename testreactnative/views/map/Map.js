@@ -172,6 +172,7 @@ const Map = () => {
       setShowTours(true);
     }
   };
+  
 
   return (
     <View style={styles.container}>
@@ -207,9 +208,10 @@ const Map = () => {
             openModal={openModal}
             handleQRCodeScanned={handleQRCodeScanned}
           />
-          {showCurrentWineTour && 
+          {showCurrentWineTour && currentTour &&
           <CurrentWineTour
           currentTour={currentTour}
+          
           />}
 
           <MapCarousel

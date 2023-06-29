@@ -11,8 +11,13 @@ import DrawerNavigator from "./DrawerNavigation";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
+
 const Stack = createNativeStackNavigator();
+
 const StackNavigator = () => {
+
+  
+
   const navigation = useNavigation();
 
   const openMenu = () => {
@@ -30,6 +35,7 @@ const StackNavigator = () => {
         options={{
           headerTintColor: "black",
           headerTitleAlign: "center",
+          
           headerTitleStyle: {
             textAlign: "center",
           },

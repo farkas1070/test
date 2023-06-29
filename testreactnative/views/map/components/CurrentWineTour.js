@@ -8,7 +8,7 @@ const CurrentWineTour = ({currentTour}) => {
     <View style={styles.maincontainer}>
       <View style={styles.container}>
         <Text style={styles.buttonText}>Jelenlegi Bortúra: {currentTour.name}</Text>
-        <TouchableOpacity style={styles.cancelbutton}>
+        <TouchableOpacity style={styles.cancelbutton} >
           <MaterialCommunityIcons name="cancel" size={24} color="black" />
         </TouchableOpacity>
       </View>
