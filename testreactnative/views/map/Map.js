@@ -169,7 +169,6 @@ const Map = () => {
       setShowTours(true);
     }
   };
-  
 
   return (
     <View style={styles.container}>
@@ -206,14 +205,9 @@ const Map = () => {
             handleQRCodeScanned={handleQRCodeScanned}
           />
 
-          {showCurrentWineTour && currentTour &&
-          <CurrentWineTour
-          currentTour={currentTour}
-          
-          />}
-
-          
-
+          {showCurrentWineTour && currentTour && (
+            <CurrentWineTour currentTour={currentTour} />
+          )}
 
           <MapCarousel
             data={filterMarkers(filter)}

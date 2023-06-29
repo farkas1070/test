@@ -48,6 +48,7 @@ export const styles = StyleSheet.create({
   },
   tourtext: {
     marginLeft: 20,
+    width: "35%",
   },
   tourContent: {
     flexDirection: "row",

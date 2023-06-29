@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Image, Text } from "react-native";
+import { Image, Text } from "react-native";
 import MapView, {
   Marker,
   Callout,
@@ -9,7 +9,6 @@ import MapView, {
 import Placeholder from "../../../assets/placeholder.png";
 import { Mapstyle } from "../CustomMapStyle";
 import { styles } from "./MapViewContainerStyle";
-
 
 const MapViewContainer = ({
   mapRef,
@@ -25,7 +24,6 @@ const MapViewContainer = ({
   setCurrentLatDelta,
   setCurrentLongDelta,
 }) => {
-
   return (
     <MapView
       ref={mapRef}
@@ -78,13 +76,12 @@ const MapViewContainer = ({
               handleCarouselSnap(index);
               handleMarkerPress(index);
             }}
-            
           >
             <Image
               source={poi.logo ? { uri: poi.logo } : Placeholder}
               style={styles.markerimage}
             />
-            
+
             <Callout style={styles.callout} tooltip={true}>
               <Text>{poi.title}</Text>
             </Callout>
