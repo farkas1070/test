@@ -11,7 +11,6 @@ import ToursModal from "./components/ToursModal";
 import FilterButtons from "./components/FilterButtons";
 import CurrentWineTour from "./components/CurrentWineTour";
 
-
 const Map = () => {
   const mapRef = useRef(null);
   const markerRef = useRef([]);
@@ -165,14 +164,14 @@ const Map = () => {
       });
     }, 100);
   };
-  const handleshowTour=(tour)=>{
-    setShowCurrentWineTour(true)
+  const handleshowTour = (tour) => {
+    setShowCurrentWineTour(true);
     setTourFilter(tour.name);
     closeModal();
     if (!showtours) {
       setShowTours(true);
     }
-  }
+  };
 
   return (
     <View style={styles.container}>
@@ -208,8 +207,10 @@ const Map = () => {
             openModal={openModal}
             handleQRCodeScanned={handleQRCodeScanned}
           />
-          {showCurrentWineTour && <CurrentWineTour  />}
-          
+          {showCurrentWineTour && 
+          <CurrentWineTour
+          currentTour={currentTour}
+          />}
 
           <MapCarousel
             data={filterMarkers(filter)}
