@@ -19,22 +19,19 @@ const Map = () => {
   const [activeMarkerIndex, setActiveMarkerIndex] = useState(0);
   const [pointsOfInterest, setpointsOfInterest] = useContext(WineriesContext);
   const [showtours, setShowTours] = useState(false);
-
-  const [position, setPosition] = useState({
-    latitude: 47.6828354,
-    longitude: 16.5813035,
-    latitudeDelta: 0.1,
-    longitudeDelta: 0.1,
-  });
-
   const [filter, setFilter] = useState("all");
   const [tourfilter, setTourFilter] = useState("None");
   const [modalVisible, setModalVisible] = useState(false);
   const [currentTour, setCurrentTour] = useState(null);
   const [currentLatDelta, setCurrentLatDelta] = useState(0.1);
   const [currentLongDelta, setCurrentLongDelta] = useState(0.1);
-
   const [showCurrentWineTour, setShowCurrentWineTour] = useState(false);
+  const [position, setPosition] = useState({
+    latitude: 47.6828354,
+    longitude: 16.5813035,
+    latitudeDelta: 0.1,
+    longitudeDelta: 0.1,
+  });
 
   const openModal = () => {
     setModalVisible(true);
@@ -208,11 +205,15 @@ const Map = () => {
             openModal={openModal}
             handleQRCodeScanned={handleQRCodeScanned}
           />
+
           {showCurrentWineTour && currentTour &&
           <CurrentWineTour
           currentTour={currentTour}
           
           />}
+
+          
+
 
           <MapCarousel
             data={filterMarkers(filter)}

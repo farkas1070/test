@@ -41,7 +41,7 @@ const FilterButtons = ({
       <QRScanner onQRCodeScanned={handleQRCodeScanned} />
       <TouchableOpacity style={styles.filterButton} onPress={openModal}>
         <Text style={styles.buttonText}>
-          <MaterialIcons name="search" size={28} color="#FFF" />
+          <MaterialIcons name="tour" size={28} color="#FFF" />
         </Text>
       </TouchableOpacity>
     </View>
