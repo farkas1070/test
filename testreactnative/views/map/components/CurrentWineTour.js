@@ -3,7 +3,7 @@ import React from "react";
 import { styles } from "./CurrentWineTourStyle";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-const CurrentWineTour = ({ currentTour, setShowTours, setCurrentTour }) => {
+const CurrentWineTour = ({ currentTour, setShowTours, setCurrentTour,jumpToPointOfInterest }) => {
   return (
     <View style={styles.maincontainer}>
       <View style={styles.container}>
@@ -15,6 +15,7 @@ const CurrentWineTour = ({ currentTour, setShowTours, setCurrentTour }) => {
           onPress={() => {
             setShowTours(false);
             setCurrentTour(null);
+            jumpToPointOfInterest();
           }}
         >
           <MaterialCommunityIcons name="cancel" size={24} color="black" />

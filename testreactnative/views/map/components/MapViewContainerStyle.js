@@ -139,6 +139,6 @@ export const styles = StyleSheet.create({
     borderColor:'white',
     borderWidth:3,
     marginBottom:10,
-    position:'relative'
+    
   }
 });
