@@ -1,7 +1,4 @@
-import {
-  View,
-  useWindowDimensions,
-} from "react-native";
+import { View, useWindowDimensions } from "react-native";
 import React, { useState, useEffect, useRef, useContext } from "react";
 import * as Location from "expo-location";
 import { styles } from "./MapStyle";
@@ -12,6 +9,8 @@ import MapViewContainer from "./components/MapViewContainer";
 import MapCarousel from "./components/MapCarousel";
 import ToursModal from "./components/ToursModal";
 import FilterButtons from "./components/FilterButtons";
+import CurrentWineTour from "./components/CurrentWineTour";
+
 
 const Map = () => {
   const mapRef = useRef(null);
@@ -35,6 +34,8 @@ const Map = () => {
   const [currentTour, setCurrentTour] = useState(null);
   const [currentLatDelta, setCurrentLatDelta] = useState(0.1);
   const [currentLongDelta, setCurrentLongDelta] = useState(0.1);
+
+  const [showCurrentWineTour, setShowCurrentWineTour] = useState(false);
 
   const openModal = () => {
     setModalVisible(true);
@@ -164,6 +165,14 @@ const Map = () => {
       });
     }, 100);
   };
+  const handleshowTour=(tour)=>{
+    setShowCurrentWineTour(true)
+    setTourFilter(tour.name);
+    closeModal();
+    if (!showtours) {
+      setShowTours(true);
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -175,9 +184,7 @@ const Map = () => {
             modalVisible={modalVisible}
             closeModal={closeModal}
             tours={tours}
-            setTourFilter={setTourFilter}
-            showTours={showtours}
-            setShowTours={setShowTours}
+            handleshowTour={handleshowTour}
           />
 
           <MapViewContainer
@@ -201,9 +208,9 @@ const Map = () => {
             openModal={openModal}
             handleQRCodeScanned={handleQRCodeScanned}
           />
+          {showCurrentWineTour && <CurrentWineTour/>}
+          
 
-
-         
           <MapCarousel
             data={filterMarkers(filter)}
             activeMarkerIndex={activeMarkerIndex}
@@ -213,8 +220,6 @@ const Map = () => {
             handleResetLocation={handleResetLocation}
             width={width}
           />
-
-          
         </View>
       )}
     </View>

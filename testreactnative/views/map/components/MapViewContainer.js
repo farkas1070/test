@@ -10,6 +10,7 @@ import Placeholder from "../../../assets/placeholder.png";
 import { Mapstyle } from "../CustomMapStyle";
 import { styles } from "./MapViewContainerStyle";
 
+
 const MapViewContainer = ({
   mapRef,
   markerRef,
@@ -24,10 +25,12 @@ const MapViewContainer = ({
   setCurrentLatDelta,
   setCurrentLongDelta,
 }) => {
+
   return (
     <MapView
       ref={mapRef}
       style={styles.map}
+      showsMyLocationButton={false}
       showsUserLocation={true}
       provider={PROVIDER_GOOGLE}
       customMapStyle={Mapstyle}

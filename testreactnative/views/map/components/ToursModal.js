@@ -8,7 +8,9 @@ import {
 import React from 'react'
 import {styles} from "./ToursModalStyle"
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-const ToursModal = ({modalVisible,closeModal,tours,setTourFilter,showtours,setShowTours}) => {
+
+
+const ToursModal = ({modalVisible,closeModal,tours,handleshowTour}) => {
   return (
     <Modal
             statusBarTranslucent={true}
@@ -27,13 +29,7 @@ const ToursModal = ({modalVisible,closeModal,tours,setTourFilter,showtours,setSh
                     <TouchableOpacity
                       key={index}
                       style={styles.modalbutton}
-                      onPress={() => {
-                        setTourFilter(tour.name);
-                        closeModal();
-                        if (!showtours) {
-                          setShowTours(true);
-                        }
-                      }}
+                      onPress={() => {handleshowTour(tour)}}
                     >
                       <View style={styles.tourcard}>
                         <Image

@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   filterButtonContainer: {
     position: "absolute",
-    top: 50,
+    top: 70,
     left: 15,
   },
   filterButton: {
