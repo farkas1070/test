@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import Carousel from "react-native-snap-carousel-v4";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { styles } from "./MapCarouselStyle";
-
+import Placeholder from "../../../assets/placeholder.png";
 const MapCarousel = ({
   data,
   activeMarkerIndex,
@@ -20,7 +20,7 @@ const MapCarousel = ({
         onPress={() => handleMarkerPress(index)}
       >
         <View style={styles.slideContent}>
-          <Image style={styles.image} source={{ uri: item.logo }} />
+          <Image style={styles.image} source={item.logo ? { uri: item.logo } : Placeholder} />
           <View style={styles.textContainer}>
             <Text style={styles.text}>{item.title}</Text>
             <Text style={styles.text}>{"description"}</Text>
