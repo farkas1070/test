@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Image, Text } from "react-native";
 import MapView, {
   Marker,
@@ -9,7 +9,6 @@ import MapView, {
 import Placeholder from "../../../assets/placeholder.png";
 import { Mapstyle } from "../CustomMapStyle";
 import { styles } from "./MapViewContainerStyle";
-
 
 const MapViewContainer = ({
   mapRef,
@@ -25,11 +24,7 @@ const MapViewContainer = ({
   setCurrentLatDelta,
   setCurrentLongDelta,
 }) => {
-  const [tracksViewChanges, setTracksViewChanges] = useState(true);
-
-  const stopRendering = () => {
-    setTracksViewChanges(false);
-  };
+  const [mapReady, setMapReady] = useState(false);
 
   return (
     <MapView
@@ -39,7 +34,7 @@ const MapViewContainer = ({
       showsUserLocation={true}
       provider={PROVIDER_GOOGLE}
       customMapStyle={Mapstyle}
-      onMapReady={jumpToPointOfInterest}
+      onMapReady={() => { setTimeout(() => { setMapReady(true); }, 1000); jumpToPointOfInterest() }}
       onRegionChangeComplete={async (region) => {
         setCurrentLatDelta(region.latitudeDelta);
         setCurrentLongDelta(region.longitudeDelta);
@@ -74,7 +69,6 @@ const MapViewContainer = ({
           <Marker
             key={index}
             ref={(ref) => (markerRef.current[index] = ref)}
-            
             coordinate={{
               latitude: poi.map.lat,
               longitude: poi.map.lng,
@@ -83,19 +77,15 @@ const MapViewContainer = ({
               handleCarouselSnap(index);
               handleMarkerPress(index);
             }}
-            tracksViewChanges={tracksViewChanges}
-            
+            tracksViewChanges={!mapReady}
 
             //image={poi.logo ? { uri: poi.logo } : Placeholder} kell megoldás hogy lehessen az imaget módosítani
-
           >
-            
             <Image
               source={poi.logo ? { uri: poi.logo } : Placeholder}
               style={styles.markerimage}
-              onLoad={stopRendering}
             />
-            
+
             <Callout style={styles.callout} tooltip={true}>
               <Text>{poi.title}</Text>
             </Callout>

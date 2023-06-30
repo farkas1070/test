@@ -3,11 +3,13 @@ import React from "react";
 import { styles } from "./CurrentWineTourStyle";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-
-
-
-const CurrentWineTour = ({ currentTour, setShowTours, setCurrentTour, setShowCurrentWineTour,jumpToPointOfInterest }) => {
-
+const CurrentWineTour = ({
+  currentTour,
+  setShowTours,
+  setCurrentTour,
+  setShowCurrentWineTour,
+  jumpToPointOfInterest,
+}) => {
   return (
     <View style={styles.maincontainer}>
       <View style={styles.container}>
@@ -20,8 +22,7 @@ const CurrentWineTour = ({ currentTour, setShowTours, setCurrentTour, setShowCur
             setShowTours(false);
             setCurrentTour(null);
             jumpToPointOfInterest();
-            setShowCurrentWineTour(false)
-
+            setShowCurrentWineTour(false);
           }}
         >
           <MaterialCommunityIcons name="cancel" size={24} color="black" />

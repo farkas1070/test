@@ -11,7 +11,6 @@ import ToursModal from "./components/ToursModal";
 import FilterButtons from "./components/FilterButtons";
 import CurrentWineTour from "./components/CurrentWineTour";
 
-
 const Map = () => {
   const mapRef = useRef(null);
   const markerRef = useRef([]);
@@ -27,7 +26,6 @@ const Map = () => {
   const [currentLatDelta, setCurrentLatDelta] = useState(0.1);
   const [currentLongDelta, setCurrentLongDelta] = useState(0.1);
   const [showCurrentWineTour, setShowCurrentWineTour] = useState(false);
- 
 
   const [position, setPosition] = useState({
     latitude: 47.6828354,
@@ -185,7 +183,6 @@ const Map = () => {
             tours={tours}
             handleshowTour={handleshowTour}
           />
-          
 
           <MapViewContainer
             mapRef={mapRef}
@@ -216,7 +213,6 @@ const Map = () => {
               setCurrentTour={setCurrentTour}
               jumpToPointOfInterest={jumpToPointOfInterest}
               setShowCurrentWineTour={setShowCurrentWineTour}
-
             />
           )}
 

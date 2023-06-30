@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image,TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import { styles } from "./TourInfoStyle";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -15,7 +15,12 @@ const TourInfo = ({ route }) => {
           source={{ uri: route.params.item.logo }}
         />
         <View style={styles.upperbuttonscontainer}>
-          <TouchableOpacity style={styles.backbutton} onPress={()=>{navigation.goBack();}}>
+          <TouchableOpacity
+            style={styles.backbutton}
+            onPress={() => {
+              navigation.goBack();
+            }}
+          >
             <MaterialCommunityIcons
               name="keyboard-backspace"
               size={24}
