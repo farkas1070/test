@@ -8,7 +8,8 @@ export const tours = [
     tour_mode:'gyalogos',
     logo:'https://reyeswinery.com/wp-content/uploads/2021/04/reyeswinery_slider1.jpg',
     length:'10 km',
-    coordinates: [
+    description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    sights: [
       [16.594073961110723, 47.67724885870879],
       [16.590089646522387, 47.678480230719146],
       [16.58362329989555, 47.68056909891254],
@@ -26,7 +27,8 @@ export const tours = [
     tour_mode:'bicikli',
     logo:'https://parissiswinery.com/wp-content/uploads/2022/01/parissis_winery_skiathos_greece-1.jpg',
     length:'5 km',
-    coordinates: [
+    description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    sights: [
       [16.592785148543072, 47.687077432559505],
       [16.59211130610032, 47.68657957292521],
       [16.59204197633943, 47.686529098191954],
@@ -43,7 +45,8 @@ export const tours = [
     tour_mode:'gyalogos',
     logo:'https://res.akamaized.net/domain/image/upload/t_web/c_crop,h_393,w_627,x_150,y_53/v1631241636/118115-56_ama7b5.jpg',
     length:'4 km',
-    coordinates: [
+    description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    sights: [
       [16.588340807343428, 47.683001815343545],
       [16.588551461184466, 47.68282593354584],
       [16.59027622173045, 47.68233157553695],
@@ -57,7 +60,7 @@ export const tours = [
 ];
 
 const data = {
-  coordinates: [
+  sights: [
     [16.594073961110723, 47.67724885870879],
     [16.590089646522387, 47.678480230719146],
     [16.58362329989555, 47.68056909891254],

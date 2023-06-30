@@ -15,6 +15,7 @@ export const getWineries = async () => {
   const data = await getDataByUrl(
     "https://soproniborvidek.nemethmark.com/wp-json/wp/v2/wineries?_embed&per_page=100"
   );
+  
 
   return data.map((item) => {
     return {

@@ -45,13 +45,13 @@ const MapViewContainer = ({
           <>
             <Polyline
               key={index}
-              coordinates={tour.coordinates.map((coordinate) => ({
+              coordinates={tour.sights.map((coordinate) => ({
                 latitude: coordinate[1],
                 longitude: coordinate[0],
               }))}
               strokeWidth={4}
             />
-            {tour.coordinates.map((coordinate, index) => (
+            {tour.sights.map((coordinate, index) => (
               <Marker
                 key={index}
                 coordinate={{

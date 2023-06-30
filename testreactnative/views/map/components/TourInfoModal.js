@@ -1,13 +1,18 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
-import { styles } from "./TourInfoStyle";
+import { View, Text, Image, TouchableOpacity ,Modal} from "react-native";
+import { styles } from "./TourInfoModalStyle";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 
-const TourInfo = ({ route }) => {
+const TourInfo = ({ TourInfoModalVisible,closeTourInfoModal, handleshowTour }) => {
   const navigation = useNavigation();
   return (
+    <Modal
+      statusBarTranslucent={true}
+      visible={TourInfoModalVisible}
+      transparent
+      animationType="fade"
+    >
     <View>
       <View style={styles.imagecontainer}>
         <Image
@@ -15,7 +20,12 @@ const TourInfo = ({ route }) => {
           source={{ uri: route.params.item.logo }}
         />
         <View style={styles.upperbuttonscontainer}>
-          <TouchableOpacity style={styles.backbutton} onPress={()=>{navigation.openDrawer();}}>
+          <TouchableOpacity
+            style={styles.backbutton}
+            onPress={() => {
+              navigation.goBack();
+            }}
+          >
             <MaterialCommunityIcons
               name="keyboard-backspace"
               size={24}
@@ -48,10 +58,31 @@ const TourInfo = ({ route }) => {
           </View>
         </View>
       </View>
-      <Text>{route.params.item.name}</Text>
-      <Text>{route.params.item.duration}</Text>
-      <Text>{route.params.item.tour_mode}</Text>
+      <View style={styles.bodycontainer}>
+        <View style={styles.descripioncontainer}>
+          <Text style={styles.descriptiontext}>
+            {route.params.item.description}
+          </Text>
+        </View>
+      </View>
+      <View style={styles.tourinfocontainer}>
+        <Text>Mi Van A Túrában?</Text>
+      </View>
+      <View style={styles.startbuttoncontainer}>
+        <TouchableOpacity
+          style={styles.startbutton}
+          onPress={() => {handleshowTour(route.params.item);}}
+        >
+          <MaterialCommunityIcons
+            name="map-marker-right"
+            size={24}
+            color="white"
+          />
+          <Text style={styles.starttext}>Indítás</Text>
+        </TouchableOpacity>
+      </View>
     </View>
+    </Modal>
   );
 };
 
