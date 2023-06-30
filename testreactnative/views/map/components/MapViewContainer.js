@@ -79,7 +79,7 @@ const MapViewContainer = ({
               handleMarkerPress(index);
             }}
 
-            
+            style={{width:50,height:50}}
 
             image={poi.logo ? { uri: poi.logo } : Placeholder} 
 
