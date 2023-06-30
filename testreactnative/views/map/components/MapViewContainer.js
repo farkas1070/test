@@ -78,7 +78,7 @@ const MapViewContainer = ({
               handleCarouselSnap(index);
               handleMarkerPress(index);
             }}
-            tracksViewChanges={false}
+            tracksViewChanges={poi.logo ? false : true}
             
 
             //image={poi.logo ? { uri: poi.logo } : Placeholder} kell megoldás hogy lehessen az imaget módosítani
