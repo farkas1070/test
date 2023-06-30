@@ -78,14 +78,17 @@ const MapViewContainer = ({
               handleCarouselSnap(index);
               handleMarkerPress(index);
             }}
+            tracksViewChanges={false}
+            
 
-            style={{width:50,height:50}}
-
-            image={poi.logo ? { uri: poi.logo } : Placeholder} 
+            //image={poi.logo ? { uri: poi.logo } : Placeholder} kell megoldás hogy lehessen az imaget módosítani
 
           >
             
-            
+            <Image
+              source={poi.logo ? { uri: poi.logo } : Placeholder}
+              style={styles.markerimage}
+            />
             
             <Callout style={styles.callout} tooltip={true}>
               <Text>{poi.title}</Text>
