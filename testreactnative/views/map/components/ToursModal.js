@@ -1,19 +1,11 @@
 import { View, TouchableOpacity, Text, Image, Modal } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import { styles } from "./ToursModalStyle";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import TourInfoModal from "./TourInfoModal";
+import { useNavigation } from "@react-navigation/native";
 
 const ToursModal = ({ modalVisible, closeModal, tours, handleshowTour }) => {
-  const [TourInfoModalVisible, setTourInfoModalVisible] = useState(false);
-  const [currentTour, setCurrentTour] = useState(tours);
-  const openTourInfoModal = () => {
-    setTourInfoModalVisible(true);
-  };
-  const closeTourInfoModal = () => {
-    setTourInfoModalVisible(false);
-  };
-
+  const navigation = useNavigation();
   return (
     <Modal
       statusBarTranslucent={true}
@@ -29,15 +21,7 @@ const ToursModal = ({ modalVisible, closeModal, tours, handleshowTour }) => {
           <Text style={styles.borturatext}>Bortúrák</Text>
           {tours.map((tour, index) => {
             return (
-              <TouchableOpacity
-                key={index}
-                style={styles.modalbutton}
-                onPress={() => {
-                  setCurrentTour(tour);
-                  handleshowTour(tour)
-                  openTourInfoModal();
-                }}
-              >
+              <TouchableOpacity key={index} style={styles.modalbutton}  onPress={() => { closeModal(); navigation.navigate("TourInfo", { item: tour });}}>
                 <View style={styles.tourcard}>
                   <View style={styles.tourContent}>
                     <Image
@@ -46,17 +30,13 @@ const ToursModal = ({ modalVisible, closeModal, tours, handleshowTour }) => {
                     />
                     <Text style={styles.tourtext}>{tour.name}</Text>
                   </View>
+
                 </View>
               </TouchableOpacity>
             );
           })}
         </View>
       </View>
-      <TourInfoModal
-        TourInfoModalVisible={TourInfoModalVisible}
-        closeTourInfoModal={closeTourInfoModal}
-        tour={currentTour}
-      />
     </Modal>
   );
 };

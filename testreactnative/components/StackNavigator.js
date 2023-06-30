@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Winery from "../views/winery/Winery";
 import Event from "../views/event/Event";
 import New from "../views/new/New";
-import TourInfo from "../views/map/components/TourInfoModal"
+import TourInfo from "../views/tourinfo/TourInfo"
 
 import { PointOfInterestProvider } from "../context/PointOfInterestContext";
 import DrawerNavigator from "./DrawerNavigation";
@@ -84,6 +84,31 @@ const StackNavigator = () => {
         name="New"
         component={New}
         
+        options={{
+          headerTintColor: "black",
+          headerTitleAlign: "center",
+          headerTitleStyle: {
+            textAlign: "center",
+          },
+
+          headerRight: () => (
+            <View style={{ paddingRight: 10 }}>
+              <Ionicons
+                name="menu"
+                size={24}
+                color="black"
+                onPress={() => {
+                  openMenu();
+                }}
+              />
+            </View>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="TourInfo"
+        component={TourInfo}
+
         options={{
           headerTintColor: "black",
           headerTitleAlign: "center",

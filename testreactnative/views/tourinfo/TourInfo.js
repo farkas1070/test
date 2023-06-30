@@ -1,8 +1,8 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image,TouchableOpacity } from "react-native";
 import { styles } from "./TourInfoStyle";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native-gesture-handler";
+
 import { useNavigation } from "@react-navigation/native";
 
 const TourInfo = ({ route }) => {
@@ -15,7 +15,7 @@ const TourInfo = ({ route }) => {
           source={{ uri: route.params.item.logo }}
         />
         <View style={styles.upperbuttonscontainer}>
-          <TouchableOpacity style={styles.backbutton} onPress={()=>{navigation.openDrawer();}}>
+          <TouchableOpacity style={styles.backbutton} onPress={()=>{navigation.goBack();}}>
             <MaterialCommunityIcons
               name="keyboard-backspace"
               size={24}
