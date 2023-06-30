@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Image, Text } from "react-native";
 import MapView, {
   Marker,
@@ -25,6 +25,11 @@ const MapViewContainer = ({
   setCurrentLatDelta,
   setCurrentLongDelta,
 }) => {
+  const [tracksViewChanges, setTracksViewChanges] = useState(true);
+
+  const stopRendering = () => {
+    setTracksViewChanges(false);
+  };
 
   return (
     <MapView
@@ -78,7 +83,7 @@ const MapViewContainer = ({
               handleCarouselSnap(index);
               handleMarkerPress(index);
             }}
-            tracksViewChanges={poi.logo ? false : true}
+            tracksViewChanges={tracksViewChanges}
             
 
             //image={poi.logo ? { uri: poi.logo } : Placeholder} kell megoldás hogy lehessen az imaget módosítani
@@ -88,6 +93,7 @@ const MapViewContainer = ({
             <Image
               source={poi.logo ? { uri: poi.logo } : Placeholder}
               style={styles.markerimage}
+              onLoad={stopRendering}
             />
             
             <Callout style={styles.callout} tooltip={true}>
