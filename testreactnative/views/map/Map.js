@@ -136,7 +136,7 @@ const Map = () => {
         const tour = filterTours(tourfilter)[0]; // Az első túrát választjuk ki, módosítsd igény szerint
         if (tour) {
           setCurrentTour(tour);
-          const coordinates = tour.coordinates.map((coordinate) => ({
+          const coordinates = tour.sights.map((coordinate) => ({
             latitude: coordinate[1],
             longitude: coordinate[0],
           }));

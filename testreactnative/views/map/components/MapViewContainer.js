@@ -81,14 +81,11 @@ const MapViewContainer = ({
 
             
 
-            //image={poi.logo ? { uri: poi.logo } : Placeholder} kell megoldás hogy lehessen az imaget módosítani
+            image={poi.logo ? { uri: poi.logo } : Placeholder} 
 
           >
             
-            <Image
-              source={poi.logo ? { uri: poi.logo } : Placeholder}
-              style={styles.markerimage}
-            />
+            
             
             <Callout style={styles.callout} tooltip={true}>
               <Text>{poi.title}</Text>

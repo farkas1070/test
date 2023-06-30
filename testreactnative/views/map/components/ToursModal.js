@@ -30,7 +30,20 @@ const ToursModal = ({ modalVisible, closeModal, tours, handleshowTour }) => {
                     />
                     <Text style={styles.tourtext}>{tour.name}</Text>
                   </View>
-
+                  <View style={styles.buttonContainer}>
+                    <TouchableOpacity
+                      onPress={() => {
+                        closeModal();
+                        navigation.navigate("TourInfo", { item: tour });
+                      }}
+                    >
+                      <MaterialIcons name="info" size={32} color="blue" />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => {handleshowTour(tour);}}>
+                      <MaterialIcons name="map" size={32} color="blue" />
+                    </TouchableOpacity>
+                  </View>
                 </View>
               </TouchableOpacity>
             );
