@@ -1,9 +1,13 @@
+
+
+
 export const tours = [
   {
     name: "Borozás a Csengery Utcán",
     duration:'6 óra',
     tour_mode:'gyalogos',
-    logo:'https://img.freepik.com/premium-vector/wine-logo-vector-template_10250-25.jpg?w=2000',
+    logo:'https://reyeswinery.com/wp-content/uploads/2021/04/reyeswinery_slider1.jpg',
+    length:'10 km',
     coordinates: [
       [16.594073961110723, 47.67724885870879],
       [16.590089646522387, 47.678480230719146],
@@ -20,7 +24,8 @@ export const tours = [
     name: "tura2",
     duration:'4 óra',
     tour_mode:'bicikli',
-    logo:'https://img.freepik.com/premium-vector/wine-logo-vector-template_10250-21.jpg?w=2000',
+    logo:'https://parissiswinery.com/wp-content/uploads/2022/01/parissis_winery_skiathos_greece-1.jpg',
+    length:'5 km',
     coordinates: [
       [16.592785148543072, 47.687077432559505],
       [16.59211130610032, 47.68657957292521],
@@ -36,7 +41,8 @@ export const tours = [
     name: "Soproni Kör",
     duration:'8 óra',
     tour_mode:'gyalogos',
-    logo:'https://media.istockphoto.com/id/1039837976/vector/wine-bar-design-template-red-and-white-wine-glasses.jpg?s=612x612&w=0&k=20&c=OD9K2EIxS1cEEGkWEs41OBbE1gJMXXnNH6c9jc8zH3w=',
+    logo:'https://res.akamaized.net/domain/image/upload/t_web/c_crop,h_393,w_627,x_150,y_53/v1631241636/118115-56_ama7b5.jpg',
+    length:'4 km',
     coordinates: [
       [16.588340807343428, 47.683001815343545],
       [16.588551461184466, 47.68282593354584],

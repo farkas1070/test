@@ -21,7 +21,7 @@ const ToursModal = ({ modalVisible, closeModal, tours, handleshowTour }) => {
           <Text style={styles.borturatext}>Bortúrák</Text>
           {tours.map((tour, index) => {
             return (
-              <View key={index} style={styles.modalbutton}>
+              <TouchableOpacity key={index} style={styles.modalbutton}  onPress={() => { closeModal(); navigation.navigate("TourInfo", { item: tour });}}>
                 <View style={styles.tourcard}>
                   <View style={styles.tourContent}>
                     <Image
@@ -30,25 +30,8 @@ const ToursModal = ({ modalVisible, closeModal, tours, handleshowTour }) => {
                     />
                     <Text style={styles.tourtext}>{tour.name}</Text>
                   </View>
-                  <View style={styles.buttonContainer}>
-                    <TouchableOpacity
-                      onPress={() => {
-                        closeModal();
-                        navigation.navigate("TourInfo", { item: tour });
-                      }}
-                    >
-                      <MaterialIcons name="info" size={32} color="blue" />
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      onPress={() => {
-                        handleshowTour(tour);
-                      }}
-                    >
-                      <MaterialIcons name="map" size={32} color="blue" />
-                    </TouchableOpacity>
-                  </View>
                 </View>
-              </View>
+              </TouchableOpacity>
             );
           })}
         </View>

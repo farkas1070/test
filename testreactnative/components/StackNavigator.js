@@ -26,7 +26,7 @@ const StackNavigator = () => {
   return (
     <Stack.Navigator
       initialRouteName="Drawer"
-      screenOptions={{ headerShown: true }}
+      screenOptions={{ headerShown: false }}
     >
       <Stack.Screen
         name="Event"
