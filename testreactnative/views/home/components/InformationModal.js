@@ -7,12 +7,11 @@ const InformationModal = ({modalVisible,closeModal}) => {
     <Modal
       statusBarTranslucent={true}
       visible={modalVisible}
-      transparent
       animationType="fade"
     >
     <View>
         <Text>modal</Text>
-        <TouchableOpacity onPress={()=>{closeModal}}></TouchableOpacity>
+        <TouchableOpacity onPress={closeModal}><Text>csukd be</Text></TouchableOpacity>
     </View>
     </Modal>
   )

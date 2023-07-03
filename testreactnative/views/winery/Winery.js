@@ -82,9 +82,11 @@ const Winery = ({ route }) => {
       />
       {winery.services?.map((service, index) => {
         console.log(service);
+        
         return <Text key={index}>{service.name}</Text>;
       })}
 
+      
       {winery.map.lat != undefined && winery.map.lng != undefined && (
         <TouchableOpacity
           style={styles.opengooglemapsbutton}
