@@ -19,7 +19,7 @@ const MapCarousel = ({
   const navigation = useNavigation();
   const renderItem = ({ item, index }) => {
     return (
-      <View style={styles.slide} onPress={() => handleMarkerPress(index)}>
+      <View style={styles.slide}>
         <View style={styles.slideContent}>
           <Image
             style={styles.image}
