@@ -34,6 +34,9 @@ const Map = () => {
     longitudeDelta: 0.1,
   });
 
+  if (currentLatDelta > 0.1) setCurrentLatDelta(0.1);
+  if (currentLongDelta > 0.1) setCurrentLongDelta(0.1);
+
   const openModal = () => {
     setModalVisible(true);
   };
@@ -99,8 +102,8 @@ const Map = () => {
           let cor = {
             latitude: location.coords.latitude,
             longitude: location.coords.longitude,
-            latitudeDelta: currentLatDelta,
-            longitudeDelta: currentLongDelta,
+            latitudeDelta: 0.05,
+            longitudeDelta: 0.05,
           };
           setPosition(cor);
         }
