@@ -95,7 +95,11 @@ const BottomNavigator = () => {
               textAlign: "center",
             },
             headerLeft: () => (
-              <TouchableOpacity style={{ paddingLeft: 10 }}>
+              <TouchableOpacity style={{ paddingLeft: 10 }}
+              onPress={() => {
+                openModal();
+              }}
+              >
                 <Ionicons
                   name="information-circle-outline"
                   size={24}
@@ -140,7 +144,11 @@ const BottomNavigator = () => {
               textAlign: "center",
             },
             headerLeft: () => (
-              <TouchableOpacity style={{ paddingLeft: 10 }}>
+              <TouchableOpacity style={{ paddingLeft: 10 }}
+              onPress={() => {
+                openModal();
+              }}
+              >
                 <Ionicons
                   name="information-circle-outline"
                   size={24}
@@ -175,7 +183,11 @@ const BottomNavigator = () => {
               textAlign: "center",
             },
             headerLeft: () => (
-              <TouchableOpacity style={{ paddingLeft: 10 }}>
+              <TouchableOpacity style={{ paddingLeft: 10 }}
+              onPress={() => {
+                openModal();
+              }}
+              >
                 <Ionicons
                   name="information-circle-outline"
                   size={24}
