@@ -4,6 +4,7 @@ import Carousel from "react-native-snap-carousel-v4";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { styles } from "./MapCarouselStyle";
 import Placeholder from "../../../assets/placeholder.png";
+import { useNavigation } from "@react-navigation/core";
 const MapCarousel = ({
   data,
   activeMarkerIndex,
@@ -13,6 +14,7 @@ const MapCarousel = ({
   handleResetLocation,
   width,
 }) => {
+  const navigation = useNavigation();
   const renderItem = ({ item, index }) => {
     return (
       <TouchableOpacity
@@ -20,10 +22,18 @@ const MapCarousel = ({
         onPress={() => handleMarkerPress(index)}
       >
         <View style={styles.slideContent}>
-          <Image style={styles.image} source={item.logo ? { uri: item.logo } : Placeholder} />
+          <Image
+            style={styles.image}
+            source={item.logo ? { uri: item.logo } : Placeholder}
+          />
           <View style={styles.textContainer}>
             <Text style={styles.text}>{item.title}</Text>
             <Text style={styles.text}>{"description"}</Text>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Winery", { item: item })}
+            >
+              <MaterialIcons name="info" size={28} color="black" />
+            </TouchableOpacity>
           </View>
         </View>
       </TouchableOpacity>
