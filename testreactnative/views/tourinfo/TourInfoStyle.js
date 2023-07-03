@@ -77,5 +77,17 @@ export const styles = StyleSheet.create({
   starttext:{
     color:'white',
     marginLeft:10,
+  },
+  bodycontainer:{
+    width:'100%',
+    
+  },
+  dscriptioncontainer:{
+    width:'100%',
+    padding:20,
+    marginTop:10
+  },
+  descriptiontext:{
+    color:'gray'
   }
 });

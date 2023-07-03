@@ -53,9 +53,13 @@ const TourInfo = ({ route }) => {
           </View>
         </View>
       </View>
-      <Text>{route.params.item.name}</Text>
-      <Text>{route.params.item.duration}</Text>
-      <Text>{route.params.item.tour_mode}</Text>
+      <View style={styles.bodycontainer}>
+        <View style={styles.dscriptioncontainer}>
+          <Text style={styles.descriptiontext}>
+            {route.params.item.description}
+          </Text>
+        </View>
+      </View>
     </View>
   );
 };

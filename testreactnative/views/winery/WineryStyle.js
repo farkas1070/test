@@ -31,4 +31,15 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
+  opengooglemapsbutton:{
+    flexDirection:'row',
+    height:40,
+    alignSelf:'flex-start',
+    padding:10,
+    backgroundColor:'#b3cee5',
+    borderRadius:20,
+    justifyContent:'center',
+    alignItems:'center'
+
+  }
 });
