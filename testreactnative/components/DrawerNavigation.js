@@ -1,6 +1,5 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-
 import { Ionicons } from "@expo/vector-icons";
 import BottomNavigator from "./BottomNavigator";
 import Valami from "./Valami";
@@ -9,7 +8,10 @@ import Valami2 from "./Valami2";
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => (
-  <Drawer.Navigator initialRouteName="Home" screenOptions={{ headerShown: false,drawerPosition: "right", }}>
+  <Drawer.Navigator
+    initialRouteName="Home"
+    screenOptions={{ headerShown: false, drawerPosition: "right" }}
+  >
     <Drawer.Screen
       name="Home"
       component={BottomNavigator}
@@ -23,7 +25,7 @@ const DrawerNavigator = () => (
         ),
       }}
     />
-    
+
     <Drawer.Screen
       name="Valami2"
       component={Valami2}
@@ -50,7 +52,6 @@ const DrawerNavigator = () => (
         ),
       }}
     />
-    
   </Drawer.Navigator>
 );
 

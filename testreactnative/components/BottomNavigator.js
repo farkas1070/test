@@ -21,7 +21,7 @@ const BottomNavigator = () => {
   const closeModal = () => {
     setModalVisible(false);
   };
-  
+
   const navigation = useNavigation();
   const openMenu = () => {
     navigation.openDrawer();

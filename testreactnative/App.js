@@ -1,13 +1,14 @@
-import { StyleSheet, } from "react-native";
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { PointOfInterestProvider } from "./context/PointOfInterestContext.js";
 import StackNavigator from "./components/StackNavigator";
+import OnBoarding from "./views/home/components/OnBoarding.js";
 
 export default function App() {
   return (
     <PointOfInterestProvider>
       <NavigationContainer>
-        <StackNavigator />
+        <OnBoarding />
       </NavigationContainer>
     </PointOfInterestProvider>
   );
