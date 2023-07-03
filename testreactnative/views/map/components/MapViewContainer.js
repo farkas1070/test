@@ -42,7 +42,7 @@ const MapViewContainer = ({
     >
       {showtours &&
         filterTours(tourfilter).map((tour, index) => (
-          <>
+          <React.Fragment key={index}>
             <Polyline
               key={index}
               coordinates={tour.sights.map((coordinate) => ({
@@ -51,9 +51,9 @@ const MapViewContainer = ({
               }))}
               strokeWidth={4}
             />
-            {tour.sights.map((coordinate, index) => (
+            {tour.sights.map((coordinate, tourindex) => (
               <Marker
-                key={index}
+                key={tourindex}
                 coordinate={{
                   latitude: coordinate[1],
                   longitude: coordinate[0],
@@ -62,7 +62,7 @@ const MapViewContainer = ({
                 description={tour.name}
               />
             ))}
-          </>
+          </React.Fragment>
         ))}
       {filterMarkers(filter).map((poi, index) => {
         return (
