@@ -81,6 +81,12 @@ const Winery = ({ route }) => {
         source={source}
         tagsStyles={tagsStyles}
       />
+      {winery.services.map((service,index)=>{
+        console.log(service)
+        return (
+          <Text key={index}>{service.name}</Text>
+        )
+      })}
       { winery.map.lat != undefined && winery.map.lng != undefined && 
         <TouchableOpacity
           style={styles.opengooglemapsbutton}
@@ -92,6 +98,7 @@ const Winery = ({ route }) => {
           <Text>Mutasd Google Mapsen</Text>
         </TouchableOpacity>
       }
+      
     </ScrollView>
   );
 };
