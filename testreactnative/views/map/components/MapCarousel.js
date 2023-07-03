@@ -5,6 +5,8 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { styles } from "./MapCarouselStyle";
 import Placeholder from "../../../assets/placeholder.png";
 import { useNavigation } from "@react-navigation/core";
+import { FontAwesome5 } from "@expo/vector-icons";
+
 const MapCarousel = ({
   data,
   activeMarkerIndex,
@@ -17,26 +19,27 @@ const MapCarousel = ({
   const navigation = useNavigation();
   const renderItem = ({ item, index }) => {
     return (
-      <TouchableOpacity
-        style={styles.slide}
-        onPress={() => handleMarkerPress(index)}
-      >
+      <View style={styles.slide} onPress={() => handleMarkerPress(index)}>
         <View style={styles.slideContent}>
           <Image
             style={styles.image}
             source={item.logo ? { uri: item.logo } : Placeholder}
           />
           <View style={styles.textContainer}>
-            <Text style={styles.text}>{item.title}</Text>
-            <Text style={styles.text}>{"description"}</Text>
+            <View>
+              <Text style={styles.text}>{item.title}</Text>
+              <Text style={styles.text}>{"description"}</Text>
+            </View>
             <TouchableOpacity
+              style={styles.jumptobutton}
               onPress={() => navigation.navigate("Winery", { item: item })}
             >
-              <MaterialIcons name="info" size={28} color="black" />
+              <FontAwesome5 name="location-arrow" size={24} color="white" />
+              <Text style={styles.winerytext}>Borászathoz</Text>
             </TouchableOpacity>
           </View>
         </View>
-      </TouchableOpacity>
+      </View>
     );
   };
 

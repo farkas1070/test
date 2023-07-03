@@ -34,6 +34,8 @@ export const styles = StyleSheet.create({
   textContainer: {
     width: "65%",
     height: "100%",
+    alignItems:'center',
+    justifyContent:'space-between'
   },
   text: {
     fontSize: 16,
@@ -138,4 +140,17 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
     position: "relative",
   },
+  jumptobutton:{
+    backgroundColor:'green',
+    alignSelf:'center',
+    padding:10,
+    borderRadius:20,
+    alignItems:'center',
+    justifyContent:'center',
+    flexDirection:'row'
+  },
+  winerytext:{
+    marginLeft:5,
+    color:'white'
+  }
 });
