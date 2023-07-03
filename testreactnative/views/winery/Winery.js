@@ -5,7 +5,7 @@ import {
   Image,
   TouchableOpacity,
   Linking,
-  Platform 
+  Platform,
 } from "react-native";
 import React from "react";
 import { styles } from "./WineryStyle";
@@ -14,7 +14,6 @@ import RenderHtml from "react-native-render-html";
 import { useWindowDimensions } from "react-native";
 import { tagsStyles } from "./ContentStyle";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import * as Location from 'expo-location';
 
 const Winery = ({ route }) => {
   const { width } = useWindowDimensions();
@@ -22,22 +21,17 @@ const Winery = ({ route }) => {
   const source = {
     html: winery.content,
   };
-  
-  const openGoogleMaps = async  () =>{
-    
-    console.log(winery.map)
-    if (Platform.OS === 'ios') {
-      Linking.openURL(
-        `maps://app?&daddr=${winery.map.lat}+${winery.map.lng}`
-      )
+
+  const openGoogleMaps = async () => {
+    console.log(winery.map);
+    if (Platform.OS === "ios") {
+      Linking.openURL(`maps://app?&daddr=${winery.map.lat}+${winery.map.lng}`);
     } else {
       Linking.openURL(
         `https://www.google.com/maps/dir/?api=1&destination=${winery.map.lat},${winery.map.lng}`
-      )
+      );
     }
-    
-
-  }
+  };
 
   return (
     <ScrollView>
@@ -80,17 +74,24 @@ const Winery = ({ route }) => {
           ? "nincs megadva"
           : winery.connection.social.linkedin}
       </Text>
-      
+
       <Text>Weboldal: {winery.connection.website}</Text>
       <RenderHtml
         contentWidth={width}
         source={source}
         tagsStyles={tagsStyles}
       />
-      <TouchableOpacity style={styles.opengooglemapsbutton} onPress={()=>{openGoogleMaps()}}>
-        <MaterialCommunityIcons name="google-maps" size={24} color="black" />
-        <Text>Mutasd Google Mapsen</Text>
-      </TouchableOpacity>
+      { winery.map.lat != undefined && winery.map.lng != undefined && 
+        <TouchableOpacity
+          style={styles.opengooglemapsbutton}
+          onPress={() => {
+            openGoogleMaps();
+          }}
+        >
+          <MaterialCommunityIcons name="google-maps" size={24} color="black" />
+          <Text>Mutasd Google Mapsen</Text>
+        </TouchableOpacity>
+      }
     </ScrollView>
   );
 };
