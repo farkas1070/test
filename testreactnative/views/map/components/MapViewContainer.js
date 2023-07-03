@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Image, Text } from "react-native";
+import { Image, Text, View } from "react-native";
+
 import MapView, {
   Marker,
   Callout,
@@ -9,7 +10,7 @@ import MapView, {
 import Placeholder from "../../../assets/placeholder.png";
 import { Mapstyle } from "../CustomMapStyle";
 import { styles } from "./MapViewContainerStyle";
-
+import BottomMarker from "../../../assets/markerbottom.png"
 const MapViewContainer = ({
   mapRef,
   markerRef,
@@ -34,7 +35,12 @@ const MapViewContainer = ({
       showsUserLocation={true}
       provider={PROVIDER_GOOGLE}
       customMapStyle={Mapstyle}
-      onMapReady={() => { setTimeout(() => { setMapReady(true); }, 1000); jumpToPointOfInterest() }}
+      onMapReady={() => {
+        setTimeout(() => {
+          setMapReady(true);
+        }, 1000);
+        jumpToPointOfInterest();
+      }}
       onRegionChangeComplete={async (region) => {
         setCurrentLatDelta(region.latitudeDelta);
         setCurrentLongDelta(region.longitudeDelta);
@@ -51,17 +57,6 @@ const MapViewContainer = ({
               }))}
               strokeWidth={4}
             />
-            {tour.sights.map((coordinate, tourindex) => (
-              <Marker
-                key={tourindex}
-                coordinate={{
-                  latitude: coordinate[1],
-                  longitude: coordinate[0],
-                }}
-                title={tour.name}
-                description={tour.name}
-              />
-            ))}
           </React.Fragment>
         ))}
       {filterMarkers(filter).map((poi, index) => {
@@ -81,10 +76,17 @@ const MapViewContainer = ({
 
             //image={poi.logo ? { uri: poi.logo } : Placeholder} kell megoldás hogy lehessen az imaget módosítani
           >
-            <Image
-              source={poi.logo ? { uri: poi.logo } : Placeholder}
-              style={styles.markerimage}
-            />
+            <View style={{ width: 50, height:60 }}>
+              <Image
+                source={poi.logo ? { uri: poi.logo } : Placeholder}
+                style={styles.markerimage}
+              />
+             <Image
+                source={BottomMarker}
+                style={{bottom:0,width:50,position:'absolute',height:20,zIndex:-1}}
+                resizeMode="contain"
+              />
+            </View>
 
             <Callout style={styles.callout} tooltip={true}>
               <Text>{poi.title}</Text>

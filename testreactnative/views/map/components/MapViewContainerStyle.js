@@ -133,9 +133,9 @@ export const styles = StyleSheet.create({
     marginBottom:20
   },
   markerimage: {
-    width:40,
-    height:40, 
-    borderRadius:20,
+    width:50,
+    height:50, 
+    borderRadius:25,
     borderColor:'white',
     borderWidth:3,
     marginBottom:10,
