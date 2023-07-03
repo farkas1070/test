@@ -55,8 +55,8 @@ const Map = () => {
       mapRef.current.animateToRegion({
         latitude: position.latitude,
         longitude: position.longitude,
-        latitudeDelta: currentLatDelta,
-        longitudeDelta: currentLongDelta,
+        latitudeDelta: 0.005,
+        longitudeDelta: 0.005,
       });
     }
   };
@@ -102,8 +102,8 @@ const Map = () => {
           let cor = {
             latitude: location.coords.latitude,
             longitude: location.coords.longitude,
-            latitudeDelta: 0.05,
-            longitudeDelta: 0.05,
+            latitudeDelta: 0.001,
+            longitudeDelta: 0.001,
           };
           setPosition(cor);
         }
