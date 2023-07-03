@@ -34,8 +34,8 @@ const Map = () => {
     longitudeDelta: 0.1,
   });
 
-  if (currentLatDelta > 0.1) setCurrentLatDelta(0.1);
-  if (currentLongDelta > 0.1) setCurrentLongDelta(0.1);
+  if (currentLatDelta > 0.01) setCurrentLatDelta(0.005);
+  if (currentLongDelta > 0.01) setCurrentLongDelta(0.005);
 
   const openModal = () => {
     setModalVisible(true);
