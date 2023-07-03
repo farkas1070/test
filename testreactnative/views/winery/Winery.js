@@ -81,7 +81,7 @@ const Winery = ({ route }) => {
         source={source}
         tagsStyles={tagsStyles}
       />
-      {winery.services.map((service,index)=>{
+      {winery.services?.map((service,index)=>{
         console.log(service)
         return (
           <Text key={index}>{service.name}</Text>
