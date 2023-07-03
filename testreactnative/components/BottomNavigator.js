@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View,TouchableOpacity } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Events from "../views/events/Events";
@@ -8,6 +8,7 @@ import Home from "../views/home/Home";
 import { Ionicons } from "@expo/vector-icons";
 import News from "../views/news/News";
 import { useNavigation } from "@react-navigation/native";
+
 const Tab = createBottomTabNavigator();
 
 const BottomNavigator = () => {
@@ -40,13 +41,13 @@ const BottomNavigator = () => {
             textAlign: "center",
           },
           headerLeft: () => (
-            <View style={{ paddingLeft: 10 }}>
+            <TouchableOpacity style={{ paddingLeft: 10 }}>
               <Ionicons
                 name="information-circle-outline"
                 size={24}
                 color="black"
               />
-            </View>
+            </TouchableOpacity>
           ),
           headerRight: () => (
             <View style={{ paddingRight: 10 }}>
@@ -62,16 +63,7 @@ const BottomNavigator = () => {
           ),
         }}
       />
-      <Tab.Screen
-        name="Térkép"
-        component={Map}
-        options={{
-          tabBarIcon: () => (
-            <Ionicons name="map-outline" size={24} color="black" />
-          ),
-          headerShown: false,
-        }}
-      />
+      
       <Tab.Screen
         name="Események"
         component={Events}
@@ -86,13 +78,13 @@ const BottomNavigator = () => {
             textAlign: "center",
           },
           headerLeft: () => (
-            <View style={{ paddingLeft: 10 }}>
+            <TouchableOpacity style={{ paddingLeft: 10 }}>
               <Ionicons
                 name="information-circle-outline"
                 size={24}
                 color="black"
               />
-            </View>
+            </TouchableOpacity>
           ),
           headerRight: () => (
             <View style={{ paddingRight: 10 }}>
@@ -108,6 +100,16 @@ const BottomNavigator = () => {
         }}
       />
       <Tab.Screen
+        name="Térkép"
+        component={Map}
+        options={{
+          tabBarIcon: () => (
+            <Ionicons name="map-outline" size={24} color="black" />
+          ),
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
         name="Borászatok"
         component={Wineries}
         options={{
@@ -120,13 +122,13 @@ const BottomNavigator = () => {
             textAlign: "center",
           },
           headerLeft: () => (
-            <View style={{ paddingLeft: 10 }}>
+            <TouchableOpacity style={{ paddingLeft: 10 }}>
               <Ionicons
                 name="information-circle-outline"
                 size={24}
                 color="black"
               />
-            </View>
+            </TouchableOpacity>
           ),
           headerRight: () => (
             <View style={{ paddingRight: 10 }}>
@@ -155,13 +157,13 @@ const BottomNavigator = () => {
             textAlign: "center",
           },
           headerLeft: () => (
-            <View style={{ paddingLeft: 10 }}>
+            <TouchableOpacity style={{ paddingLeft: 10 }}>
               <Ionicons
                 name="information-circle-outline"
                 size={24}
                 color="black"
               />
-            </View>
+            </TouchableOpacity>
           ),
           headerRight: () => (
             <View style={{ paddingRight: 10 }}>

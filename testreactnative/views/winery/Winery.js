@@ -1,7 +1,6 @@
 import {
   ScrollView,
   Text,
-  TextInput,
   Image,
   TouchableOpacity,
   Linking,
@@ -81,13 +80,12 @@ const Winery = ({ route }) => {
         source={source}
         tagsStyles={tagsStyles}
       />
-      {winery.services?.map((service,index)=>{
-        console.log(service)
-        return (
-          <Text key={index}>{service.name}</Text>
-        )
+      {winery.services?.map((service, index) => {
+        console.log(service);
+        return <Text key={index}>{service.name}</Text>;
       })}
-      { winery.map.lat != undefined && winery.map.lng != undefined && 
+
+      {winery.map.lat != undefined && winery.map.lng != undefined && (
         <TouchableOpacity
           style={styles.opengooglemapsbutton}
           onPress={() => {
@@ -97,8 +95,7 @@ const Winery = ({ route }) => {
           <MaterialCommunityIcons name="google-maps" size={24} color="black" />
           <Text>Mutasd Google Mapsen</Text>
         </TouchableOpacity>
-      }
-      
+      )}
     </ScrollView>
   );
 };
