@@ -22,38 +22,17 @@ const Winery = ({ route }) => {
   const source = {
     html: winery.content,
   };
-  const getCurrentLocation = async () => {
-    try {
-      // Check if location permissions are granted
-      const { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        Alert.alert('Location permission denied');
-        return;
-      }
-      
-      // Get the current position
-      const { coords } = await Location.getCurrentPositionAsync({});
-      
-      const { latitude, longitude } = coords;
-      
-      // Do something with the latitude and longitude
-      console.log('Latitude:', latitude);
-      console.log('Longitude:', longitude);
-      return coords
-    } catch (error) {
-      console.log('Error:', error);
-    }
-  };
+  
   const openGoogleMaps = async  () =>{
-    const currentLocation = await getCurrentLocation();
+    
     console.log(winery.map)
     if (Platform.OS === 'ios') {
       Linking.openURL(
-        `maps://app?saddr=${currentLocation.latitude}+${currentLocation.longitude}&daddr=${winery.map.lat}+${winery.map.lng}`
+        `maps://app?&daddr=${winery.map.lat}+${winery.map.lng}`
       )
     } else {
       Linking.openURL(
-        `https://www.google.com/maps/dir/?api=1&origin=${currentLocation.latitude}+${currentLocation.longitude}&destination=${winery.map.lat},${winery.map.lng}`
+        `https://www.google.com/maps/dir/?api=1&destination=${winery.map.lat},${winery.map.lng}`
       )
     }
     
