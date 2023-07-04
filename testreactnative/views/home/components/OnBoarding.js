@@ -6,9 +6,11 @@ import { FontAwesome } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Picker } from "@react-native-picker/picker";
 import { styles } from "./OnboardingStyle";
+import { getLocales } from "expo-localization";
 
 const OnBoarding = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState("hu");
+  const systemLanguage = getLocales()[0].languageCode;
+  const [selectedLanguage, setSelectedLanguage] = useState(systemLanguage);
   const imageSource =
     selectedLanguage === "hu"
       ? "https://upload.wikimedia.org/wikipedia/commons/0/00/Flag_of_Hungary.png"
@@ -47,7 +49,7 @@ const OnBoarding = () => {
           subtitle: "Kezdjünk is Bele!",
         },
         {
-          backgroundColor: "#fff",
+          backgroundColor: "#3498db",
           image: (
             <Image
               source={{
@@ -78,7 +80,7 @@ const OnBoarding = () => {
           title: "Engedélyek Megadása",
 
           subtitle: (
-            <View style={{ width: "100%",marginTop:20 }}>
+            <View style={{ width: "100%", marginTop: 20 }}>
               <Text style={styles.requestpermissiontext}>
                 Szükségünk van az alkalmazás megfelelő működéséhez a helyadatok
                 és értesítések engedélyezéséhez
@@ -87,14 +89,13 @@ const OnBoarding = () => {
                 <TouchableOpacity style={styles.notenablebutton}>
                   <Text>Tiltás</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.enablebutton} >
+                <TouchableOpacity style={styles.enablebutton}>
                   <Text>Engedélyezés</Text>
                 </TouchableOpacity>
               </View>
             </View>
           ),
         },
-        
       ]}
     />
   );
