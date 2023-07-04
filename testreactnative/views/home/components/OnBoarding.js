@@ -1,5 +1,5 @@
 import { Image, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Text, View } from "react-native";
 import Onboarding from "react-native-onboarding-swiper";
 import { FontAwesome } from "@expo/vector-icons";
@@ -7,6 +7,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Picker } from "@react-native-picker/picker";
 import { styles } from "./OnboardingStyle";
 import { getLocales } from "expo-localization";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const OnBoarding = () => {
   const systemLanguage = getLocales()[0].languageCode;
@@ -27,6 +28,23 @@ const OnBoarding = () => {
       : selectedLanguage === "de"
       ? "Wähle eine Sprache"
       : "";
+
+  const storeData = async (value) => {
+    try {
+      await AsyncStorage.setItem("FirstTimeOpen", value);
+      console.log("saved data");
+    } catch (e) {
+      console.log(e)
+    }
+  };
+  const removeData = async (value) => {
+    try {
+      await AsyncStorage.removeItem("FirstTimeOpen");
+      console.log("deleted data");
+    } catch (e) {
+      console.log(e)
+    }
+  };
   return (
     <Onboarding
       onDone={() => console.log("done")}
@@ -86,10 +104,10 @@ const OnBoarding = () => {
                 és értesítések engedélyezéséhez
               </Text>
               <View style={styles.buttoncontainer}>
-                <TouchableOpacity style={styles.notenablebutton}>
+                <TouchableOpacity style={styles.notenablebutton} onPress={()=>{removeData()}}>
                   <Text>Tiltás</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.enablebutton}>
+                <TouchableOpacity style={styles.enablebutton} onPress={()=>{storeData('hello')}}>
                   <Text>Engedélyezés</Text>
                 </TouchableOpacity>
               </View>
