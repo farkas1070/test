@@ -10,7 +10,7 @@ import DrawerNavigator from "./DrawerNavigation";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import SplashScreen from "../views/home/components/SplashScreen";
 const Stack = createNativeStackNavigator();
 
 const StackNavigator = () => {
@@ -43,7 +43,7 @@ const StackNavigator = () => {
   }, []);
 
   return (
-    ( isEffectDone && <Stack.Navigator screenOptions={{ headerShown: false }}>
+    ( isEffectDone ? <Stack.Navigator screenOptions={{ headerShown: false }}>
       {firstTimeOpen === true ? (
         <Stack.Screen name="OnBoarding" component={OnBoarding} />
       ) : null}
@@ -149,7 +149,7 @@ const StackNavigator = () => {
           ),
         }}
       />
-    </Stack.Navigator>)
+    </Stack.Navigator>:<SplashScreen/>)
   );
 };
 
