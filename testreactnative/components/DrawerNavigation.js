@@ -5,6 +5,7 @@ import BottomNavigator from "./BottomNavigator";
 import Valami from "./Valami";
 import Valami2 from "./Valami2";
 import Settings from "../views/settings/Settings";
+
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => (
