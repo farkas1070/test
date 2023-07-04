@@ -26,7 +26,7 @@ const StackNavigator = () => {
       try {
         
         const value = await AsyncStorage.getItem("FirstTimeOpen");
-        console.log(value);
+        console.log(language);
         if (value === null) {
           setFirstTimeOpen(true);
           setIsEffectDone(true)

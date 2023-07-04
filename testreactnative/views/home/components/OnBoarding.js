@@ -34,6 +34,7 @@ const OnBoarding = () => {
   const storeData = async (value) => {
     try {
       await AsyncStorage.setItem("FirstTimeOpen", value);
+      await AsyncStorage.setItem("Language", selectedLanguage);
       console.log("saved data");
     } catch (e) {
       console.log(e);
