@@ -7,7 +7,6 @@ import Valami2 from "./Valami2";
 import Settings from "../views/settings/Settings";
 
 const Drawer = createDrawerNavigator();
-
 const DrawerNavigator = () => (
   <Drawer.Navigator
     initialRouteName="Home"

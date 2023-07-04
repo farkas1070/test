@@ -1,0 +1,72 @@
+const hu = {
+  welcome: "Üdvözlünk a Soproni Borvidék alkalmazásában!",
+  welcomeText:
+    "Az alkalmazás segítségével megismerheted a Soproni Borvidék borait, borászatait, rendezvényeit és látnivalóit.",
+  language: "Nyelv",
+  next: "Tovább",
+  skip: "Kihagyás",
+  done: "Kész",
+  home: "Kezdőlap",
+  events: "Események",
+  wineries: "Borászatok",
+  pointsOfInterest: "Látnivalók",
+  map: "Térkép",
+  search: "Keresés",
+  searchPlaceholder: "Keresés...",
+  searchResults: "Keresési eredmények",
+  searchResultsFor: "Keresési eredmények: ",
+  searchResultsForWineries: "Borászatok",
+  searchResultsForEvents: "Események",
+  searchResultsForPointsOfInterest: "Látnivalók",
+  searchResultsForWine: "Borok",
+  searchResultsForWineries: "Borászatok",
+  searchResultsForEvents: "Események",
+};
+
+const en = {
+  welcome: "Welcome to the Sopron Wine Region application!",
+  welcomeText:
+    "With the help of the application you can get to know the wines, wineries, events and sights of the Sopron Wine Region.",
+  language: "Language",
+  next: "Next",
+  skip: "Skip",
+  done: "Done",
+  home: "Home",
+  events: "Events",
+  wineries: "Wineries",
+  pointsOfInterest: "Points of interest",
+  map: "Map",
+  search: "Search",
+  searchPlaceholder: "Search...",
+  searchResults: "Search results",
+  searchResultsFor: "Search results for: ",
+  searchResultsForWineries: "Wineries",
+  searchResultsForEvents: "Events",
+  searchResultsForPointsOfInterest: "Points of interest",
+  searchResultsForWine: "Wines",
+};
+
+const de = {
+  welcome: "Willkommen bei der Anwendung des Soproner Weinbaugebiets!",
+  welcomeText:
+    "Mit Hilfe der Anwendung können Sie die Weine, Weingüter, Veranstaltungen und Sehenswürdigkeiten des Soproner Weinbaugebiets kennenlernen.",
+  language: "Sprache",
+  next: "Weiter",
+  skip: "Überspringen",
+  done: "Fertig",
+  home: "Startseite",
+  events: "Veranstaltungen",
+  wineries: "Weingüter",
+  pointsOfInterest: "Sehenswürdigkeiten",
+  map: "Karte",
+  search: "Suche",
+  searchPlaceholder: "Suche...",
+  searchResults: "Suchergebnisse",
+  searchResultsFor: "Suchergebnisse für: ",
+  searchResultsForWineries: "Weingüter",
+  searchResultsForEvents: "Veranstaltungen",
+  searchResultsForPointsOfInterest: "Sehenswürdigkeiten",
+  searchResultsForWine: "Weine",
+};
+
+export { hu, en, de };

@@ -24,16 +24,20 @@ const StackNavigator = () => {
   useEffect(() => {
     const getData = async () => {
       try {
+<<<<<<< Updated upstream
         
 
         const value = await AsyncStorage.getItem("FirstTimeOpen");
         
+=======
+        const value = await AsyncStorage.getItem("FirstTimeOpen");
+>>>>>>> Stashed changes
         if (value === null) {
           setFirstTimeOpen(true);
-          setIsEffectDone(true)
+          setIsEffectDone(true);
         } else {
           setFirstTimeOpen(false);
-          setIsEffectDone(true)
+          setIsEffectDone(true);
         }
       } catch (e) {
         console.log(e)
@@ -43,8 +47,8 @@ const StackNavigator = () => {
     
   }, []);
 
-  return (
-    ( isEffectDone ? <Stack.Navigator screenOptions={{ headerShown: false }}>
+  return isEffectDone ? (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       {firstTimeOpen === true ? (
         <Stack.Screen name="OnBoarding" component={OnBoarding} />
       ) : null}
@@ -150,7 +154,9 @@ const StackNavigator = () => {
           ),
         }}
       />
-    </Stack.Navigator>:<SplashScreen/>)
+    </Stack.Navigator>
+  ) : (
+    <SplashScreen />
   );
 };
 

@@ -9,19 +9,17 @@ import { Ionicons } from "@expo/vector-icons";
 import News from "../views/news/News";
 import { useNavigation } from "@react-navigation/native";
 import InformationModal from "../views/home/components/InformationModal";
+import i18n from "../lang/LanguageManager";
 const Tab = createBottomTabNavigator();
 
 const BottomNavigator = () => {
   const [modalVisible, setModalVisible] = useState(false);
-
   const openModal = () => {
     setModalVisible(true);
   };
-
   const closeModal = () => {
     setModalVisible(false);
   };
-
   const navigation = useNavigation();
   const openMenu = () => {
     navigation.openDrawer();
@@ -40,7 +38,7 @@ const BottomNavigator = () => {
         }}
       >
         <Tab.Screen
-          name="Kezdőlap"
+          name={i18n.t("home")}
           component={Home}
           options={{
             tabBarIcon: () => (
@@ -95,10 +93,11 @@ const BottomNavigator = () => {
               textAlign: "center",
             },
             headerLeft: () => (
-              <TouchableOpacity style={{ paddingLeft: 10 }}
-              onPress={() => {
-                openModal();
-              }}
+              <TouchableOpacity
+                style={{ paddingLeft: 10 }}
+                onPress={() => {
+                  openModal();
+                }}
               >
                 <Ionicons
                   name="information-circle-outline"
@@ -144,10 +143,11 @@ const BottomNavigator = () => {
               textAlign: "center",
             },
             headerLeft: () => (
-              <TouchableOpacity style={{ paddingLeft: 10 }}
-              onPress={() => {
-                openModal();
-              }}
+              <TouchableOpacity
+                style={{ paddingLeft: 10 }}
+                onPress={() => {
+                  openModal();
+                }}
               >
                 <Ionicons
                   name="information-circle-outline"
@@ -183,10 +183,11 @@ const BottomNavigator = () => {
               textAlign: "center",
             },
             headerLeft: () => (
-              <TouchableOpacity style={{ paddingLeft: 10 }}
-              onPress={() => {
-                openModal();
-              }}
+              <TouchableOpacity
+                style={{ paddingLeft: 10 }}
+                onPress={() => {
+                  openModal();
+                }}
               >
                 <Ionicons
                   name="information-circle-outline"
