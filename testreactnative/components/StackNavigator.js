@@ -20,15 +20,19 @@ const StackNavigator = () => {
     navigation.openDrawer();
   };
   const [firstTimeOpen, setFirstTimeOpen] = useState(true);
+  const [isEffectDone, setIsEffectDone] = useState(false);
   useEffect(() => {
     const getData = async () => {
       try {
+        
         const value = await AsyncStorage.getItem("FirstTimeOpen");
         console.log(value);
         if (value === null) {
           setFirstTimeOpen(true);
+          setIsEffectDone(true)
         } else {
           setFirstTimeOpen(false);
+          setIsEffectDone(true)
         }
       } catch (e) {
         // error reading value
@@ -39,7 +43,7 @@ const StackNavigator = () => {
   }, []);
 
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    ( isEffectDone && <Stack.Navigator screenOptions={{ headerShown: false }}>
       {firstTimeOpen === true ? (
         <Stack.Screen name="OnBoarding" component={OnBoarding} />
       ) : null}
@@ -145,7 +149,7 @@ const StackNavigator = () => {
           ),
         }}
       />
-    </Stack.Navigator>
+    </Stack.Navigator>)
   );
 };
 
