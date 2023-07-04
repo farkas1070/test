@@ -3,14 +3,35 @@ import React, { useState } from "react";
 import { Text, View } from "react-native";
 import Onboarding from "react-native-onboarding-swiper";
 import { FontAwesome } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import { Picker } from "@react-native-picker/picker";
 import { styles } from "./OnboardingStyle";
 
 const OnBoarding = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState();
+  const [selectedLanguage, setSelectedLanguage] = useState("hu");
+  const imageSource =
+    selectedLanguage === "hu"
+      ? "https://upload.wikimedia.org/wikipedia/commons/0/00/Flag_of_Hungary.png"
+      : selectedLanguage === "en"
+      ? "https://upload.wikimedia.org/wikipedia/commons/4/42/Flag_of_the_United_Kingdom.png"
+      : selectedLanguage === "de"
+      ? "https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/2560px-Flag_of_Germany.svg.png"
+      : "";
+  const titleSource =
+    selectedLanguage === "hu"
+      ? "Válassz nyelvet"
+      : selectedLanguage === "en"
+      ? "Choose language"
+      : selectedLanguage === "de"
+      ? "Wähle eine Sprache"
+      : "";
   return (
     <Onboarding
       onDone={() => console.log("done")}
+      showSkip={false}
+      nextLabel={
+        <MaterialIcons name="arrow-forward-ios" size={24} color="black" />
+      }
       pages={[
         {
           backgroundColor: "#98FB98",
@@ -27,8 +48,15 @@ const OnBoarding = () => {
         },
         {
           backgroundColor: "#fff",
-          image: <FontAwesome name="language" size={132} color="black" />,
-          title: "Válassz nyelvet",
+          image: (
+            <Image
+              source={{
+                uri: imageSource,
+              }}
+              style={{ width: 150, height: 100 }}
+            />
+          ),
+          title: titleSource,
           subtitle: (
             <View style={{ width: "100%" }}>
               <Picker
@@ -37,8 +65,9 @@ const OnBoarding = () => {
                   setSelectedLanguage(itemValue)
                 }
               >
-                <Picker.Item label="Java" value="java" />
-                <Picker.Item label="JavaScript" value="js" />
+                <Picker.Item label="Magyar" value="hu" />
+                <Picker.Item label="English" value="en" />
+                <Picker.Item label="Deutsch" value="de" />
               </Picker>
             </View>
           ),
