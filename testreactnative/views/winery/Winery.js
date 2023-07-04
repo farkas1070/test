@@ -88,11 +88,11 @@ const Winery = ({ route }) => {
           return (
             <View key={index} style={styles.servicecontainer}>
               <Image
-              source={{
-                uri: service.acf.icon,
-              }}
-              style={{ width: 50, height: 50 }}
-            />
+                source={{
+                  uri: service.acf.icon,
+                }}
+                style={{ width: 50, height: 50 }}
+              />
               <Text>{service.name}</Text>
             </View>
           );

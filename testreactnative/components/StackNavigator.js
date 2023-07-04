@@ -33,11 +33,10 @@ const StackNavigator = () => {
           setIsEffectDone(true);
         }
       } catch (e) {
-        console.log(e)
+        console.log(e);
       }
     };
     getData();
-    
   }, []);
 
   return isEffectDone ? (

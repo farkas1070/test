@@ -10,7 +10,7 @@ import MapView, {
 import Placeholder from "../../../assets/placeholder.png";
 import { Mapstyle } from "../CustomMapStyle";
 import { styles } from "./MapViewContainerStyle";
-import BottomMarker from "../../../assets/markerbottom.png"
+import BottomMarker from "../../../assets/markerbottom.png";
 const MapViewContainer = ({
   mapRef,
   markerRef,
@@ -76,14 +76,20 @@ const MapViewContainer = ({
 
             //image={poi.logo ? { uri: poi.logo } : Placeholder} kell megoldás hogy lehessen az imaget módosítani
           >
-            <View style={{ width: 50, height:60 }}>
+            <View style={{ width: 50, height: 60 }}>
               <Image
                 source={poi.logo ? { uri: poi.logo } : Placeholder}
                 style={styles.markerimage}
               />
-             <Image
+              <Image
                 source={BottomMarker}
-                style={{bottom:0,width:50,position:'absolute',height:20,zIndex:-1}}
+                style={{
+                  bottom: 0,
+                  width: 50,
+                  position: "absolute",
+                  height: 20,
+                  zIndex: -1,
+                }}
                 resizeMode="contain"
               />
             </View>
