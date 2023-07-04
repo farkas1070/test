@@ -19,29 +19,30 @@ const StackNavigator = () => {
   const openMenu = () => {
     navigation.openDrawer();
   };
-  const [firstTimeOpen, setFirstTimeOpen] = useState(null);
+  const [firstTimeOpen, setFirstTimeOpen] = useState(true);
   useEffect(() => {
     const getData = async () => {
       try {
         const value = await AsyncStorage.getItem("FirstTimeOpen");
         console.log(value);
-        if (value !== null) {
-          setFirstTimeOpen(false);
-        } else {
+        if (value === null) {
           setFirstTimeOpen(true);
+        } else {
+          setFirstTimeOpen(false);
         }
       } catch (e) {
         // error reading value
       }
     };
     getData();
+    console.log(firstTimeOpen);
   }, []);
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {firstTimeOpen && (
+      {firstTimeOpen === true ? (
         <Stack.Screen name="OnBoarding" component={OnBoarding} />
-      )}
+      ) : null}
       <Stack.Screen
         name="Drawer"
         component={DrawerNavigator}
@@ -53,7 +54,6 @@ const StackNavigator = () => {
         options={{
           headerTintColor: "black",
           headerTitleAlign: "center",
-
           headerTitleStyle: {
             textAlign: "center",
           },

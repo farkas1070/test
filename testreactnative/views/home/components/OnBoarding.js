@@ -10,7 +10,7 @@ import { getLocales } from "expo-localization";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 
-const OnBoarding = ({ setFirstTimeOpen }) => {
+const OnBoarding = () => {
   const navigation = useNavigation();
   const systemLanguage = getLocales()[0].languageCode;
   const [selectedLanguage, setSelectedLanguage] = useState(systemLanguage);
@@ -34,7 +34,6 @@ const OnBoarding = ({ setFirstTimeOpen }) => {
   const storeData = async (value) => {
     try {
       await AsyncStorage.setItem("FirstTimeOpen", value);
-      setFirstTimeOpen(false);
       console.log("saved data");
     } catch (e) {
       console.log(e);

@@ -7,31 +7,10 @@ import React, { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function App() {
-  const [firstTimeOpen, setFirstTimeOpen] = useState(null);
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const value = await AsyncStorage.getItem("FirstTimeOpen");
-        console.log(value);
-        if (value !== null) {
-          setFirstTimeOpen(false);
-        } else {
-          setFirstTimeOpen(true);
-        }
-      } catch (e) {
-        // error reading value
-      }
-    };
-    getData();
-  }, []);
   return (
     <PointOfInterestProvider>
       <NavigationContainer>
-        {firstTimeOpen ? (
-          <OnBoarding setFirstTimeOpen={firstTimeOpen} />
-        ) : (
-          <StackNavigator />
-        )}
+        <StackNavigator />
       </NavigationContainer>
     </PointOfInterestProvider>
   );
