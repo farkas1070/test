@@ -7,9 +7,11 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Picker } from "@react-native-picker/picker";
 import { styles } from "./OnboardingStyle";
 import { getLocales } from "expo-localization";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 
-const OnBoarding = () => {
+const OnBoarding = ({ setFirstTimeOpen }) => {
+  const navigation = useNavigation();
   const systemLanguage = getLocales()[0].languageCode;
   const [selectedLanguage, setSelectedLanguage] = useState(systemLanguage);
   const imageSource =
@@ -32,9 +34,10 @@ const OnBoarding = () => {
   const storeData = async (value) => {
     try {
       await AsyncStorage.setItem("FirstTimeOpen", value);
+      setFirstTimeOpen(false);
       console.log("saved data");
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
   };
   const removeData = async (value) => {
@@ -42,12 +45,15 @@ const OnBoarding = () => {
       await AsyncStorage.removeItem("FirstTimeOpen");
       console.log("deleted data");
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
   };
   return (
     <Onboarding
-      onDone={() => console.log("done")}
+      onDone={() => {
+        storeData("true");
+        navigation.navigate("Drawer");
+      }}
       showSkip={false}
       nextLabel={
         <MaterialIcons name="arrow-forward-ios" size={24} color="black" />
@@ -67,7 +73,7 @@ const OnBoarding = () => {
             <View style={{ width: "100%", alignItems: "center" }}>
               <Text
                 style={{
-                  fontSize: "26px",
+                  fontSize: 26,
                   fontWeight: "bold",
                   textAlign: "center",
                 }}
@@ -85,7 +91,7 @@ const OnBoarding = () => {
             >
               <Text
                 style={{
-                  fontSize: "16px",
+                  fontSize: 16,
                   textAlign: "center",
                   paddingTop: 15,
                 }}
@@ -134,10 +140,20 @@ const OnBoarding = () => {
                 és értesítések engedélyezéséhez
               </Text>
               <View style={styles.buttoncontainer}>
-                <TouchableOpacity style={styles.notenablebutton} onPress={()=>{removeData()}}>
+                <TouchableOpacity
+                  style={styles.notenablebutton}
+                  onPress={() => {
+                    removeData();
+                  }}
+                >
                   <Text>Tiltás</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.enablebutton} onPress={()=>{storeData('hello')}}>
+                <TouchableOpacity
+                  style={styles.enablebutton}
+                  onPress={() => {
+                    storeData("hello");
+                  }}
+                >
                   <Text>Engedélyezés</Text>
                 </TouchableOpacity>
               </View>
