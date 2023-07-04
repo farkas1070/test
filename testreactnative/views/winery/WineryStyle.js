@@ -41,5 +41,22 @@ export const styles = StyleSheet.create({
     justifyContent:'center',
     alignItems:'center'
 
+  },
+  mainservicecontainer:{
+    width:'100%',
+    justifyContent:'center',
+    alignItems:'center',
+    marginBottom:30
+  },
+  servicecontainer:{
+    width:'90%',
+    height:80,
+    borderRadius:10,
+    borderWidth:3,
+    borderColor:'grey',
+    marginTop:10,
+    flexDirection:'row',
+    marginTop:10,
+    backgroundColor:'grey'
   }
 });

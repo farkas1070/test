@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Linking,
   Platform,
+  View,
 } from "react-native";
 import React from "react";
 import { styles } from "./WineryStyle";
@@ -80,13 +81,23 @@ const Winery = ({ route }) => {
         source={source}
         tagsStyles={tagsStyles}
       />
-      {winery.services?.map((service, index) => {
-        console.log(service);
-        
-        return <Text key={index}>{service.name}</Text>;
-      })}
+      <View style={styles.mainservicecontainer}>
+        {winery.services?.map((service, index) => {
+          console.log(service.acf.icon_2);
 
-      
+          return (
+            <View key={index} style={styles.servicecontainer}>
+              <Image
+              source={{
+                uri: service.acf.icon,
+              }}
+              style={{ width: 50, height: 50 }}
+            />
+              <Text>{service.name}</Text>
+            </View>
+          );
+        })}
+      </View>
       {winery.map.lat != undefined && winery.map.lng != undefined && (
         <TouchableOpacity
           style={styles.opengooglemapsbutton}

@@ -25,8 +25,9 @@ const StackNavigator = () => {
     const getData = async () => {
       try {
         
+
         const value = await AsyncStorage.getItem("FirstTimeOpen");
-        console.log(language);
+        
         if (value === null) {
           setFirstTimeOpen(true);
           setIsEffectDone(true)
@@ -35,11 +36,11 @@ const StackNavigator = () => {
           setIsEffectDone(true)
         }
       } catch (e) {
-        // error reading value
+        console.log(e)
       }
     };
     getData();
-    console.log(firstTimeOpen);
+    
   }, []);
 
   return (
