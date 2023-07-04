@@ -54,17 +54,47 @@ const OnBoarding = () => {
       }
       pages={[
         {
-          backgroundColor: "#98FB98",
+          backgroundColor: "#efeae1",
           image: (
             <Image
               source={{
                 uri: "https://cdn.shopify.com/s/files/1/0525/4361/9238/files/3_f04ac13d-e77b-4f56-a04c-b16a901f18f4_1200x1200.png?v=1620164482",
               }}
-              style={{ width: 200, height: 200 }}
+              style={{ width: 200, height: 150 }}
             />
           ),
-          title: "Üdvözöl A Soproni Borvidék App",
-          subtitle: "Kezdjünk is Bele!",
+          title: (
+            <View style={{ width: "100%", alignItems: "center" }}>
+              <Text
+                style={{
+                  fontSize: "26px",
+                  fontWeight: "bold",
+                  textAlign: "center",
+                }}
+              >
+                Üdvözlünk a Soproni Borvidék alkalmazásában!
+              </Text>
+            </View>
+          ),
+          subtitle: (
+            <View
+              style={{
+                width: "95%",
+                alignItems: "center",
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: "16px",
+                  textAlign: "center",
+                  paddingTop: 15,
+                }}
+              >
+                Az alkalmazás segítségével megismerheted a Soproni Borvidék
+                borait, borászatait, rendezvényeit és látnivalóit.
+              </Text>
+            </View>
+          ),
         },
         {
           backgroundColor: "#3498db",
