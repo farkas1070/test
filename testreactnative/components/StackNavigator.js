@@ -24,14 +24,7 @@ const StackNavigator = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-<<<<<<< Updated upstream
-        
-
         const value = await AsyncStorage.getItem("FirstTimeOpen");
-        
-=======
-        const value = await AsyncStorage.getItem("FirstTimeOpen");
->>>>>>> Stashed changes
         if (value === null) {
           setFirstTimeOpen(true);
           setIsEffectDone(true);
