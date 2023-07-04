@@ -25,7 +25,6 @@ const StackNavigator = () => {
     const getData = async () => {
       try {
         const value = await AsyncStorage.getItem("FirstTimeOpen");
-
         if (value === null) {
           setFirstTimeOpen(true);
           setIsEffectDone(true);
@@ -34,10 +33,11 @@ const StackNavigator = () => {
           setIsEffectDone(true);
         }
       } catch (e) {
-        console.log(e);
+        console.log(e)
       }
     };
     getData();
+    
   }, []);
 
   return isEffectDone ? (
