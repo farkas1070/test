@@ -23,6 +23,10 @@ const hu = {
   searchResultsForWineries: "Borászatok",
   searchResultsForEvents: "Események",
   settings: "Beállítások",
+  save: "Mentés",
+  hungary: "Magyar",
+  english: "Angol",
+  german: "Német",
 };
 
 const en = {
@@ -48,6 +52,10 @@ const en = {
   searchResultsForPointsOfInterest: "Points of interest",
   searchResultsForWine: "Wines",
   settings: "Settings",
+  save: "Save",
+  hungary: "Hungarian",
+  english: "English",
+  german: "German",
 };
 
 const de = {
@@ -73,6 +81,10 @@ const de = {
   searchResultsForPointsOfInterest: "Sehenswürdigkeiten",
   searchResultsForWine: "Weine",
   settings: "Einstellungen",
+  save: "Speichern",
+  hungary: "Ungarisch",
+  english: "Englisch",
+  german: "Deutsch",
 };
 
 export { hu, en, de };

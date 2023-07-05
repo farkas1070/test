@@ -1,15 +1,19 @@
-import { Text, View,TouchableOpacity,Alert } from "react-native";
-import React, { useState,  useContext } from "react";
+import { Text, View, TouchableOpacity, Alert } from "react-native";
+import React, { useState, useContext } from "react";
 import { styles } from "./SettingsStyle";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { LanguageContext } from "../../context/PointOfInterestContext";
 import ConfirmationModal from "./components/ConfirmationModal";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import {
   getWineries,
   getEvents,
   getNews} from "../../controllers/WordpressProvider"
 import { WineriesContext,EventsContext,NewsContext } from "../../context/PointOfInterestContext";
+
+
+import i18n from "../../lang/LanguageManager";
 
 
 const Settings = () => {
@@ -21,11 +25,11 @@ const Settings = () => {
   
   const openModal = () => {
     setModalVisible(true);
-  }
+  };
   const closeModal = () => {
     setModalVisible(false);
-  }
-  const saveChanges = async() => { 
+  };
+  const saveChanges = () => {
     AsyncStorage.setItem("Language", language);
     const wineries = await getWineries(language);
     const events = await getEvents(language); 
@@ -37,16 +41,19 @@ const Settings = () => {
     
 
     setModalVisible(false);
-    Alert.alert("Settings Saved")
-  }
- 
+    Alert.alert("Settings Saved");
+  };
+
   return (
     <View style={styles.maincontainer}>
-      <ConfirmationModal modalVisible={modalVisible} closeModal={closeModal} saveChanges={saveChanges} />
-
+      <ConfirmationModal
+        modalVisible={modalVisible}
+        closeModal={closeModal}
+        saveChanges={saveChanges}
+      />
 
       <View style={styles.languagecontainer}>
-        <Text style={styles.languagetext}>Language</Text>
+        <Text style={styles.languagetext}>{i18n.t("language")}</Text>
         <View style={styles.checkboxcontainer}>
           <View style={styles.checkbox}>
             <BouncyCheckbox
@@ -60,7 +67,7 @@ const Settings = () => {
               isChecked={language === "hu" ? true : false}
               disableBuiltInState={true}
             />
-            <Text style={styles.checkboxtext}>Magyar</Text>
+            <Text style={styles.checkboxtext}>{i18n.t("hungary")}</Text>
           </View>
           <View style={styles.checkbox}>
             <BouncyCheckbox
@@ -74,7 +81,7 @@ const Settings = () => {
               isChecked={language === "en" ? true : false}
               disableBuiltInState={true}
             />
-            <Text style={styles.checkboxtext}>English</Text>
+            <Text style={styles.checkboxtext}>{i18n.t("english")}</Text>
           </View>
           <View style={styles.checkbox}>
             <BouncyCheckbox
@@ -88,15 +95,18 @@ const Settings = () => {
               isChecked={language === "de" ? true : false}
               disableBuiltInState={true}
             />
-            <Text style={styles.checkboxtext}>Deutsch</Text>
+            <Text style={styles.checkboxtext}>{i18n.t("german")}</Text>
           </View>
         </View>
       </View>
       <View>
-        <TouchableOpacity onPress={()=>{openModal()}} style={styles.savebutton}>
-          <Text style={styles.savetext}>
-              Mentés
-          </Text>
+        <TouchableOpacity
+          onPress={() => {
+            openModal();
+          }}
+          style={styles.savebutton}
+        >
+          <Text style={styles.savetext}>{i18n.t("save")}</Text>
         </TouchableOpacity>
       </View>
     </View>
