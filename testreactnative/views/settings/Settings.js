@@ -1,10 +1,12 @@
-import { Text, View, TouchableOpacity, Modal } from "react-native";
-import React, { useState, useEffect, useContext } from "react";
+import { Text, View, TouchableOpacity, Alert } from "react-native";
+import React, { useState, useContext } from "react";
 import { styles } from "./SettingsStyle";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { LanguageContext } from "../../context/PointOfInterestContext";
 import ConfirmationModal from "./components/ConfirmationModal";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import i18n from "../../lang/LanguageManager";
+
 const Settings = () => {
   const [language, setLanguage] = useContext(LanguageContext);
   const [modalVisible, setModalVisible] = useState(false);
@@ -15,7 +17,9 @@ const Settings = () => {
     setModalVisible(false);
   };
   const saveChanges = () => {
-    console.log("mukodik"), setModalVisible(false);
+    AsyncStorage.setItem("Language", language);
+    setModalVisible(false);
+    Alert.alert("Settings Saved");
   };
 
   return (
