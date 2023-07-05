@@ -40,7 +40,7 @@ const StackNavigator = () => {
   }, []);
 
   return isEffectDone ? (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator>
       {firstTimeOpen === true ? (
         <Stack.Screen name="OnBoarding" component={OnBoarding} />
       ) : null}
@@ -83,18 +83,7 @@ const StackNavigator = () => {
             textAlign: "center",
           },
 
-          headerRight: () => (
-            <View style={{ paddingRight: 10 }}>
-              <Ionicons
-                name="menu"
-                size={24}
-                color="black"
-                onPress={() => {
-                  openMenu();
-                }}
-              />
-            </View>
-          ),
+          
         }}
       />
 
@@ -108,18 +97,7 @@ const StackNavigator = () => {
             textAlign: "center",
           },
 
-          headerRight: () => (
-            <View style={{ paddingRight: 10 }}>
-              <Ionicons
-                name="menu"
-                size={24}
-                color="black"
-                onPress={() => {
-                  openMenu();
-                }}
-              />
-            </View>
-          ),
+          
         }}
       />
       <Stack.Screen
@@ -132,18 +110,7 @@ const StackNavigator = () => {
             textAlign: "center",
           },
 
-          headerRight: () => (
-            <View style={{ paddingRight: 10 }}>
-              <Ionicons
-                name="menu"
-                size={24}
-                color="black"
-                onPress={() => {
-                  openMenu();
-                }}
-              />
-            </View>
-          ),
+          
         }}
       />
     </Stack.Navigator>
