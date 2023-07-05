@@ -15,7 +15,7 @@ import NoDataView from "../views/NoDataView/NoDataView";
 import { EventsContext,WineriesContext,NewsContext } from "../context/PointOfInterestContext";
 
 const Stack = createNativeStackNavigator();
-
+ 
 const StackNavigator = () => {
   const navigation = useNavigation();
 
@@ -43,6 +43,7 @@ const StackNavigator = () => {
   }, []);
 
   return isEffectDone ? (
+    
     <Stack.Navigator>
       {firstTimeOpen === true ? (
         <Stack.Screen name="OnBoarding" component={OnBoarding} />
