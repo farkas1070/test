@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useContext} from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
 import BottomNavigator from "./BottomNavigator";
@@ -8,11 +8,14 @@ import Valami from "./Valami";
 import i18n from "../lang/LanguageManager";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { LanguageContext } from "../context/PointOfInterestContext";
+
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
   const navigation = useNavigation();
+  const [language, setLanguage] = useContext(LanguageContext);
 
   return (
     <Drawer.Navigator

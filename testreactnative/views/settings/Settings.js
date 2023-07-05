@@ -1,18 +1,31 @@
-import { Text, View } from "react-native";
-import React, { useState } from "react";
+import { Text, View,TouchableOpacity,Modal } from "react-native";
+import React, { useState, useEffect, useContext } from "react";
 import { styles } from "./SettingsStyle";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import { systemLanguage } from "../../lang/LanguageManager";
-
+import { LanguageContext } from "../../context/PointOfInterestContext";
+import ConfirmationModal from "./components/ConfirmationModal";
 const Settings = () => {
-  const [language, setLanguage] = useState(systemLanguage);
-
+  const [language, setLanguage] = useContext(LanguageContext);
+  const [modalVisible, setModalVisible] = useState(false);
+  const openModal = () => {
+    setModalVisible(true);
+  }
+  const closeModal = () => {
+    setModalVisible(false);
+  }
+  const saveChanges = () => { 
+    console.log('mukodik'),setModalVisible(false);
+  }
+ 
   return (
     <View style={styles.maincontainer}>
-      <View style={styles.bodycontainer}>
-        <View style={styles.languagecontainer}>
-          <Text style={styles.languagetext}>Language</Text>
-          <View style={styles.checkboxcontainer}>
+      <ConfirmationModal modalVisible={modalVisible} closeModal={closeModal} saveChanges={saveChanges} />
+
+
+      <View style={styles.languagecontainer}>
+        <Text style={styles.languagetext}>Language</Text>
+        <View style={styles.checkboxcontainer}>
+          <View style={styles.checkbox}>
             <BouncyCheckbox
               size={25}
               fillColor="black"
@@ -21,9 +34,12 @@ const Settings = () => {
               onPress={() => {
                 setLanguage("hu");
               }}
-              isChecked={language === "hu"}
+              isChecked={language === "hu" ? true : false}
+              disableBuiltInState={true}
             />
             <Text style={styles.checkboxtext}>Magyar</Text>
+          </View>
+          <View style={styles.checkbox}>
             <BouncyCheckbox
               size={25}
               fillColor="black"
@@ -32,9 +48,12 @@ const Settings = () => {
               onPress={() => {
                 setLanguage("en");
               }}
-              isChecked={language === "en"}
+              isChecked={language === "en" ? true : false}
+              disableBuiltInState={true}
             />
             <Text style={styles.checkboxtext}>English</Text>
+          </View>
+          <View style={styles.checkbox}>
             <BouncyCheckbox
               size={25}
               fillColor="black"
@@ -43,11 +62,19 @@ const Settings = () => {
               onPress={() => {
                 setLanguage("de");
               }}
-              isChecked={language === "de"}
+              isChecked={language === "de" ? true : false}
+              disableBuiltInState={true}
             />
             <Text style={styles.checkboxtext}>Deutsch</Text>
           </View>
         </View>
+      </View>
+      <View>
+        <TouchableOpacity onPress={()=>{openModal()}} style={styles.savebutton}>
+          <Text style={styles.savetext}>
+              Mentés
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

@@ -11,6 +11,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import SplashScreen from "../views/home/components/SplashScreen";
+
+
 const Stack = createNativeStackNavigator();
 
 const StackNavigator = () => {
