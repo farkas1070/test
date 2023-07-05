@@ -33,68 +33,13 @@ const DrawerNavigator = () => {
         
       }}
     />
+
+
     <Drawer.Screen
-<<<<<<< Updated upstream
-      name="Valami2"
-      component={Valami2}
-      options={{
-        drawerIcon: ({ focused, color, size }) => (
-          <Ionicons
-            name={focused ? "apps" : "apps-outline"}
-            size={size}
-            color={color}
-          />
-        ),
-        headerLeft: () => (
-          <TouchableOpacity
-            style={{ paddingLeft: 10 }}
-            onPress={() => {
-              navigation.goBack()
-            }}
-          >
-            <Ionicons
-              name="ios-arrow-back"
-              size={24}
-              color="black"
-            />
-          </TouchableOpacity>
-        ),
-        headerTitleAlign: "center"
-      }}
-    />
-    <Drawer.Screen
-      name="Valami"
-      component={Valami}
-      options={{
-        drawerIcon: ({ focused, color, size }) => (
-          <Ionicons
-            name={focused ? "apps" : "apps-outline"}
-            size={size}
-            color={color}
-          />
-        ),
-        headerLeft: () => (
-          <TouchableOpacity
-            style={{ paddingLeft: 10 }}
-            onPress={() => {
-              navigation.goBack()
-            }}
-          >
-            <Ionicons
-              name="ios-arrow-back"
-              size={24}
-              color="black"
-            />
-          </TouchableOpacity>
-        ),
-        headerTitleAlign: "center"
-      }}
-    />
-    <Drawer.Screen
-      name="Beállítások"
-=======
+      
+
       name={i18n.t("settings")}
->>>>>>> Stashed changes
+
       component={Settings}
       options={{
         drawerIcon: ({ focused, color, size }) => (
