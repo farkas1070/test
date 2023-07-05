@@ -37,8 +37,9 @@ const BottomNavigator = () => {
           },
         }}
       >
+
         <Tab.Screen
-          name={i18n.t("home")}
+          name={i18n.t("home")[0]}
           component={Home}
           options={{
             tabBarIcon: () => (

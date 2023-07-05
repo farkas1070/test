@@ -1,5 +1,5 @@
 import { Image, TouchableOpacity } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Text, View } from "react-native";
 import Onboarding from "react-native-onboarding-swiper";
 import { FontAwesome } from "@expo/vector-icons";

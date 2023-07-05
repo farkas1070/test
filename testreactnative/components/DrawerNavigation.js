@@ -5,6 +5,7 @@ import BottomNavigator from "./BottomNavigator";
 import Valami from "./Valami";
 import Valami2 from "./Valami2";
 import Settings from "../views/settings/Settings";
+import i18n from "../lang/LanguageManager";
 
 const Drawer = createDrawerNavigator();
 const DrawerNavigator = () => (
@@ -13,7 +14,7 @@ const DrawerNavigator = () => (
     screenOptions={{ headerShown: false, drawerPosition: "right" }}
   >
     <Drawer.Screen
-      name="Home"
+      name={i18n.t("home")[1]}
       component={BottomNavigator}
       options={{
         drawerIcon: ({ focused, color, size }) => (
