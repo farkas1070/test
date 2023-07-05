@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderBottomLeftRadius: 20,
   },
-  
+
   callout: {
     width: 125,
     height: 75,
@@ -56,26 +56,14 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  
-  
-  
-  
- 
- 
-  
-  
-  
-  
+
   markerimage: {
-    width:40,
-    height:40, 
-    borderRadius:20,
-    borderColor:'white',
-    borderWidth:3,
-    marginBottom:10,
-    position:'relative'
-    
-    
-    
-  }
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    borderColor: "white",
+    borderWidth: 3,
+    marginBottom: 10,
+    position: "relative",
+  },
 });

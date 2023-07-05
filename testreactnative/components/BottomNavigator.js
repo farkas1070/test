@@ -81,7 +81,7 @@ const BottomNavigator = () => {
         />
 
         <Tab.Screen
-          name="Események"
+          name={i18n.t("events")}
           component={Events}
           options={{
             tabBarIcon: () => (
@@ -122,7 +122,7 @@ const BottomNavigator = () => {
           }}
         />
         <Tab.Screen
-          name="Térkép"
+          name={i18n.t("map")}
           component={Map}
           options={{
             tabBarIcon: () => (
@@ -132,7 +132,7 @@ const BottomNavigator = () => {
           }}
         />
         <Tab.Screen
-          name="Borászatok"
+          name={i18n.t("wineries")}
           component={Wineries}
           options={{
             tabBarIcon: () => (
@@ -172,7 +172,7 @@ const BottomNavigator = () => {
           }}
         />
         <Tab.Screen
-          name="Hírek"
+          name={i18n.t("news")}
           component={News}
           options={{
             tabBarIcon: () => (

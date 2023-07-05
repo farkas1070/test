@@ -10,11 +10,15 @@ import i18n from "../lang/LanguageManager";
 const Drawer = createDrawerNavigator();
 const DrawerNavigator = () => (
   <Drawer.Navigator
-    initialRouteName="Home"
+    initialRouteName={i18n.t("home")[0]}
     screenOptions={{ headerShown: false, drawerPosition: "right" }}
   >
     <Drawer.Screen
+
       name={i18n.t("home")[1]}
+
+      
+
       component={BottomNavigator}
       options={{
         drawerIcon: ({ focused, color, size }) => (
