@@ -18,19 +18,23 @@ export const styles = StyleSheet.create({
   checkboxtext: {
     color: "#000",
   },
-  savebutton:{
-    padding:10,
-    borderColor:'grey',
-    borderWidth:1,
-    borderRadius:10,
-    width:100,
-    height:50,
-    justifyContent:"center",
-    alignItems:"center"
-
+  savebutton: {
+    padding: 10,
+    borderColor: "grey",
+    borderWidth: 1,
+    borderRadius: 10,
+    width: 100,
+    height: 50,
+    justifyContent: "center",
+    alignItems: "center",
   },
-  savetext:{
-    
-    fontWeight:"bold",
-  }
+  savetext: {
+    fontWeight: "bold",
+  },
+  languagetext: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginLeft: 20,
+    marginTop: 20,
+  },
 });

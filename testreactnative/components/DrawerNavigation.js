@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
 import BottomNavigator from "./BottomNavigator";
@@ -9,7 +9,6 @@ import i18n from "../lang/LanguageManager";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { LanguageContext } from "../context/PointOfInterestContext";
-
 
 const Drawer = createDrawerNavigator();
 
@@ -85,7 +84,7 @@ const DrawerNavigator = () => {
         }}
       />
       <Drawer.Screen
-        name="Beállítások"
+        name={i18n.t("settings")}
         component={Settings}
         options={{
           drawerIcon: ({ focused, color, size }) => (
