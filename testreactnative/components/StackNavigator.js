@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Winery from "../views/winery/Winery";
 import Event from "../views/event/Event";
@@ -11,7 +11,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import SplashScreen from "../views/home/components/SplashScreen";
-
+import NoDataView from "../views/NoDataView/NoDataView";
+import { EventsContext,WineriesContext,NewsContext } from "../context/PointOfInterestContext";
 
 const Stack = createNativeStackNavigator();
 
