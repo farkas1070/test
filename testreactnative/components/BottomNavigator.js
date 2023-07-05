@@ -9,11 +9,13 @@ import { Ionicons } from "@expo/vector-icons";
 import News from "../views/news/News";
 import { useNavigation } from "@react-navigation/native";
 import InformationModal from "../views/home/components/InformationModal";
-import i18n from "../lang/LanguageManager";
+
+import I18nProvider from "../lang/LanguageManager";
 const Tab = createBottomTabNavigator();
 
 const BottomNavigator = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const i18n = I18nProvider();
   const openModal = () => {
     setModalVisible(true);
   };

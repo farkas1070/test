@@ -5,19 +5,37 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { LanguageContext } from "../../context/PointOfInterestContext";
 import ConfirmationModal from "./components/ConfirmationModal";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import {
+  getWineries,
+  getEvents,
+  getNews} from "../../controllers/WordpressProvider"
+import { WineriesContext,EventsContext,NewsContext } from "../../context/PointOfInterestContext";
 
 
 const Settings = () => {
   const [language, setLanguage] = useContext(LanguageContext);
   const [modalVisible, setModalVisible] = useState(false);
+  const [Wineries, setWineries] = useContext(WineriesContext);
+  const [events, setEvents] = useContext(EventsContext);
+  const [news, setNews] = useContext(NewsContext);
+  
   const openModal = () => {
     setModalVisible(true);
   }
   const closeModal = () => {
     setModalVisible(false);
   }
-  const saveChanges = () => { 
+  const saveChanges = async() => { 
     AsyncStorage.setItem("Language", language);
+    const wineries = await getWineries(language);
+    const events = await getEvents(language); 
+    const news = await getNews(language);
+    setWineries(wineries);
+    setEvents(events);
+    setNews(news);
+    
+    
+
     setModalVisible(false);
     Alert.alert("Settings Saved")
   }
