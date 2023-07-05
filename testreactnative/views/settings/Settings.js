@@ -1,4 +1,4 @@
-import { Text, View, TouchableOpacity, Alert } from "react-native";
+import { Text, View, TouchableOpacity, Alert,Switch } from "react-native";
 import React, { useState, useContext } from "react";
 import { styles } from "./SettingsStyle";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
@@ -26,6 +26,7 @@ const Settings = () => {
   const [Wineries, setWineries] = useContext(WineriesContext);
   const [events, setEvents] = useContext(EventsContext);
   const [news, setNews] = useContext(NewsContext);
+  const [isEnabled, setIsEnabled] = useState(false);
 
   const openModal = () => {
     setModalVisible(true);
@@ -101,6 +102,16 @@ const Settings = () => {
             <Text style={styles.checkboxtext}>{i18n.t("german")}</Text>
           </View>
         </View>
+      </View>
+      <View style={styles.switchcontainer}>
+        <Text>Értesítések engedélyezése</Text>
+      <Switch
+        trackColor={{false: '#767577', true: '#81b0ff'}}
+        thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+        ios_backgroundColor="#3e3e3e"
+        onValueChange={()=>{setIsEnabled(!isEnabled);}}
+        value={isEnabled}
+      />
       </View>
       <View>
         <TouchableOpacity

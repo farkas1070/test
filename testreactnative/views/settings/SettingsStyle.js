@@ -37,4 +37,11 @@ export const styles = StyleSheet.create({
     marginLeft: 20,
     marginTop: 20,
   },
+  switchcontainer:{
+    width:"100%",
+    height:80,
+    justifyContent:'space-between',
+    flexDirection:'row',
+    alignItems:'center'
+  }
 });

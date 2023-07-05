@@ -1,8 +1,9 @@
 import { Text, View, Modal, TouchableOpacity ,ActivityIndicator} from "react-native";
-import React from "react";
+import React,{useState} from "react";
 import { styles } from "./ConfirmationModalStyle";
 
 const ConfirmationModal = ({ modalVisible, closeModal, saveChanges }) => {
+    const [loading, setLoading] = useState(false);
   return (
     <Modal
       animationType="fade"
@@ -16,9 +17,11 @@ const ConfirmationModal = ({ modalVisible, closeModal, saveChanges }) => {
           <Text style={styles.modalText}>
             Biztos el akarod menteni a változtatásokat?
           </Text>
-
-          <ActivityIndicator/>
+          <View>
+            {loading && <ActivityIndicator/>}
+          
           </View>
+          
           <View style={styles.buttonscontainer}>
             <TouchableOpacity
               style={[styles.denybutton, styles.buttonClose]}
@@ -32,13 +35,14 @@ const ConfirmationModal = ({ modalVisible, closeModal, saveChanges }) => {
               style={[styles.confirmationbutton, styles.buttonOpen]}
               onPress={() => {
                 saveChanges();
+                setLoading(true);
               }}
             >
               <Text style={styles.textStyle}>Változások mentése</Text>
             </TouchableOpacity>
           </View>
         </View>
-      
+      </View>
     </Modal>
   );
 };
