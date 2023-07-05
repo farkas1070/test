@@ -7,5 +7,7 @@ const i18n = new I18n({ hu, en, de });
 AsyncStorage.getItem("Language").then((value) => {
   i18n.locale = value;
 });
+let systemLanguage = i18n.locale;
 
 export default i18n;
+export { systemLanguage };
