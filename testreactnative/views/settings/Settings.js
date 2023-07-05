@@ -7,8 +7,11 @@ const Settings = () => {
 
     
   return (
-    <View>
-      <Text>Settings</Text>
+    <View style={styles.maincontainer}>
+      <Text>Set</Text>
+      <View style={styles.bodycontainer}>
+
+      </View>
     </View>
   )
 }

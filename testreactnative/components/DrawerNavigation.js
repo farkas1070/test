@@ -6,19 +6,22 @@ import Valami from "./Valami";
 import Valami2 from "./Valami2";
 import Settings from "../views/settings/Settings";
 import i18n from "../lang/LanguageManager";
+import { TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 
 const Drawer = createDrawerNavigator();
-const DrawerNavigator = () => (
-  <Drawer.Navigator
+
+const DrawerNavigator = () => {
+  const navigation = useNavigation();
+  
+  return(
+    <Drawer.Navigator
     initialRouteName={i18n.t("home")[0]}
-    screenOptions={{ headerShown: false, drawerPosition: "right" }}
+    screenOptions={{ drawerPosition: "right" }}
   >
     <Drawer.Screen
-
       name={i18n.t("home")[1]}
-
-      
-
       component={BottomNavigator}
       options={{
         drawerIcon: ({ focused, color, size }) => (
@@ -28,6 +31,8 @@ const DrawerNavigator = () => (
             color={color}
           />
         ),
+        headerShown: false,
+        
       }}
     />
 
@@ -42,6 +47,21 @@ const DrawerNavigator = () => (
             color={color}
           />
         ),
+        headerLeft: () => (
+          <TouchableOpacity
+            style={{ paddingLeft: 10 }}
+            onPress={() => {
+              navigation.goBack()
+            }}
+          >
+            <Ionicons
+              name="ios-arrow-back"
+              size={24}
+              color="black"
+            />
+          </TouchableOpacity>
+        ),
+        headerTitleAlign: "center"
       }}
     />
     <Drawer.Screen
@@ -55,6 +75,21 @@ const DrawerNavigator = () => (
             color={color}
           />
         ),
+        headerLeft: () => (
+          <TouchableOpacity
+            style={{ paddingLeft: 10 }}
+            onPress={() => {
+              navigation.goBack()
+            }}
+          >
+            <Ionicons
+              name="ios-arrow-back"
+              size={24}
+              color="black"
+            />
+          </TouchableOpacity>
+        ),
+        headerTitleAlign: "center"
       }}
     />
     <Drawer.Screen
@@ -68,9 +103,26 @@ const DrawerNavigator = () => (
             color={color}
           />
         ),
+        headerLeft: () => (
+          <TouchableOpacity
+            style={{ paddingLeft: 10 }}
+            onPress={() => {
+              navigation.goBack()
+            }}
+          >
+            <Ionicons
+              name="ios-arrow-back"
+              size={24}
+              color="black"
+            />
+          </TouchableOpacity>
+        ),
+        headerTitleAlign: "center"
       }}
     />
   </Drawer.Navigator>
-);
+  )
+  
+};
 
 export default DrawerNavigator;
