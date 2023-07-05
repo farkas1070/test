@@ -1,4 +1,4 @@
-import { Text, View, Modal, TouchableOpacity } from "react-native";
+import { Text, View, Modal, TouchableOpacity ,ActivityIndicator} from "react-native";
 import React from "react";
 import { styles } from "./ConfirmationModalStyle";
 

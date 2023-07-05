@@ -19,6 +19,7 @@ import I18nProvider from "../../lang/LanguageManager";
 
 const Settings = () => {
   const i18n = I18nProvider();
+  const [tempLanguage, setTempLanguage] = useState(null);
   const [language, setLanguage] = useContext(LanguageContext);
   const [modalVisible, setModalVisible] = useState(false);
   const [Wineries, setWineries] = useContext(WineriesContext);
@@ -32,14 +33,15 @@ const Settings = () => {
     setModalVisible(false);
   };
   const saveChanges = async () => {
-    AsyncStorage.setItem("Language", language);
-    const wineries = await getWineries(language);
-    const events = await getEvents(language);
-    const news = await getNews(language);
+    AsyncStorage.setItem("Language", tempLanguage);
+    const wineries = await getWineries(tempLanguage);
+    const events = await getEvents(tempLanguage);
+    const news = await getNews(tempLanguage);
     setWineries(wineries);
     setEvents(events);
     setNews(news);
-
+    //setting main lang context value
+    setLanguage(tempLanguage)
     setModalVisible(false);
     Alert.alert("Settings Saved");
   };
@@ -62,9 +64,9 @@ const Settings = () => {
               unfillColor="#FFFFFF"
               iconStyle={{ borderColor: "black" }}
               onPress={() => {
-                setLanguage("hu");
+                setTempLanguage("hu");
               }}
-              isChecked={language === "hu" ? true : false}
+              isChecked={tempLanguage === "hu" ? true : false}
               disableBuiltInState={true}
             />
             <Text style={styles.checkboxtext}>{i18n.t("hungary")}</Text>
@@ -76,9 +78,9 @@ const Settings = () => {
               unfillColor="#FFFFFF"
               iconStyle={{ borderColor: "black" }}
               onPress={() => {
-                setLanguage("en");
+                setTempLanguage("en");
               }}
-              isChecked={language === "en" ? true : false}
+              isChecked={tempLanguage === "en" ? true : false}
               disableBuiltInState={true}
             />
             <Text style={styles.checkboxtext}>{i18n.t("english")}</Text>
@@ -90,9 +92,9 @@ const Settings = () => {
               unfillColor="#FFFFFF"
               iconStyle={{ borderColor: "black" }}
               onPress={() => {
-                setLanguage("de");
+                setTempLanguage("de");
               }}
-              isChecked={language === "de" ? true : false}
+              isChecked={tempLanguage === "de" ? true : false}
               disableBuiltInState={true}
             />
             <Text style={styles.checkboxtext}>{i18n.t("german")}</Text>
