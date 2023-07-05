@@ -6,7 +6,7 @@ const hu = {
   next: "Tovább",
   skip: "Kihagyás",
   done: "Kész",
-  home: ["Kezdőlap","Főoldal"],
+  home: ["Kezdőlap", "Főoldal"],
   events: "Események",
   wineries: "Borászatok",
   news: "Hírek",
@@ -22,6 +22,7 @@ const hu = {
   searchResultsForWine: "Borok",
   searchResultsForWineries: "Borászatok",
   searchResultsForEvents: "Események",
+  settings: "Beállítások",
 };
 
 const en = {
@@ -46,6 +47,7 @@ const en = {
   searchResultsForEvents: "Events",
   searchResultsForPointsOfInterest: "Points of interest",
   searchResultsForWine: "Wines",
+  settings: "Settings",
 };
 
 const de = {
@@ -70,6 +72,7 @@ const de = {
   searchResultsForEvents: "Veranstaltungen",
   searchResultsForPointsOfInterest: "Sehenswürdigkeiten",
   searchResultsForWine: "Weine",
+  settings: "Einstellungen",
 };
 
 export { hu, en, de };

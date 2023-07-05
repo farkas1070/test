@@ -2,8 +2,6 @@ import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
 import BottomNavigator from "./BottomNavigator";
-import Valami from "./Valami";
-import Valami2 from "./Valami2";
 import Settings from "../views/settings/Settings";
 import i18n from "../lang/LanguageManager";
 import { TouchableOpacity } from "react-native";
@@ -35,8 +33,8 @@ const DrawerNavigator = () => {
         
       }}
     />
-
     <Drawer.Screen
+<<<<<<< Updated upstream
       name="Valami2"
       component={Valami2}
       options={{
@@ -94,6 +92,9 @@ const DrawerNavigator = () => {
     />
     <Drawer.Screen
       name="Beállítások"
+=======
+      name={i18n.t("settings")}
+>>>>>>> Stashed changes
       component={Settings}
       options={{
         drawerIcon: ({ focused, color, size }) => (

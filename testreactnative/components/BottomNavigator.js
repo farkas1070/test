@@ -37,13 +37,16 @@ const BottomNavigator = () => {
           },
         }}
       >
-
         <Tab.Screen
           name={i18n.t("home")[0]}
           component={Home}
           options={{
-            tabBarIcon: () => (
-              <Ionicons name="home-outline" size={24} color="black" />
+            tabBarIcon: ({ focused }) => (
+              <Ionicons
+                name={focused ? "home" : "home-outline"}
+                size={24}
+                color="black"
+              />
             ),
 
             headerTintColor: "black",
@@ -84,8 +87,12 @@ const BottomNavigator = () => {
           name={i18n.t("events")}
           component={Events}
           options={{
-            tabBarIcon: () => (
-              <Ionicons name="calendar-outline" size={24} color="black" />
+            tabBarIcon: ({ focused }) => (
+              <Ionicons
+                name={focused ? "calendar" : "calendar-outline"}
+                size={24}
+                color="black"
+              />
             ),
 
             headerTintColor: "black",
@@ -125,8 +132,12 @@ const BottomNavigator = () => {
           name={i18n.t("map")}
           component={Map}
           options={{
-            tabBarIcon: () => (
-              <Ionicons name="map-outline" size={24} color="black" />
+            tabBarIcon: ({ focused }) => (
+              <Ionicons
+                name={focused ? "map" : "map-outline"}
+                size={24}
+                color="black"
+              />
             ),
             headerShown: false,
           }}
@@ -135,8 +146,12 @@ const BottomNavigator = () => {
           name={i18n.t("wineries")}
           component={Wineries}
           options={{
-            tabBarIcon: () => (
-              <Ionicons name="wine-outline" size={24} color="black" />
+            tabBarIcon: ({ focused }) => (
+              <Ionicons
+                name={focused ? "wine" : "wine-outline"}
+                size={24}
+                color="black"
+              />
             ),
             headerTintColor: "black",
             headerTitleAlign: "center",
@@ -175,8 +190,12 @@ const BottomNavigator = () => {
           name={i18n.t("news")}
           component={News}
           options={{
-            tabBarIcon: () => (
-              <Ionicons name="newspaper-outline" size={24} color="black" />
+            tabBarIcon: ({ focused }) => (
+              <Ionicons
+                name={focused ? "newspaper" : "newspaper-outline"}
+                size={24}
+                color="black"
+              />
             ),
             headerTintColor: "black",
             headerTitleAlign: "center",
