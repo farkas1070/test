@@ -12,9 +12,13 @@ const ConfirmationModal = ({ modalVisible, closeModal, saveChanges }) => {
     >
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
+
           <Text style={styles.modalText}>
             Biztos el akarod menteni a változtatásokat?
           </Text>
+
+          <ActivityIndicator/>
+          </View>
           <View style={styles.buttonscontainer}>
             <TouchableOpacity
               style={[styles.denybutton, styles.buttonClose]}
@@ -34,7 +38,7 @@ const ConfirmationModal = ({ modalVisible, closeModal, saveChanges }) => {
             </TouchableOpacity>
           </View>
         </View>
-      </View>
+      
     </Modal>
   );
 };

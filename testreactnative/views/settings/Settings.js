@@ -19,8 +19,9 @@ import I18nProvider from "../../lang/LanguageManager";
 
 const Settings = () => {
   const i18n = I18nProvider();
-  const [tempLanguage, setTempLanguage] = useState(null);
+  
   const [language, setLanguage] = useContext(LanguageContext);
+  const [tempLanguage, setTempLanguage] = useState(language);
   const [modalVisible, setModalVisible] = useState(false);
   const [Wineries, setWineries] = useContext(WineriesContext);
   const [events, setEvents] = useContext(EventsContext);
