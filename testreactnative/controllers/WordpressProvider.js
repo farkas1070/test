@@ -6,7 +6,7 @@ export const getDataByUrl = async (url) => {
     return response.data;
   } catch (error) {
     if (error.response || error.request) {
-      return null;
+      throw new Error("nem sikerult a fetch")
     }
   }
 };
@@ -15,7 +15,7 @@ export const getWineries = async () => {
   const data = await getDataByUrl(
     "https://soproniborvidek.nemethmark.com/wp-json/wp/v2/wineries?_embed&per_page=100"
   );
-  if (data !== null) {
+  
     return data.map((item) => {
       return {
         //kell még kapcsolat, banner, szociális médiák ha van, ha a terkep false akkor nem kell, ha igen akkor lat long
@@ -42,9 +42,7 @@ export const getWineries = async () => {
         },
       };
     });
-  } else {
-    return null;
-  }
+  
 };
 export const getEvents = async () => {
   const data = await getDataByUrl(

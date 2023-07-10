@@ -18,32 +18,25 @@ export const PointOfInterestProvider = (props) => {
   
 
   useEffect(() => {
-    const fetchWineries = async (language) => {
-      const response = await getWineries(language);
-      response === null? setWineries(false) : setWineries(response);
-      
-    };
-    const fetchEvents = async (language) => {
-      const response = await getEvents(language);
-      response === null? setEvents(false) : setEvents(response);
-      
-    };
-    const fetchNews = async (language) => {
-      const response = await getNews(language);
-      response === null? setNews(false) : setNews(response);
-      
-    };
 
     const getLanguage = async () => {
       try {
         const value = await AsyncStorage.getItem("Language");
 
         setLanguage(value);
-        fetchWineries(value);
-        fetchEvents(value);
-        fetchNews(value);
+       /*} fetchWineries(value); */
+       await getWineries(value).then((response) => {
+        response === null? setWineries(false) : setWineries(response);
+       });
+       await getNews(value).then((response) => {
+        response === null? setNews(false) : setNews(response);
+       });
+       await getEvents(value).then((response) => {
+        response === null? setEvents(false) : setEvents(response);
+       });
+       
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.log("elkapva legfölső")
 
       }
     };

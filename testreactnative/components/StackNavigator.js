@@ -21,6 +21,7 @@ const StackNavigator = () => {
   const openMenu = () => {
     navigation.openDrawer();
   };
+  
   const [firstTimeOpen, setFirstTimeOpen] = useState(true);
   const [isEffectDone, setIsEffectDone] = useState(false);
   const [wineries, setWineries] = useContext(WineriesContext);
