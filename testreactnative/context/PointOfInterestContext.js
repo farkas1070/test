@@ -20,16 +20,18 @@ export const PointOfInterestProvider = (props) => {
   useEffect(() => {
     const fetchWineries = async (language) => {
       const response = await getWineries(language);
-
-      setWineries(response);
+      response === null? setWineries(false) : setWineries(response);
+      
     };
     const fetchEvents = async (language) => {
       const response = await getEvents(language);
-      setEvents(response);
+      response === null? setEvents(false) : setEvents(response);
+      
     };
     const fetchNews = async (language) => {
       const response = await getNews(language);
-      setNews(response);
+      response === null? setNews(false) : setNews(response);
+      
     };
 
     const getLanguage = async () => {

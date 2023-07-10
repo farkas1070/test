@@ -7,13 +7,9 @@ import { LanguageContext } from "../context/PointOfInterestContext.js";
 const I18nProvider = () => {
   const [language, setLanguage] = useContext(LanguageContext);
   const i18n = new I18n({ hu, en, de });
-  if (language !==null) {
+  if (language !==null) { 
     i18n.locale = language;
   }
-  
-
-  
-
   return i18n;
 };
 

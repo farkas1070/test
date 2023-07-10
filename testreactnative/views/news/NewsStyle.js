@@ -5,7 +5,11 @@ export const styles = StyleSheet.create({
     backgroundColor: "beige",
     width: "100%",
     height: "100%",
-    padding: 20,
+  },
+  container: {
+    backgroundColor: "beige",
+    width: "100%",
+    height: "100%",
   },
 
   card: {

@@ -12,8 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import SplashScreen from "../views/home/components/SplashScreen";
 import NoDataView from "../views/NoDataView/NoDataView";
-import { EventsContext,WineriesContext,NewsContext } from "../context/PointOfInterestContext";
-
+import { WineriesContext,EventsContext,NewsContext } from "../context/PointOfInterestContext";
 const Stack = createNativeStackNavigator();
  
 const StackNavigator = () => {
@@ -24,11 +23,16 @@ const StackNavigator = () => {
   };
   const [firstTimeOpen, setFirstTimeOpen] = useState(true);
   const [isEffectDone, setIsEffectDone] = useState(false);
+  const [wineries, setWineries] = useContext(WineriesContext);
+  const [events, setEvents] = useContext(EventsContext);
+  const [news, setNews] = useContext(NewsContext);
+
   useEffect(() => {
     const getData = async () => {
       try {
         const value = await AsyncStorage.getItem("FirstTimeOpen");
-        if (value === null) {
+        
+        if (value === null ) {0
           setFirstTimeOpen(true);
           setIsEffectDone(true);
         } else {

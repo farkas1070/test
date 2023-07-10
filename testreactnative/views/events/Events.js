@@ -13,7 +13,7 @@ import { styles } from "./EventsStyle";
 import Card from "./components/Card";
 import moment from "moment";
 import { EventsContext } from "../../context/PointOfInterestContext.js";
-
+import NoDataView from "../NoDataView/NoDataView";
 const Events = () => {
   const [showListFirst, setShowListFirst] = useState(true);
   const [currentDate, setCurrentDate] = useState("2023-06-20");
@@ -46,6 +46,7 @@ const Events = () => {
 
   return (
     <View style={styles.maincontainer}>
+      
       <View style={{ paddingRight: 10, flexDirection: "row" }}>
         <TouchableOpacity>
           <Ionicons
