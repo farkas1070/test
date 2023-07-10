@@ -15,7 +15,6 @@ export const PointOfInterestProvider = (props) => {
   const [events, setEvents] = useState([]);
   const [news, setNews] = useState([]);
   const [language, setLanguage] = useState(null);
-  
 
   useEffect(() => {
 
@@ -36,7 +35,11 @@ export const PointOfInterestProvider = (props) => {
        });
        
       } catch (error) {
+
         console.log("elkapva legfölső")
+
+
+        
 
       }
     };
