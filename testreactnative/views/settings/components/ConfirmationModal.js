@@ -21,9 +21,7 @@ const ConfirmationModal = ({ modalVisible, closeModal, saveChanges }) => {
     >
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
-          <Text style={styles.modalText}>
-            {i18n.t("savechangesconfirmation")}
-          </Text>
+          <Text style={styles.modalText}>{i18n.t("savechangesconfirm")}</Text>
           <View>{loading && <ActivityIndicator />}</View>
 
           <View style={styles.buttonscontainer}>
@@ -34,7 +32,7 @@ const ConfirmationModal = ({ modalVisible, closeModal, saveChanges }) => {
                 setLoading(true);
               }}
             >
-              <Text style={styles.textStyle}>Igen</Text>
+              <Text style={styles.textStyle}>{i18n.t("yes")}</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={[styles.denybutton, styles.buttonClose]}
@@ -42,7 +40,7 @@ const ConfirmationModal = ({ modalVisible, closeModal, saveChanges }) => {
                 closeModal();
               }}
             >
-              <Text style={styles.textStyle}>Nem</Text>
+              <Text style={styles.textStyle}>{i18n.t("no")}</Text>
             </TouchableOpacity>
           </View>
         </View>

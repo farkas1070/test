@@ -105,8 +105,8 @@ const Settings = () => {
       </View>
       <View style={styles.switchcontainer}>
         <View style={styles.textContainer}>
-          <Text style={styles.notificationText}>Értesítések engedélyezése</Text>
-          <Text>Az alkalmazás értesítéseket fog küldeni Önnek.</Text>
+          <Text style={styles.notificationText}>{i18n.t("enablenotify")}</Text>
+          <Text>{i18n.t("enablenotifytext")}</Text>
         </View>
         <View style={styles.switchButton}>
           <Switch

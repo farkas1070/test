@@ -27,7 +27,11 @@ const hu = {
   hungary: "Magyar",
   english: "Angol",
   german: "Német",
-  savechangesconformations: "Változtatások mentése",
+  savechangesconfirm: "Biztosan elmented a változtatásokat?",
+  yes: "Igen",
+  no: "Nem",
+  enablenotify: "Értesítések engedélyezése",
+  enablenotifytext: "Az alkalmazás értesítéseket fog küldeni Önnek.",
 };
 
 const en = {
@@ -57,6 +61,11 @@ const en = {
   hungary: "Hungarian",
   english: "English",
   german: "German",
+  savechangesconfirm: "Do you want to save the changes?",
+  yes: "Yes",
+  no: "No",
+  enablenotify: "Enable notifications",
+  enablenotifytext: "The application will send notifications to you.",
 };
 
 const de = {
@@ -86,6 +95,11 @@ const de = {
   hungary: "Ungarisch",
   english: "Englisch",
   german: "Deutsch",
+  savechangesconfirm: "Möchten Sie die Änderungen speichern?",
+  yes: "Ja",
+  no: "Nein",
+  enablenotify: "Benachrichtigungen aktivieren",
+  enablenotifytext: "Die Anwendung sendet Ihnen Benachrichtigungen.",
 };
 
 export { hu, en, de };
