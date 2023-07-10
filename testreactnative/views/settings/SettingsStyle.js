@@ -7,6 +7,12 @@ export const styles = StyleSheet.create({
     backgroundColor: "#F5FCFF",
   },
   bodycontainer: {},
+  languagecontainer: {
+    width: "100%",
+    borderTopColor: "grey",
+    borderTopWidth: 1,
+    backgroundColor: "#F5FCFF",
+  },
   checkbox: {
     width: "100%",
     height: 60,
@@ -37,11 +43,39 @@ export const styles = StyleSheet.create({
     marginLeft: 20,
     marginTop: 20,
   },
-  switchcontainer:{
-    width:"100%",
-    height:80,
-    justifyContent:'space-between',
-    flexDirection:'row',
-    alignItems:'center'
-  }
+  switchcontainer: {
+    width: "100%",
+    height: 80,
+    justifyContent: "space-between",
+    flexDirection: "row",
+    alignItems: "center",
+    borderBottomColor: "grey",
+    borderBottomWidth: 1,
+    borderTopColor: "grey",
+    borderTopWidth: 1,
+    backgroundColor: "#F5FCFF",
+  },
+  switchButton: {
+    width: "35%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  textContainer: {
+    width: "65%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    marginLeft: 20,
+  },
+  notificationText: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  buttonContainer: {
+    width: "100%",
+    height: 100,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });

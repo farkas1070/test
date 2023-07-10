@@ -1,9 +1,17 @@
-import { Text, View, Modal, TouchableOpacity ,ActivityIndicator} from "react-native";
-import React,{useState} from "react";
+import {
+  Text,
+  View,
+  Modal,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
+import React, { useState } from "react";
 import { styles } from "./ConfirmationModalStyle";
+import I18nProvider from "../../../lang/LanguageManager";
 
 const ConfirmationModal = ({ modalVisible, closeModal, saveChanges }) => {
-    const [loading, setLoading] = useState(false);
+  const i18n = I18nProvider();
+  const [loading, setLoading] = useState(false);
   return (
     <Modal
       animationType="fade"
@@ -13,24 +21,12 @@ const ConfirmationModal = ({ modalVisible, closeModal, saveChanges }) => {
     >
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
-
           <Text style={styles.modalText}>
-            Biztos el akarod menteni a változtatásokat?
+            {i18n.t("savechangesconfirmation")}
           </Text>
-          <View>
-            {loading && <ActivityIndicator/>}
-          
-          </View>
-          
+          <View>{loading && <ActivityIndicator />}</View>
+
           <View style={styles.buttonscontainer}>
-            <TouchableOpacity
-              style={[styles.denybutton, styles.buttonClose]}
-              onPress={() => {
-                closeModal()
-              }}
-            >
-              <Text style={styles.textStyle}>mégse</Text>
-            </TouchableOpacity>
             <TouchableOpacity
               style={[styles.confirmationbutton, styles.buttonOpen]}
               onPress={() => {
@@ -38,7 +34,15 @@ const ConfirmationModal = ({ modalVisible, closeModal, saveChanges }) => {
                 setLoading(true);
               }}
             >
-              <Text style={styles.textStyle}>Változások mentése</Text>
+              <Text style={styles.textStyle}>Igen</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.denybutton, styles.buttonClose]}
+              onPress={() => {
+                closeModal();
+              }}
+            >
+              <Text style={styles.textStyle}>Nem</Text>
             </TouchableOpacity>
           </View>
         </View>

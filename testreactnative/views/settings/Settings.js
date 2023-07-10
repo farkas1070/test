@@ -1,4 +1,4 @@
-import { Text, View, TouchableOpacity, Alert,Switch } from "react-native";
+import { Text, View, TouchableOpacity, Alert, Switch } from "react-native";
 import React, { useState, useContext } from "react";
 import { styles } from "./SettingsStyle";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
@@ -19,7 +19,7 @@ import I18nProvider from "../../lang/LanguageManager";
 
 const Settings = () => {
   const i18n = I18nProvider();
-  
+
   const [language, setLanguage] = useContext(LanguageContext);
   const [tempLanguage, setTempLanguage] = useState(language);
   const [modalVisible, setModalVisible] = useState(false);
@@ -43,7 +43,7 @@ const Settings = () => {
     setEvents(events);
     setNews(news);
     //setting main lang context value
-    setLanguage(tempLanguage)
+    setLanguage(tempLanguage);
     setModalVisible(false);
     Alert.alert("Settings Saved");
   };
@@ -104,16 +104,23 @@ const Settings = () => {
         </View>
       </View>
       <View style={styles.switchcontainer}>
-        <Text>Értesítések engedélyezése</Text>
-      <Switch
-        trackColor={{false: '#767577', true: '#81b0ff'}}
-        thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
-        ios_backgroundColor="#3e3e3e"
-        onValueChange={()=>{setIsEnabled(!isEnabled);}}
-        value={isEnabled}
-      />
+        <View style={styles.textContainer}>
+          <Text style={styles.notificationText}>Értesítések engedélyezése</Text>
+          <Text>Az alkalmazás értesítéseket fog küldeni Önnek.</Text>
+        </View>
+        <View style={styles.switchButton}>
+          <Switch
+            trackColor={{ false: "#767577", true: "#81b0ff" }}
+            thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+            ios_backgroundColor="#3e3e3e"
+            onValueChange={() => {
+              setIsEnabled(!isEnabled);
+            }}
+            value={isEnabled}
+          />
+        </View>
       </View>
-      <View>
+      <View style={styles.buttonContainer}>
         <TouchableOpacity
           onPress={() => {
             openModal();

@@ -27,6 +27,7 @@ const hu = {
   hungary: "Magyar",
   english: "Angol",
   german: "Német",
+  savechangesconformations: "Változtatások mentése",
 };
 
 const en = {
