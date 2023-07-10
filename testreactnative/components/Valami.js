@@ -1,16 +1,17 @@
-import React from 'react';
-import { Button, View, StyleSheet } from 'react-native';
-import * as TaskManager from 'expo-task-manager';
-import * as Location from 'expo-location';
+import React from "react";
+import { Button, View, StyleSheet } from "react-native";
+import * as TaskManager from "expo-task-manager";
+import * as Location from "expo-location";
 
-const LOCATION_TASK_NAME = 'background-location-task';
-
+const LOCATION_TASK_NAME = "background-location-task";
 
 const requestPermissions = async () => {
-  const { status: foregroundStatus } = await Location.requestForegroundPermissionsAsync();
-  if (foregroundStatus === 'granted') {
-    const { status: backgroundStatus } = await Location.requestBackgroundPermissionsAsync();
-    if (backgroundStatus === 'granted') {
+  const { status: foregroundStatus } =
+    await Location.requestForegroundPermissionsAsync();
+  if (foregroundStatus === "granted") {
+    const { status: backgroundStatus } =
+      await Location.requestBackgroundPermissionsAsync();
+    if (backgroundStatus === "granted") {
       await Location.startLocationUpdatesAsync(LOCATION_TASK_NAME, {
         accuracy: Location.Accuracy.Balanced,
       });
@@ -29,19 +30,18 @@ TaskManager.defineTask(LOCATION_TASK_NAME, ({ data, error }) => {
     return;
   }
   if (data) {
-    
-    console.log(data)
+    console.log(data);
   }
 });
 
 const Valami = () => {
   return (
-    <View style={{flex:1,alignItems:'center',justifyContent:'center'}}> 
-      <PermissionsButton/>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <PermissionsButton />
     </View>
-  )
-}
+  );
+};
 
-export default Valami
+export default Valami;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

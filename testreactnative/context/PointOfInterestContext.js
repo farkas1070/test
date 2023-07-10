@@ -15,7 +15,6 @@ export const PointOfInterestProvider = (props) => {
   const [events, setEvents] = useState([]);
   const [news, setNews] = useState([]);
   const [language, setLanguage] = useState(null);
-  
 
   useEffect(() => {
     const fetchWineries = async (language) => {
@@ -44,7 +43,6 @@ export const PointOfInterestProvider = (props) => {
         fetchNews(value);
       } catch (error) {
         console.error("Error fetching data:", error);
-
       }
     };
 
