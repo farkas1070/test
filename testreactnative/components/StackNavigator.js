@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import React, { useEffect, useContext,useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
 import SplashScreen from "../views/home/components/SplashScreen";
@@ -10,10 +10,8 @@ import Winery from "../views/winery/Winery";
 import Event from "../views/event/Event";
 import New from "../views/new/New";
 import TourInfo from "../views/tourinfo/TourInfo";
-import {
-  
-  LoadingContext
-} from "../context/PointOfInterestContext";
+import NoDataView from "../views/NoDataView/NoDataView";
+import { LoadingContext } from "../context/PointOfInterestContext";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,21 +21,25 @@ const StackNavigator = () => {
   const openMenu = () => {
     navigation.openDrawer();
   };
-  
-  const [firstTimeOpen, setFirstTimeOpen] = useState(null)
+
+  const [firstTimeOpen, setFirstTimeOpen] = useState(null);
   const [loaded, setLoaded] = useContext(LoadingContext);
 
-  useEffect(()=>{
-    const Getdata = async ()=>{
+  useEffect(() => {
+    const getData = async () => {
       if (!loaded) {
         const value = await AsyncStorage.getItem("firstTimeOpen");
-        setFirstTimeOpen(value)
+        setFirstTimeOpen(value);
       }
-    }
-  },[loaded])
+    };
+    getData();
+  }, [loaded]);
 
   if (loaded) {
     return <SplashScreen />;
+  }
+  if (loaded === null) {
+    return <NoDataView />;
   }
 
   return (

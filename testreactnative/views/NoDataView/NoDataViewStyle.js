@@ -13,4 +13,10 @@ export const styles = StyleSheet.create({
         marginTop:100,
         resizeMode: "contain",
       },
+      refreshbutton:{
+        marginTop:100,
+        backgroundColor:'cyan',
+        borderRadius:10,
+        padding:10
+      }
 })

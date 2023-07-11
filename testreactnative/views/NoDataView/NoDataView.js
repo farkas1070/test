@@ -1,8 +1,12 @@
-import {  Text, View,Image } from 'react-native'
-import React from 'react'
+import {  Text, View,Image,TouchableOpacity } from 'react-native'
+import React,{useContext} from 'react'
 import {styles} from "./NoDataViewStyle"
 
+
 const NoDataView = () => {
+  const refreshData= async() => {
+    console.log("refrsreshed data")
+  }
   return (
     <View style={styles.maincontainer}>
       <Text>Hiba Történt az Adat beolvasása során, próbáld késöbb</Text>
@@ -10,6 +14,9 @@ const NoDataView = () => {
           style={styles.image}
           source={{ uri: 'https://cdn-icons-png.flaticon.com/512/1747/1747789.png' }}
         />
+        <TouchableOpacity onPress={()=>{refreshData()}} style={styles.refreshbutton}>
+          <Text>Frissités</Text>
+        </TouchableOpacity>
     </View>
   )
 }

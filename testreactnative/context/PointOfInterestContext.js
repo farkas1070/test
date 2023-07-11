@@ -41,6 +41,7 @@ export const PointOfInterestProvider = (props) => {
         setLoading(false);
       } catch (error) {
         console.log("elkapva legfölső");
+        setLoading(null)
       }
     };
 
