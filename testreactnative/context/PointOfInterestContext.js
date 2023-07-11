@@ -49,7 +49,7 @@ export const PointOfInterestProvider = (props) => {
     };
 
     getLanguage();
-  }, []);
+  }, [i18n]);
 
   return (
     <WineriesContext.Provider value={[Wineries, setWineries]}>

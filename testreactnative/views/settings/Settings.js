@@ -34,15 +34,9 @@ const [i18n, setI18n] = useContext(I18nContext);
     setModalVisible(false);
   };
   const saveChanges = async () => {
-    AsyncStorage.setItem("Language", tempLanguage);
-    const wineries = await getWineries(tempLanguage);
-    const events = await getEvents(tempLanguage);
-    const news = await getNews(tempLanguage);
-    setWineries(wineries);
-    setEvents(events);
-    setNews(news);
-    //setting main lang context value
+    
     setLanguage(tempLanguage);
+    i18n.locale = tempLanguage;
     setModalVisible(false);
     Alert.alert("Settings Saved");
   };
