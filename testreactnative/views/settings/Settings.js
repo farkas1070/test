@@ -15,11 +15,10 @@ import {
   EventsContext,
   NewsContext,
 } from "../../context/PointOfInterestContext";
-import I18nProvider from "../../lang/LanguageManager";
+import { I18nContext } from "../../context/PointOfInterestContext";
 
 const Settings = () => {
-  const i18n = I18nProvider();
-
+const [i18n, setI18n] = useContext(I18nContext);
   const [language, setLanguage] = useContext(LanguageContext);
   const [tempLanguage, setTempLanguage] = useState(language);
   const [modalVisible, setModalVisible] = useState(false);

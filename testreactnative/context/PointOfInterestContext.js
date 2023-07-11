@@ -1,10 +1,12 @@
 import React, { useEffect, createContext, useState } from "react";
+import { I18n } from "i18n-js";
+import { hu,en, de } from "../lang/localizations";
 export const WineriesContext = createContext();
 export const EventsContext = createContext();
 export const NewsContext = createContext();
 export const LanguageContext = createContext();
 export const LoadingContext = createContext();
-
+export const I18nContext = createContext();
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
@@ -19,14 +21,15 @@ export const PointOfInterestProvider = (props) => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [language, setLanguage] = useState(null);
-
+  const [i18n, setI18n] = useState(new I18n({ hu, en, de }));
 
   useEffect(() => {
     const getLanguage = async () => {
       try {
         const value = await AsyncStorage.getItem("Language");
-        console.log(value)
-
+        console.log(value);
+        
+        i18n.locale = value
         setLanguage(value);
         /*} fetchWineries(value); */
         await getWineries(value).then((response) => {
@@ -40,8 +43,8 @@ export const PointOfInterestProvider = (props) => {
         });
         setLoading(false);
       } catch (error) {
-        console.log("elkapva legfölső");
-        setLoading(null)
+        console.log(error.message);
+        setLoading(null);
       }
     };
 
@@ -53,9 +56,11 @@ export const PointOfInterestProvider = (props) => {
       <NewsContext.Provider value={[news, setNews]}>
         <EventsContext.Provider value={[events, setEvents]}>
           <LanguageContext.Provider value={[language, setLanguage]}>
-              <LoadingContext.Provider value={[loading, setLoading]}>
+            <LoadingContext.Provider value={[loading, setLoading]}>
+              <I18nContext.Provider value={[i18n,setI18n]}>
                 {props.children}
-              </LoadingContext.Provider>
+              </I18nContext.Provider>
+            </LoadingContext.Provider>
           </LanguageContext.Provider>
         </EventsContext.Provider>
       </NewsContext.Provider>

@@ -1,5 +1,5 @@
 import { StyleSheet, View, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Events from "../views/events/Events";
 import Map from "../views/map/Map";
@@ -9,12 +9,12 @@ import { Ionicons } from "@expo/vector-icons";
 import News from "../views/news/News";
 import { useNavigation } from "@react-navigation/native";
 import InformationModal from "../views/home/components/InformationModal";
-import I18nProvider from "../lang/LanguageManager";
+import { I18nContext } from "../context/PointOfInterestContext";
 const Tab = createBottomTabNavigator();
 
 const BottomNavigator = () => {
   const [modalVisible, setModalVisible] = useState(false);
-  const i18n = I18nProvider();
+  const [i18n] = useContext(I18nContext);
   const openModal = () => {
     setModalVisible(true);
   };

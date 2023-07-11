@@ -5,16 +5,16 @@ import BottomNavigator from "./BottomNavigator";
 import Settings from "../views/settings/Settings";
 import Valami2 from "./Valami2";
 import Valami from "./Valami";
-import I18nProvider from "../lang/LanguageManager";
+
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-
+import { I18nContext } from "../context/PointOfInterestContext";
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
   const navigation = useNavigation();
-  const i18n = I18nProvider();
+  const [i18n, setI18n] = useContext(I18nContext);
 
 
   return (
