@@ -1,7 +1,8 @@
 import {  Text, View,Image,TouchableOpacity } from 'react-native'
 import React,{useContext} from 'react'
 import {styles} from "./NoDataViewStyle"
-
+import { getWineries,getNews,getEvents } from '../../controllers/WordpressProvider'
+import { WineriesContext,EventsContext,NewsContext,LoadingContext } from '../../context/PointOfInterestContext'
 
 const NoDataView = () => {
   const refreshData= async() => {
