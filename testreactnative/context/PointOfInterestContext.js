@@ -25,7 +25,7 @@ export const PointOfInterestProvider = (props) => {
     const getLanguage = async () => {
       try {
         const value = await AsyncStorage.getItem("Language");
-        const firsttimeopenvalue = await AsyncStorage.getItem("FirstTimeOpen");
+        console.log(value)
 
         setLanguage(value);
         /*} fetchWineries(value); */

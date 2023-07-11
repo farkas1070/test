@@ -8,14 +8,14 @@ import Valami from "./Valami";
 import I18nProvider from "../lang/LanguageManager";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { LanguageContext } from "../context/PointOfInterestContext";
+
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
   const navigation = useNavigation();
   const i18n = I18nProvider();
-  const [language, setLanguage] = useContext(LanguageContext);
+
 
   return (
     <Drawer.Navigator

@@ -6,46 +6,47 @@ export const getDataByUrl = async (url) => {
     return response.data;
   } catch (error) {
     if (error.response || error.request) {
-      throw new Error("nem sikerult a fetch");
+      throw new Error("nem sikerult a fetch")
     }
   }
 };
 
-export const getWineries = async () => {
+export const getWineries = async (language) => {
   const data = await getDataByUrl(
-    "https://soproniborvidek.nemethmark.com/wp-json/wp/v2/wineries?_embed&per_page=100"
+    `https://soproniborvidek.nemethmark.com/wp-json/wp/v2/wineries?_embed&per_page=100&lang=${language}`
   );
+  
+    return data.map((item) => {
+      return {
+        
+        title: item?.title?.rendered,
+        content: item?.content?.rendered,
+        logo: item?.acf?.banner?.boraszat_logo?.sizes?.medium,
+        owner_name: item?.acf?.kapcsolat?.tulajdonos_nev,
+        type: item?.type,
 
-  return data.map((item) => {
-    return {
-      //kell még kapcsolat, banner, szociális médiák ha van, ha a terkep false akkor nem kell, ha igen akkor lat long
-      title: item?.title?.rendered,
-      content: item?.content?.rendered,
-      logo: item?.acf?.banner?.boraszat_logo?.sizes?.medium,
-      owner_name: item?.acf?.kapcsolat?.tulajdonos_nev,
-      type: item?.type,
+        connection: {
+          adress: item?.acf?.kapcsolat?.cim,
+          telephone: item?.acf?.kapcsolat?.telefon,
+          website: item?.acf?.banner?.weboldal,
 
-      connection: {
-        adress: item?.acf?.kapcsolat?.cim,
-        telephone: item?.acf?.kapcsolat?.telefon,
-        website: item?.acf?.banner?.weboldal,
-
-        social: {
-          facebook: item?.acf?.szocialis_mediak?.facebook,
-          linkedin: item?.acf?.szocialis_mediak?.linkedin,
-          instagram: item?.acf?.szocialis_mediak?.instagram,
+          social: {
+            facebook: item?.acf?.szocialis_mediak?.facebook,
+            linkedin: item?.acf?.szocialis_mediak?.linkedin,
+            instagram: item?.acf?.szocialis_mediak?.instagram,
+          },
         },
-      },
-      map: {
-        lat: item?.acf?.terkep?.lat,
-        lng: item?.acf?.terkep?.lng,
-      },
-    };
-  });
+        map: {
+          lat: item?.acf?.terkep?.lat,
+          lng: item?.acf?.terkep?.lng,
+        },
+      };
+    });
+  
 };
-export const getEvents = async () => {
+export const getEvents = async (language) => {
   const data = await getDataByUrl(
-    "https://soproniborvidek.effixdev.com/wp-json/tribe/events/v1/events/?page=1&per_page=50&start_date=2020-06-16%2000%3A00%3A00&end_date=2025-06-16%2023%3A59%3A59&status=publish&fbclid=IwAR0aMf0stRm9O43LVog8yDtdS8FJoDrRRE-Pst82PM-QF06CnTubn9Mjo0Y"
+    `https://soproniborvidek.effixdev.com/wp-json/tribe/events/v1/events/?page=1&per_page=50&start_date=2020-06-16%2000%3A00%3A00&end_date=2025-06-16%2023%3A59%3A59&status=publish&fbclid=IwAR0aMf0stRm9O43LVog8yDtdS8FJoDrRRE-Pst82PM-QF06CnTubn9Mjo0Y&lang=${language}`
   );
   if (data !== null) {
     return data.events.map((item) => {
@@ -60,9 +61,9 @@ export const getEvents = async () => {
     return null;
   }
 };
-export const getNews = async () => {
+export const getNews = async (language) => {
   const data = await getDataByUrl(
-    "https://soproniborvidek.nemethmark.com/wp-json/wp/v2/posts?_embed&per_page=100&fbclid=IwAR1mdpYOIyVbxj20sInh_LdNCRvyJg3lATQpxUOvdzSnaGBmodr_94UZCuI"
+    `https://soproniborvidek.nemethmark.com/wp-json/wp/v2/posts?_embed&per_page=100&fbclid=IwAR1mdpYOIyVbxj20sInh_LdNCRvyJg3lATQpxUOvdzSnaGBmodr_94UZCuI&lang=${language}`
   );
 
   if (data !== null) {
