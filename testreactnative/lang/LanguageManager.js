@@ -9,7 +9,7 @@ const I18nProvider = () => {
 
  
   if (!loaded) {
-    i18n.
+    
     i18n.locale = language;
   }
   return i18n;
