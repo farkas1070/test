@@ -1,27 +1,20 @@
-import { StyleSheet, Text, View } from "react-native";
-import React, { useState, useEffect, useContext } from "react";
+import { StyleSheet } from "react-native";
+import React, { useEffect, useContext,useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useNavigation } from "@react-navigation/native";
+import SplashScreen from "../views/home/components/SplashScreen";
+import OnBoarding from "../views/home/components/OnBoarding";
+import DrawerNavigator from "./DrawerNavigation";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Winery from "../views/winery/Winery";
 import Event from "../views/event/Event";
 import New from "../views/new/New";
-import OnBoarding from "../views/home/components/OnBoarding";
 import TourInfo from "../views/tourinfo/TourInfo";
-import DrawerNavigator from "./DrawerNavigation";
-import { Ionicons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import SplashScreen from "../views/home/components/SplashScreen";
-import NoDataView from "../views/NoDataView/NoDataView";
-<<<<<<< Updated upstream
-import { WineriesContext,EventsContext,NewsContext } from "../context/PointOfInterestContext";
-=======
 import {
-  EventsContext,
-  WineriesContext,
-  NewsContext,
+  
+  LoadingContext
 } from "../context/PointOfInterestContext";
 
->>>>>>> Stashed changes
 const Stack = createNativeStackNavigator();
 
 const StackNavigator = () => {
@@ -31,34 +24,25 @@ const StackNavigator = () => {
     navigation.openDrawer();
   };
   
-  const [firstTimeOpen, setFirstTimeOpen] = useState(true);
-  const [isEffectDone, setIsEffectDone] = useState(false);
-  const [wineries, setWineries] = useContext(WineriesContext);
-  const [events, setEvents] = useContext(EventsContext);
-  const [news, setNews] = useContext(NewsContext);
+  const [firstTimeOpen, setFirstTimeOpen] = useState(null)
+  const [loaded, setLoaded] = useContext(LoadingContext);
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const value = await AsyncStorage.getItem("FirstTimeOpen");
-        
-        if (value === null ) {0
-          setFirstTimeOpen(true);
-          setIsEffectDone(true);
-        } else {
-          setFirstTimeOpen(false);
-          setIsEffectDone(true);
-        }
-      } catch (e) {
-        console.log(e);
+  useEffect(()=>{
+    const Getdata = async ()=>{
+      if (!loaded) {
+        const value = await AsyncStorage.getItem("firstTimeOpen");
+        setFirstTimeOpen(value)
       }
-    };
-    getData();
-  }, []);
+    }
+  },[loaded])
 
-  return isEffectDone ? (
+  if (loaded) {
+    return <SplashScreen />;
+  }
+
+  return (
     <Stack.Navigator>
-      {firstTimeOpen === true ? (
+      {firstTimeOpen ? (
         <Stack.Screen name="OnBoarding" component={OnBoarding} />
       ) : null}
       <Stack.Screen
@@ -125,8 +109,6 @@ const StackNavigator = () => {
         }}
       />
     </Stack.Navigator>
-  ) : (
-    <SplashScreen />
   );
 };
 
