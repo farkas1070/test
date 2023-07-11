@@ -2,8 +2,7 @@ import React, { useContext } from "react";
 import { I18n } from "i18n-js";
 import { hu, en, de } from "./localizations.js";
 import { LanguageContext } from "../context/PointOfInterestContext.js";
-
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const I18nProvider = () => {
   const [language, setLanguage] = useContext(LanguageContext);
