@@ -30,9 +30,11 @@ const [i18n, setI18n] = useContext(I18nContext);
   const openModal = () => {
     setModalVisible(true);
   };
+
   const closeModal = () => {
     setModalVisible(false);
   };
+  
   const saveChanges = async () => {
     
     setLanguage(tempLanguage);
