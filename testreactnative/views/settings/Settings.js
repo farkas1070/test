@@ -6,13 +6,14 @@ import { LanguageContext } from "../../context/PointOfInterestContext";
 import ConfirmationModal from "./components/ConfirmationModal";
 import { I18nContext } from "../../context/PointOfInterestContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import { LoadingContext } from "../../context/PointOfInterestContext";
 const Settings = () => {
 const [i18n] = useContext(I18nContext);
   const [language, setLanguage] = useContext(LanguageContext);
   const [tempLanguage, setTempLanguage] = useState(language);
   const [modalVisible, setModalVisible] = useState(false);
   const [isEnabled, setIsEnabled] = useState(false);
+  const [loading, setLoading] = useContext(LoadingContext);
   const openModal = () => {
     setModalVisible(true);
   };
@@ -26,7 +27,7 @@ const [i18n] = useContext(I18nContext);
     setLanguage(tempLanguage);
     i18n.locale = tempLanguage;
     
-    setModalVisible(false);
+    
     Alert.alert("Settings Saved");
   };
 

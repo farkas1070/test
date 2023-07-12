@@ -26,6 +26,7 @@ export const PointOfInterestProvider = (props) => {
   useEffect(() => {
     const getLanguage = async () => {
       try {
+        
         const value = await AsyncStorage.getItem("Language");
         console.log(value);
         
