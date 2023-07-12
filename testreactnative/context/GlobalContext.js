@@ -15,7 +15,7 @@ import {
   getNews,
 } from "../controllers/WordpressProvider";
 
-export const PointOfInterestProvider = (props) => {
+export const GlobalContextProvider = (props) => {
   const [Wineries, setWineries] = useState([]);
   const [events, setEvents] = useState([]);
   const [news, setNews] = useState([]);
@@ -27,19 +27,19 @@ export const PointOfInterestProvider = (props) => {
     const getLanguage = async () => {
       try {
         
-        const value = await AsyncStorage.getItem("Language");
-        console.log(value);
+        const storedlanguage = await AsyncStorage.getItem("Language");
+        console.log(storedlanguage);
         
-        i18n.locale = value
-        setLanguage(value);
+        i18n.locale = storedlanguage
+        setLanguage(storedlanguage);
         /*} fetchWineries(value); */
-        await getWineries(value).then((response) => {
+        await getWineries(storedlanguage).then((response) => {
           response === null ? setWineries(false) : setWineries(response);
         });
-        await getNews(value).then((response) => {
+        await getNews(storedlanguage).then((response) => {
           response === null ? setNews(false) : setNews(response);
         });
-        await getEvents(value).then((response) => {
+        await getEvents(storedlanguage).then((response) => {
           response === null ? setEvents(false) : setEvents(response);
         });
         setLoading(false);

@@ -2,7 +2,7 @@ import { View, useWindowDimensions } from "react-native";
 import React, { useState, useEffect, useRef, useContext } from "react";
 import * as Location from "expo-location";
 import { styles } from "./MapStyle";
-import { WineriesContext } from "../../context/PointOfInterestContext.js";
+import { WineriesContext } from "../../context/GlobalContext.js";
 import { tours } from "./Winetours";
 import LoadingComponent from "./components/LoadingComponent";
 import MapViewContainer from "./components/MapViewContainer";

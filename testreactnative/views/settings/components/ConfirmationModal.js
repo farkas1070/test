@@ -1,11 +1,11 @@
 import { Text, View, Modal, TouchableOpacity,ActivityIndicator } from "react-native";
 import React, { useState, useContext } from "react";
 import { styles } from "./ConfirmationModalStyle";
-import { I18nContext } from "../../../context/PointOfInterestContext";
+import { I18nContext } from "../../../context/GlobalContext";
 
-const ConfirmationModal = ({ modalVisible, closeModal, saveChanges }) => {
+const ConfirmationModal = ({ modalVisible, closeModal, saveChanges,loading }) => {
   const [i18n, seti18n] = useContext(I18nContext);
-  const [loading, setLoading] = useState(false);
+  
   return (
     <Modal
       animationType="fade"
@@ -16,14 +16,19 @@ const ConfirmationModal = ({ modalVisible, closeModal, saveChanges }) => {
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           <Text style={styles.modalText}>{i18n.t("savechangesconfirm")}</Text>
-          {loading && <ActivityIndicator/>}
+          {loading && 
+          <View style={styles.loadingcontainer}> 
+          <ActivityIndicator/>
+          <Text>Változások Mentése</Text>
+          </View>
+          }
           
           <View style={styles.buttonscontainer}>
             <TouchableOpacity
               style={[styles.confirmationbutton, styles.buttonOpen]}
               onPress={() => {
                 saveChanges();
-                setLoading(true);
+                
               }}
             >
               <Text style={styles.textStyle}>{i18n.t("yes")}</Text>

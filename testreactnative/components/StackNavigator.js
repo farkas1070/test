@@ -11,13 +11,14 @@ import Event from "../views/event/Event";
 import New from "../views/new/New";
 import TourInfo from "../views/tourinfo/TourInfo";
 import NoDataView from "../views/NoDataView/NoDataView";
-import { LoadingContext } from "../context/PointOfInterestContext";
+import { LoadingContext } from "../context/GlobalContext";
+
 
 const Stack = createNativeStackNavigator();
 
 const StackNavigator = () => {
   const navigation = useNavigation();
-
+  
   const openMenu = () => {
     navigation.openDrawer();
   };
@@ -50,7 +51,9 @@ const StackNavigator = () => {
       <Stack.Screen
         name="Drawer"
         component={DrawerNavigator}
-        options={{ headerShown: false }}
+        options={{ headerShown: false,
+          
+        }}
       />
       <Stack.Screen
         name="Event"
@@ -61,19 +64,9 @@ const StackNavigator = () => {
           headerTitleStyle: {
             textAlign: "center",
           },
+          
 
-          headerRight: () => (
-            <View style={{ paddingRight: 10 }}>
-              <Ionicons
-                name="menu"
-                size={24}
-                color="black"
-                onPress={() => {
-                  openMenu();
-                }}
-              />
-            </View>
-          ),
+         
         }}
       />
       <Stack.Screen

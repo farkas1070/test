@@ -1,5 +1,5 @@
 import { StyleSheet, View, TouchableOpacity } from "react-native";
-import React, { useState,useContext } from "react";
+import React, { useState,useContext,useCallback } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Events from "../views/events/Events";
 import Map from "../views/map/Map";
@@ -9,7 +9,7 @@ import { Ionicons } from "@expo/vector-icons";
 import News from "../views/news/News";
 import { useNavigation } from "@react-navigation/native";
 import InformationModal from "../views/home/components/InformationModal";
-import { I18nContext } from "../context/PointOfInterestContext";
+import { I18nContext } from "../context/GlobalContext";
 const Tab = createBottomTabNavigator();
 
 const BottomNavigator = () => {

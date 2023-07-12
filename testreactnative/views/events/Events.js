@@ -12,7 +12,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./EventsStyle";
 import Card from "./components/Card";
 import moment from "moment";
-import { EventsContext } from "../../context/PointOfInterestContext.js";
+import { EventsContext } from "../../context/GlobalContext.js";
 import NoDataView from "../NoDataView/NoDataView";
 const Events = () => {
   const [showListFirst, setShowListFirst] = useState(true);

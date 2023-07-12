@@ -1,17 +1,16 @@
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { PointOfInterestProvider } from "./context/PointOfInterestContext.js";
+import { GlobalContextProvider } from "./context/GlobalContext.js";
 import StackNavigator from "./components/StackNavigator";
 import React from "react";
 
-
 export default function App() {
   return (
-    <PointOfInterestProvider>
-      <NavigationContainer>
+    <NavigationContainer>
+      <GlobalContextProvider>
         <StackNavigator />
-      </NavigationContainer>
-    </PointOfInterestProvider>
+      </GlobalContextProvider>
+    </NavigationContainer>
   );
 }
 

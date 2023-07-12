@@ -12,7 +12,7 @@ import {
   NewsContext,
   LoadingContext,
   LanguageContext,
-} from "../../context/PointOfInterestContext";
+} from "../../context/GlobalContext";
 
 const NoDataView = () => {
   const [Wineries, setWineries] = useContext(WineriesContext);

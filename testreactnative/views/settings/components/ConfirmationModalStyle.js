@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
       height: 2,
     },
     width: "70%",
-    height: "25%",
+    height: "40%",
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
@@ -61,4 +61,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
   },
+  loadingcontainer:{
+    flexDirection: "column",
+  }
 });

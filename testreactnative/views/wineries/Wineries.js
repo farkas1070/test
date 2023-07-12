@@ -8,7 +8,7 @@ import {
 import React, { useState, useContext } from "react";
 import { styles } from "./WineriesStyle";
 import Card from "./components/Card";
-import { WineriesContext } from "../../context/PointOfInterestContext.js";
+import { WineriesContext } from "../../context/GlobalContext.js";
 
 const Wineries = () => {
   const [wineries, setWineries] = useContext(WineriesContext);

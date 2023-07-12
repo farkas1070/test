@@ -5,10 +5,9 @@ import BottomNavigator from "./BottomNavigator";
 import Settings from "../views/settings/Settings";
 import Valami2 from "./Valami2";
 import Valami from "./Valami";
-
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { I18nContext } from "../context/PointOfInterestContext";
+import { I18nContext } from "../context/GlobalContext";
 
 const Drawer = createDrawerNavigator();
 

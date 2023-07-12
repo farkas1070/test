@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { getNews } from "../../controllers/WordpressProvider";
 import { styles } from "./NewsStyle";
 import Card from "./components/Card";
-import { NewsContext } from "../../context/PointOfInterestContext.js";
+import { NewsContext } from "../../context/GlobalContext.js";
 const News = () => {
   const [News, setNews] = useContext(NewsContext);
   const [searchText, setSearchText] = useState("");
