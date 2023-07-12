@@ -4,29 +4,15 @@ import { styles } from "./SettingsStyle";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { LanguageContext } from "../../context/PointOfInterestContext";
 import ConfirmationModal from "./components/ConfirmationModal";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import {
-  getWineries,
-  getEvents,
-  getNews,
-} from "../../controllers/WordpressProvider";
-import {
-  WineriesContext,
-  EventsContext,
-  NewsContext,
-} from "../../context/PointOfInterestContext";
 import { I18nContext } from "../../context/PointOfInterestContext";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Settings = () => {
-const [i18n, setI18n] = useContext(I18nContext);
+const [i18n] = useContext(I18nContext);
   const [language, setLanguage] = useContext(LanguageContext);
   const [tempLanguage, setTempLanguage] = useState(language);
   const [modalVisible, setModalVisible] = useState(false);
-  const [Wineries, setWineries] = useContext(WineriesContext);
-  const [events, setEvents] = useContext(EventsContext);
-  const [news, setNews] = useContext(NewsContext);
   const [isEnabled, setIsEnabled] = useState(false);
-
   const openModal = () => {
     setModalVisible(true);
   };
@@ -36,9 +22,10 @@ const [i18n, setI18n] = useContext(I18nContext);
   };
   
   const saveChanges = async () => {
-    
+    await AsyncStorage.setItem("Language", tempLanguage);
     setLanguage(tempLanguage);
     i18n.locale = tempLanguage;
+    
     setModalVisible(false);
     Alert.alert("Settings Saved");
   };
