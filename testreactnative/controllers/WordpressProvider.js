@@ -6,7 +6,7 @@ export const getDataByUrl = async (url) => {
     return response.data;
   } catch (error) {
     if (error.response || error.request) {
-      throw new Error("nem sikerult a fetch")
+      throw new Error("nem sikerult a fetch");
     }
   }
 };
@@ -15,34 +15,32 @@ export const getWineries = async (language) => {
   const data = await getDataByUrl(
     `https://soproniborvidek.nemethmark.com/wp-json/wp/v2/wineries?_embed&per_page=100&lang=${language}`
   );
-  
-    return data.map((item) => {
-      return {
-        
-        title: item?.title?.rendered,
-        content: item?.content?.rendered,
-        logo: item?.acf?.banner?.boraszat_logo?.sizes?.medium,
-        owner_name: item?.acf?.kapcsolat?.tulajdonos_nev,
-        type: item?.type,
 
-        connection: {
-          adress: item?.acf?.kapcsolat?.cim,
-          telephone: item?.acf?.kapcsolat?.telefon,
-          website: item?.acf?.banner?.weboldal,
+  return data.map((item) => {
+    return {
+      title: item?.title?.rendered,
+      content: item?.content?.rendered,
+      logo: item?.acf?.banner?.boraszat_logo?.sizes?.medium,
+      owner_name: item?.acf?.kapcsolat?.tulajdonos_nev,
+      type: item?.type,
 
-          social: {
-            facebook: item?.acf?.szocialis_mediak?.facebook,
-            linkedin: item?.acf?.szocialis_mediak?.linkedin,
-            instagram: item?.acf?.szocialis_mediak?.instagram,
-          },
+      connection: {
+        adress: item?.acf?.kapcsolat?.cim,
+        telephone: item?.acf?.kapcsolat?.telefon,
+        website: item?.acf?.banner?.weboldal,
+
+        social: {
+          facebook: item?.acf?.szocialis_mediak?.facebook,
+          linkedin: item?.acf?.szocialis_mediak?.linkedin,
+          instagram: item?.acf?.szocialis_mediak?.instagram,
         },
-        map: {
-          lat: item?.acf?.terkep?.lat,
-          lng: item?.acf?.terkep?.lng,
-        },
-      };
-    });
-  
+      },
+      map: {
+        lat: item?.acf?.terkep?.lat,
+        lng: item?.acf?.terkep?.lng,
+      },
+    };
+  });
 };
 export const getEvents = async (language) => {
   const data = await getDataByUrl(
