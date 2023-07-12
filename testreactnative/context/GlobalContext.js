@@ -35,6 +35,7 @@ export const GlobalContextProvider = (props) => {
         /*} fetchWineries(value); */
         await getWineries(storedlanguage).then((response) => {
           response === null ? setWineries(false) : setWineries(response);
+          
         });
         await getNews(storedlanguage).then((response) => {
           response === null ? setNews(false) : setNews(response);
