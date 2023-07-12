@@ -2,11 +2,11 @@ import { Text, View, TouchableOpacity, Alert, Switch } from "react-native";
 import React, { useState, useContext } from "react";
 import { styles } from "./SettingsStyle";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import { LanguageContext } from "../../context/PointOfInterestContext";
+import { LanguageContext,LoadingContext} from "../../context/PointOfInterestContext";
 import ConfirmationModal from "./components/ConfirmationModal";
 import { I18nContext } from "../../context/PointOfInterestContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { LoadingContext } from "../../context/PointOfInterestContext";
+
 const Settings = () => {
 const [i18n] = useContext(I18nContext);
   const [language, setLanguage] = useContext(LanguageContext);
@@ -25,10 +25,8 @@ const [i18n] = useContext(I18nContext);
   const saveChanges = async () => {
     await AsyncStorage.setItem("Language", tempLanguage);
     setLanguage(tempLanguage);
-    i18n.locale = tempLanguage;
     
     
-    Alert.alert("Settings Saved");
   };
 
   return (
