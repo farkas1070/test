@@ -14,6 +14,7 @@ import RenderHtml from "react-native-render-html";
 import { useWindowDimensions } from "react-native";
 import { tagsStyles } from "./ContentStyle";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { SvgCssUri } from 'react-native-svg';
 
 const Winery = ({ route }) => {
   const { width } = useWindowDimensions();
@@ -87,13 +88,13 @@ const Winery = ({ route }) => {
 
           return (
             <View key={index} style={styles.servicecontainer}>
-              <Image
-                source={{
-                  uri: service.acf.icon,
-                }}
-                style={{ width: 50, height: 50 }}
+               <SvgCssUri
+                uri={service.acf.icon_2}
+                width={70}
+                height={70}
+                
               />
-              <Text>{service.name}</Text>
+              <Text style={styles.servicetext}>{service.name}</Text>
             </View>
           );
         })}

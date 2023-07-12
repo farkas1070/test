@@ -1,7 +1,6 @@
 import { StyleSheet,View } from "react-native";
 import React, { useEffect, useContext, useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { useNavigation } from "@react-navigation/native";
 import SplashScreen from "../views/home/components/SplashScreen";
 import OnBoarding from "../views/home/components/OnBoarding";
 import DrawerNavigator from "./DrawerNavigation";
@@ -17,14 +16,9 @@ import { LoadingContext } from "../context/GlobalContext";
 const Stack = createNativeStackNavigator();
 
 const StackNavigator = () => {
-  const navigation = useNavigation();
   
-  const openMenu = () => {
-    navigation.openDrawer();
-  };
-
   const [firstTimeOpen, setFirstTimeOpen] = useState(null);
-  const [loaded, setLoaded] = useContext(LoadingContext);
+  const [loaded] = useContext(LoadingContext);
 
   useEffect(() => {
     const getData = async () => {
@@ -64,9 +58,6 @@ const StackNavigator = () => {
           headerTitleStyle: {
             textAlign: "center",
           },
-          
-
-         
         }}
       />
       <Stack.Screen

@@ -56,7 +56,11 @@ export const styles = StyleSheet.create({
     borderColor:'grey',
     marginTop:10,
     flexDirection:'row',
-    marginTop:10,
-    backgroundColor:'grey'
+    justifyContent:'space-between',
+    alignItems:'center'
+    
+  },
+  servicetext:{
+    marginRight:10,
   }
 });
