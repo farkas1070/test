@@ -26,7 +26,7 @@ const DrawerNavigator = () => {
         options={{
           drawerIcon: ({ focused, color, size }) => (
             <Ionicons
-              name={focused ? "apps" : "apps-outline"}
+              name={focused ? "home" : "home-outline"}
               size={size}
               color={color}
             />
@@ -87,11 +87,7 @@ const DrawerNavigator = () => {
         component={Settings}
         options={{
           drawerIcon: ({ focused, color, size }) => (
-            <Ionicons
-              name={focused ? "apps" : "apps-outline"}
-              size={size}
-              color={color}
-            />
+            <Ionicons name="settings" size={size} color={color} />
           ),
           headerLeft: () => (
             <TouchableOpacity

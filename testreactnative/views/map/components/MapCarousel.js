@@ -17,7 +17,8 @@ const MapCarousel = ({
   width,
 }) => {
   const navigation = useNavigation();
-  const renderItem = ({ item, index }) => {
+
+  const renderItem = ({ item }) => {
     return (
       <View style={styles.slide}>
         <View style={styles.slideContent}>
@@ -58,9 +59,7 @@ const MapCarousel = ({
         itemWidth={width}
         inactiveSlideOpacity={1}
         useScrollView={true}
-        onSnapToItem={(index) => {
-          handleCarouselSnap(index);
-        }}
+        onSnapToItem={handleCarouselSnap}
       />
     </View>
   );

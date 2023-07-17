@@ -77,6 +77,7 @@ const Map = () => {
       return pointsOfInterest.filter((point) => point.map.lat !== undefined);
     }
   };
+  const filteredMarkers = filterMarkers(filter);
 
   const filterTours = (name) => {
     if (name === "None") {
@@ -87,7 +88,7 @@ const Map = () => {
   };
 
   useEffect(() => {
-    (async () => {
+    const getLocationPermissions = async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
         setErrorMsg("Permission to access location was denied");
@@ -112,7 +113,9 @@ const Map = () => {
       return () => {
         foregroundSubscription.remove();
       };
-    })();
+    };
+
+    getLocationPermissions();
   }, []);
 
   const jumpToPointOfInterest = () => {
@@ -165,7 +168,7 @@ const Map = () => {
       });
     }, 100);
   };
-  const handleshowTour = (tour) => {
+  const handleShowTour = (tour) => {
     setShowCurrentWineTour(true);
     setTourFilter(tour.name);
     closeModal();
@@ -176,17 +179,17 @@ const Map = () => {
 
   return (
     <View style={styles.container}>
-      {pointsOfInterest.length == 0 ? (
+      <ToursModal
+        modalVisible={modalVisible}
+        closeModal={closeModal}
+        tours={tours}
+        handleshowTour={handleShowTour}
+      />
+
+      {pointsOfInterest.length === 0 ? (
         <LoadingComponent />
       ) : (
         <View style={styles.container}>
-          <ToursModal
-            modalVisible={modalVisible}
-            closeModal={closeModal}
-            tours={tours}
-            handleshowTour={handleshowTour}
-          />
-
           <MapViewContainer
             mapRef={mapRef}
             markerRef={markerRef}
@@ -220,7 +223,7 @@ const Map = () => {
           )}
 
           <MapCarousel
-            data={filterMarkers(filter)}
+            data={filteredMarkers}
             activeMarkerIndex={activeMarkerIndex}
             handleMarkerPress={handleMarkerPress}
             carouselRef={carouselRef}
