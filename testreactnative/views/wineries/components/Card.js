@@ -8,7 +8,9 @@ const Card = ({ item, index }) => {
   return (
     <View key={index} style={styles.card}>
       <TouchableOpacity
-        onPress={() => {navigation.navigate("Winery", { item: item })}}
+        onPress={() => {
+          navigation.navigate("Winery", { item: item });
+        }}
       >
         <Image
           style={styles.image}

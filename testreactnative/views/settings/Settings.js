@@ -2,13 +2,13 @@ import { Text, View, TouchableOpacity, Alert, Switch } from "react-native";
 import React, { useState, useContext } from "react";
 import { styles } from "./SettingsStyle";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import { LanguageContext} from "../../context/GlobalContext";
+import { LanguageContext } from "../../context/GlobalContext";
 import ConfirmationModal from "./components/ConfirmationModal";
 import { I18nContext } from "../../context/GlobalContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Settings = () => {
-const [i18n] = useContext(I18nContext);
+  const [i18n] = useContext(I18nContext);
   const [language, setLanguage] = useContext(LanguageContext);
   const [tempLanguage, setTempLanguage] = useState(language);
   const [modalVisible, setModalVisible] = useState(false);
@@ -21,10 +21,10 @@ const [i18n] = useContext(I18nContext);
   const closeModal = () => {
     setModalVisible(false);
   };
-  
+
   const saveChanges = async () => {
     if (tempLanguage === language) {
-      Alert.alert("A kiválasztott nyelv van már beállítva")
+      Alert.alert("A kiválasztott nyelv van már beállítva");
     } else {
       await AsyncStorage.setItem("Language", tempLanguage);
       setLanguage(tempLanguage);
@@ -39,7 +39,6 @@ const [i18n] = useContext(I18nContext);
         closeModal={closeModal}
         saveChanges={saveChanges}
         loading={loading}
-        
       />
 
       <View style={styles.languagecontainer}>

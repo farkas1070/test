@@ -1,6 +1,6 @@
-import {  Text, View,ActivityIndicator } from 'react-native'
-import React from 'react'
-import {styles} from "./LoadingComponentsStyle"
+import { Text, View, ActivityIndicator } from "react-native";
+import React from "react";
+import { styles } from "./LoadingComponentsStyle";
 
 const LoadingComponent = () => {
   return (
@@ -8,8 +8,7 @@ const LoadingComponent = () => {
       <Text>Loading...</Text>
       <ActivityIndicator />
     </View>
-  )
-}
+  );
+};
 
-export default LoadingComponent
-
+export default LoadingComponent;

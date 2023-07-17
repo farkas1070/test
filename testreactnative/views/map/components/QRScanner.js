@@ -6,7 +6,6 @@ import {
   StyleSheet,
   Dimensions,
   Modal,
-  
 } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
@@ -17,19 +16,14 @@ export default function QRScanner({ onQRCodeScanned }) {
   const scannerRef = useRef(null);
   const [modalVisible, setModalVisible] = useState(false);
 
-
   const openModal = () => {
     setModalVisible(true);
   };
-  
 
   useEffect(() => {
     (async () => {
-      
-        const { status } = await BarCodeScanner.requestPermissionsAsync();
+      const { status } = await BarCodeScanner.requestPermissionsAsync();
       setHasPermission(status === "granted");
-      
-      
     })();
   }, []);
 
@@ -51,14 +45,18 @@ export default function QRScanner({ onQRCodeScanned }) {
   };
 
   if (hasPermission === null) {
-    return <TouchableOpacity style={styles.button} onPress={startScanning}>
-    <MaterialIcons name="qr-code-scanner" size={28} color="#FFF" />
-  </TouchableOpacity>;
+    return (
+      <TouchableOpacity style={styles.button} onPress={startScanning}>
+        <MaterialIcons name="qr-code-scanner" size={28} color="#FFF" />
+      </TouchableOpacity>
+    );
   }
   if (hasPermission === false) {
-    return <TouchableOpacity style={styles.button} onPress={startScanning}>
-    <MaterialIcons name="qr-code-scanner" size={28} color="#FFF" />
-  </TouchableOpacity>;
+    return (
+      <TouchableOpacity style={styles.button} onPress={startScanning}>
+        <MaterialIcons name="qr-code-scanner" size={28} color="#FFF" />
+      </TouchableOpacity>
+    );
   }
 
   return (

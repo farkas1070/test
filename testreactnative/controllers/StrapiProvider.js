@@ -1,7 +1,6 @@
-
 import axios from "axios";
 
-const getDataByUrl = async ( url ) => {
+const getDataByUrl = async (url) => {
   try {
     const response = await axios.get(`${url}`);
     const data = response.data;
@@ -13,7 +12,7 @@ const getDataByUrl = async ( url ) => {
 };
 
 export const getWineries = async () => {
-  const data =  await getDataByUrl(
+  const data = await getDataByUrl(
     "http://10.0.0.113:1337/api/boraszatoks?populate=*"
   );
   return data.data.map((item) => {
@@ -21,10 +20,8 @@ export const getWineries = async () => {
       title: item.attributes.nev,
       content: item.attributes.leiras,
       logo: `http://10.0.0.113:1337${item?.attributes?.logo?.data?.attributes?.formats?.thumbnail?.url}`,
-      
     };
   });
-  
 };
 //ezek még wordpressesek, kellenek starpis adatok
 export const getEvents = async () => {
@@ -53,6 +50,3 @@ export const getNews = async () => {
     };
   });
 };
-
-
-

@@ -1,4 +1,4 @@
-import { StyleSheet,View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React, { useEffect, useContext, useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SplashScreen from "../views/home/components/SplashScreen";
@@ -12,11 +12,9 @@ import TourInfo from "../views/tourinfo/TourInfo";
 import NoDataView from "../views/NoDataView/NoDataView";
 import { LoadingContext } from "../context/GlobalContext";
 
-
 const Stack = createNativeStackNavigator();
 
 const StackNavigator = () => {
-  
   const [firstTimeOpen, setFirstTimeOpen] = useState(null);
   const [loaded] = useContext(LoadingContext);
 
@@ -45,9 +43,7 @@ const StackNavigator = () => {
       <Stack.Screen
         name="Drawer"
         component={DrawerNavigator}
-        options={{ headerShown: false,
-          
-        }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Event"

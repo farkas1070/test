@@ -15,7 +15,6 @@ const DrawerNavigator = () => {
   const navigation = useNavigation();
   const [i18n, setI18n] = useContext(I18nContext);
 
-
   return (
     <Drawer.Navigator
       initialRouteName={i18n.t("home")[0]}

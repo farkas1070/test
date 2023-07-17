@@ -12,12 +12,11 @@ const InformationModal = ({ modalVisible, closeModal }) => {
     >
       <View style={styles.mainconatiner}>
         <View style={styles.modalcontainer}>
-        <Text style={styles.text}>Készítette: Effix Marketing Kft.</Text>
-        <TouchableOpacity onPress={closeModal} style={styles.closebutton}>
-          <Text>csukd be</Text>
-        </TouchableOpacity>
+          <Text style={styles.text}>Készítette: Effix Marketing Kft.</Text>
+          <TouchableOpacity onPress={closeModal} style={styles.closebutton}>
+            <Text>csukd be</Text>
+          </TouchableOpacity>
         </View>
-        
       </View>
     </Modal>
   );

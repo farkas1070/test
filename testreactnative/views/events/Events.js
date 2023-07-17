@@ -1,19 +1,13 @@
-import {
-  Text,
-  View,
-  TouchableOpacity,
-  ScrollView,
-  Image,
-  TextInput,
-} from "react-native";
+import { Text, View, TouchableOpacity, ScrollView, Image } from "react-native";
 import React, { useState, useContext } from "react";
-import { Agenda, LocaleConfig } from "react-native-calendars";
+import { Agenda } from "react-native-calendars";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./EventsStyle";
 import Card from "./components/Card";
 import moment from "moment";
 import { EventsContext } from "../../context/GlobalContext.js";
-import NoDataView from "../NoDataView/NoDataView";
+import SearchBar from "./components/Search";
+
 const Events = () => {
   const [showListFirst, setShowListFirst] = useState(true);
   const [currentDate, setCurrentDate] = useState("2023-06-20");
@@ -46,7 +40,6 @@ const Events = () => {
 
   return (
     <View style={styles.maincontainer}>
-      
       <View style={{ paddingRight: 10, flexDirection: "row" }}>
         <TouchableOpacity>
           <Ionicons
@@ -70,13 +63,7 @@ const Events = () => {
             }}
           />
         </TouchableOpacity>
-        <TextInput
-          style={styles.textinput}
-          placeholder="Keresés"
-          placeholderTextColor="#000"
-          value={searchText}
-          onChangeText={(value) => setSearchText(value)}
-        />
+        <SearchBar onSearch={setSearchText} />
       </View>
       {showListFirst ? (
         <ScrollView>

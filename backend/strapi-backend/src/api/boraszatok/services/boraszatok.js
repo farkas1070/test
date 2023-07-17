@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
 /**
  * boraszatok service
  */
 
-const { createCoreService } = require('@strapi/strapi').factories;
+const { createCoreService } = require("@strapi/strapi").factories;
 
-module.exports = createCoreService('api::boraszatok.boraszatok');
+module.exports = createCoreService("api::boraszatok.boraszatok");

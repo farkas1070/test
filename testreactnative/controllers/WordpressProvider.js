@@ -24,7 +24,7 @@ export const getWineries = async (language) => {
       owner_name: item?.acf?.kapcsolat?.tulajdonos_nev,
       type: item?.type,
       services: item?._embedded?.["wp:term"]?.[0],
-      
+
       connection: {
         adress: item?.acf?.kapcsolat?.cim,
         telephone: item?.acf?.kapcsolat?.telefon,

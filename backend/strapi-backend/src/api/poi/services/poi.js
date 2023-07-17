@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
 /**
  * poi service
  */
 
-const { createCoreService } = require('@strapi/strapi').factories;
+const { createCoreService } = require("@strapi/strapi").factories;
 
-module.exports = createCoreService('api::poi.poi');
+module.exports = createCoreService("api::poi.poi");

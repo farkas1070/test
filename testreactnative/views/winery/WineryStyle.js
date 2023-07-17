@@ -31,36 +31,34 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
-  opengooglemapsbutton:{
-    flexDirection:'row',
-    height:40,
-    alignSelf:'flex-start',
-    padding:10,
-    backgroundColor:'#b3cee5',
-    borderRadius:20,
-    justifyContent:'center',
-    alignItems:'center'
-
+  opengooglemapsbutton: {
+    flexDirection: "row",
+    height: 40,
+    alignSelf: "flex-start",
+    padding: 10,
+    backgroundColor: "#b3cee5",
+    borderRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
   },
-  mainservicecontainer:{
-    width:'100%',
-    justifyContent:'center',
-    alignItems:'center',
-    marginBottom:30
+  mainservicecontainer: {
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 30,
   },
-  servicecontainer:{
-    width:'90%',
-    height:80,
-    borderRadius:10,
-    borderWidth:3,
-    borderColor:'grey',
-    marginTop:10,
-    flexDirection:'row',
-    justifyContent:'space-between',
-    alignItems:'center'
-    
+  servicecontainer: {
+    width: "90%",
+    height: 80,
+    borderRadius: 10,
+    borderWidth: 3,
+    borderColor: "grey",
+    marginTop: 10,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
-  servicetext:{
-    marginRight:10,
-  }
+  servicetext: {
+    marginRight: 10,
+  },
 });

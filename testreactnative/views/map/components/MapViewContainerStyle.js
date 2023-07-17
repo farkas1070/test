@@ -79,13 +79,13 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 5,
     marginBottom: 10,
   },
-  modalContainer:{
+  modalContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",
   },
-  modalButton:{
+  modalButton: {
     backgroundColor: "rgba(239, 239, 239, 1)",
     borderRadius: 40,
     paddingVertical: 5,
@@ -95,50 +95,46 @@ export const styles = StyleSheet.create({
     right: 30,
     position: "absolute",
   },
-  modalContent:{
-    
-    width:'100%',
-    height:'80%',
-    padding:10,
-    alignItems:'center',
+  modalContent: {
+    width: "100%",
+    height: "80%",
+    padding: 10,
+    alignItems: "center",
   },
-  tourcard:{
-    width:'100%',
-    height:90,
+  tourcard: {
+    width: "100%",
+    height: 90,
     backgroundColor: "rgba(239, 239, 239, 1)",
-    marginTop:10,
-    borderRadius:10,
-    flexDirection:'row',
+    marginTop: 10,
+    borderRadius: 10,
+    flexDirection: "row",
 
-    justifyContent:'flex-start',
-    alignItems:'center',
-
-
+    justifyContent: "flex-start",
+    alignItems: "center",
   },
-  tourimage:{
-    width:80,
-    height:80,
-    marginLeft:30,
-    borderRadius:10,
+  tourimage: {
+    width: 80,
+    height: 80,
+    marginLeft: 30,
+    borderRadius: 10,
   },
-  tourtext:{
-    marginLeft:20
+  tourtext: {
+    marginLeft: 20,
   },
-  modalbutton:{
-    width:'80%'
+  modalbutton: {
+    width: "80%",
   },
-  borturatext:{
-    color:'black',
-    fontSize:25,
-    marginBottom:20
+  borturatext: {
+    color: "black",
+    fontSize: 25,
+    marginBottom: 20,
   },
   markerimage: {
-    width:50,
-    height:50, 
-    borderRadius:25,
-    borderColor:'white',
-    borderWidth:3,
-    marginBottom:10,
-    
-  }
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    borderColor: "white",
+    borderWidth: 3,
+    marginBottom: 10,
+  },
 });

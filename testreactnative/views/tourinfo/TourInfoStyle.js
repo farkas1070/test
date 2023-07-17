@@ -56,38 +56,37 @@ export const styles = StyleSheet.create({
     padding: 15,
   },
   descriptiontext: {
-    color:'grey',
-    textAlign: 'left',
+    color: "grey",
+    textAlign: "left",
   },
-  tourinfocontainer:{
-    padding:15
+  tourinfocontainer: {
+    padding: 15,
   },
-  startbuttoncontainer:{
-    padding:15
+  startbuttoncontainer: {
+    padding: 15,
   },
-  startbutton:{
-    backgroundColor:'green',
-    padding:10,
-    borderRadius:30,
-    flexDirection:'row',
-    justifyContent:'center',
-    alignItems: 'center',
-    width:100
+  startbutton: {
+    backgroundColor: "green",
+    padding: 10,
+    borderRadius: 30,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    width: 100,
   },
-  starttext:{
-    color:'white',
-    marginLeft:10,
+  starttext: {
+    color: "white",
+    marginLeft: 10,
   },
-  bodycontainer:{
-    width:'100%',
-    
+  bodycontainer: {
+    width: "100%",
   },
-  dscriptioncontainer:{
-    width:'100%',
-    padding:20,
-    marginTop:10
+  dscriptioncontainer: {
+    width: "100%",
+    padding: 20,
+    marginTop: 10,
   },
-  descriptiontext:{
-    color:'gray'
-  }
+  descriptiontext: {
+    color: "gray",
+  },
 });

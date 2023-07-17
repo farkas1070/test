@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
 /**
  * boraszatok router
  */
 
-const { createCoreRouter } = require('@strapi/strapi').factories;
+const { createCoreRouter } = require("@strapi/strapi").factories;
 
-module.exports = createCoreRouter('api::boraszatok.boraszatok');
+module.exports = createCoreRouter("api::boraszatok.boraszatok");

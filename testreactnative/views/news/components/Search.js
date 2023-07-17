@@ -1,5 +1,5 @@
-import { View, TextInput } from "react-native";
-import React, { useEffect, useState } from "react";
+import { Text, View, ScrollView, Image, TextInput, Button } from "react-native";
+import React, { useEffect, useState, useContext } from "react";
 import { styles } from "./SearchStyle";
 
 const SearchBar = ({ onSearch }) => {
