@@ -1,8 +1,10 @@
 import { View, TextInput } from "react-native";
 import React, { useEffect, useState } from "react";
+import { I18nContext } from "../../../context/GlobalContext";
 import { styles } from "./SearchStyle";
 
 const SearchBar = ({ onSearch }) => {
+  const [i18n] = React.useContext(I18nContext);
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
@@ -22,7 +24,7 @@ const SearchBar = ({ onSearch }) => {
       <TextInput
         style={styles.searchInput}
         onChangeText={handleSearch}
-        placeholder="Search..."
+        placeholder={i18n.t("search")}
         value={searchText}
       />
     </View>

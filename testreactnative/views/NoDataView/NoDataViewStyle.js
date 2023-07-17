@@ -1,22 +1,24 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  maincontainer: {
+  container: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#F5FCFF",
+    justifyContent: "center",
   },
   image: {
-    width: 100,
-    height: 100,
-    marginTop: 100,
+    width: 200,
+    height: 200,
     resizeMode: "contain",
+    marginBottom: 30,
   },
-  refreshbutton: {
-    marginTop: 100,
-    backgroundColor: "cyan",
-    borderRadius: 10,
-    padding: 10,
+  errorText: {
+    fontSize: 16,
+    textAlign: "center",
+    fontWeight: "bold",
+  },
+  content: {
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

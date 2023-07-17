@@ -1,5 +1,5 @@
-import { StyleSheet, View, TouchableOpacity } from "react-native";
-import React, { useState, useContext, useCallback } from "react";
+import { View, TouchableOpacity } from "react-native";
+import React, { useState, useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Events from "../views/events/Events";
 import Map from "../views/map/Map";
@@ -237,5 +237,3 @@ const BottomNavigator = () => {
 };
 
 export default BottomNavigator;
-
-const styles = StyleSheet.create({});

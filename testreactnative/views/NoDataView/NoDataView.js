@@ -1,4 +1,11 @@
-import { Text, View, Image, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  RefreshControl,
+} from "react-native";
 import React, { useContext } from "react";
 import { styles } from "./NoDataViewStyle";
 import {
@@ -13,6 +20,7 @@ import {
   LoadingContext,
   LanguageContext,
 } from "../../context/GlobalContext";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const NoDataView = () => {
   const [Wineries, setWineries] = useContext(WineriesContext);
@@ -20,6 +28,15 @@ const NoDataView = () => {
   const [news, setNews] = useContext(NewsContext);
   const [loading, setLoading] = useContext(LoadingContext);
   const [language, setLanguage] = useContext(LanguageContext);
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      refreshData();
+      setRefreshing(false);
+    }, 2000);
+  }, []);
 
   const refreshData = async () => {
     console.log("refrsreshed data");
@@ -35,22 +52,26 @@ const NoDataView = () => {
     setLoading(false);
   };
   return (
-    <View style={styles.maincontainer}>
-      <Text>Hiba Történt az Adat beolvasása során, próbáld késöbb</Text>
-      <Image
-        style={styles.image}
-        source={{
-          uri: "https://cdn-icons-png.flaticon.com/512/1747/1747789.png",
-        }}
-      />
-      <TouchableOpacity
-        onPress={() => {
-          refreshData();
-        }}
-        style={styles.refreshbutton}
+    <View style={{ flex: 1, marginTop: 30 }}>
+      <ScrollView
+        contentContainerStyle={styles.container}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
       >
-        <Text>Frissités</Text>
-      </TouchableOpacity>
+        <View style={styles.content}>
+          <Image
+            style={styles.image}
+            source={{
+              uri: "https://cdn-icons-png.flaticon.com/512/1747/1747789.png",
+            }}
+          />
+          <Text style={styles.errorText}>
+            Hiba történt az alkalmazás betöltése során! Csúsztass lefelé a
+            alkalmazás újratöltéséhez.
+          </Text>
+        </View>
+      </ScrollView>
     </View>
   );
 };
