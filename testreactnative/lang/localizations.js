@@ -32,6 +32,10 @@ const hu = {
   no: "Nem",
   enablenotify: "Értesítések engedélyezése",
   enablenotifytext: "Az alkalmazás értesítéseket fog küldeni Önnek.",
+  owner: "Tulajdonos",
+  address: "Cím",
+  phone: "Telefon",
+  website: "Weboldal",
 };
 
 const en = {
@@ -66,6 +70,10 @@ const en = {
   no: "No",
   enablenotify: "Enable notifications",
   enablenotifytext: "The application will send notifications to you.",
+  owner: "Owner",
+  address: "Address",
+  phone: "Phone",
+  website: "Website",
 };
 
 const de = {
@@ -100,6 +108,10 @@ const de = {
   no: "Nein",
   enablenotify: "Benachrichtigungen aktivieren",
   enablenotifytext: "Die Anwendung sendet Ihnen Benachrichtigungen.",
+  owner: "Besitzer",
+  address: "Adresse",
+  phone: "Telefon",
+  website: "Webseite",
 };
 
 export { hu, en, de };

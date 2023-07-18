@@ -5,9 +5,10 @@ import BottomNavigator from "./BottomNavigator";
 import Settings from "../views/settings/Settings";
 import Valami2 from "./Valami2";
 import Valami from "./Valami";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, Text, View, Linking } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { I18nContext } from "../context/GlobalContext";
+import CustomDrawer from "./CustomDrawer";
 
 const Drawer = createDrawerNavigator();
 
@@ -17,20 +18,33 @@ const DrawerNavigator = () => {
 
   return (
     <Drawer.Navigator
-      initialRouteName={i18n.t("home")[0]}
-      screenOptions={{ drawerPosition: "right" }}
+      drawerContent={(props) => <CustomDrawer {...props} />}
+      initialRouteName={i18n.t("home")}
+      screenOptions={{
+        drawerPosition: "left",
+        drawerStyle: {
+          backgroundColor: "#fff",
+          width: "75%",
+        },
+        drawerContentContainerStyle: {
+          flex: 1,
+          justifyContent: "center",
+        },
+        drawerItemStyle: {
+          borderRadius: 25,
+          marginVertical: 10,
+        },
+        drawerLabelStyle: {
+          fontSize: 20,
+          fontWeight: "bold",
+          textAlign: "center",
+        },
+      }}
     >
       <Drawer.Screen
         name={i18n.t("home")[1]}
         component={BottomNavigator}
         options={{
-          drawerIcon: ({ focused, color, size }) => (
-            <Ionicons
-              name={focused ? "home" : "home-outline"}
-              size={size}
-              color={color}
-            />
-          ),
           headerShown: false,
         }}
       />
@@ -38,13 +52,6 @@ const DrawerNavigator = () => {
         name="Valami2"
         component={Valami2}
         options={{
-          drawerIcon: ({ focused, color, size }) => (
-            <Ionicons
-              name={focused ? "apps" : "apps-outline"}
-              size={size}
-              color={color}
-            />
-          ),
           headerLeft: () => (
             <TouchableOpacity
               style={{ paddingLeft: 10 }}
@@ -62,13 +69,6 @@ const DrawerNavigator = () => {
         name="Valami"
         component={Valami}
         options={{
-          drawerIcon: ({ focused, color, size }) => (
-            <Ionicons
-              name={focused ? "apps" : "apps-outline"}
-              size={size}
-              color={color}
-            />
-          ),
           headerLeft: () => (
             <TouchableOpacity
               style={{ paddingLeft: 10 }}
@@ -86,9 +86,6 @@ const DrawerNavigator = () => {
         name={i18n.t("settings")}
         component={Settings}
         options={{
-          drawerIcon: ({ focused, color, size }) => (
-            <Ionicons name="settings" size={size} color={color} />
-          ),
           headerLeft: () => (
             <TouchableOpacity
               style={{ paddingLeft: 10 }}

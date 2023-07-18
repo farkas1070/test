@@ -55,9 +55,9 @@ const BottomNavigator = () => {
             headerTitleStyle: {
               textAlign: "center",
             },
-            headerLeft: () => (
+            headerRight: () => (
               <TouchableOpacity
-                style={{ paddingLeft: 10 }}
+                style={{ paddingRight: 10 }}
                 onPress={() => {
                   openModal();
                 }}
@@ -69,8 +69,8 @@ const BottomNavigator = () => {
                 />
               </TouchableOpacity>
             ),
-            headerRight: () => (
-              <View style={{ paddingRight: 10 }}>
+            headerLeft: () => (
+              <View style={{ paddingLeft: 10 }}>
                 <Ionicons
                   name="menu"
                   size={24}
