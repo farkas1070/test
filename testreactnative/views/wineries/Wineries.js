@@ -11,10 +11,8 @@ import React, { useState, useContext } from "react";
 import { styles } from "./WineriesStyle";
 import Card from "./components/Card";
 import { WineriesContext } from "../../context/GlobalContext.js";
-import SearchBar from "./components/Search";
 import Map from "../../views/map/Map.js";
 import { Ionicons } from "@expo/vector-icons";
-import FilterCarousel from "../map/components/FilterCarousel";
 import Header from "./components/Header";
 
 const Wineries = () => {

@@ -2,14 +2,16 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   carousel: {
     position: "relative",
-    height: "10%",
     top: 0,
     width: "100%",
-    backgroundColor: "rgba(255,255,255,0.9)",
+    borderColor: "gray",
+    borderBottomWidth: 0.5,
   },
   slide: {
     justifyContent: "center",
     width: "100%",
+    paddingBottom: 10,
+    alignItems: "center",
   },
   slideContent: {
     width: "100%",
@@ -18,16 +20,16 @@ export const styles = StyleSheet.create({
     height: "100%",
   },
   text: {
-    fontSize: 8,
+    fontSize: 10,
     fontWeight: "bold",
     textAlign: "center",
   },
   icon: {
-    backgroundColor: "rgba(236,236,236,0.5)",
+    backgroundColor: "rgba(236,236,236,1)",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 30,
-    width: 60,
-    height: 60,
+    borderRadius: 35,
+    width: 65,
+    height: 65,
   },
 });
