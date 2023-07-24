@@ -14,8 +14,12 @@ export const styles = StyleSheet.create({
   },
   button: {
     position: "absolute",
-    top: -75,
-    right: 15,
+    bottom: 0,
+    right: 150,
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 10,
+
     backgroundColor: "#007AFF",
     borderRadius: 40,
     paddingVertical: 15,

@@ -1,4 +1,9 @@
-import { View, useWindowDimensions } from "react-native";
+import {
+  TouchableOpacity,
+  Text,
+  View,
+  useWindowDimensions,
+} from "react-native";
 import React, { useState, useEffect, useRef, useContext } from "react";
 import * as Location from "expo-location";
 import { styles } from "./MapStyle";
@@ -10,8 +15,10 @@ import MapCarousel from "./components/MapCarousel";
 import ToursModal from "./components/ToursModal";
 import FilterButtons from "./components/FilterButtons";
 import CurrentWineTour from "./components/CurrentWineTour";
+import { Ionicons } from "@expo/vector-icons";
+import FilterCarousel from "./components/FilterCarousel";
 
-const Map = () => {
+const Map = ({ setShowMap }) => {
   const mapRef = useRef(null);
   const markerRef = useRef([]);
   const carouselRef = useRef(null);
@@ -177,6 +184,10 @@ const Map = () => {
     }
   };
 
+  const handleShowMap = () => {
+    setShowMap(false);
+  };
+
   return (
     <View style={styles.container}>
       <ToursModal
@@ -204,13 +215,14 @@ const Map = () => {
             setCurrentLatDelta={setCurrentLatDelta}
             setCurrentLongDelta={setCurrentLongDelta}
           />
-
+          {/*
           <FilterButtons
             filter={filter}
             setFilter={setFilter}
             openModal={openModal}
             handleQRCodeScanned={handleQRCodeScanned}
           />
+      */}
 
           {showCurrentWineTour && currentTour && (
             <CurrentWineTour
@@ -231,6 +243,10 @@ const Map = () => {
             handleResetLocation={handleResetLocation}
             width={width}
           />
+          <TouchableOpacity style={styles.button} onPress={handleShowMap}>
+            <Text style={styles.buttonText}>Lista</Text>
+            <Ionicons name="list" size={30} color="black" />
+          </TouchableOpacity>
         </View>
       )}
     </View>

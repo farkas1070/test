@@ -2,12 +2,9 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   maincontainer: {
     flex: 1,
-    backgroundColor: "beige",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    height: "100%",
+    backgroundColor: "white",
   },
+
   image: {
     width: 100,
     height: 100,
@@ -28,5 +25,28 @@ export const styles = StyleSheet.create({
     width: "90%",
     borderRadius: 20,
     backgroundColor: "white",
+  },
+  button: {
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    width: "90%",
+    margin: 10,
+  },
+  mapbuttontext: {
+    fontSize: 16,
+    color: "black",
+    fontWeight: "bold",
+  },
+  mapbutton: {
+    flexDirection: "row",
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    margin: 10,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

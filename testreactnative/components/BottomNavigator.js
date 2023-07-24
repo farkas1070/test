@@ -1,4 +1,4 @@
-import { View, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity, Text } from "react-native";
 import React, { useState, useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Events from "../views/events/Events";
@@ -130,20 +130,6 @@ const BottomNavigator = () => {
           }}
         />
         <Tab.Screen
-          name={i18n.t("map")}
-          component={Map}
-          options={{
-            tabBarIcon: ({ focused }) => (
-              <Ionicons
-                name={focused ? "map" : "map-outline"}
-                size={24}
-                color="black"
-              />
-            ),
-            headerShown: false,
-          }}
-        />
-        <Tab.Screen
           name={i18n.t("wineries")}
           component={Wineries}
           options={{
@@ -156,6 +142,7 @@ const BottomNavigator = () => {
             ),
             headerTintColor: "black",
             headerTitleAlign: "center",
+            headerShown: false,
             headerTitleStyle: {
               textAlign: "center",
             },
