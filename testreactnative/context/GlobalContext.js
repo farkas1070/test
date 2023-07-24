@@ -14,6 +14,7 @@ import {
   getEvents,
   getNews,
 } from "../controllers/WordpressProvider";
+import { set } from "react-native-reanimated";
 
 export const GlobalContextProvider = (props) => {
   const [Wineries, setWineries] = useState([]);
@@ -26,7 +27,10 @@ export const GlobalContextProvider = (props) => {
   useEffect(() => {
     const getLanguage = async () => {
       try {
-        const storedlanguage = await AsyncStorage.getItem("Language");
+        let storedlanguage = await AsyncStorage.getItem("Language");
+        if (storedlanguage === null) {
+          storedlanguage = "hu";
+        }
         console.log(storedlanguage);
 
         i18n.locale = storedlanguage;
