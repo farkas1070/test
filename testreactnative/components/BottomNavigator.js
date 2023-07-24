@@ -1,4 +1,6 @@
-import { View, TouchableOpacity, Text } from "react-native";
+
+import { View, TouchableOpacity,Image,Text } from "react-native";
+
 import React, { useState, useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Events from "../views/events/Events";
@@ -10,6 +12,10 @@ import News from "../views/news/News";
 import { useNavigation } from "@react-navigation/native";
 import InformationModal from "../views/home/components/InformationModal";
 import { I18nContext } from "../context/GlobalContext";
+import {styles} from "./BottomNavigatorStyle"
+import { SvgCssUri } from "react-native-svg";
+import { SimpleLineIcons } from '@expo/vector-icons'; 
+
 const Tab = createBottomTabNavigator();
 
 const BottomNavigator = () => {
@@ -49,36 +55,34 @@ const BottomNavigator = () => {
                 color="black"
               />
             ),
-
-            headerTintColor: "black",
-            headerTitleAlign: "center",
-            headerTitleStyle: {
-              textAlign: "center",
+            headerTitle: () => <SvgCssUri uri={'https://soproniborvidek.hu/wp-content/uploads/2020/11/soproniborvidek_logo_color_fekvo.svg'} width={140} height={100} />,
+            headerStyle: {
+              height:100,
+              backgroundColor: '#F5F5F5',
             },
+            headerTitleAlign: "center",
+            
+            
             headerRight: () => (
               <TouchableOpacity
-                style={{ paddingRight: 10 }}
+                style={styles.searchbutton}
                 onPress={() => {
                   openModal();
                 }}
               >
                 <Ionicons
-                  name="information-circle-outline"
+                  name="search"
                   size={24}
-                  color="black"
+                  color="#A8A8A8"
                 />
               </TouchableOpacity>
             ),
             headerLeft: () => (
-              <View style={{ paddingLeft: 10 }}>
-                <Ionicons
-                  name="menu"
-                  size={24}
-                  color="black"
-                  onPress={() => {
+              <View style={styles.menubutton}>
+                <SimpleLineIcons name="menu" size={24} color="#A8A8A8" onPress={() => {
                     openMenu();
-                  }}
-                />
+                  }} />
+                
               </View>
             ),
           }}

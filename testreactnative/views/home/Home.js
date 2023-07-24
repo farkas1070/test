@@ -1,19 +1,42 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { Text, View, ScrollView } from "react-native";
 import React from "react";
 import { styles } from "./HomeStyle";
-
+import EventCarousel from "./components/EventCarousel";
+import ExploreCarousel from "./components/ExploreCarousel";
+import ServiceCarousel from "./components/ServiceCarousel";
+import WineryCarousel from "./components/WineryCarousel";
 const Home = () => {
   return (
     <View style={styles.maincontainer}>
-      <Image
-        style={styles.image}
-        source={{
-          uri: "https://media.istockphoto.com/id/881886686/vector/seamless-background-with-wine-glasses-and-bottles-design-element-for-tasting-menu-wine-list.jpg?s=612x612&w=0&k=20&c=UsHfH9tEhJSBnXn6CmJAlaB5Xsb2x7dnZKQoMBeYS3g=",
-        }}
-      />
-      <View style={styles.home}>
-        <Text style={styles.title}>Üdvözöl a Soproni Borvidék!</Text>
-      </View>
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.eventsection}>
+          <Text style={styles.eventtext}>Upcoming Events</Text>
+          <View style={styles.carouselcontainer}>
+            <EventCarousel />
+          </View>
+          <View style={styles.latestnewssection}>
+            <View style={styles.underlineview}>
+              <Text style={styles.latestnewstext}>Latest News</Text>
+            </View>
+          </View>
+          <View style={styles.dateAndTitleContainer}>
+            <Text style={styles.shortDateText}>Date</Text>
+            <Text style={styles.shorttitletext}>Short title of news</Text>
+          </View>
+        </View>
+
+        <View style={styles.exploreSection}>
+          <Text style={styles.exploreText}>Explore</Text>
+          <ExploreCarousel />
+        </View>
+        <View style={styles.lookForWineriesSection}>
+          <Text style={styles.lookForWineriesText}>Look For Winery to</Text>
+          <ServiceCarousel />
+        </View>
+        <View style={styles.wineriesCarouselSection}>
+          <WineryCarousel />
+        </View>
+      </ScrollView>
     </View>
   );
 };
