@@ -4,7 +4,14 @@ import {
   View,
   useWindowDimensions,
 } from "react-native";
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useContext,
+  useMemo,
+  useCallback,
+} from "react";
 import * as Location from "expo-location";
 import { styles } from "./MapStyle";
 import { WineriesContext } from "../../context/GlobalContext.js";
@@ -17,7 +24,6 @@ import FilterButtons from "./components/FilterButtons";
 import CurrentWineTour from "./components/CurrentWineTour";
 import { Ionicons } from "@expo/vector-icons";
 import FilterCarousel from "./components/FilterCarousel";
-
 
 const Map = ({ setShowMap }) => {
   const mapRef = useRef(null);
@@ -34,6 +40,9 @@ const Map = ({ setShowMap }) => {
   const [currentLatDelta, setCurrentLatDelta] = useState(0.1);
   const [currentLongDelta, setCurrentLongDelta] = useState(0.1);
   const [showCurrentWineTour, setShowCurrentWineTour] = useState(false);
+  const bottomSheetRef = useRef(null);
+  const bottomSheetFilterRef = useRef(null);
+  const snapPoints = useMemo(() => ["1%", "50%"], []);
 
   const [position, setPosition] = useState({
     latitude: 47.6828354,
@@ -56,6 +65,11 @@ const Map = ({ setShowMap }) => {
   const handleMarkerPress = (index) => {
     setActiveMarkerIndex(index);
     carouselRef.current.snapToItem(index);
+    bottomSheetRef.current.expand();
+  };
+
+  const handleMapPress = () => {
+    bottomSheetRef.current.close();
   };
 
   const handleResetLocation = () => {
@@ -167,6 +181,7 @@ const Map = ({ setShowMap }) => {
   const handleCarouselSnap = (index) => {
     setActiveMarkerIndex(index);
     markerRef.current[index].showCallout();
+    console.log(markerRef.current[index].props.marker);
     setTimeout(() => {
       mapRef.current.animateToRegion({
         latitude: filterMarkers(filter)[index].map.lat,
@@ -187,6 +202,10 @@ const Map = ({ setShowMap }) => {
 
   const handleShowMap = () => {
     setShowMap(false);
+  };
+
+  const handleBottomSheetFilter = () => {
+    bottomSheetFilterRef.current.expand();
   };
 
   return (
@@ -215,6 +234,7 @@ const Map = ({ setShowMap }) => {
             handleMarkerPress={handleMarkerPress}
             setCurrentLatDelta={setCurrentLatDelta}
             setCurrentLongDelta={setCurrentLongDelta}
+            handleMapPress={handleMapPress}
           />
           {/*
           <FilterButtons
@@ -234,20 +254,107 @@ const Map = ({ setShowMap }) => {
               setShowCurrentWineTour={setShowCurrentWineTour}
             />
           )}
+          <TouchableOpacity
+            style={styles.resetButton}
+            onPress={handleResetLocation}
+          >
+            <MaterialIcons name="my-location" size={28} color="#FFF" />
+          </TouchableOpacity>
 
-          <MapCarousel
-            data={filteredMarkers}
-            activeMarkerIndex={activeMarkerIndex}
-            handleMarkerPress={handleMarkerPress}
-            carouselRef={carouselRef}
-            handleCarouselSnap={handleCarouselSnap}
-            handleResetLocation={handleResetLocation}
-            width={width}
-          />
+          <TouchableOpacity
+            style={styles.toursButton}
+            onPress={() => {
+              setModalVisible(true);
+            }}
+          >
+            <MaterialCommunityIcons
+              name="transit-detour"
+              size={28}
+              color="#FFF"
+            />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.filterButton}
+            onPress={handleBottomSheetFilter}
+          >
+            <MaterialIcons name="filter-list" size={28} color="#FFF" />
+          </TouchableOpacity>
+
           <TouchableOpacity style={styles.button} onPress={handleShowMap}>
             <Text style={styles.buttonText}>Lista</Text>
             <Ionicons name="list" size={30} color="black" />
           </TouchableOpacity>
+          <BottomSheet
+            ref={bottomSheetRef}
+            index={0}
+            snapPoints={snapPoints}
+            style={styles.bottomSheet}
+            backgroundStyle={{
+              backgroundColor: "rgba(0, 0, 0, 0.0)",
+            }}
+            handleIndicatorStyle={{
+              backgroundColor: "rgba(0, 0, 0, 0)",
+            }}
+            enableHandlePanningGesture={false}
+            enableContentPanningGesture={false}
+          >
+            <View style={styles.bottomSheetHeader}>
+              <TouchableOpacity
+                style={styles.bottomSheetHeaderButton}
+                onPress={() => bottomSheetRef.current.close()}
+              >
+                <Ionicons name="close" size={30} color="black" />
+              </TouchableOpacity>
+            </View>
+
+            <MapCarousel
+              data={filteredMarkers}
+              activeMarkerIndex={activeMarkerIndex}
+              handleMarkerPress={handleMarkerPress}
+              carouselRef={carouselRef}
+              handleCarouselSnap={handleCarouselSnap}
+              width={width}
+            />
+          </BottomSheet>
+          <BottomSheet
+            ref={bottomSheetFilterRef}
+            index={0}
+            snapPoints={snapPoints}
+            style={styles.bottomSheet}
+            handleIndicatorStyle={{
+              backgroundColor: "rgba(0, 0, 0, 0)",
+            }}
+            enableHandlePanningGesture={false}
+            enableContentPanningGesture={false}
+          >
+            <View style={styles.bottomSheetFilterHeader}>
+              <Text style={styles.title}>Show on map</Text>
+              <TouchableOpacity>
+                <Text>Clear all</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.bottomSheetFilterBody}>
+              <TouchableOpacity style={styles.bottomSheetFilterButton}>
+                <Text>Sightseeing</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.bottomSheetFilterButton}>
+                <Text>Others</Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.bottomSheetFooter}>
+              <TouchableOpacity style={styles.bottomSheetFilterButton}>
+                <Text>Show selected</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.bottomSheetFilterClose}
+                onPress={() => bottomSheetFilterRef.current.close()}
+              >
+                <Text>Cancel</Text>
+              </TouchableOpacity>
+            </View>
+          </BottomSheet>
         </View>
       )}
     </View>

@@ -88,8 +88,6 @@ const Winery = ({ route }) => {
       />
       <View style={styles.mainservicecontainer}>
         {winery.services?.map((service, index) => {
-          
-
           return (
             <View key={index} style={styles.servicecontainer}>
               <SvgCssUri uri={service.acf.icon_2} width={70} height={70} />

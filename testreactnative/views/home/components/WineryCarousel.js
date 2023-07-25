@@ -1,30 +1,26 @@
-import {  Text, View,useWindowDimensions,FlatList,Image } from 'react-native'
-import React,{useContext} from 'react'
-import {styles} from "./WineryCarouselStyle"
-import { WineriesContext } from '../../../context/GlobalContext'
-import WineryCard from './WineryCard'
+import { Text, View, useWindowDimensions, FlatList, Image } from "react-native";
+import React, { useContext } from "react";
+import { styles } from "./WineryCarouselStyle";
+import { WineriesContext } from "../../../context/GlobalContext";
+import WineryCard from "./WineryCard";
 const WineryCarousel = () => {
-    const [wineries] = useContext(WineriesContext);
-  
+  const [wineries] = useContext(WineriesContext);
 
   const renderItem = ({ item }) => {
-    return (
-      <WineryCard item={item}/>
-    );
+    return <WineryCard item={item} />;
   };
 
   return (
     <View style={styles.container}>
-    <FlatList
+      <FlatList
         data={wineries}
         renderItem={renderItem}
         keyExtractor={(item) => item.title}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
       />
-      </View>
+    </View>
   );
-}
+};
 
-export default WineryCarousel
-
+export default WineryCarousel;

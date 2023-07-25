@@ -37,13 +37,12 @@ export const GlobalContextProvider = (props) => {
         }
         console.log(storedlanguage);
 
-
         i18n.locale = storedlanguage;
         setLanguage(storedlanguage);
         /*} fetchWineries(value); */
         await getWineries2(storedlanguage).then((response) => {
           const { wineriesData, uniqueServices } = response;
-          console.log(uniqueServices)
+          console.log(uniqueServices);
           if (!wineriesData || !uniqueServices) {
             setWineries(false);
           } else {
@@ -72,7 +71,7 @@ export const GlobalContextProvider = (props) => {
     <WineriesContext.Provider value={[Wineries, setWineries]}>
       <NewsContext.Provider value={[news, setNews]}>
         <EventsContext.Provider value={[events, setEvents]}>
-          <ServicesContext.Provider value={[services,setServices]}>
+          <ServicesContext.Provider value={[services, setServices]}>
             <LanguageContext.Provider value={[language, setLanguage]}>
               <LoadingContext.Provider value={[loading, setLoading]}>
                 <I18nContext.Provider value={[i18n, setI18n]}>

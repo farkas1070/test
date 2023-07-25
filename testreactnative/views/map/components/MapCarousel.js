@@ -13,7 +13,6 @@ const MapCarousel = ({
   handleMarkerPress,
   carouselRef,
   handleCarouselSnap,
-  handleResetLocation,
   width,
 }) => {
   const navigation = useNavigation();
@@ -46,11 +45,6 @@ const MapCarousel = ({
 
   return (
     <View style={styles.carousel}>
-      <TouchableOpacity style={styles.button} onPress={handleResetLocation}>
-        <Text style={styles.buttonText}>
-          <MaterialIcons name="my-location" size={28} color="#FFF" />
-        </Text>
-      </TouchableOpacity>
       <Carousel
         ref={carouselRef}
         data={data}

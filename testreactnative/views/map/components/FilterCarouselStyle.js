@@ -3,14 +3,13 @@ export const styles = StyleSheet.create({
   carousel: {
     position: "relative",
     top: 0,
-    
     width: "100%",
     borderColor: "gray",
     borderBottomWidth: 0.5,
   },
   slide: {
     justifyContent: "flex-start",
-    alignItems:'center',
+    alignItems: "center",
     width: "100%",
     paddingBottom: 10,
     alignItems: "center",

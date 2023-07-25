@@ -16,7 +16,6 @@ const FilterCarousel = () => {
       <View style={[styles.slide, { width: itemWidth }]}>
         <View style={[styles.icon]}>
           <SvgCssUri uri={item.acf.icon_2} width={60} height={60} />
-          
         </View>
         <Text style={styles.text}>{item.name}</Text>
       </View>
@@ -28,7 +27,7 @@ const FilterCarousel = () => {
       <FlatList
         data={services}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id.toString()} // Convert id to string
+        keyExtractor={(item) => item.id.toString()}
         horizontal
         showsHorizontalScrollIndicator={false}
       />

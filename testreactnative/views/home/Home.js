@@ -1,5 +1,5 @@
 import { Text, View, ScrollView } from "react-native";
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import { styles } from "./HomeStyle";
 import EventCarousel from "./components/EventCarousel";
 import ExploreCarousel from "./components/ExploreCarousel";
@@ -8,7 +8,7 @@ import WineryCarousel from "./components/WineryCarousel";
 import { NewsContext } from "../../context/GlobalContext";
 
 const Home = () => {
-  const [news, setNews] = useContext(NewsContext)
+  const [news, setNews] = useContext(NewsContext);
   return (
     <View style={styles.maincontainer}>
       <ScrollView style={styles.scrollView}>

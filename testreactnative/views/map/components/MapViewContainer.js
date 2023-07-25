@@ -24,6 +24,7 @@ const MapViewContainer = ({
   handleMarkerPress,
   setCurrentLatDelta,
   setCurrentLongDelta,
+  handleMapPress,
 }) => {
   const [mapReady, setMapReady] = useState(false);
 
@@ -38,12 +39,16 @@ const MapViewContainer = ({
       onMapReady={() => {
         setTimeout(() => {
           setMapReady(true);
-        }, 1000);
+        }, 5000);
         jumpToPointOfInterest();
       }}
       onRegionChangeComplete={async (region) => {
         setCurrentLatDelta(region.latitudeDelta);
         setCurrentLongDelta(region.longitudeDelta);
+      }}
+      onPress={() => {
+        handleMapPress();
+        console.log("map pressed");
       }}
     >
       {showtours &&
@@ -65,13 +70,14 @@ const MapViewContainer = ({
             latitude: poi.map.lat,
             longitude: poi.map.lng,
           }}
-          onPress={() => {
+          onPress={(e) => {
+            e.stopPropagation();
             handleCarouselSnap(index);
             handleMarkerPress(index);
           }}
           tracksViewChanges={!mapReady}
         >
-          <View style={{ width: 50, height: 60 }}>
+          <View style={styles.markerContainer}>
             <Image
               source={poi.logo ? { uri: poi.logo } : Placeholder}
               style={styles.markerimage}

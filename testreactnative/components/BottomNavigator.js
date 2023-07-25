@@ -1,5 +1,4 @@
-
-import { View, TouchableOpacity,Image,Text } from "react-native";
+import { View, TouchableOpacity, Image, Text } from "react-native";
 
 import React, { useState, useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -12,9 +11,9 @@ import News from "../views/news/News";
 import { useNavigation } from "@react-navigation/native";
 import InformationModal from "../views/home/components/InformationModal";
 import { I18nContext } from "../context/GlobalContext";
-import {styles} from "./BottomNavigatorStyle"
+import { styles } from "./BottomNavigatorStyle";
 import { SvgCssUri } from "react-native-svg";
-import { SimpleLineIcons } from '@expo/vector-icons'; 
+import { SimpleLineIcons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
@@ -55,14 +54,21 @@ const BottomNavigator = () => {
                 color="black"
               />
             ),
-            headerTitle: () => <SvgCssUri uri={'https://soproniborvidek.hu/wp-content/uploads/2020/11/soproniborvidek_logo_color_fekvo.svg'} width={140} height={100} />,
+            headerTitle: () => (
+              <SvgCssUri
+                uri={
+                  "https://soproniborvidek.hu/wp-content/uploads/2020/11/soproniborvidek_logo_color_fekvo.svg"
+                }
+                width={140}
+                height={100}
+              />
+            ),
             headerStyle: {
-              height:100,
-              backgroundColor: '#F5F5F5',
+              height: 100,
+              backgroundColor: "#F5F5F5",
             },
             headerTitleAlign: "center",
-            
-            
+
             headerRight: () => (
               <TouchableOpacity
                 style={styles.searchbutton}
@@ -70,19 +76,19 @@ const BottomNavigator = () => {
                   openModal();
                 }}
               >
-                <Ionicons
-                  name="search"
-                  size={24}
-                  color="#A8A8A8"
-                />
+                <Ionicons name="search" size={24} color="#A8A8A8" />
               </TouchableOpacity>
             ),
             headerLeft: () => (
               <View style={styles.menubutton}>
-                <SimpleLineIcons name="menu" size={24} color="#A8A8A8" onPress={() => {
+                <SimpleLineIcons
+                  name="menu"
+                  size={24}
+                  color="#A8A8A8"
+                  onPress={() => {
                     openMenu();
-                  }} />
-                
+                  }}
+                />
               </View>
             ),
           }}
@@ -152,8 +158,6 @@ const BottomNavigator = () => {
             headerTitleStyle: {
               textAlign: "center",
             },
-            
-      
           }}
         />
         <Tab.Screen

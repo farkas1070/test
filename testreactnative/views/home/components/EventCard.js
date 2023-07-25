@@ -12,7 +12,9 @@ const EventCard = ({ item }) => {
       />
       <View style={styles.eventNameView}>
         <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.title}>{item.start_date} / {item.end_date}</Text>
+        <Text style={styles.title}>
+          {item.start_date} / {item.end_date}
+        </Text>
         <View style={styles.datebox}></View>
       </View>
     </View>

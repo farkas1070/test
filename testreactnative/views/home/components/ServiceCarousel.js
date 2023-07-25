@@ -1,18 +1,18 @@
-import { View,FlatList,Text } from 'react-native'
-import React,{useContext} from 'react'
-import {styles} from "./ServiceCarouselStyle"
-import { ServicesContext } from '../../../context/GlobalContext';
+import { View, FlatList, Text } from "react-native";
+import React, { useContext } from "react";
+import { styles } from "./ServiceCarouselStyle";
+import { ServicesContext } from "../../../context/GlobalContext";
 import { SvgCssUri } from "react-native-svg";
 
 const ExploreCarousel = () => {
-  const [services, setServices] = useContext(ServicesContext)
-  
+  const [services, setServices] = useContext(ServicesContext);
+
   const renderItem = ({ item }) => {
-    console.log(item.acf.icon)
+    console.log(item.acf.icon);
     return (
       <View style={styles.serviceContainer}>
         <View style={styles.imageContainer}>
-        <SvgCssUri uri={item.acf.icon_2} width={90} height={90} />
+          <SvgCssUri uri={item.acf.icon_2} width={90} height={90} />
         </View>
         <Text style={styles.servicetext}>{item.name}</Text>
       </View>
@@ -21,16 +21,15 @@ const ExploreCarousel = () => {
 
   return (
     <View style={styles.container}>
-    <FlatList
+      <FlatList
         data={services}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
       />
-      </View>
+    </View>
   );
-}
+};
 
-export default ExploreCarousel
-
+export default ExploreCarousel;

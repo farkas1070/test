@@ -18,17 +18,17 @@ export const styles = StyleSheet.create({
     height: 150,
     marginLeft: 10,
   },
-  
+
   container: {
     flex: 1,
     paddingTop: 20,
   },
   logo: {
-    width:50,
-    height:50,
-    top:10,
-    left:20,
-    borderRadius:10
+    width: 50,
+    height: 50,
+    top: 10,
+    left: 20,
+    borderRadius: 10,
   },
   textView: {
     flex: 1,
@@ -36,8 +36,8 @@ export const styles = StyleSheet.create({
     justifyContent: "flex-end",
     paddingBottom: 10,
   },
-  text:{
-    color:'white',
-    fontSize:20
-  }
+  text: {
+    color: "white",
+    fontSize: 20,
+  },
 });

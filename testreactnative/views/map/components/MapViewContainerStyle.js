@@ -137,4 +137,8 @@ export const styles = StyleSheet.create({
     borderWidth: 3,
     marginBottom: 10,
   },
+  markerContainer: {
+    width: 50,
+    height: 60,
+  },
 });

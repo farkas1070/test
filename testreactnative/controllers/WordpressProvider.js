@@ -21,7 +21,7 @@ export const getWineries2 = async (language) => {
   const wineriesData = data.map((item) => {
     // Extracting individual services
     const services = item?._embedded?.["wp:term"] || [];
-    
+
     services.forEach((service) => {
       service.forEach((innerService) => {
         if (innerService !== undefined) {
@@ -58,10 +58,10 @@ export const getWineries2 = async (language) => {
   });
 
   const allServices = Array.from(allServicesSet); // Convert Set to an array
-  const uniqueServices = [...new Map(allServices.map(item =>
-    [item['name'], item])).values()];
+  const uniqueServices = [
+    ...new Map(allServices.map((item) => [item["name"], item])).values(),
+  ];
 
-  
   return { wineriesData, uniqueServices };
 };
 
