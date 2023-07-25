@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   maincontainer: {
     flex: 1,
-    backgroundColor: "white",
+    position: "relative",
   },
 
   image: {
@@ -40,13 +40,17 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   mapbutton: {
+    position: "absolute",
+    bottom: 0,
     flexDirection: "row",
-    backgroundColor: "white",
+    backgroundColor: "gray",
     borderRadius: 20,
     padding: 10,
     elevation: 2,
     margin: 10,
     justifyContent: "center",
     alignItems: "center",
+    alignSelf: "center",
+    width: "25%",
   },
 });
