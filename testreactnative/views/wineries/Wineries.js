@@ -43,7 +43,7 @@ const Wineries = () => {
               style={styles.mapbutton}
               onPress={() => setShowMap(true)}
             >
-              <Text>Map</Text>
+              <Text style={styles.mapButtonText}>Map</Text>
               <Ionicons name="map" size={30} color="black" />
             </TouchableOpacity>
           </View>

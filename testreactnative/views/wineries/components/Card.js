@@ -6,9 +6,12 @@ import Placeholder from "../../../assets/placeholder.png";
 const Card = ({ item, index }) => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity style={styles.card} onPress={() => {
-      navigation.navigate("Winery", { item: item });
-    }}>
+    <TouchableOpacity
+      style={styles.card}
+      onPress={() => {
+        navigation.navigate("Winery", { item: item });
+      }}
+    >
       {/* Image with padding */}
       <View style={styles.imageContainer}>
         <Image
@@ -20,11 +23,17 @@ const Card = ({ item, index }) => {
 
       {/* Text */}
       <View style={styles.textContainer}>
-        <Text style={styles.title}>Card Title</Text>
-        <Text style={styles.description}>This is the description of the card.</Text>
+        <View>
+          <Text style={styles.title}>{item.title}</Text>
+          <Text style={styles.description}>{item.connection.adress}</Text>
+        </View>
+        <View>
+          <Text style={styles.phonetext}>{item.connection.telephone == ""
+          ? "nincs telefon"
+          : item.connection.telephone}</Text>
+        </View>
       </View>
     </TouchableOpacity>
-   
   );
 };
 

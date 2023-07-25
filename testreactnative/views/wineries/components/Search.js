@@ -29,7 +29,7 @@ const SearchBar = ({ onSearch }) => {
           navigation.openDrawer();
         }}
       >
-        <Ionicons name="list" size={36} color="black" />
+        <Ionicons name="list" size={36} color="#A8A8A8" />
       </TouchableOpacity>
       <TextInput
         style={styles.searchInput}

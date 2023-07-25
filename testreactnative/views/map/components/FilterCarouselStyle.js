@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
   },
   slide: {
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems:'center',
     width: "100%",
     paddingBottom: 10,

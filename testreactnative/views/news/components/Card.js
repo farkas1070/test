@@ -1,27 +1,36 @@
 import React from "react";
-import { Text, View, Image, TouchableOpacity } from "react-native";
+import { Text, View, Image, TouchableOpacity,useWindowDimensions } from "react-native";
 import { styles } from "./CardStyle";
 import Placeholder from "../../../assets/placeholder.png";
 import { useNavigation } from "@react-navigation/core";
+import CardImage from "./CardImage";
+import RenderHtml from "react-native-render-html";
+import { tagsStyles } from "./ContentExcerptStyle";
 
-const Card = ({ item, index }) => {
+const Card = ({ item }) => {
   const navigation = useNavigation();
+  const source = {
+    html: item.excerpt,
+  };
+  const { width } = useWindowDimensions();
+  const formattedString = item.date.replace('T', ' ');
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate("New", { item: item })}
+      style={styles.card}
     >
-      <View key={index} style={styles.card}>
-        <View>
-          <Image
-            style={styles.image}
-            source={item.image ? { uri: item.image } : Placeholder}
-          />
-        </View>
-
-        <Text numberOfLines={3} style={{ lineHeight: 30, textAlign: "center" }}>
-          {item.title}
-        </Text>
+      <Text style={styles.dateText}>{formattedString}</Text>
+      <Text  style={styles.titleText}>{item.title}</Text>
+      <RenderHtml
+        source={source}
+        contentWidth={width}
+        tagsStyles={tagsStyles}
+      />
+      <CardImage item={item.image}/>
+      <View style={styles.lineBreak}>
+        
       </View>
+
     </TouchableOpacity>
   );
 };

@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   maincontainer: {
     flex: 1,
-    backgroundColor: "#FFF",
+    backgroundColor: "#ffff",
     width: "100%",
     height: "100%",
   },
@@ -10,7 +10,20 @@ export const styles = StyleSheet.create({
     backgroundColor: "#fff",
     width: "100%",
     height: "100%",
-    marginTop:10
+    
+
+  },
+  newsTextContainer:{
+    width:'100%'
+  },
+  containercontent:{
+    alignItems:'center',
+  },
+  toptext:{
+    fontSize:25,
+    fontWeight: "bold",
+    marginLeft:20,
+    marginTop:20
   },
 
   card: {

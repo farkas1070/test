@@ -6,6 +6,7 @@ import {styles} from "./HeaderStyle"
 import { SafeAreaView } from 'react-native-safe-area-context'
 const Header = ({ setSearchText }) => {
   return (
+    //iosen saferaeaview bug
     <SafeAreaView style={styles.header}>
       <SearchBar onSearch={setSearchText} />
       <FilterCarousel />

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { styles } from "./FilterCarouselStyle";
-import { View, Dimensions, Text, FlatList, SafeAreaView } from "react-native";
+import { View, Dimensions, Text, FlatList } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { ServicesContext } from "../../../context/GlobalContext";
 import { SvgCssUri } from "react-native-svg";
@@ -24,7 +24,7 @@ const FilterCarousel = () => {
   };
 
   return (
-    <SafeAreaView style={styles.carousel}>
+    <View style={styles.carousel}>
       <FlatList
         data={services}
         renderItem={renderItem}
@@ -32,7 +32,7 @@ const FilterCarousel = () => {
         horizontal
         showsHorizontalScrollIndicator={false}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 

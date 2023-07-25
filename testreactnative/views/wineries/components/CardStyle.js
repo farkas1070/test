@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 8,
     marginVertical: 8,
-    marginHorizontal: 0,
+    marginHorizontal: 10,
     padding: 8,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
@@ -24,6 +24,8 @@ export const styles = StyleSheet.create({
   textContainer: {
     flex: 1,
     paddingHorizontal: 8,
+    marginTop:5,
+    justifyContent:'space-between'
   },
   title: {
     fontSize: 18,
@@ -34,4 +36,8 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     color: '#666',
   },
+  phonetext:{
+    marginBottom:10,
+    color: '#666',
+  }
 });

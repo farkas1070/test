@@ -21,6 +21,7 @@ const SearchBar = ({ onSearch }) => {
 
   return (
     <View style={styles.searchContainer}>
+      
       <TextInput
         style={styles.searchInput}
         onChangeText={handleSearch}
