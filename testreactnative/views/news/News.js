@@ -4,6 +4,10 @@ import { styles } from "./NewsStyle";
 import Card from "./components/Card";
 import { NewsContext } from "../../context/GlobalContext.js";
 import SearchBar from "./components/Search";
+import {
+  SafeAreaView,
+  
+} from 'react-native-safe-area-context';
 const News = () => {
   const [News, setNews] = useContext(NewsContext);
   const [searchText, setSearchText] = useState("");
@@ -15,14 +19,14 @@ const News = () => {
   }
 
   return (
-    <View style={styles.maincontainer}>
+    <SafeAreaView style={styles.maincontainer}>
       <SearchBar onSearch={setSearchText} />
-      <ScrollView style={styles.maincontainer}>
+      <ScrollView style={styles.container}>
         {filterItems().map((item, index) => {
           return <Card item={item} index={index} key={index} />;
         })}
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
 

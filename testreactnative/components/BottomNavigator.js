@@ -92,6 +92,7 @@ const BottomNavigator = () => {
           name={i18n.t("events")}
           component={Events}
           options={{
+            
             tabBarIcon: ({ focused }) => (
               <Ionicons
                 name={focused ? "calendar" : "calendar-outline"}
@@ -102,6 +103,7 @@ const BottomNavigator = () => {
 
             headerTintColor: "black",
             headerTitleAlign: "center",
+            headerShown: false,
             headerTitleStyle: {
               textAlign: "center",
             },
@@ -167,6 +169,7 @@ const BottomNavigator = () => {
             ),
             headerTintColor: "black",
             headerTitleAlign: "center",
+            headerShown: false,
             headerTitleStyle: {
               textAlign: "center",
             },

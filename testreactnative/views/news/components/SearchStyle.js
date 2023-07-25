@@ -1,20 +1,24 @@
 import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   searchContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "80%",
-    height: 50,
-    backgroundColor: "white",
-    borderRadius: 20,
-    margin: 10,
+    width: "100%",
+    height: 70,
+    
     padding: 10,
+    justifyContent: "space-between",
+    alignItems: "flex-end",
+    alignSelf: "center",
+    flexDirection: "row",
+    borderBottomWidth:1,
+    borderBottomColor:'#D9D9D9'
+   
   },
   searchInput: {
-    width: "90%",
-    height: "100%",
+    width: "82%",
+    height: 40,
     backgroundColor: "white",
+    borderColor: "#A8A8A8",
+    borderWidth: 1,
     borderRadius: 20,
     padding: 10,
   },

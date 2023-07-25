@@ -2,14 +2,15 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   maincontainer: {
     flex: 1,
-    backgroundColor: "beige",
+    backgroundColor: "#FFF",
     width: "100%",
     height: "100%",
   },
   container: {
-    backgroundColor: "beige",
+    backgroundColor: "#fff",
     width: "100%",
     height: "100%",
+    marginTop:10
   },
 
   card: {
