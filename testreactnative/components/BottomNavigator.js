@@ -150,32 +150,8 @@ const BottomNavigator = () => {
             headerTitleStyle: {
               textAlign: "center",
             },
-            headerLeft: () => (
-              <TouchableOpacity
-                style={{ paddingLeft: 10 }}
-                onPress={() => {
-                  openModal();
-                }}
-              >
-                <Ionicons
-                  name="information-circle-outline"
-                  size={24}
-                  color="black"
-                />
-              </TouchableOpacity>
-            ),
-            headerRight: () => (
-              <View style={{ paddingRight: 10 }}>
-                <Ionicons
-                  name="menu"
-                  size={24}
-                  color="black"
-                  onPress={() => {
-                    openMenu();
-                  }}
-                />
-              </View>
-            ),
+            
+      
           }}
         />
         <Tab.Screen

@@ -5,11 +5,13 @@ import Placeholder from "../../../assets/placeholder.png"
 const WineryCard = ({item}) => {
   return (
     <View style={styles.cardContainer}>
+      <View style={styles.imagecontainer}>
         <Image
         style={styles.carouselImage}
         source={item.logo ? { uri: item.logo } : Placeholder}
       />
-        <Text>{item.title}</Text>
+      </View>
+        <Text style={styles.titleText}>{item.title}</Text>
     </View>
   )
 }

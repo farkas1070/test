@@ -17,6 +17,10 @@ import FilterButtons from "./components/FilterButtons";
 import CurrentWineTour from "./components/CurrentWineTour";
 import { Ionicons } from "@expo/vector-icons";
 import FilterCarousel from "./components/FilterCarousel";
+import {
+  SafeAreaView,
+  
+} from 'react-native-safe-area-context';
 
 const Map = ({ setShowMap }) => {
   const mapRef = useRef(null);

@@ -17,8 +17,18 @@ export const styles = StyleSheet.create({
         borderRadius:10
     },
     carouselImage:{
-        width:'100%',
+        width:'96%',
         height:'70%',
-        borderRadius:10
+        borderRadius:10,
+        marginTop:5
+    },
+    titleText:{
+        fontSize:22,
+        fontWeight:'bold',
+        marginLeft:10,
+        marginTop:10
+    },
+    imagecontainer:{
+        alignItems:'center'
     }
 })

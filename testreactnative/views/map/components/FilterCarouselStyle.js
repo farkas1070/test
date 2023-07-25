@@ -2,13 +2,14 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   carousel: {
     position: "relative",
-    height: "10%",
     top: 0,
+    
     width: "100%",
     backgroundColor: "rgba(255,255,255,0.9)",
   },
   slide: {
     justifyContent: "center",
+    alignItems:'center',
     width: "100%",
   },
   slideContent: {

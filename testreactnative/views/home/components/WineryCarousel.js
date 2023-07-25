@@ -18,7 +18,7 @@ const WineryCarousel = () => {
     <FlatList
         data={wineries}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.title}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
       />

@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
     flexDirection: "row",
+   
   },
   searchInput: {
     width: "80%",

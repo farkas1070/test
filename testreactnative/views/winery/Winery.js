@@ -88,7 +88,7 @@ const Winery = ({ route }) => {
       />
       <View style={styles.mainservicecontainer}>
         {winery.services?.map((service, index) => {
-          console.log(service.acf.icon_2);
+          
 
           return (
             <View key={index} style={styles.servicecontainer}>
