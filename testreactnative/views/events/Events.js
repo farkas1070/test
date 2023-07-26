@@ -76,7 +76,7 @@ const Events = () => {
           selected={currentDate}
           items={events.reduce((acc, event) => {
             const { start_date, end_date, title, image } = event;
-            const dateRange = getDatesInRange(start_date, end_date);
+            const dateRange = getDatesInRange(start_date.originalStartDate, end_date.originalEndDate);
             dateRange.forEach((date) => {
               const formattedDate = moment(date).format("YYYY-MM-DD");
               if (!acc[formattedDate]) {
@@ -96,7 +96,7 @@ const Events = () => {
               <View style={styles.card}>
                 <Text style={styles.itemText}>{item.name}</Text>
                 <Text style={styles.dateText}>
-                  {item.start_date} - {item.end_date}
+                  {item.start_date.originalStartDate} - {item.end_date.originalEndDate}
                 </Text>
                 <Image source={{ uri: item.image }} style={styles.image} />
               </View>

@@ -13,13 +13,13 @@ const Card = ({ item }) => {
     html: item.excerpt,
   };
   const { width } = useWindowDimensions();
-  const formattedString = item.date.replace('T', ' ');
+  
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate("New", { item: item })}
       style={styles.card}
     >
-      <Text style={styles.dateText}>{formattedString}</Text>
+      <Text style={styles.dateText}>{`${item.date.day}, ${item.date.month}, ${item.date.year}`} </Text>
       <Text  style={styles.titleText}>{item.title}</Text>
       <RenderHtml
         source={source}

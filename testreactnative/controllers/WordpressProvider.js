@@ -103,9 +103,29 @@ export const getEvents = async (language) => {
   );
   if (data !== null) {
     return data.events.map((item) => {
+      const originalStartDate = new Date(item.start_date);
+      const startDateDay = originalStartDate.getDate();
+      const startDateMonth = originalStartDate.toLocaleString('default', { month: 'long' });
+      const startDateYear = originalStartDate.getFullYear();
+
+      const originalEndDate = new Date(item.end_date);
+      const endDateDay = originalEndDate.getDate();
+      const endDateMonth = originalEndDate.toLocaleString('default', { month: 'long' });
+      const endDateYear = originalEndDate.getFullYear();
+
       return {
-        start_date: item.start_date,
-        end_date: item.end_date,
+        start_date: {
+          originalStartDate: item.start_date,
+          day:startDateDay,
+          month:startDateMonth,
+          year:startDateYear
+        },
+        end_date: {
+          originalEndDate: item.end_date,
+          day:endDateDay,
+          month:endDateMonth,
+          year:endDateYear
+        },
         title: item.title,
         image: item?.image?.sizes?.medium?.url,
       };
@@ -121,11 +141,23 @@ export const getNews = async (language) => {
   );
 
   if (data !== null) {
+    
     return data.map((item) => {
+      const originalDate = new Date(item.date);
+
+      
+      const day = originalDate.getDate();
+      const month = originalDate.toLocaleString('default', { month: 'long' }); 
+      const year = originalDate.getFullYear();
+
       return {
         title: item.title.rendered,
         excerpt: item.excerpt.rendered,
-        date: item.date,
+        date: {
+          day:day,
+          month:month,
+          year:year,
+        },
         content: item.content.rendered,
         image: item?._embedded["wp:featuredmedia"]?.[0]?.source_url,
       };
