@@ -89,9 +89,13 @@ const Winery = ({ route }) => {
       <View style={styles.mainservicecontainer}>
         {winery.services?.map((service, index) => {
           return (
-            <View key={index} style={styles.servicecontainer}>
-              <SvgCssUri uri={service.acf.icon_2} width={70} height={70} />
-              <Text style={styles.servicetext}>{service.name}</Text>
+            <View style={{ alignItems: "center" }}>
+              <View key={index} style={styles.servicecontainer}>
+                <SvgCssUri uri={service.acf.icon_2} width={65} height={65} />
+              </View>
+              <View style={{ marginVertical: 10 }}>
+                <Text style={styles.servicetext}>{service.name}</Text>
+              </View>
             </View>
           );
         })}
@@ -104,7 +108,7 @@ const Winery = ({ route }) => {
           }}
         >
           <MaterialCommunityIcons name="google-maps" size={24} color="black" />
-          <Text>Mutasd Google Mapsen</Text>
+          <Text>Mutasd a térképen</Text>
         </TouchableOpacity>
       )}
     </ScrollView>
