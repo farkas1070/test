@@ -5,6 +5,7 @@ import Card from "./components/Card";
 import { NewsContext } from "../../context/GlobalContext.js";
 import SearchBar from "./components/Search";
 import { SafeAreaView } from "react-native-safe-area-context";
+
 const News = () => {
   const [News, setNews] = useContext(NewsContext);
   const [searchText, setSearchText] = useState("");

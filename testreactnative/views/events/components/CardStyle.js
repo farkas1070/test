@@ -1,32 +1,32 @@
 import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
-  singlenews: {
-    height: 200,
-    backgroundColor: "beige",
-    margin: 10,
-    borderRadius: 20,
-    elevation: 2,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  image: {
-    width: "100%",
-    height: "100%",
-    resizeMode: "contain",
-    position: "absolute",
-    borderTopLeftRadius: 20,
-    borderBottomLeftRadius: 20,
-  },
-  innerview: {
-    backgroundColor: "rgba(255,255,255,0.7)",
-    width: "50%",
-    height: "30%",
-    borderRadius: 20,
-    justifyContent: "center",
-    alignItems: "center",
+  cardContainer: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
     padding: 10,
+    margin: 10,
+    marginTop:20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
-  text: {
-    textAlign: "center",
+  cardImage: {
+    width: '100%',
+    height: 200,
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+  cardTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  cardDescription: {
+    fontSize: 16,
   },
 });

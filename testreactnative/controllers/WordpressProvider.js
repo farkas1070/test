@@ -127,6 +127,7 @@ export const getEvents = async (language) => {
           year:endDateYear
         },
         title: item.title,
+        description:item.description,
         image: item?.image?.sizes?.medium?.url,
       };
     });

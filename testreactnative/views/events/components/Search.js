@@ -1,11 +1,14 @@
-import { View, TextInput } from "react-native";
+import { View, TextInput, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
-import { styles } from "./SearchStyle";
 import { I18nContext } from "../../../context/GlobalContext";
+import { styles } from "./SearchStyle";
+import { useNavigation } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons";
 
 const SearchBar = ({ onSearch }) => {
   const [i18n] = React.useContext(I18nContext);
   const [searchText, setSearchText] = useState("");
+  const navigation = useNavigation();
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -21,13 +24,25 @@ const SearchBar = ({ onSearch }) => {
 
   return (
     <View style={styles.searchContainer}>
-      
-      <TextInput
-        style={styles.searchInput}
-        onChangeText={handleSearch}
-        placeholder={i18n.t("search")}
-        value={searchText}
-      />
+      <TouchableOpacity
+        onPress={() => {
+          navigation.openDrawer();
+        }}
+      >
+        <Ionicons name="menu" size={36} color="#A8A8A8" />
+      </TouchableOpacity>
+      <View style={styles.searchbarcontainer}>
+        <TouchableOpacity style={styles.searchButton} >
+          <Ionicons name="search" size={24} color="#A8A8A8" />
+        </TouchableOpacity>
+        <TextInput
+          style={styles.searchInput}
+          onChangeText={handleSearch}
+          placeholder={i18n.t("search")}
+          placeholderTextColor="#A8A8A8"
+          value={searchText}
+        />
+      </View>
     </View>
   );
 };

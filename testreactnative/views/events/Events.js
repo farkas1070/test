@@ -7,7 +7,7 @@ import Card from "./components/Card";
 import moment from "moment";
 import { EventsContext } from "../../context/GlobalContext.js";
 import SearchBar from "./components/Search";
-
+import { SafeAreaView } from "react-native-safe-area-context";
 const Events = () => {
   const [showListFirst, setShowListFirst] = useState(true);
   const [currentDate, setCurrentDate] = useState("2023-06-20");
@@ -39,44 +39,55 @@ const Events = () => {
   }
 
   return (
-    <View style={styles.maincontainer}>
+    <SafeAreaView style={styles.maincontainer}>
       <View style={{ paddingRight: 10, flexDirection: "row" }}>
-        <TouchableOpacity>
+        <SearchBar onSearch={setSearchText} />
+      </View>
+      
+        
+        
+        <View style={{width:'100%',flexGrow:1}}>
+        {showListFirst? <TouchableOpacity style={styles.changeButton}>
           <Ionicons
             name="calendar"
             size={30}
-            color="black"
-            style={{ marginRight: 20, marginTop: 20 }}
+            color="white"
+            
             onPress={() => {
               showDifferentLayout();
             }}
           />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Ionicons
-            name="list"
-            size={30}
-            color="black"
-            style={{ marginTop: 20 }}
-            onPress={() => {
-              showDifferentLayout();
-            }}
-          />
-        </TouchableOpacity>
-        <SearchBar onSearch={setSearchText} />
-      </View>
+        </TouchableOpacity> : 
+        <TouchableOpacity style={styles.changeButton}> 
+        <Ionicons
+          name="list"
+          size={30}
+          color="white"
+          
+          onPress={() => {
+            showDifferentLayout();
+          }}
+        />
+      </TouchableOpacity>
+        }
       {showListFirst ? (
-        <ScrollView>
+  
+        <ScrollView style={{marginBottom:70}}>
+          
           {filterItems().map((item, index) => {
             return <Card item={item} index={index} key={index} />;
           })}
         </ScrollView>
       ) : (
+        <View style={{width:'100%',flexGrow:1}}>
         <Agenda
           selected={currentDate}
           items={events.reduce((acc, event) => {
             const { start_date, end_date, title, image } = event;
-            const dateRange = getDatesInRange(start_date.originalStartDate, end_date.originalEndDate);
+            const dateRange = getDatesInRange(
+              start_date.originalStartDate,
+              end_date.originalEndDate
+            );
             dateRange.forEach((date) => {
               const formattedDate = moment(date).format("YYYY-MM-DD");
               if (!acc[formattedDate]) {
@@ -96,7 +107,8 @@ const Events = () => {
               <View style={styles.card}>
                 <Text style={styles.itemText}>{item.name}</Text>
                 <Text style={styles.dateText}>
-                  {item.start_date.originalStartDate} - {item.end_date.originalEndDate}
+                  {item.start_date.originalStartDate} -{" "}
+                  {item.end_date.originalEndDate}
                 </Text>
                 <Image source={{ uri: item.image }} style={styles.image} />
               </View>
@@ -113,8 +125,10 @@ const Events = () => {
             );
           }}
         />
+        </View>
       )}
-    </View>
+      </View>
+    </SafeAreaView>
   );
 };
 

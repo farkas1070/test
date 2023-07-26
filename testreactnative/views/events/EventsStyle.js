@@ -73,4 +73,19 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  
+  changeButton:{
+    marginRight:20,
+    position:'absolute',
+    zIndex:1100000,
+    marginTop:20,
+    backgroundColor:'#A8A8A8',
+    justifyContent:'center',
+    alignItems:'center',
+    padding:10,
+    borderRadius:50,
+    top:20,
+    right:10
+  },
+  
 });
