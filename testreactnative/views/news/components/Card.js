@@ -1,5 +1,11 @@
 import React from "react";
-import { Text, View, Image, TouchableOpacity,useWindowDimensions } from "react-native";
+import {
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  useWindowDimensions,
+} from "react-native";
 import { styles } from "./CardStyle";
 import Placeholder from "../../../assets/placeholder.png";
 import { useNavigation } from "@react-navigation/core";
@@ -13,24 +19,23 @@ const Card = ({ item }) => {
     html: item.excerpt,
   };
   const { width } = useWindowDimensions();
-  
+
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate("New", { item: item })}
       style={styles.card}
     >
-      <Text style={styles.dateText}>{`${item.date.day}, ${item.date.month}, ${item.date.year}`} </Text>
-      <Text  style={styles.titleText}>{item.title}</Text>
+      <Text style={styles.dateText}>
+        {`${item.date.day}, ${item.date.month}, ${item.date.year}`}{" "}
+      </Text>
+      <Text style={styles.titleText}>{item.title}</Text>
       <RenderHtml
         source={source}
         contentWidth={width}
         tagsStyles={tagsStyles}
       />
-      <CardImage item={item.image}/>
-      <View style={styles.lineBreak}>
-        
-      </View>
-
+      <CardImage item={item.image} />
+      <View style={styles.lineBreak}></View>
     </TouchableOpacity>
   );
 };

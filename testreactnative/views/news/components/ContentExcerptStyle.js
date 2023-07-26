@@ -1,7 +1,6 @@
 export const tagsStyles = {
-    body: {
-      whiteSpace: "normal",
-      color: "gray",
-    },
-    
-  };
+  body: {
+    whiteSpace: "normal",
+    color: "gray",
+  },
+};

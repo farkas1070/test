@@ -32,7 +32,7 @@ const SearchBar = ({ onSearch }) => {
         <Ionicons name="menu" size={36} color="#A8A8A8" />
       </TouchableOpacity>
       <View style={styles.searchbarcontainer}>
-        <TouchableOpacity style={styles.searchButton} >
+        <TouchableOpacity style={styles.searchButton}>
           <Ionicons name="search" size={24} color="#A8A8A8" />
         </TouchableOpacity>
         <TextInput

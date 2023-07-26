@@ -23,26 +23,26 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 15,
   },
-  buttonText:{
-    marginRight:10
+  buttonText: {
+    marginRight: 10,
   },
   resetButton: {
-    position: "absolute",
-    bottom: 80,
-    right: 15,
-    backgroundColor: "#D9D9D9",
-    borderRadius: 40,
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-  },
-  toursButton: {
     position: "absolute",
     bottom: 15,
     right: 15,
     backgroundColor: "#D9D9D9",
     borderRadius: 40,
-    paddingVertical: 15,
-    paddingHorizontal: 15,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+  },
+  toursButton: {
+    position: "absolute",
+    top: 75,
+    right: 15,
+    backgroundColor: "#D9D9D9",
+    borderRadius: 40,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
   },
   filterButton: {
     position: "absolute",
@@ -50,8 +50,8 @@ export const styles = StyleSheet.create({
     right: 15,
     backgroundColor: "#D9D9D9",
     borderRadius: 40,
-    paddingVertical: 15,
-    paddingHorizontal: 15,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
   },
   slide: {
     justifyContent: "center",

@@ -41,10 +41,8 @@ const BottomNavigator = () => {
             fontSize: 11,
             fontWeight: "bold",
           },
-          
         }}
       >
-
         <Tab.Screen
           name={i18n.t("home")[0]}
           component={Home}
@@ -56,7 +54,7 @@ const BottomNavigator = () => {
                 color="black"
               />
             ),
-            
+
             headerTitle: () => (
               <SvgCssUri
                 uri={
@@ -101,7 +99,6 @@ const BottomNavigator = () => {
           name={i18n.t("events")}
           component={Events}
           options={{
-            
             tabBarIcon: ({ focused }) => (
               <Ionicons
                 name={focused ? "calendar" : "calendar-outline"}

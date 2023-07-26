@@ -10,23 +10,20 @@ export const styles = StyleSheet.create({
     backgroundColor: "#fff",
     width: "100%",
     height: "100%",
-    
-
   },
-  newsTextContainer:{
-    width:'100%',
-    backgroundColor:'#FAFAFA',
-    
+  newsTextContainer: {
+    width: "100%",
+    backgroundColor: "#FAFAFA",
   },
-  containercontent:{
-    alignItems:'center',
+  containercontent: {
+    alignItems: "center",
   },
-  toptext:{
-    fontSize:25,
+  toptext: {
+    fontSize: 25,
     fontWeight: "bold",
-    marginLeft:20,
-    marginTop:20,
-    marginBottom:10
+    marginLeft: 20,
+    marginTop: 20,
+    marginBottom: 10,
   },
 
   card: {

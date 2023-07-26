@@ -15,7 +15,6 @@ export const styles = StyleSheet.create({
 
   scrollview: {
     width: "100%",
-    
   },
   textinput: {
     height: 40,
@@ -53,7 +52,7 @@ export const styles = StyleSheet.create({
     alignSelf: "center",
     width: "25%",
   },
-  mapButtonText:{
-    marginRight:10
-  }
+  mapButtonText: {
+    marginRight: 10,
+  },
 });

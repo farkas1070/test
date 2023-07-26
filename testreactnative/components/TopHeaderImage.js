@@ -17,7 +17,6 @@ const TopHeaderImage = ({ item }) => {
       >
         <Ionicons name="arrow-back" size={30} color="#696969" />
       </TouchableOpacity>
-     
     </View>
   );
 };

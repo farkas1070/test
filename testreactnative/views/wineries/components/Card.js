@@ -28,9 +28,11 @@ const Card = ({ item, index }) => {
           <Text style={styles.description}>{item.connection.adress}</Text>
         </View>
         <View>
-          <Text style={styles.phonetext}>{item.connection.telephone == ""
-          ? "nincs telefon"
-          : item.connection.telephone}</Text>
+          <Text style={styles.phonetext}>
+            {item.connection.telephone == ""
+              ? "nincs telefon"
+              : item.connection.telephone}
+          </Text>
         </View>
       </View>
     </TouchableOpacity>

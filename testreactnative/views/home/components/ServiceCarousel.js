@@ -8,7 +8,6 @@ const ExploreCarousel = () => {
   const [services, setServices] = useContext(ServicesContext);
 
   const renderItem = ({ item }) => {
-    
     return (
       <View style={styles.serviceContainer}>
         <View style={styles.imageContainer}>

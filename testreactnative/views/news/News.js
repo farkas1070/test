@@ -28,7 +28,7 @@ const News = () => {
           <Text style={styles.toptext}>News</Text>
         </View>
         {filterItems().map((item, index) => {
-          return <Card item={item}  key={index} />;
+          return <Card item={item} key={index} />;
         })}
       </ScrollView>
     </SafeAreaView>
