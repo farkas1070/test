@@ -39,5 +39,6 @@ export const styles = StyleSheet.create({
   text: {
     color: "white",
     fontSize: 20,
+    marginLeft:15
   },
 });

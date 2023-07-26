@@ -21,22 +21,24 @@ const MapCarousel = ({
     return (
       <View style={styles.slide}>
         <View style={styles.slideContent}>
+          <View style={{width:'45%',height:'100%',justifyContent:'center',alignItems:'flex-end'}}>
           <Image
             style={styles.image}
             source={item.logo ? { uri: item.logo } : Placeholder}
           />
+          </View>
           <View style={styles.textContainer}>
             <View>
-              <Text style={styles.text}>{item.title}</Text>
-              <Text style={styles.text}>{"description"}</Text>
+            <Text style={styles.text}>
+              {item.title}
+            </Text>
+            <Text style={styles.descriptionText}>
+              {item.connection.adress}
+            </Text>
             </View>
-            <TouchableOpacity
-              style={styles.jumptobutton}
-              onPress={() => navigation.navigate("Winery", { item: item })}
-            >
-              <FontAwesome5 name="location-arrow" size={24} color="white" />
-              <Text style={styles.winerytext}>Borászathoz</Text>
-            </TouchableOpacity>
+            <View>
+              <Text>Open Hours</Text>
+            </View>
           </View>
         </View>
       </View>
