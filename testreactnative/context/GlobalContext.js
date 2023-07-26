@@ -35,14 +35,14 @@ export const GlobalContextProvider = (props) => {
         if (storedlanguage === null) {
           storedlanguage = "hu";
         }
-        console.log(storedlanguage);
+        
 
         i18n.locale = storedlanguage;
         setLanguage(storedlanguage);
         /*} fetchWineries(value); */
         await getWineries2(storedlanguage).then((response) => {
           const { wineriesData, uniqueServices } = response;
-          console.log(uniqueServices);
+          
           if (!wineriesData || !uniqueServices) {
             setWineries(false);
           } else {

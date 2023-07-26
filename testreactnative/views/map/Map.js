@@ -24,6 +24,10 @@ import FilterButtons from "./components/FilterButtons";
 import CurrentWineTour from "./components/CurrentWineTour";
 import { Ionicons } from "@expo/vector-icons";
 import FilterCarousel from "./components/FilterCarousel";
+import BottomSheet from "@gorhom/bottom-sheet"
+import { MaterialIcons } from '@expo/vector-icons'; 
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+
 
 const Map = ({ setShowMap }) => {
   const mapRef = useRef(null);
@@ -258,7 +262,7 @@ const Map = ({ setShowMap }) => {
             style={styles.resetButton}
             onPress={handleResetLocation}
           >
-            <MaterialIcons name="my-location" size={28} color="#FFF" />
+            <MaterialIcons name="my-location" size={28} color="black" />
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -270,7 +274,7 @@ const Map = ({ setShowMap }) => {
             <MaterialCommunityIcons
               name="transit-detour"
               size={28}
-              color="#FFF"
+              color="black"
             />
           </TouchableOpacity>
 
@@ -278,10 +282,10 @@ const Map = ({ setShowMap }) => {
             style={styles.filterButton}
             onPress={handleBottomSheetFilter}
           >
-            <MaterialIcons name="filter-list" size={28} color="#FFF" />
+            <MaterialIcons name="filter-list" size={28} color="black" />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.button} onPress={handleShowMap}>
+          <TouchableOpacity style={styles.listChangeButton} onPress={handleShowMap}>
             <Text style={styles.buttonText}>Lista</Text>
             <Ionicons name="list" size={30} color="black" />
           </TouchableOpacity>

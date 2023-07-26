@@ -8,7 +8,7 @@ const ExploreCarousel = () => {
   const [services, setServices] = useContext(ServicesContext);
 
   const renderItem = ({ item }) => {
-    console.log(item.acf.icon);
+    
     return (
       <View style={styles.serviceContainer}>
         <View style={styles.imageContainer}>

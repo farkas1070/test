@@ -72,6 +72,7 @@ const StackNavigator = () => {
         name="New"
         component={New}
         options={{
+          headerShown: false,
           headerTintColor: "black",
           headerTitleAlign: "center",
           headerTitleStyle: {

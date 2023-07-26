@@ -14,7 +14,9 @@ export const styles = StyleSheet.create({
 
   },
   newsTextContainer:{
-    width:'100%'
+    width:'100%',
+    backgroundColor:'#FAFAFA',
+    
   },
   containercontent:{
     alignItems:'center',
@@ -23,7 +25,8 @@ export const styles = StyleSheet.create({
     fontSize:25,
     fontWeight: "bold",
     marginLeft:20,
-    marginTop:20
+    marginTop:20,
+    marginBottom:10
   },
 
   card: {
