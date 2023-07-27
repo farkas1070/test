@@ -1,4 +1,4 @@
-import React, { useContext,useState } from "react";
+import React, { useContext, useState } from "react";
 import { View, TouchableOpacity, Linking, Image, Text } from "react-native";
 import {
   DrawerContentScrollView,
@@ -8,7 +8,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./CustomDrawerStyle";
 import { useNavigation } from "@react-navigation/native";
 import { I18nContext } from "../context/GlobalContext";
-import DrawerButton from "./DrawerButton"
+import DrawerButton from "./DrawerButton";
 const CustomDrawer = (props) => {
   const navigation = useNavigation();
   const [i18n, setI18n] = useContext(I18nContext);
@@ -40,39 +40,61 @@ const CustomDrawer = (props) => {
           }}
         >
           <View style={{ textAlign: "center", padding: 10 }}>
-          {menuItems.map((item,index) => (
+            {menuItems.map((item, index) => (
               <DrawerButton
                 key={index}
-                routeName={index === 0 ? i18n.t(item.routeName)[0] : i18n.t(item.routeName)}
+                routeName={
+                  index === 0
+                    ? i18n.t(item.routeName)[0]
+                    : i18n.t(item.routeName)
+                }
                 iconName={item.iconName}
-                isSelected={selectedItem === (index === 0 ? i18n.t(item.routeName)[0] : i18n.t(item.routeName))}
-                onPress={() => handleItemPress(index === 0 ? i18n.t(item.routeName)[0] : i18n.t(item.routeName))}
+                isSelected={
+                  selectedItem ===
+                  (index === 0
+                    ? i18n.t(item.routeName)[0]
+                    : i18n.t(item.routeName))
+                }
+                onPress={() =>
+                  handleItemPress(
+                    index === 0
+                      ? i18n.t(item.routeName)[0]
+                      : i18n.t(item.routeName)
+                  )
+                }
               />
             ))}
           </View>
           {/* <DrawerItemList {...props} />*/}
         </View>
+        <View style={styles.footer}>
+          <View style={styles.iconContainer}>
+            <TouchableOpacity
+              style={styles.icon}
+              onPress={() => {
+                Linking.openURL("https://www.facebook.com/").catch((err) =>
+                  console.error("An error occurred", err)
+                );
+              }}
+            >
+              <Ionicons name="logo-facebook" size={36} color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.icon2}
+              onPress={() => {
+                Linking.openURL("https://www.instagram.com/").catch((err) =>
+                  console.error("An error occurred", err)
+                );
+              }}
+            >
+              <Ionicons name="logo-instagram" size={36} color="black" />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.privacyPolicyContainer}>
+            <Text style={styles.privacyPolicy}>Privacy Policy</Text>
+          </View>
+        </View>
       </DrawerContentScrollView>
-      <View style={styles.footer}>
-        <TouchableOpacity
-          onPress={() => {
-            Linking.openURL("https://www.facebook.com/").catch((err) =>
-              console.error("An error occurred", err)
-            );
-          }}
-        >
-          <Ionicons name="logo-facebook" size={36} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            Linking.openURL("https://www.instagram.com/").catch((err) =>
-              console.error("An error occurred", err)
-            );
-          }}
-        >
-          <Ionicons name="logo-instagram" size={36} color="black" />
-        </TouchableOpacity>
-      </View>
     </View>
   );
 };

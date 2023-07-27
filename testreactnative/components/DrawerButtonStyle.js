@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
         flexDirection:'row',
         justifyContent: "flex-start",
         alignItems:'center',
-        
+        marginBottom:10
       },
       icon:{
         marginLeft:10
