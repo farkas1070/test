@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import { View, TouchableOpacity, Linking, Image, Text } from "react-native";
 import {
   DrawerContentScrollView,
@@ -8,9 +8,15 @@ import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./CustomDrawerStyle";
 import { useNavigation } from "@react-navigation/native";
 import { I18nContext } from "../context/GlobalContext";
+import DrawerButton from "./DrawerButton"
 const CustomDrawer = (props) => {
   const navigation = useNavigation();
   const [i18n, setI18n] = useContext(I18nContext);
+  const [selectedItem, setSelectedItem] = useState(i18n.t("home")[0]);
+
+  const handleItemPress = (item) => {
+    setSelectedItem(item); // Update the selected item when a drawer button is pressed
+  };
   return (
     <View style={styles.container}>
       <DrawerContentScrollView {...props}>
@@ -26,77 +32,42 @@ const CustomDrawer = (props) => {
           }}
         >
           <View style={{ textAlign: "center", padding: 10 }}>
-            
-            <TouchableOpacity
-              style={styles.drawerItem}
-              onPress={() => {
-                navigation.navigate(i18n.t("home")[0]);
-              }}
-            >
-              <Ionicons
-                name="home"
-                size={24}
-                color="black"
-                style={styles.icon}
-              />
-              <Text style={styles.drawerItemText}>{i18n.t("home")[0]}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.drawerItem}
-              onPress={() => {
-                navigation.navigate(i18n.t("settings"));
-              }}
-            >
-              <Ionicons
-                name="settings"
-                size={24}
-                color="black"
-                style={styles.icon}
-              />
-              <Text style={styles.drawerItemText}>{i18n.t("settings")}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.drawerItem}
-              onPress={() => {
-                navigation.navigate(i18n.t("wineries"));
-              }}
-            >
-              <Ionicons
-                name="wine"
-                size={24}
-                color="black"
-                style={styles.icon}
-              />
-              <Text style={styles.drawerItemText}>{i18n.t("wineries")}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.drawerItem}
-              onPress={() => {
-                navigation.navigate(i18n.t("events"));
-              }}
-            >
-              <Ionicons
-                name="calendar"
-                size={24}
-                color="black"
-                style={styles.icon}
-              />
-              <Text style={styles.drawerItemText}>{i18n.t("events")}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.drawerItem}
-              onPress={() => {
-                navigation.navigate(i18n.t("news"));
-              }}
-            >
-              <Ionicons
-                name="ios-newspaper"
-                size={24}
-                color="black"
-                style={styles.icon}
-              />
-              <Text style={styles.drawerItemText}>{i18n.t("news")}</Text>
-            </TouchableOpacity>
+          <DrawerButton
+              routeName={i18n.t("home")[0]}
+              iconName={"home"}
+              isSelected={selectedItem === i18n.t("home")[0]}
+              onPress={handleItemPress} // Pass the onPress function to handle updates in the parent
+            />
+            <DrawerButton
+              routeName={i18n.t("settings")}
+              iconName={"settings"}
+              isSelected={selectedItem === i18n.t("settings")}
+              onPress={handleItemPress} // Pass the onPress function to handle updates in the parent
+            />
+            <DrawerButton
+              routeName={i18n.t("wineries")}
+              iconName={"wine"}
+              isSelected={selectedItem === i18n.t("wineries")}
+              onPress={handleItemPress} // Pass the onPress function to handle updates in the parent
+            />
+            <DrawerButton
+              routeName={i18n.t("events")}
+              iconName={"calendar"}
+              isSelected={selectedItem === i18n.t("events")}
+              onPress={handleItemPress} // Pass the onPress function to handle updates in the parent
+            />
+            <DrawerButton
+              routeName={i18n.t("news")}
+              iconName={"ios-newspaper"}
+              isSelected={selectedItem === i18n.t("news")}
+              onPress={handleItemPress} // Pass the onPress function to handle updates in the parent
+            />
+            <DrawerButton
+              routeName={i18n.t("about")}
+              iconName={"information-circle"}
+              isSelected={selectedItem === i18n.t("about")}
+              onPress={handleItemPress} // Pass the onPress function to handle updates in the parent
+            />
           </View>
           {/* <DrawerItemList {...props} />*/}
         </View>

@@ -36,6 +36,7 @@ const hu = {
   address: "Cím",
   phone: "Telefon",
   website: "Weboldal",
+  about: "Rólunk"
 };
 
 const en = {
@@ -74,6 +75,7 @@ const en = {
   address: "Address",
   phone: "Phone",
   website: "Website",
+  about: "About",
 };
 
 const de = {
@@ -112,6 +114,7 @@ const de = {
   address: "Adresse",
   phone: "Telefon",
   website: "Webseite",
+  about: "Über Uns"
 };
 
 export { hu, en, de };
