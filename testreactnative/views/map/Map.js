@@ -363,44 +363,66 @@ const Map = ({ setShowMap }) => {
             </View>
           </BottomSheet>
           <BottomSheet
-          ref={bottomSheetToursRef}
-          index={0}
-          snapPoints={snapPoints}
-          style={styles.bottomSheet}
-          handleIndicatorStyle={{
-            backgroundColor: "rgba(0, 0, 0, 0)",
-          }}
-          enableHandlePanningGesture={false}
-          enableContentPanningGesture={false}
+            ref={bottomSheetToursRef}
+            index={0}
+            snapPoints={snapPoints}
+            style={styles.bottomSheet}
+            handleIndicatorStyle={{
+              backgroundColor: "rgba(0, 0, 0, 0)",
+            }}
+            enableHandlePanningGesture={false}
+            enableContentPanningGesture={false}
           >
             <View style={styles.bottomSheetFilterHeader}>
               <Text style={styles.title}>Wine tours</Text>
 
-                <TouchableOpacity
-                onPress={()=> bottomSheetToursRef.current.close()}
-                >
-                  <Text>Close</Text>
-                </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => bottomSheetToursRef.current.close()}
+              >
+                <Text>Close</Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.bottomSheetFilterBody}>
-              {tours.map
-              ((tour, index) => {
+              {tours.map((tour, index) => {
                 return (
                   <TouchableOpacity
-                  key={index}
-                  style={styles.bottomSheetFilterButton}
-                  onPress={() => {
-                    bottomSheetToursRef.current.close();
-                    handleShowTour(tour);
-                  }}
+                    key={index}
+                    style={styles.bottomSheetFilterButton}
+                    onPress={() => {
+                      bottomSheetToursRef.current.close();
+                      handleShowTour(tour);
+                    }}
                   >
-                    <Text>{tour.name}</Text>
+                    <View style={styles.hashtagContainer}>
+                      <Text style={styles.hashtagText}>#</Text>
+                    </View>
+                    <View style={styles.dateContainer}>
+                      <View style={styles.circle}></View>
+                      <Text style={styles.hashtag}>#</Text>
+                      <Text style={styles.dateText}>{tour.date}</Text>
+                    </View>
+                    <View style={styles.kmContainer}>
+                      
+                    <View style={styles.circle}></View>
+                    <Text style={styles.hashtag}>#</Text>
+                      <Text style={styles.kmText}>{tour.length}</Text>
+                    </View>
+                    <View style={styles.stopContainer}>
+                      <MaterialIcons
+                        name="location-on"
+                        size={28}
+                        color="#A8A8A8"
+                      />
+                      <Text style={styles.hashtag}>#</Text>
+                      <Text style={styles.stopText}>{tour.stops}</Text>
+                    </View>
+                    <View style={styles.nameContainer}>
+                    <Text style={styles.tourNameText}>{tour.name}</Text>
+                    </View>
                   </TouchableOpacity>
                 );
-              })
-              }
+              })}
             </View>
-
           </BottomSheet>
         </View>
       )}

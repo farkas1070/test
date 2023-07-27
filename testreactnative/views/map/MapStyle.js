@@ -118,7 +118,8 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   bottomSheetFilterButton: {
-    backgroundColor: "#D9D9D9",
+    backgroundColor: "#EEEEEE",
+    height: 120,
     borderRadius: 10,
     paddingVertical: 15,
     paddingHorizontal: 15,
@@ -129,4 +130,98 @@ export const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginVertical: 10,
   },
+  hashtagContainer: {
+    position: "absolute",
+    width:45,
+    height:45,
+    padding:5,
+    borderRadius: 60,
+    backgroundColor: "#A8A8A8",
+    top: 8,
+    left: 5,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  dateContainer: {
+    position: "absolute",
+    flexDirection:'row',
+    padding:5,
+    
+    backgroundColor: "white",
+    borderRadius: 60,
+    top: 8,
+    left: 60,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  kmContainer: {
+    position: "absolute",
+    flexDirection:'row',
+    padding:5,
+    
+    backgroundColor: "white",
+    borderTopStartRadius:60,
+    borderBottomStartRadius:60,
+    top: 8,
+    right: 0,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  stopContainer: {
+    position: "absolute",
+    flexDirection:'row',
+    padding:5,
+    
+    backgroundColor: "white",
+    borderTopStartRadius:60,
+    borderBottomStartRadius:60,
+    top: 54,
+    right: 0,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  hashtagText: {
+    fontSize: 23,
+    color:'white',
+
+  },
+  dateText: {
+    fontSize: 15,
+    color:'#A8A8A8',
+
+  },
+  kmText: {
+    fontSize: 15,
+    color:'#A8A8A8',
+
+  },
+  stopText: {
+    fontSize: 15,
+    color:'#A8A8A8',
+
+  },
+  circle:{
+    height:20,
+    marginLeft:5,
+    marginRight:10,
+    width:20,
+    backgroundColor:'#A8A8A8',
+    borderRadius:50
+  },
+  hashtag:{
+    color:'#A8A8A8',
+    marginRight:5
+  },
+  tourNameText:{
+    fontSize:20,
+    fontWeight:'bold',
+    
+  },
+  nameContainer:{
+    position:'absolute',
+    bottom:15,
+    left:15
+
+}
 });
+
