@@ -4,7 +4,7 @@ import {styles} from "./AboutStyle"
 const About = () => {
     
   return (
-    <View>
+    <View style={styles.mainContainer}>
       <Text>About</Text>
     </View>
   )

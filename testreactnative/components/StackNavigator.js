@@ -11,12 +11,15 @@ import New from "../views/new/New";
 import TourInfo from "../views/tourinfo/TourInfo";
 import NoDataView from "../views/NoDataView/NoDataView";
 import { LoadingContext } from "../context/GlobalContext";
+import About from "../views/about/About";
+import { I18nContext } from "../context/GlobalContext";
 
 const Stack = createNativeStackNavigator();
 
 const StackNavigator = () => {
   const [firstTimeOpen, setFirstTimeOpen] = useState(null);
   const [loaded] = useContext(LoadingContext);
+  const [i18n,setI18n] = useContext(I18nContext);
 
   useEffect(() => {
     const getData = async () => {
@@ -83,6 +86,17 @@ const StackNavigator = () => {
       <Stack.Screen
         name="TourInfo"
         component={TourInfo}
+        options={{
+          headerTintColor: "black",
+          headerTitleAlign: "center",
+          headerTitleStyle: {
+            textAlign: "center",
+          },
+        }}
+      />
+      <Stack.Screen
+        name={i18n.t("about")}
+        component={About}
         options={{
           headerTintColor: "black",
           headerTitleAlign: "center",
