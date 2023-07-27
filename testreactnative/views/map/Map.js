@@ -3,6 +3,7 @@ import {
   Text,
   View,
   useWindowDimensions,
+  ScrollView
 } from "react-native";
 import React, {
   useState,
@@ -373,6 +374,7 @@ const Map = ({ setShowMap }) => {
             enableHandlePanningGesture={false}
             enableContentPanningGesture={false}
           >
+            <ScrollView>
             <View style={styles.bottomSheetFilterHeader}>
               <Text style={styles.title}>Wine tours</Text>
 
@@ -423,6 +425,7 @@ const Map = ({ setShowMap }) => {
                 );
               })}
             </View>
+            </ScrollView>
           </BottomSheet>
         </View>
       )}
