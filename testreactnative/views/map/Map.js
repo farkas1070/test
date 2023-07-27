@@ -45,6 +45,7 @@ const Map = ({ setShowMap }) => {
   const [showCurrentWineTour, setShowCurrentWineTour] = useState(false);
   const bottomSheetRef = useRef(null);
   const bottomSheetFilterRef = useRef(null);
+  const bottomSheetToursRef = useRef(null);
   const snapPoints = useMemo(() => ["1%", "50%"], []);
 
   const [position, setPosition] = useState({
@@ -267,7 +268,7 @@ const Map = ({ setShowMap }) => {
           <TouchableOpacity
             style={styles.toursButton}
             onPress={() => {
-              setModalVisible(true);
+              bottomSheetToursRef.current.expand();
             }}
           >
             <MaterialCommunityIcons
@@ -360,6 +361,46 @@ const Map = ({ setShowMap }) => {
                 <Text>Cancel</Text>
               </TouchableOpacity>
             </View>
+          </BottomSheet>
+          <BottomSheet
+          ref={bottomSheetToursRef}
+          index={0}
+          snapPoints={snapPoints}
+          style={styles.bottomSheet}
+          handleIndicatorStyle={{
+            backgroundColor: "rgba(0, 0, 0, 0)",
+          }}
+          enableHandlePanningGesture={false}
+          enableContentPanningGesture={false}
+          >
+            <View style={styles.bottomSheetFilterHeader}>
+              <Text style={styles.title}>Wine tours</Text>
+
+                <TouchableOpacity
+                onPress={()=> bottomSheetToursRef.current.close()}
+                >
+                  <Text>Close</Text>
+                </TouchableOpacity>
+            </View>
+            <View style={styles.bottomSheetFilterBody}>
+              {tours.map
+              ((tour, index) => {
+                return (
+                  <TouchableOpacity
+                  key={index}
+                  style={styles.bottomSheetFilterButton}
+                  onPress={() => {
+                    bottomSheetToursRef.current.close();
+                    handleShowTour(tour);
+                  }}
+                  >
+                    <Text>{tour.name}</Text>
+                  </TouchableOpacity>
+                );
+              })
+              }
+            </View>
+
           </BottomSheet>
         </View>
       )}
