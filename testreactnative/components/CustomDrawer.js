@@ -17,6 +17,14 @@ const CustomDrawer = (props) => {
   const handleItemPress = (item) => {
     setSelectedItem(item); // Update the selected item when a drawer button is pressed
   };
+  const menuItems = [
+    { routeName: "home", iconName: "home" },
+    { routeName: "settings", iconName: "settings" },
+    { routeName: "wineries", iconName: "wine" },
+    { routeName: "events", iconName: "calendar" },
+    { routeName: "news", iconName: "ios-newspaper" },
+    { routeName: "about", iconName: "information-circle" },
+  ];
   return (
     <View style={styles.container}>
       <DrawerContentScrollView {...props}>
@@ -32,42 +40,15 @@ const CustomDrawer = (props) => {
           }}
         >
           <View style={{ textAlign: "center", padding: 10 }}>
-          <DrawerButton
-              routeName={i18n.t("home")[0]}
-              iconName={"home"}
-              isSelected={selectedItem === i18n.t("home")[0]}
-              onPress={handleItemPress} // Pass the onPress function to handle updates in the parent
-            />
-            <DrawerButton
-              routeName={i18n.t("settings")}
-              iconName={"settings"}
-              isSelected={selectedItem === i18n.t("settings")}
-              onPress={handleItemPress} // Pass the onPress function to handle updates in the parent
-            />
-            <DrawerButton
-              routeName={i18n.t("wineries")}
-              iconName={"wine"}
-              isSelected={selectedItem === i18n.t("wineries")}
-              onPress={handleItemPress} // Pass the onPress function to handle updates in the parent
-            />
-            <DrawerButton
-              routeName={i18n.t("events")}
-              iconName={"calendar"}
-              isSelected={selectedItem === i18n.t("events")}
-              onPress={handleItemPress} // Pass the onPress function to handle updates in the parent
-            />
-            <DrawerButton
-              routeName={i18n.t("news")}
-              iconName={"ios-newspaper"}
-              isSelected={selectedItem === i18n.t("news")}
-              onPress={handleItemPress} // Pass the onPress function to handle updates in the parent
-            />
-            <DrawerButton
-              routeName={i18n.t("about")}
-              iconName={"information-circle"}
-              isSelected={selectedItem === i18n.t("about")}
-              onPress={handleItemPress} // Pass the onPress function to handle updates in the parent
-            />
+          {menuItems.map((item,index) => (
+              <DrawerButton
+                key={index}
+                routeName={index === 0 ? i18n.t(item.routeName)[0] : i18n.t(item.routeName)}
+                iconName={item.iconName}
+                isSelected={selectedItem === (index === 0 ? i18n.t(item.routeName)[0] : i18n.t(item.routeName))}
+                onPress={() => handleItemPress(index === 0 ? i18n.t(item.routeName)[0] : i18n.t(item.routeName))}
+              />
+            ))}
           </View>
           {/* <DrawerItemList {...props} />*/}
         </View>
