@@ -10,7 +10,8 @@ export const styles = StyleSheet.create({
         height:50,
         flexDirection:'row',
         justifyContent: "flex-start",
-        alignItems:'center'
+        alignItems:'center',
+        
       },
       icon:{
         marginLeft:10
