@@ -49,40 +49,7 @@ const DrawerNavigator = () => {
           headerShown: false,
         }}
       />
-      <Drawer.Screen
-        name="Valami2"
-        component={Valami2}
-        options={{
-          headerLeft: () => (
-            <TouchableOpacity
-              style={{ paddingLeft: 10 }}
-              onPress={() => {
-                navigation.goBack();
-              }}
-            >
-              <Ionicons name="ios-arrow-back" size={24} color="black" />
-            </TouchableOpacity>
-          ),
-          headerTitleAlign: "center",
-        }}
-      />
-      <Drawer.Screen
-        name="Valami"
-        component={Valami}
-        options={{
-          headerLeft: () => (
-            <TouchableOpacity
-              style={{ paddingLeft: 10 }}
-              onPress={() => {
-                navigation.goBack();
-              }}
-            >
-              <Ionicons name="ios-arrow-back" size={24} color="black" />
-            </TouchableOpacity>
-          ),
-          headerTitleAlign: "center",
-        }}
-      />
+      
       <Drawer.Screen
         name={i18n.t("settings")}
         component={Settings}

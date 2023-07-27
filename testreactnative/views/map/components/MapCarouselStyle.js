@@ -26,8 +26,8 @@ export const styles = StyleSheet.create({
     textAlign: "left",
   },
   image: {
-    width: "96%",
-    height: "96%",
+    width: "92%",
+    height: "84%",
     
     borderRadius:20,
     resizeMode:'contain'
