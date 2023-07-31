@@ -24,12 +24,12 @@ const CustomDrawer = (props) => {
   };
   
   const menuItems = [
-    { routeName: "home", icon: <Subtract3 width={24} height={24}/> },
-    { routeName: "wineries", icon: <Subtract3 width={24} height={24}/> },
-    { routeName: "events", icon: <Subtract3 width={24} height={24}/> },
-    { routeName: "news", icon: <Subtract3 width={24} height={24}/> },
-    { routeName: "about", icon: <Subtract3 width={24} height={24}/> },
-    { routeName: "settings", icon: <Subtract3 width={24} height={24}/> }
+    { routeName: "home", iconName: "home" },
+    { routeName: "wineries", iconName: "wine" },
+    { routeName: "events", iconName: "calendar" },
+    { routeName: "news", iconName: "ios-newspaper" },
+    { routeName: "about", iconName: "information-circle" },
+    { routeName: "settings", iconName: "settings" }
   ];
   return (
     <View style={styles.container}>

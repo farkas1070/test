@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
         marginLeft:10
       },
       drawerItemText:{
-        marginLeft:30,
+        marginLeft:20,
         color:'#352269'
       }
 

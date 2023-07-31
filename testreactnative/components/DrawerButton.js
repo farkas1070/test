@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity,View } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import React, { useContext } from "react";
 import { I18nContext } from "../context/GlobalContext";
 import { useNavigation } from "@react-navigation/native";
@@ -7,7 +7,7 @@ import { useFonts } from "expo-font";
 import Catamaran from "../fonts/Catamaran-Regular.ttf";
 import { styles } from "./DrawerButtonStyle";
 
-const DrawerButton = ({ routeName, icon, isSelected, onPress }) => {
+const DrawerButton = ({ routeName, iconName, isSelected, onPress }) => {
   const navigation = useNavigation();
   const [loaded] = useFonts({
     Catamaran: Catamaran,
@@ -23,10 +23,8 @@ const DrawerButton = ({ routeName, icon, isSelected, onPress }) => {
         onPress(routeName); // Call the onPress function passed from the parent
       }}
     >
-      <View>
-      {icon}
-      </View>
-      <Text style={[styles.drawerItemText, { fontFamily: "Catamaran",fontWeight:'500' }]}>
+      <Ionicons name={iconName} size={24} color="#352269" style={styles.icon} />
+      <Text style={[styles.drawerItemText, { fontFamily: "Catamaran" }]}>
         {routeName}
       </Text>
     </TouchableOpacity>

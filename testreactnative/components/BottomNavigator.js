@@ -58,7 +58,7 @@ const BottomNavigator = () => {
           options={{
             tabBarIcon: ({ focused }) =>
               focused ? (
-                <HomeFilledIcon width={24} height={24} />
+                <HomeFilledIcon width={24} height={24}  />
               ) : (
                 <HomeIcon width={24} height={24} />
               ),

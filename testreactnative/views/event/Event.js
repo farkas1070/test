@@ -21,7 +21,7 @@ const Event = ({ route }) => {
     <SafeAreaView>
       <ScrollView>
         <TopHeaderImage
-          item={route.params.item.image ? route.params.item.image : Placeholder}
+          item={route.params.item.image}
         />
         <Text style={styles.eventTitle}>{route.params.item.title}</Text>
         <View style={styles.backContainer}>
