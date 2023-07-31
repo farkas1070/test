@@ -9,9 +9,11 @@ import { styles } from "./CustomDrawerStyle";
 import { useNavigation } from "@react-navigation/native";
 import { I18nContext } from "../context/GlobalContext";
 import DrawerButton from "./DrawerButton";
-import Subtract from "../assets/menuassets/Subtract.svg"
-import Subtract2 from "../assets/menuassets/Subtract2.svg"
-import Subtract3 from "../assets/menuassets/Subtract3.svg"
+import Subtract from "../assets/menuassets/Subtract.svg";
+import Subtract2 from "../assets/menuassets/Subtract2.svg";
+import Subtract3 from "../assets/menuassets/Subtract3.svg";
+
+
 const CustomDrawer = (props) => {
   const navigation = useNavigation();
   const [i18n, setI18n] = useContext(I18nContext);
@@ -20,22 +22,28 @@ const CustomDrawer = (props) => {
   const handleItemPress = (item) => {
     setSelectedItem(item); // Update the selected item when a drawer button is pressed
   };
+  
   const menuItems = [
     { routeName: "home", iconName: "home" },
-    { routeName: "settings", iconName: "settings" },
     { routeName: "wineries", iconName: "wine" },
     { routeName: "events", iconName: "calendar" },
     { routeName: "news", iconName: "ios-newspaper" },
     { routeName: "about", iconName: "information-circle" },
+    { routeName: "settings", iconName: "settings" }
   ];
   return (
     <View style={styles.container}>
       <DrawerContentScrollView {...props}>
         <View style={styles.circlesContainer}>
-        <Subtract width={100} height={100}/>
-        <Subtract2 width={100} height={100}/>
-        <Subtract3 width={100} height={100}/>
-
+          <View style={styles.yellowCircleContainer}>
+            <Subtract width={142} height={142} />
+          </View>
+          <View style={styles.redCircleContainer}>
+          <Subtract2 width={142} height={142} />
+          </View>
+          <View style={styles.purplecircleContainer}>
+          <Subtract3 width={170} height={170} />
+          </View>
         </View>
 
         <View
@@ -81,7 +89,7 @@ const CustomDrawer = (props) => {
                 );
               }}
             >
-              <Ionicons name="logo-facebook" size={36} color="black" />
+              <Ionicons name="logo-facebook" size={36} color="#352269" />
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.icon2}
@@ -91,7 +99,7 @@ const CustomDrawer = (props) => {
                 );
               }}
             >
-              <Ionicons name="logo-instagram" size={36} color="black" />
+              <Ionicons name="logo-instagram" size={36} color="#352269" />
             </TouchableOpacity>
           </View>
           <View style={styles.privacyPolicyContainer}>

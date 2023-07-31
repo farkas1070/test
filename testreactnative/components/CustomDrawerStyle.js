@@ -41,5 +41,23 @@ export const styles = StyleSheet.create({
   privacyPolicy: {
     marginTop: 30,
     marginLeft: 20,
+    color:'#352269'
+  },
+
+  yellowCircleContainer: {
+    position: "absolute",
+    top:-80,
+    left:-60
+  },
+  redCircleContainer: {
+    position: "absolute",
+    top:0,
+    right:30,
+    zIndex:30
+  },
+  purplecircleContainer: {
+    position: "absolute",
+    top:-50,
+    right:-20
   },
 });
