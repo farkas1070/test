@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { I18nContext } from "../../../context/GlobalContext";
 import { styles } from "./SearchStyle";
 import { useNavigation } from "@react-navigation/native";
-import { Ionicons } from "@expo/vector-icons";
+import MenuIcon from "../../../assets/menuassets/Menu";
 
 const SearchBar = ({ onSearch }) => {
   const [i18n] = React.useContext(I18nContext);
@@ -29,7 +29,7 @@ const SearchBar = ({ onSearch }) => {
           navigation.openDrawer();
         }}
       >
-        <Ionicons name="list" size={36} color="#A8A8A8" />
+        <MenuIcon width={24} height={24} />
       </TouchableOpacity>
       <TextInput
         style={styles.searchInput}
