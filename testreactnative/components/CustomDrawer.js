@@ -9,10 +9,7 @@ import { styles } from "./CustomDrawerStyle";
 import { useNavigation } from "@react-navigation/native";
 import { I18nContext } from "../context/GlobalContext";
 import DrawerButton from "./DrawerButton";
-import Circle1 from "../assets/menuassets/Subtract.svg";
-import Circle2 from "../assets/menuassets/Subtract2.svg";
-import Circle3 from "../assets/menuassets/Subtract3.svg";
-import Svg, { Path } from "react-native-svg";
+import Subtract from "../assets/menuassets/Subtract.svg"
 
 const CustomDrawer = (props) => {
   const navigation = useNavigation();
@@ -34,7 +31,7 @@ const CustomDrawer = (props) => {
     <View style={styles.container}>
       <DrawerContentScrollView {...props}>
         <View style={styles.circlesContainer}>
-          
+        <Subtract width={100} height={100}/>
         </View>
 
         <View
