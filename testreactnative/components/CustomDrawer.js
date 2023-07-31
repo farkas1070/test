@@ -12,7 +12,11 @@ import DrawerButton from "./DrawerButton";
 import Subtract from "../assets/menuassets/Subtract.svg";
 import Subtract2 from "../assets/menuassets/Subtract2.svg";
 import Subtract3 from "../assets/menuassets/Subtract3.svg";
-
+import HomeIcon from "../assets/navigatorassets/Home";
+import WineriesIcon from "../assets/navigatorassets/Wineries";
+import EventsIcon from "../assets/navigatorassets/Events";
+import NewsIcon from "../assets/navigatorassets/News";
+import SettingsIcon from "../assets/menuassets/Settings";
 
 const CustomDrawer = (props) => {
   const navigation = useNavigation();
@@ -22,15 +26,11 @@ const CustomDrawer = (props) => {
   const handleItemPress = (item) => {
     setSelectedItem(item); // Update the selected item when a drawer button is pressed
   };
-  
-  const menuItems = [
-    { routeName: "home", icon: <Subtract3 width={24} height={24}/> },
-    { routeName: "wineries", icon: <Subtract3 width={24} height={24}/> },
-    { routeName: "events", icon: <Subtract3 width={24} height={24}/> },
-    { routeName: "news", icon: <Subtract3 width={24} height={24}/> },
-    { routeName: "about", icon: <Subtract3 width={24} height={24}/> },
-    { routeName: "settings", icon: <Subtract3 width={24} height={24}/> }
-  ];
+
+  const IconComponent = ({ width, height }) => {
+    return <Subtract2 width={width} height={height} />;
+  };
+
   return (
     <View style={styles.container}>
       <DrawerContentScrollView {...props}>
@@ -39,10 +39,10 @@ const CustomDrawer = (props) => {
             <Subtract width={142} height={142} />
           </View>
           <View style={styles.redCircleContainer}>
-          <Subtract2 width={142} height={142} />
+            <Subtract2 width={142} height={142} />
           </View>
           <View style={styles.purplecircleContainer}>
-          <Subtract3 width={170} height={170} />
+            <Subtract3 width={170} height={170} />
           </View>
         </View>
 
@@ -52,30 +52,54 @@ const CustomDrawer = (props) => {
           }}
         >
           <View style={{ textAlign: "center", padding: 10 }}>
-            {menuItems.map((item, index) => (
-              <DrawerButton
-                key={index}
-                routeName={
-                  index === 0
-                    ? i18n.t(item.routeName)[0]
-                    : i18n.t(item.routeName)
-                }
-                iconName={item.iconName}
-                isSelected={
-                  selectedItem ===
-                  (index === 0
-                    ? i18n.t(item.routeName)[0]
-                    : i18n.t(item.routeName))
-                }
-                onPress={() =>
-                  handleItemPress(
-                    index === 0
-                      ? i18n.t(item.routeName)[0]
-                      : i18n.t(item.routeName)
-                  )
-                }
-              />
-            ))}
+            <DrawerButton
+              routeName={i18n.t("home")[0]}
+              icon={<HomeIcon width={24} height={24} />}
+              isSelected={selectedItem === i18n.t("home")[0]}
+              onPress={() => {
+                handleItemPress(i18n.t("home")[0]);
+              }}
+            />
+            <DrawerButton
+              routeName={i18n.t("wineries")}
+              icon={<WineriesIcon width={24} height={24} />}
+              isSelected={selectedItem === i18n.t("wineries")}
+              onPress={() => {
+                handleItemPress(i18n.t("wineries"));
+              }}
+            />
+            <DrawerButton
+              routeName={i18n.t("events")}
+              icon={<EventsIcon width={24} height={24} />}
+              isSelected={selectedItem === i18n.t("events")}
+              onPress={() => {
+                handleItemPress(i18n.t("events"));
+              }}
+            />
+            <DrawerButton
+              routeName={i18n.t("news")}
+              icon={<NewsIcon width={24} height={24} />}
+              isSelected={selectedItem === i18n.t("news")}
+              onPress={() => {
+                handleItemPress(i18n.t("news"));
+              }}
+            />
+            <DrawerButton
+              routeName={i18n.t("about")}
+              icon={<NewsIcon width={24} height={24} />}
+              isSelected={selectedItem === i18n.t("about")}
+              onPress={() => {
+                handleItemPress(i18n.t("about"));
+              }}
+            />
+            <DrawerButton
+              routeName={i18n.t("settings")}
+              icon={<SettingsIcon width={24} height={24} />}
+              isSelected={selectedItem === i18n.t("settings")}
+              onPress={() => {
+                handleItemPress(i18n.t("settings"));
+              }}
+            />
           </View>
           {/* <DrawerItemList {...props} />*/}
         </View>
