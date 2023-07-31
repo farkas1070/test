@@ -4,8 +4,8 @@ export const styles = StyleSheet.create({
     position: "relative",
     top: 0,
     width: "100%",
-    borderColor: "gray",
-    borderBottomWidth: 0.5,
+    backgroundColor:'white',
+    
   },
   slide: {
     justifyContent: "flex-start",

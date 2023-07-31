@@ -28,7 +28,11 @@ import FilterCarousel from "./components/FilterCarousel";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
+import ListIcon from "../../assets/mapassets/listIcon.svg"
+import HankenGrotesk from "../../fonts/HankenGrotesk-Regular.ttf"
+import { useFonts } from "expo-font";
+import FilterIcon from "../../assets/mapassets/filterIcon.svg"
+import ToursIcon from "../../assets/mapassets/toursIcon.svg"
 const Map = ({ setShowMap }) => {
   const mapRef = useRef(null);
   const markerRef = useRef([]);
@@ -58,7 +62,7 @@ const Map = ({ setShowMap }) => {
 
   if (currentLatDelta > 0.01) setCurrentLatDelta(0.005);
   if (currentLongDelta > 0.01) setCurrentLongDelta(0.005);
-
+  
   const openModal = () => {
     setModalVisible(true);
   };
@@ -113,6 +117,7 @@ const Map = ({ setShowMap }) => {
       return tours.filter((tour) => tour.name === name);
     }
   };
+  
 
   useEffect(() => {
     const getLocationPermissions = async () => {
@@ -212,6 +217,13 @@ const Map = ({ setShowMap }) => {
   const handleBottomSheetFilter = () => {
     bottomSheetFilterRef.current.expand();
   };
+  const [loaded] = useFonts({
+    HKGrotesk: HankenGrotesk,
+});
+
+if (!loaded) {
+    return null;
+}
 
   return (
     <View style={styles.container}>
@@ -272,26 +284,22 @@ const Map = ({ setShowMap }) => {
               bottomSheetToursRef.current.expand();
             }}
           >
-            <MaterialCommunityIcons
-              name="transit-detour"
-              size={28}
-              color="black"
-            />
+            <ToursIcon width={24} height={24} />
           </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.filterButton}
             onPress={handleBottomSheetFilter}
           >
-            <MaterialIcons name="filter-list" size={28} color="black" />
+            <FilterIcon width={24} height={24}/>
           </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.listChangeButton}
             onPress={handleShowMap}
           >
-            <Text style={styles.buttonText}>Lista</Text>
-            <Ionicons name="list" size={30} color="black" />
+            <Text style={[styles.buttonText,{fontFamily:'HKGrotesk'}]}>Lista</Text>
+            <ListIcon width={24} height={24}></ListIcon>
           </TouchableOpacity>
           <BottomSheet
             ref={bottomSheetRef}

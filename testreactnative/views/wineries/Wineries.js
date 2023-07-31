@@ -14,7 +14,9 @@ import { WineriesContext } from "../../context/GlobalContext.js";
 import Map from "../../views/map/Map.js";
 import { Ionicons } from "@expo/vector-icons";
 import Header from "./components/Header";
-
+import ListIcon from "../../assets/mapassets/mapIcon.svg"
+import HankenGrotesk from "../../fonts/HankenGrotesk-Regular.ttf"
+import { useFonts } from "expo-font";
 const Wineries = () => {
   const [wineries, setWineries] = useContext(WineriesContext);
   const [searchText, setSearchText] = useState("");
@@ -25,6 +27,13 @@ const Wineries = () => {
       item.title.toLowerCase().includes(searchText.toLowerCase())
     );
   };
+  const [loaded] = useFonts({
+    HKGrotesk: HankenGrotesk,
+});
+
+if (!loaded) {
+    return null;
+}
 
   return (
     <SafeAreaView style={styles.maincontainer}>
@@ -43,8 +52,8 @@ const Wineries = () => {
               style={styles.mapbutton}
               onPress={() => setShowMap(true)}
             >
-              <Text style={styles.mapButtonText}>Map</Text>
-              <Ionicons name="map" size={30} color="black" />
+              <Text style={[styles.mapButtonText,{fontFamily:'HKGrotesk'}]}>Map</Text>
+              <ListIcon width={24} height={24}></ListIcon>
             </TouchableOpacity>
           </View>
         </TouchableWithoutFeedback>

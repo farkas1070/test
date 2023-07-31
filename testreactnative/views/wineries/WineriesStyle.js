@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     flexDirection: "row",
-    backgroundColor: "#D9D9D9",
+    backgroundColor: "#FF8882",
     borderRadius: 20,
     padding: 10,
     elevation: 2,
@@ -51,8 +51,17 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
     width: "25%",
+    shadowColor: "#FF8882", // Use the same purple color for the shadow
+    shadowOffset: {
+      width: 2,
+      height: 4, // Adjust the vertical offset to make the shadow more prominent at the bottom
+    },
+    shadowOpacity: 1, // Increase the opacity to make the shadow darker
+    shadowRadius: 15, // Increase the radius to make the shadow spread wider
+    elevation: 8, 
   },
   mapButtonText: {
     marginRight: 10,
+    color:'white'
   },
 });

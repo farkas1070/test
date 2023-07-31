@@ -8,13 +8,20 @@ import WineriesIcon from "../assets/navigatorassets/Wineries";
 import EventsIcon from "../assets/navigatorassets/Events";
 import NewsIcon from "../assets/navigatorassets/News";
 import { styles } from "./DrawerButtonStyle";
-
-const DrawerButton = ({ routeName, iconName, isSelected, onPress }) => {
+import { useFonts } from 'expo-font';
+import Catamaran from "../fonts/Catamaran-Regular.ttf"
+const DrawerButton = ({ routeName, icon, isSelected, onPress }) => {
 
 
 
   const navigation = useNavigation();
+  const [loaded] = useFonts({
+    Catamaran: Catamaran,
+});
 
+if (!loaded) {
+    return null;
+}
   return (
     <TouchableOpacity
       style={[styles.drawerItem, isSelected && { backgroundColor: "#EEEEEE" }]}
@@ -24,13 +31,13 @@ const DrawerButton = ({ routeName, iconName, isSelected, onPress }) => {
       }}
     >
 
+     
       
+
+      {icon}
       <Text style={[styles.drawerItemText, { fontFamily: "Catamaran" }]}>
         {routeName}
       </Text>
-
-      {icon}
-      
 
     </TouchableOpacity>
   );

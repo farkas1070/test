@@ -18,13 +18,22 @@ export const styles = StyleSheet.create({
     right: 150,
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#D9D9D9",
+    backgroundColor: "#FF8882",
     borderRadius: 20,
     paddingVertical: 10,
     paddingHorizontal: 15,
+    shadowColor: "#FF8882", // Use the same purple color for the shadow
+    shadowOffset: {
+      width: 0,
+      height: 4, // Adjust the vertical offset to make the shadow more prominent at the bottom
+    },
+    shadowOpacity: 0.8, // Increase the opacity to make the shadow darker
+    shadowRadius: 10, // Increase the radius to make the shadow spread wider
+    elevation: 8, 
   },
   buttonText: {
     marginRight: 10,
+    color:'white'
   },
   resetButton: {
     position: "absolute",
@@ -39,16 +48,18 @@ export const styles = StyleSheet.create({
     position: "absolute",
     top: 75,
     right: 15,
-    backgroundColor: "#D9D9D9",
+    backgroundColor: "#FFBD54",
     borderRadius: 40,
     paddingVertical: 10,
     paddingHorizontal: 10,
+    justifyContent:'center',
+    alignItems: 'center',
   },
   filterButton: {
     position: "absolute",
     top: 15,
     right: 15,
-    backgroundColor: "#D9D9D9",
+    backgroundColor: "white",
     borderRadius: 40,
     paddingVertical: 10,
     paddingHorizontal: 10,

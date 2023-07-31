@@ -14,6 +14,7 @@ export const styles = StyleSheet.create({
   },
   footer: {
     width: "100%",
+    marginTop:30
   },
   drawerItem: {
     width: "100%",
