@@ -57,7 +57,7 @@ const BottomNavigator = () => {
             paddingBottom: 10,
             paddingTop: 10,
             marginBottom: 20,
-            borderRadius: 20,
+            
             backgroundColor: "#F5F5F5",
           },
           tabBarActiveTintColor: "#FF8882",
