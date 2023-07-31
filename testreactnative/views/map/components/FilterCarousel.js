@@ -16,8 +16,8 @@ const FilterCarousel = () => {
       <View style={[styles.slide, { width: itemWidth }]}>
         <View style={[styles.icon]}>
           <SvgCssUri uri={item.acf.icon_2} width={60} height={60} />
+          <Text style={styles.text}>{item.name}</Text>
         </View>
-        <Text style={styles.text}>{item.name}</Text>
       </View>
     );
   };

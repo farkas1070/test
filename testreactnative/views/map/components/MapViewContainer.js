@@ -10,6 +10,7 @@ import Placeholder from "../../../assets/placeholder.png";
 import { Mapstyle } from "../CustomMapStyle";
 import { styles } from "./MapViewContainerStyle";
 import BottomMarker from "../../../assets/markerbottom.png";
+import MapPin from "../../../assets/mapassets/MapPin";
 
 const MapViewContainer = ({
   mapRef,
@@ -91,7 +92,6 @@ const MapViewContainer = ({
                 height: 20,
                 zIndex: -1,
               }}
-              resizeMode="contain"
             />
           </View>
           <Callout style={styles.callout} tooltip={true}>

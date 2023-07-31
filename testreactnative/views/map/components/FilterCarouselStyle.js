@@ -8,11 +8,10 @@ export const styles = StyleSheet.create({
     
   },
   slide: {
-    justifyContent: "flex-start",
     alignItems: "center",
     width: "100%",
     paddingBottom: 10,
-    alignItems: "center",
+    marginHorizontal: 30,
   },
   slideContent: {
     width: "100%",
@@ -27,10 +26,10 @@ export const styles = StyleSheet.create({
   },
   icon: {
     backgroundColor: "rgba(236,236,236,1)",
-    justifyContent: "center",
     alignItems: "center",
     borderRadius: 35,
-    width: 65,
-    height: 65,
+    height: 50,
+    padding: 10,
+    flexDirection: "row",
   },
 });
