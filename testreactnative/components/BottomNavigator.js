@@ -14,6 +14,15 @@ import { I18nContext } from "../context/GlobalContext";
 import { styles } from "./BottomNavigatorStyle";
 import { SvgCssUri } from "react-native-svg";
 import { SimpleLineIcons } from "@expo/vector-icons";
+import HomeIcon from "../assets/navigatorassets/Home";
+import WineriesIcon from "../assets/navigatorassets/Wineries";
+import EventsIcon from "../assets/navigatorassets/Events";
+import NewsIcon from "../assets/navigatorassets/News";
+import HomeFilledIcon from "../assets/navigatorassets/HomeFilled";
+import WineriesFilledIcon from "../assets/navigatorassets/WineriesFilled";
+import EventsFilledIcon from "../assets/navigatorassets/EventsFilled";
+import NewsFilledIcon from "../assets/navigatorassets/NewsFilled";
+import MenuIcon from "../assets/menuassets/Menu";
 
 const Tab = createBottomTabNavigator();
 
@@ -47,13 +56,12 @@ const BottomNavigator = () => {
           name={i18n.t("home")[0]}
           component={Home}
           options={{
-            tabBarIcon: ({ focused }) => (
-              <Ionicons
-                name={focused ? "home" : "home-outline"}
-                size={24}
-                color="black"
-              />
-            ),
+            tabBarIcon: ({ focused }) =>
+              focused ? (
+                <HomeFilledIcon width={24} height={24} />
+              ) : (
+                <HomeIcon width={24} height={24} />
+              ),
 
             headerTitle: () => (
               <SvgCssUri
@@ -81,31 +89,46 @@ const BottomNavigator = () => {
               </TouchableOpacity>
             ),
             headerLeft: () => (
-              <View style={styles.menubutton}>
-                <SimpleLineIcons
-                  name="menu"
-                  size={24}
-                  color="#A8A8A8"
-                  onPress={() => {
-                    openMenu();
-                  }}
-                />
-              </View>
+              <TouchableOpacity
+                style={{ paddingLeft: 10 }}
+                onPress={() => {
+                  openMenu();
+                }}
+              >
+                <MenuIcon width={24} height={24} />
+              </TouchableOpacity>
             ),
           }}
         />
 
         <Tab.Screen
+          name={i18n.t("wineries")}
+          component={Wineries}
+          options={{
+            tabBarIcon: ({ focused }) =>
+              focused ? (
+                <WineriesFilledIcon width={24} height={24} />
+              ) : (
+                <WineriesIcon width={24} height={24} />
+              ),
+            headerTintColor: "black",
+            headerTitleAlign: "center",
+            headerShown: false,
+            headerTitleStyle: {
+              textAlign: "center",
+            },
+          }}
+        />
+        <Tab.Screen
           name={i18n.t("events")}
           component={Events}
           options={{
-            tabBarIcon: ({ focused }) => (
-              <Ionicons
-                name={focused ? "calendar" : "calendar-outline"}
-                size={24}
-                color="black"
-              />
-            ),
+            tabBarIcon: ({ focused }) =>
+              focused ? (
+                <EventsFilledIcon width={24} height={24} />
+              ) : (
+                <EventsIcon width={24} height={24} />
+              ),
 
             headerTintColor: "black",
             headerTitleAlign: "center",
@@ -142,35 +165,15 @@ const BottomNavigator = () => {
           }}
         />
         <Tab.Screen
-          name={i18n.t("wineries")}
-          component={Wineries}
-          options={{
-            tabBarIcon: ({ focused }) => (
-              <Ionicons
-                name={focused ? "wine" : "wine-outline"}
-                size={24}
-                color="black"
-              />
-            ),
-            headerTintColor: "black",
-            headerTitleAlign: "center",
-            headerShown: false,
-            headerTitleStyle: {
-              textAlign: "center",
-            },
-          }}
-        />
-        <Tab.Screen
           name={i18n.t("news")}
           component={News}
           options={{
-            tabBarIcon: ({ focused }) => (
-              <Ionicons
-                name={focused ? "newspaper" : "newspaper-outline"}
-                size={24}
-                color="black"
-              />
-            ),
+            tabBarIcon: ({ focused }) =>
+              focused ? (
+                <NewsFilledIcon width={24} height={24} />
+              ) : (
+                <NewsIcon width={24} height={24} />
+              ),
             headerTintColor: "black",
             headerTitleAlign: "center",
             headerShown: false,
