@@ -70,6 +70,8 @@ const Events = () => {
         )}
         {showListFirst ? (
           <ScrollView style={{ marginBottom: 70 }}>
+            <Text>Közelgő Esemény</Text>
+
             {filterItems().map((item, index) => {
               return <Card item={item} index={index} key={index} />;
             })}

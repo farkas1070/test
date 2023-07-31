@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     
     padding: 10,
     justifyContent: "space-between",
-    alignItems: "flex-end",
+    alignItems: "center",
     alignSelf: "center",
     flexDirection: "row",
     borderBottomWidth:1,

@@ -406,11 +406,7 @@ if (!loaded) {
                     <View style={styles.hashtagContainer}>
                       <Text style={styles.hashtagText}>#</Text>
                     </View>
-                    <View style={styles.dateContainer}>
-                      <View style={styles.circle}></View>
-                      <Text style={styles.hashtag}>#</Text>
-                      <Text style={styles.dateText}>{tour.date}</Text>
-                    </View>
+                   
                     <View style={styles.kmContainer}>
                       
                     <View style={styles.circle}></View>

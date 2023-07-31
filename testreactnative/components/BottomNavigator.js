@@ -44,12 +44,15 @@ const BottomNavigator = () => {
       <InformationModal modalVisible={modalVisible} closeModal={closeModal} />
       <Tab.Navigator
         screenOptions={{
-          tabBarActiveTintColor: "black",
-          tabBarInactiveTintColor: "gray",
+          tabBarStyle: { height: 65,paddingBottom: 10,paddingTop: 10  },
+          tabBarActiveTintColor: "#FF8882",
+          tabBarInactiveTintColor: "#9E9E9E",
           tabBarLabelStyle: {
             fontSize: 11,
             fontWeight: "bold",
+            
           },
+          
         }}
       >
         <Tab.Screen
