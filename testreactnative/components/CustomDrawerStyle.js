@@ -8,6 +8,10 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  circlesContainer: {
+    width: "100%",
+    height: 200,
+  },
   footer: {
     width: "100%",
   },
@@ -19,10 +23,10 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   icon: {
-    marginLeft:40
+    marginLeft: 40,
   },
   icon2: {
-    marginLeft:10
+    marginLeft: 10,
   },
   drawerItemText: {
     marginLeft: 30,
@@ -30,14 +34,12 @@ export const styles = StyleSheet.create({
   iconContainer: {
     flexDirection: "row",
     width: "100%",
-    
-    
   },
   privacyPolicyContainer: {
     width: "100%",
   },
-  privacyPolicy:{
-    marginTop:30,
-    marginLeft:20
-  }
+  privacyPolicy: {
+    marginTop: 30,
+    marginLeft: 20,
+  },
 });

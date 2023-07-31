@@ -9,6 +9,11 @@ import { styles } from "./CustomDrawerStyle";
 import { useNavigation } from "@react-navigation/native";
 import { I18nContext } from "../context/GlobalContext";
 import DrawerButton from "./DrawerButton";
+import Circle1 from "../assets/menuassets/Subtract.svg";
+import Circle2 from "../assets/menuassets/Subtract2.svg";
+import Circle3 from "../assets/menuassets/Subtract3.svg";
+import Svg, { Path } from "react-native-svg";
+
 const CustomDrawer = (props) => {
   const navigation = useNavigation();
   const [i18n, setI18n] = useContext(I18nContext);
@@ -28,12 +33,10 @@ const CustomDrawer = (props) => {
   return (
     <View style={styles.container}>
       <DrawerContentScrollView {...props}>
-        <Image
-          style={styles.image}
-          source={{
-            uri: "https://fw.photos/cZnDGqeic7KbE8INYuFcfCGQa3o=/665x0/filters:watermark(https://admin.sopronmedia.hu/images/watermark.png,10,-30,10,13,13)/https%3A%2F%2Fadmin.sopronmedia.hu%2Fuploads%2Fimport%2F0b%2Fcd%2Fsoproni-borvidek-social-fb-post-2000p2_hjgm.jpg",
-          }}
-        />
+        <View style={styles.circlesContainer}>
+          
+        </View>
+
         <View
           style={{
             textAlign: "center",

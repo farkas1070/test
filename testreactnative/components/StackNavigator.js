@@ -65,6 +65,7 @@ const StackNavigator = () => {
         options={{
           headerTintColor: "black",
           headerTitleAlign: "center",
+          headerShown: false,
           headerTitleStyle: {
             textAlign: "center",
           },

@@ -16,6 +16,9 @@ import { tagsStyles } from "./ContentStyle";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { SvgCssUri } from "react-native-svg";
 import { I18nContext } from "../../context/GlobalContext";
+import TopHeaderImage from "../../components/TopHeaderImage";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Ionicons } from "@expo/vector-icons";
 
 const Winery = ({ route }) => {
   const { width } = useWindowDimensions();
@@ -23,6 +26,7 @@ const Winery = ({ route }) => {
   const source = {
     html: winery.content,
   };
+
   const [i18n] = useContext(I18nContext);
 
   const openGoogleMaps = async () => {
@@ -37,81 +41,62 @@ const Winery = ({ route }) => {
   };
 
   return (
-    <ScrollView>
-      <Image
-        style={styles.image}
-        source={winery.logo ? { uri: winery.logo } : Placeholder}
-      />
-      <Text>{winery.title}</Text>
-      <Text>
-        {i18n.t("owner")}:{" "}
-        {winery.owner_name === "" ? "nincs megadva" : winery.owner_name}
-      </Text>
-      <Text>
-        {i18n.t("address")}:{" "}
-        {winery.connection.adress === undefined
-          ? "nincs megadva"
-          : winery.connection.adress}
-      </Text>
-      <Text>
-        {i18n.t("phone")}:{" "}
-        {winery.connection.telephone == ""
-          ? "nincs megadva"
-          : winery.connection.telephone}
-      </Text>
-      <Text>
-        Facebook:{" "}
-        {winery.connection.social.facebook == ""
-          ? "nincs megadva"
-          : winery.connection.social.facebook}
-      </Text>
-      <Text>
-        Intagram:{" "}
-        {winery.connection.social.instagram == ""
-          ? "nincs megadva"
-          : winery.connection.social.instagram}
-      </Text>
-      <Text>
-        LinkedIn:{" "}
-        {winery.connection.social.linkedin == ""
-          ? "nincs megadva"
-          : winery.connection.social.linkedin}
-      </Text>
+    <SafeAreaView>
+      <ScrollView>
+        <TopHeaderImage item={winery.logo ? winery.logo : Placeholder} />
 
-      <Text>
-        {i18n.t("website")}: {winery.connection.website}
-      </Text>
-      <RenderHtml
-        contentWidth={width}
-        source={source}
-        tagsStyles={tagsStyles}
-      />
-      <View style={styles.mainservicecontainer}>
-        {winery.services?.map((service, index) => {
-          return (
-            <View style={{ alignItems: "center" }}>
-              <View key={index} style={styles.servicecontainer}>
-                <SvgCssUri uri={service.acf.icon_2} width={65} height={65} />
+        <View style={styles.topTextContainer}>
+          <Text style={styles.nameText}>{winery.title}</Text>
+          <Image style={styles.image} source={Placeholder} />
+          <View style={styles.infoContainer}>
+            <Ionicons name="airplane" size={24} color="black" />
+            <Text>{winery.connection.adress}</Text>
+          </View>
+          <View style={styles.infoContainer2}>
+          <Ionicons name="call" size={24} color="black" />
+            <Text>{winery.connection.adress}</Text>
+          </View>
+          <View style={styles.infoContainer2}>
+          <Ionicons name="desktop" size={24} color="black" />
+            <Text>{winery.connection.adress}</Text>
+          </View>
+        </View>
+        <RenderHtml
+          contentWidth={width}
+          source={source}
+          tagsStyles={tagsStyles}
+        />
+        <View style={styles.mainservicecontainer}>
+          {winery.services?.map((service, index) => {
+            return (
+              <View style={{ alignItems: "center" }}>
+                <View key={index} style={styles.servicecontainer}>
+                  <SvgCssUri uri={service.acf.icon_2} width={65} height={65} />
+                </View>
+                <View style={{ marginVertical: 10 }}>
+                  <Text style={styles.servicetext}>{service.name}</Text>
+                </View>
               </View>
-              <View style={{ marginVertical: 10 }}>
-                <Text style={styles.servicetext}>{service.name}</Text>
-              </View>
-            </View>
-          );
-        })}
-      </View>
-      {winery.map.lat != undefined && winery.map.lng != undefined && (
-        <TouchableOpacity
-          style={styles.opengooglemapsbutton}
-          onPress={() => {
-            openGoogleMaps();
-          }}
-        >
-          <MaterialCommunityIcons name="google-maps" size={24} color="black" />
-          <Text>Mutasd a térképen</Text>
-        </TouchableOpacity>
-      )}
-    </ScrollView>
+            );
+          })}
+        </View>
+        {winery.map.lat != undefined && winery.map.lng != undefined && (
+          <TouchableOpacity
+            style={styles.opengooglemapsbutton}
+            onPress={() => {
+              openGoogleMaps();
+            }}
+          >
+            <MaterialCommunityIcons
+              name="google-maps"
+              size={24}
+              color="black"
+            />
+            <Text>Mutasd a térképen</Text>
+          </TouchableOpacity>
+        )}
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
