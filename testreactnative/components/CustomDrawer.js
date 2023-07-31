@@ -27,9 +27,6 @@ const CustomDrawer = (props) => {
     setSelectedItem(item); // Update the selected item when a drawer button is pressed
   };
 
-
-
-
   return (
     <View style={styles.container}>
       <DrawerContentScrollView {...props}>

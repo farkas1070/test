@@ -27,19 +27,6 @@ const DrawerNavigator = () => {
           backgroundColor: "#fff",
           width: "75%",
         },
-        drawerContentContainerStyle: {
-          flex: 1,
-          justifyContent: "center",
-        },
-        drawerItemStyle: {
-          borderRadius: 25,
-          marginVertical: 10,
-        },
-        drawerLabelStyle: {
-          fontSize: 20,
-          fontWeight: "bold",
-          textAlign: "center",
-        },
       }}
     >
       <Drawer.Screen
@@ -49,7 +36,7 @@ const DrawerNavigator = () => {
           headerShown: false,
         }}
       />
-      
+
       <Drawer.Screen
         name={i18n.t("settings")}
         component={Settings}

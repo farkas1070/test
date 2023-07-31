@@ -14,7 +14,9 @@ export const styles = StyleSheet.create({
   },
   footer: {
     width: "100%",
-    marginTop:30
+    marginTop: 30,
+    justifyContent: "center",
+    alignItems: "center",
   },
   drawerItem: {
     width: "100%",
@@ -23,42 +25,35 @@ export const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
   },
-  icon: {
-    marginLeft: 40,
-  },
-  icon2: {
-    marginLeft: 10,
-  },
   drawerItemText: {
     marginLeft: 30,
   },
   iconContainer: {
     flexDirection: "row",
     width: "100%",
+    justifyContent: "center",
+    marginTop: 30,
   },
   privacyPolicyContainer: {
     width: "100%",
-  },
-  privacyPolicy: {
-    marginTop: 30,
-    marginLeft: 20,
-    color:'#352269'
+    alignItems: "center",
+    marginTop: 15,
   },
 
   yellowCircleContainer: {
     position: "absolute",
-    top:-80,
-    left:-60
+    top: -80,
+    left: -60,
   },
   redCircleContainer: {
     position: "absolute",
-    top:0,
-    right:30,
-    zIndex:30
+    top: 0,
+    right: 30,
+    zIndex: 30,
   },
   purplecircleContainer: {
     position: "absolute",
-    top:-50,
-    right:-20
+    top: -50,
+    right: -20,
   },
 });

@@ -5,8 +5,8 @@ export const tours = [
     tour_mode: "gyalogos",
     logo: "https://reyeswinery.com/wp-content/uploads/2021/04/reyeswinery_slider1.jpg",
     length: "10 km",
-    stops:2,
-    date:'2023-08-11',
+    stops: 2,
+    date: "2023-08-11",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     sights: [
@@ -39,8 +39,8 @@ export const tours = [
     tour_mode: "bicikli",
     logo: "https://parissiswinery.com/wp-content/uploads/2022/01/parissis_winery_skiathos_greece-1.jpg",
     length: "5 km",
-    stops:4,
-    date:'2023-08-30',
+    stops: 4,
+    date: "2023-08-30",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     sights: [
@@ -74,8 +74,8 @@ export const tours = [
     tour_mode: "gyalogos",
     logo: "https://res.akamaized.net/domain/image/upload/t_web/c_crop,h_393,w_627,x_150,y_53/v1631241636/118115-56_ama7b5.jpg",
     length: "4 km",
-    date:'2023-08-12',
-    stops:3,
+    date: "2023-08-12",
+    stops: 3,
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     sights: [

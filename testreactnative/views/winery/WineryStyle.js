@@ -1,8 +1,5 @@
 import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
-  
-  
-  
   title: {
     fontSize: 18,
     fontWeight: "bold",
@@ -11,7 +8,7 @@ export const styles = StyleSheet.create({
   content: {
     fontSize: 14,
   },
-  
+
   opengooglemapsbutton: {
     flexDirection: "row",
     height: 40,
@@ -43,39 +40,36 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     padding: 10,
   },
-  topTextContainer:{
-    width:'100%',
-    padding:5
+  topTextContainer: {
+    width: "100%",
+    padding: 5,
   },
-  nameText:{
-    fontSize:20,
-    fontWeight:'bold',
-    marginLeft:10,
-    marginTop:40
-    
+  nameText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginLeft: 10,
+    marginTop: 40,
   },
-  image:{
-    width:100,
-    height:100,
-    position:'absolute',
-    borderRadius:10,
-    top:20,
-    right:20
+  image: {
+    width: 100,
+    height: 100,
+    position: "absolute",
+    borderRadius: 10,
+    top: 20,
+    right: 20,
   },
-  infoContainer:{
-    flexDirection:'row',
-    width:'100%',
-    marginLeft:10,
-    marginTop:10,
-    marginBottom:10
-
+  infoContainer: {
+    flexDirection: "row",
+    width: "100%",
+    marginLeft: 10,
+    marginTop: 10,
+    marginBottom: 10,
   },
-  infoContainer2:{
-    flexDirection:'row',
-    width:'100%',
-    marginLeft:10,
-    marginTop:10,
-    marginBottom:10
-
-  }
+  infoContainer2: {
+    flexDirection: "row",
+    width: "100%",
+    marginLeft: 10,
+    marginTop: 10,
+    marginBottom: 10,
+  },
 });

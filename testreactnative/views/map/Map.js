@@ -3,16 +3,9 @@ import {
   Text,
   View,
   useWindowDimensions,
-  ScrollView
+  ScrollView,
 } from "react-native";
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useContext,
-  useMemo,
-  useCallback,
-} from "react";
+import React, { useState, useEffect, useRef, useContext, useMemo } from "react";
 import * as Location from "expo-location";
 import { styles } from "./MapStyle";
 import { WineriesContext } from "../../context/GlobalContext.js";
@@ -24,15 +17,19 @@ import ToursModal from "./components/ToursModal";
 import FilterButtons from "./components/FilterButtons";
 import CurrentWineTour from "./components/CurrentWineTour";
 import { Ionicons } from "@expo/vector-icons";
-import FilterCarousel from "./components/FilterCarousel";
 import BottomSheet from "@gorhom/bottom-sheet";
+import {
+  BottomSheetModal,
+  BottomSheetModalProvider,
+} from "@gorhom/bottom-sheet";
 import { MaterialIcons } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import ListIcon from "../../assets/mapassets/listIcon.svg"
-import HankenGrotesk from "../../fonts/HankenGrotesk-Regular.ttf"
+import ListIcon from "../../assets/mapassets/listIcon.svg";
+import HankenGrotesk from "../../fonts/HankenGrotesk-Regular.ttf";
 import { useFonts } from "expo-font";
-import FilterIcon from "../../assets/mapassets/filterIcon.svg"
-import ToursIcon from "../../assets/mapassets/toursIcon.svg"
+import FilterIcon from "../../assets/mapassets/filterIcon.svg";
+import ToursIcon from "../../assets/mapassets/toursIcon.svg";
+import LocationIcon from "../../assets/mapassets/Location.svg";
+import CloseIcon from "../../assets/mapassets/Close.svg";
 const Map = ({ setShowMap }) => {
   const mapRef = useRef(null);
   const markerRef = useRef([]);
@@ -52,6 +49,8 @@ const Map = ({ setShowMap }) => {
   const bottomSheetFilterRef = useRef(null);
   const bottomSheetToursRef = useRef(null);
   const snapPoints = useMemo(() => ["1%", "50%"], []);
+  const toursSnapPoints = useMemo(() => ["50%", "75", "100%"], []);
+  const filterSnapPoints = useMemo(() => ["50%", "75%", "100%"], []);
 
   const [position, setPosition] = useState({
     latitude: 47.6828354,
@@ -62,7 +61,7 @@ const Map = ({ setShowMap }) => {
 
   if (currentLatDelta > 0.01) setCurrentLatDelta(0.005);
   if (currentLongDelta > 0.01) setCurrentLongDelta(0.005);
-  
+
   const openModal = () => {
     setModalVisible(true);
   };
@@ -117,7 +116,6 @@ const Map = ({ setShowMap }) => {
       return tours.filter((tour) => tour.name === name);
     }
   };
-  
 
   useEffect(() => {
     const getLocationPermissions = async () => {
@@ -215,15 +213,15 @@ const Map = ({ setShowMap }) => {
   };
 
   const handleBottomSheetFilter = () => {
-    bottomSheetFilterRef.current.expand();
+    bottomSheetFilterRef.current.present();
   };
   const [loaded] = useFonts({
     HKGrotesk: HankenGrotesk,
-});
+  });
 
-if (!loaded) {
+  if (!loaded) {
     return null;
-}
+  }
 
   return (
     <View style={styles.container}>
@@ -281,7 +279,7 @@ if (!loaded) {
           <TouchableOpacity
             style={styles.toursButton}
             onPress={() => {
-              bottomSheetToursRef.current.expand();
+              bottomSheetToursRef.current.present();
             }}
           >
             <ToursIcon width={24} height={24} />
@@ -291,14 +289,16 @@ if (!loaded) {
             style={styles.filterButton}
             onPress={handleBottomSheetFilter}
           >
-            <FilterIcon width={24} height={24}/>
+            <FilterIcon width={24} height={24} />
           </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.listChangeButton}
             onPress={handleShowMap}
           >
-            <Text style={[styles.buttonText,{fontFamily:'HKGrotesk'}]}>Lista</Text>
+            <Text style={[styles.buttonText, { fontFamily: "HKGrotesk" }]}>
+              Lista
+            </Text>
             <ListIcon width={24} height={24}></ListIcon>
           </TouchableOpacity>
           <BottomSheet
@@ -333,104 +333,94 @@ if (!loaded) {
               width={width}
             />
           </BottomSheet>
-          <BottomSheet
-            ref={bottomSheetFilterRef}
-            index={0}
-            snapPoints={snapPoints}
-            style={styles.bottomSheet}
-            handleIndicatorStyle={{
-              backgroundColor: "rgba(0, 0, 0, 0)",
-            }}
-            enableHandlePanningGesture={false}
-            enableContentPanningGesture={false}
-          >
-            <View style={styles.bottomSheetFilterHeader}>
-              <Text style={styles.title}>Show on map</Text>
-              <TouchableOpacity>
-                <Text>Clear all</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.bottomSheetFilterBody}>
-              <TouchableOpacity style={styles.bottomSheetFilterButton}>
-                <Text>Sightseeing</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.bottomSheetFilterButton}>
-                <Text>Others</Text>
-              </TouchableOpacity>
-            </View>
+          <BottomSheetModalProvider>
+            <BottomSheetModal
+              ref={bottomSheetFilterRef}
+              index={0}
+              snapPoints={filterSnapPoints}
+              style={styles.bottomSheet}
+            >
+              <View style={styles.bottomSheetFilterHeader}>
+                <Text style={styles.title}>Show on map</Text>
+                <TouchableOpacity>
+                  <Text>Clear all</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.bottomSheetFilterBody}>
+                <TouchableOpacity style={styles.bottomSheetFilterButton}>
+                  <Text>Sightseeing</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.bottomSheetFilterButton}>
+                  <Text>Others</Text>
+                </TouchableOpacity>
+              </View>
 
-            <View style={styles.bottomSheetFooter}>
-              <TouchableOpacity style={styles.bottomSheetFilterButton}>
-                <Text>Show selected</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.bottomSheetFilterClose}
-                onPress={() => bottomSheetFilterRef.current.close()}
-              >
-                <Text>Cancel</Text>
-              </TouchableOpacity>
-            </View>
-          </BottomSheet>
-          <BottomSheet
-            ref={bottomSheetToursRef}
-            index={0}
-            snapPoints={snapPoints}
-            style={styles.bottomSheet}
-            handleIndicatorStyle={{
-              backgroundColor: "rgba(0, 0, 0, 0)",
-            }}
-            enableHandlePanningGesture={false}
-            enableContentPanningGesture={false}
-          >
-            <ScrollView>
-            <View style={styles.bottomSheetFilterHeader}>
-              <Text style={styles.title}>Wine tours</Text>
+              <View style={styles.bottomSheetFooter}>
+                <TouchableOpacity style={styles.bottomSheetFilterButton}>
+                  <Text>Show selected</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.bottomSheetFilterClose}
+                  onPress={() => bottomSheetFilterRef.current.close()}
+                >
+                  <Text>Cancel</Text>
+                </TouchableOpacity>
+              </View>
+            </BottomSheetModal>
+          </BottomSheetModalProvider>
+          <BottomSheetModalProvider>
+            <BottomSheetModal
+              ref={bottomSheetToursRef}
+              index={0}
+              snapPoints={toursSnapPoints}
+              backgroundStyle={{
+                backgroundColor: "#FFBD54",
+              }}
+            >
+              <View style={styles.bottomSheetFilterHeader}>
+                <Text style={styles.title}>Wine tours</Text>
 
-              <TouchableOpacity
-                onPress={() => bottomSheetToursRef.current.close()}
-              >
-                <Text>Close</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.bottomSheetFilterBody}>
-              {tours.map((tour, index) => {
-                return (
-                  <TouchableOpacity
-                    key={index}
-                    style={styles.bottomSheetFilterButton}
-                    onPress={() => {
-                      bottomSheetToursRef.current.close();
-                      handleShowTour(tour);
-                    }}
-                  >
-                    <View style={styles.hashtagContainer}>
-                      <Text style={styles.hashtagText}>#</Text>
-                    </View>
-                   
-                    <View style={styles.kmContainer}>
-                      
-                    <View style={styles.circle}></View>
-                    <Text style={styles.hashtag}>#</Text>
-                      <Text style={styles.kmText}>{tour.length}</Text>
-                    </View>
-                    <View style={styles.stopContainer}>
-                      <MaterialIcons
-                        name="location-on"
-                        size={28}
-                        color="#A8A8A8"
-                      />
-                      <Text style={styles.hashtag}>#</Text>
-                      <Text style={styles.stopText}>{tour.stops}</Text>
-                    </View>
-                    <View style={styles.nameContainer}>
-                    <Text style={styles.tourNameText}>{tour.name}</Text>
-                    </View>
-                  </TouchableOpacity>
-                );
-              })}
-            </View>
-            </ScrollView>
-          </BottomSheet>
+                <TouchableOpacity
+                  onPress={() => bottomSheetToursRef.current.dismiss()}
+                  style={styles.closeButton}
+                >
+                  <CloseIcon width={24} height={24} />
+                </TouchableOpacity>
+              </View>
+              <View style={styles.bottomSheetFilterBody}>
+                {tours.map((tour, index) => {
+                  return (
+                    <TouchableOpacity
+                      key={index}
+                      style={styles.bottomSheetTourButton}
+                      onPress={() => {
+                        bottomSheetToursRef.current.close();
+                        handleShowTour(tour);
+                      }}
+                    >
+                      <View style={styles.hashtagContainer}>
+                        <Text style={styles.hashtagText}>#</Text>
+                      </View>
+
+                      <View style={styles.kmContainer}>
+                        <View style={styles.circle}></View>
+                        <Text style={styles.hashtag}>#</Text>
+                        <Text style={styles.kmText}>{tour.length}</Text>
+                      </View>
+                      <View style={styles.stopContainer}>
+                        <LocationIcon width={24} height={24} />
+                        <Text style={styles.hashtag}>#</Text>
+                        <Text style={styles.stopText}>{tour.stops}</Text>
+                      </View>
+                      <View style={styles.nameContainer}>
+                        <Text style={styles.tourNameText}>{tour.name}</Text>
+                      </View>
+                    </TouchableOpacity>
+                  );
+                })}
+              </View>
+            </BottomSheetModal>
+          </BottomSheetModalProvider>
         </View>
       )}
     </View>

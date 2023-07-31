@@ -29,11 +29,11 @@ export const styles = StyleSheet.create({
     },
     shadowOpacity: 0.8, // Increase the opacity to make the shadow darker
     shadowRadius: 10, // Increase the radius to make the shadow spread wider
-    elevation: 8, 
+    elevation: 8,
   },
   buttonText: {
     marginRight: 10,
-    color:'white'
+    color: "white",
   },
   resetButton: {
     position: "absolute",
@@ -52,8 +52,8 @@ export const styles = StyleSheet.create({
     borderRadius: 40,
     paddingVertical: 10,
     paddingHorizontal: 10,
-    justifyContent:'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   filterButton: {
     position: "absolute",
@@ -109,6 +109,9 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
     position: "relative",
   },
+  bottomSheet: {
+    marginBottom: 10,
+  },
   bottomSheetHeaderButton: {
     alignSelf: "flex-end",
     marginRight: 10,
@@ -127,10 +130,12 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     fontWeight: "bold",
+    color: "white",
+    marginLeft: 10,
   },
   bottomSheetFilterButton: {
     backgroundColor: "#EEEEEE",
-    height: 120,
+    height: 50,
     borderRadius: 10,
     paddingVertical: 15,
     paddingHorizontal: 15,
@@ -141,13 +146,22 @@ export const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginVertical: 10,
   },
+  bottomSheetTourButton: {
+    backgroundColor: "#EEEEEE",
+    height: 100,
+    borderRadius: 10,
+    paddingVertical: 15,
+    paddingHorizontal: 15,
+    marginHorizontal: 10,
+    marginVertical: 5,
+  },
   hashtagContainer: {
     position: "absolute",
-    width:45,
-    height:45,
-    padding:5,
+    width: 45,
+    height: 45,
+    padding: 5,
     borderRadius: 60,
-    backgroundColor: "#A8A8A8",
+    backgroundColor: "#FF8882",
     top: 8,
     left: 5,
     justifyContent: "center",
@@ -155,9 +169,9 @@ export const styles = StyleSheet.create({
   },
   dateContainer: {
     position: "absolute",
-    flexDirection:'row',
-    padding:5,
-    
+    flexDirection: "row",
+    padding: 5,
+
     backgroundColor: "white",
     borderRadius: 60,
     top: 8,
@@ -167,12 +181,11 @@ export const styles = StyleSheet.create({
   },
   kmContainer: {
     position: "absolute",
-    flexDirection:'row',
-    padding:5,
-    
+    flexDirection: "row",
+    padding: 5,
     backgroundColor: "white",
-    borderTopStartRadius:60,
-    borderBottomStartRadius:60,
+    borderTopStartRadius: 60,
+    borderBottomStartRadius: 60,
     top: 8,
     right: 0,
     justifyContent: "center",
@@ -180,12 +193,12 @@ export const styles = StyleSheet.create({
   },
   stopContainer: {
     position: "absolute",
-    flexDirection:'row',
-    padding:5,
-    
+    flexDirection: "row",
+    padding: 5,
+
     backgroundColor: "white",
-    borderTopStartRadius:60,
-    borderBottomStartRadius:60,
+    borderTopStartRadius: 60,
+    borderBottomStartRadius: 60,
     top: 54,
     right: 0,
     justifyContent: "center",
@@ -193,46 +206,42 @@ export const styles = StyleSheet.create({
   },
   hashtagText: {
     fontSize: 23,
-    color:'white',
-
+    color: "white",
   },
   dateText: {
     fontSize: 15,
-    color:'#A8A8A8',
-
+    color: "#A8A8A8",
   },
   kmText: {
     fontSize: 15,
-    color:'#A8A8A8',
-
+    color: "#352269BF",
   },
   stopText: {
     fontSize: 15,
-    color:'#A8A8A8',
-
+    color: "#352269BF",
   },
-  circle:{
-    height:20,
-    marginLeft:5,
-    marginRight:10,
-    width:20,
-    backgroundColor:'#A8A8A8',
-    borderRadius:50
+  circle: {
+    height: 20,
+    marginLeft: 5,
+    marginRight: 10,
+    width: 20,
+    backgroundColor: "#352269BF",
+    borderRadius: 50,
   },
-  hashtag:{
-    color:'#A8A8A8',
-    marginRight:5
+  hashtag: {
+    color: "#A8A8A8",
+    marginRight: 5,
   },
-  tourNameText:{
-    fontSize:20,
-    fontWeight:'bold',
-    
+  tourNameText: {
+    fontSize: 20,
+    fontWeight: "bold",
   },
-  nameContainer:{
-    position:'absolute',
-    bottom:15,
-    left:15
-
-}
+  nameContainer: {
+    position: "absolute",
+    bottom: 15,
+    left: 15,
+  },
+  closeButton: {
+    marginRight: 10,
+  },
 });
-

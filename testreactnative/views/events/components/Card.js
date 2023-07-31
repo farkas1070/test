@@ -7,7 +7,10 @@ import Placeholder from "../../../assets/placeholder.png";
 const Card = ({ item, index }) => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity style={styles.cardContainer} onPress={() => navigation.navigate("Event", { item: item })}>
+    <TouchableOpacity
+      style={styles.cardContainer}
+      onPress={() => navigation.navigate("Event", { item: item })}
+    >
       {/* Image */}
       <Image
         source={item.image ? { uri: item.image } : Placeholder}
@@ -20,10 +23,11 @@ const Card = ({ item, index }) => {
 
       {/* Description */}
       <Text style={styles.cardDescription}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, turpis at posuere commodo, lectus sem hendrerit nisi, id rutrum quam nunc eu turpis.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor,
+        turpis at posuere commodo, lectus sem hendrerit nisi, id rutrum quam
+        nunc eu turpis.
       </Text>
     </TouchableOpacity>
-   
   );
 };
 

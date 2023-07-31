@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     alignSelf: "center",
-    backgroundColor:'white',
+    backgroundColor: "white",
     flexDirection: "row",
   },
   searchInput: {

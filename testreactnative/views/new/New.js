@@ -11,7 +11,7 @@ import TopHeaderImage from "../../components/TopHeaderImage";
 import { SafeAreaView } from "react-native-safe-area-context";
 import RenderHtml from "react-native-render-html";
 import { tagsStyles } from "./HtmlContentStyle";
-import Placeholder from "../../assets/placeholder.png"
+import Placeholder from "../../assets/placeholder.png";
 const New = ({ route }) => {
   const item = route.params.item;
   const source = {

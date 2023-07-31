@@ -53,11 +53,11 @@ const Winery = ({ route }) => {
             <Text>{winery.connection.adress}</Text>
           </View>
           <View style={styles.infoContainer2}>
-          <Ionicons name="call" size={24} color="black" />
+            <Ionicons name="call" size={24} color="black" />
             <Text>{winery.connection.adress}</Text>
           </View>
           <View style={styles.infoContainer2}>
-          <Ionicons name="desktop" size={24} color="black" />
+            <Ionicons name="desktop" size={24} color="black" />
             <Text>{winery.connection.adress}</Text>
           </View>
         </View>

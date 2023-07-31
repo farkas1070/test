@@ -58,10 +58,10 @@ export const styles = StyleSheet.create({
     },
     shadowOpacity: 1, // Increase the opacity to make the shadow darker
     shadowRadius: 15, // Increase the radius to make the shadow spread wider
-    elevation: 8, 
+    elevation: 8,
   },
   mapButtonText: {
     marginRight: 10,
-    color:'white'
+    color: "white",
   },
 });

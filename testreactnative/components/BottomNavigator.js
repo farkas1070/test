@@ -44,15 +44,20 @@ const BottomNavigator = () => {
       <InformationModal modalVisible={modalVisible} closeModal={closeModal} />
       <Tab.Navigator
         screenOptions={{
-          tabBarStyle: { height: 65,paddingBottom: 10,paddingTop: 10  },
+          tabBarStyle: {
+            height: 60,
+            paddingBottom: 10,
+            paddingTop: 10,
+            marginBottom: 20,
+            borderRadius: 20,
+            backgroundColor: "#F5F5F5",
+          },
           tabBarActiveTintColor: "#FF8882",
           tabBarInactiveTintColor: "#9E9E9E",
           tabBarLabelStyle: {
             fontSize: 11,
             fontWeight: "bold",
-            
           },
-          
         }}
       >
         <Tab.Screen
@@ -61,7 +66,7 @@ const BottomNavigator = () => {
           options={{
             tabBarIcon: ({ focused }) =>
               focused ? (
-                <HomeFilledIcon width={24} height={24}  />
+                <HomeFilledIcon width={24} height={24} />
               ) : (
                 <HomeIcon width={24} height={24} />
               ),

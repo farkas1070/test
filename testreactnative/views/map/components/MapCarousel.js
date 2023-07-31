@@ -21,20 +21,25 @@ const MapCarousel = ({
     return (
       <View style={styles.slide}>
         <View style={styles.slideContent}>
-          <View style={{width:'45%',height:'100%',justifyContent:'center',alignItems:'flex-end'}}>
-          <Image
-            style={styles.image}
-            source={item.logo ? { uri: item.logo } : Placeholder}
-          />
+          <View
+            style={{
+              width: "45%",
+              height: "100%",
+              justifyContent: "center",
+              alignItems: "flex-end",
+            }}
+          >
+            <Image
+              style={styles.image}
+              source={item.logo ? { uri: item.logo } : Placeholder}
+            />
           </View>
           <View style={styles.textContainer}>
             <View>
-            <Text style={styles.text}>
-              {item.title}
-            </Text>
-            <Text style={styles.descriptionText}>
-              {item.connection.adress}
-            </Text>
+              <Text style={styles.text}>{item.title}</Text>
+              <Text style={styles.descriptionText}>
+                {item.connection.adress}
+              </Text>
             </View>
             <View>
               <Text>Open Hours</Text>

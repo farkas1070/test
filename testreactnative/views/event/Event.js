@@ -20,9 +20,7 @@ const Event = ({ route }) => {
   return (
     <SafeAreaView>
       <ScrollView>
-        <TopHeaderImage
-          item={route.params.item.image}
-        />
+        <TopHeaderImage item={route.params.item.image} />
         <Text style={styles.eventTitle}>{route.params.item.title}</Text>
         <View style={styles.backContainer}>
           <View style={styles.eventInfo}>

@@ -24,10 +24,9 @@ export const styles = StyleSheet.create({
     borderRadius: 20,
     width: "85%",
   },
-  searchButton:{
-    
-    borderRadius:10,
-    padding:3
+  searchButton: {
+    borderRadius: 10,
+    padding: 3,
   },
   searchInput: {
     width: "80%",

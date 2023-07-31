@@ -19,7 +19,7 @@ const Stack = createNativeStackNavigator();
 const StackNavigator = () => {
   const [firstTimeOpen, setFirstTimeOpen] = useState(null);
   const [loaded] = useContext(LoadingContext);
-  const [i18n,setI18n] = useContext(I18nContext);
+  const [i18n, setI18n] = useContext(I18nContext);
 
   useEffect(() => {
     const getData = async () => {

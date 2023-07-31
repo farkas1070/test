@@ -14,43 +14,28 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     height: "100%",
   },
-  descriptionText:{
+  descriptionText: {
     fontSize: 16,
-    marginTop:5,
+    marginTop: 5,
     textAlign: "left",
   },
   text: {
     fontSize: 16,
-    
+
     fontWeight: "bold",
     textAlign: "left",
   },
   image: {
     width: "92%",
     height: "84%",
-    
-    borderRadius:20,
-    resizeMode:'contain'
-  },
-  
-  textContainer:{
-    padding:10,
-    width:'55%',
-    justifyContent: 'space-evenly',
 
+    borderRadius: 20,
+    resizeMode: "contain",
   },
 
-  
-  
-  
-  
-  
-  
- 
-  
-  
-  
-  
-  
-  
+  textContainer: {
+    padding: 10,
+    width: "55%",
+    justifyContent: "space-evenly",
+  },
 });
