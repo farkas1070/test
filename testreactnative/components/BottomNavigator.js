@@ -23,7 +23,8 @@ import WineriesFilledIcon from "../assets/navigatorassets/WineriesFilled";
 import EventsFilledIcon from "../assets/navigatorassets/EventsFilled";
 import NewsFilledIcon from "../assets/navigatorassets/NewsFilled";
 import MenuIcon from "../assets/menuassets/Menu";
-
+import { useFonts } from "expo-font";
+import HKGrotesk from "../fonts/HankenGrotesk-Regular.ttf"
 const Tab = createBottomTabNavigator();
 
 const BottomNavigator = () => {
@@ -39,6 +40,13 @@ const BottomNavigator = () => {
   const openMenu = () => {
     navigation.openDrawer();
   };
+  const [loaded] = useFonts({
+    HKGrotesk: HKGrotesk,
+  });
+
+  if (!loaded) {
+    return null;
+  }
   return (
     <React.Fragment>
       <InformationModal modalVisible={modalVisible} closeModal={closeModal} />
@@ -49,7 +57,8 @@ const BottomNavigator = () => {
           tabBarInactiveTintColor: "#9E9E9E",
           tabBarLabelStyle: {
             fontSize: 11,
-            fontWeight: "bold",
+            
+            fontFamily:'HKGrotesk'
             
           },
           

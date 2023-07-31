@@ -19,6 +19,12 @@ import { I18nContext } from "../../context/GlobalContext";
 import TopHeaderImage from "../../components/TopHeaderImage";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
+import TopHeader from "./components/TopHeader";
+import WebshopIcon from "../../assets/wineryassets/webshopIcon.svg";
+import HKGrotesk from "../../fonts/HankenGrotesk-Regular.ttf";
+import { useFonts } from "expo-font";
+import { FontAwesome5 } from "@expo/vector-icons";
+import LocationIcon from "../../assets/wineryassets/locationIcon.svg";
 
 const Winery = ({ route }) => {
   const { width } = useWindowDimensions();
@@ -39,26 +45,78 @@ const Winery = ({ route }) => {
       );
     }
   };
+  const [loaded] = useFonts({
+    HKGrotesk: HKGrotesk,
+  });
+
+  if (!loaded) {
+    return null;
+  }
 
   return (
     <SafeAreaView>
       <ScrollView>
-        <TopHeaderImage item={winery.logo ? winery.logo : Placeholder} />
+        <TopHeader item={winery.logo} />
 
         <View style={styles.topTextContainer}>
-          <Text style={styles.nameText}>{winery.title}</Text>
-          <Image style={styles.image} source={Placeholder} />
-          <View style={styles.infoContainer}>
-            <Ionicons name="airplane" size={24} color="black" />
-            <Text>{winery.connection.adress}</Text>
-          </View>
-          <View style={styles.infoContainer2}>
-          <Ionicons name="call" size={24} color="black" />
-            <Text>{winery.connection.adress}</Text>
-          </View>
-          <View style={styles.infoContainer2}>
-          <Ionicons name="desktop" size={24} color="black" />
-            <Text>{winery.connection.adress}</Text>
+          <Image
+            style={styles.image}
+            resizeMode="contain"
+            source={winery.logo ? { uri: winery.logo } : Placeholder}
+          />
+          <TouchableOpacity style={styles.webshopButton}>
+            <WebshopIcon width={60} height={60}></WebshopIcon>
+          </TouchableOpacity>
+          <View style={styles.topContainer}>
+            <Text style={[styles.nameText, { fontFamily: "HKGrotesk" }]}>
+              {winery.title}
+            </Text>
+            <View style={styles.socialIconsContainer}>
+              <FontAwesome5
+                name="facebook"
+                size={30}
+                color="white"
+                style={styles.icon}
+              />
+              <FontAwesome5
+                name="instagram"
+                size={30}
+                color="white"
+                style={styles.icon}
+              />
+              <FontAwesome5
+                name="linkedin"
+                size={30}
+                color="white"
+                style={styles.icon}
+              />
+            </View>
+            <View style={styles.infoContainer}>
+              <LocationIcon
+                width={20}
+                height={20}
+                style={styles.locationIcon}
+              />
+              <View style={styles.adressContainer}>
+                <Text style={[styles.mainAdressText, {fontFamily:'HKGrotesk'}]}>{winery.connection.adress? winery.connection.adress : 'Nincs Cím Megadva'}</Text>
+                <Text style={[styles.subAdressText, {fontFamily:'HKGrotesk'}]}>{winery.connection.telephone? winery.connection.telephone : 'Nincs Telefon Megadva'}</Text>
+                <Text style={[styles.subAdressText, {fontFamily:'HKGrotesk'}]}>{winery.connection.email? winery.connection.email : 'Nincs E-mail cím Megadva'}</Text>
+              </View>
+
+            </View>
+            <View style={styles.websiteContainer}>
+            <LocationIcon
+                width={20}
+                height={20}
+                style={styles.locationIcon}
+              />
+              <View style={styles.adressContainer}>
+              <Text style={[styles.websiteText, {fontFamily:'HKGrotesk'}]}>
+              
+              {winery.connection.website}
+              </Text>
+              </View>
+            </View>
           </View>
         </View>
         <RenderHtml
@@ -89,7 +147,7 @@ const Winery = ({ route }) => {
           >
             <MaterialCommunityIcons
               name="google-maps"
-              size={24}
+              size={30}
               color="black"
             />
             <Text>Mutasd a térképen</Text>
