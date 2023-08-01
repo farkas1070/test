@@ -56,7 +56,7 @@ const Winery = ({ route }) => {
   return (
     <SafeAreaView>
       <ScrollView>
-        <TopHeader item={winery.logo} />
+        <TopHeader item={winery.banner} />
 
         <View style={styles.topTextContainer}>
           <Image

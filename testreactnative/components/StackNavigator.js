@@ -52,6 +52,7 @@ const StackNavigator = () => {
         name="Event"
         component={Event}
         options={{
+          headerShown: false,
           headerTintColor: "black",
           headerTitleAlign: "center",
           headerTitleStyle: {

@@ -35,6 +35,7 @@ export const getWineries2 = async (language) => {
       title: item?.title?.rendered,
       content: item?.content?.rendered,
       logo: item?.acf?.banner?.boraszat_logo?.sizes?.medium,
+      banner: item?.acf?.banner?.banner_hatter?.url,
       owner_name: item?.acf?.kapcsolat?.tulajdonos_nev,
       type: item?.type,
       services: item?._embedded?.["wp:term"]?.[0],
