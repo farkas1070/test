@@ -1,6 +1,12 @@
 import React, { useContext, useState } from "react";
 import { styles } from "./FilterCarouselStyle";
-import { View, Dimensions, Text, FlatList, TouchableOpacity } from "react-native";
+import {
+  View,
+  Dimensions,
+  Text,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { ServicesContext } from "../../../context/GlobalContext";
 import { SvgCssUri } from "react-native-svg";
@@ -25,12 +31,28 @@ const FilterCarousel = () => {
     const isSelected = selectedButtonIndex === index;
 
     return (
-      
-        <TouchableOpacity key={index} style={[isSelected ? styles.selectedButton : styles.icon ]} onPress={() => handleButtonPress(index)}>
-          <SvgCssUri uri={isSelected? item.acf.icon: item.acf.icon_2} width={60} height={60} />
-          <Text style={[styles.text, { fontFamily: 'HKGrotesk', color: isSelected ? 'white' : '#352269' }]}>{item.name}</Text>
-        </TouchableOpacity>
-      
+      <TouchableOpacity
+        key={index}
+        style={[isSelected ? styles.selectedButton : styles.icon]}
+        onPress={() => handleButtonPress(index)}
+      >
+        <SvgCssUri
+          uri={isSelected ? item.acf.icon : item.acf.icon_2}
+          width={60}
+          height={60}
+        />
+        <Text
+          style={[
+            styles.text,
+            {
+              fontFamily: "HKGrotesk",
+              color: isSelected ? "white" : "#352269",
+            },
+          ]}
+        >
+          {item.name}
+        </Text>
+      </TouchableOpacity>
     );
   };
 

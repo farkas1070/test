@@ -6,9 +6,7 @@ export const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
-  header:{
-    
-  },
+  header: {},
   container: {
     backgroundColor: "#fff",
     width: "100%",
@@ -27,6 +25,7 @@ export const styles = StyleSheet.create({
     marginLeft: 20,
     marginTop: 20,
     marginBottom: 10,
+    color: "#FF8882",
   },
 
   card: {

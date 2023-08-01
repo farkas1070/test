@@ -51,7 +51,6 @@ const CustomDrawer = (props) => {
             <DrawerButton
               routeName={i18n.t("home")[0]}
               icon={<HomeIcon width={24} height={24} />}
-              isSelected={selectedItem === i18n.t("home")[0]}
               onPress={() => {
                 handleItemPress(i18n.t("home")[0]);
               }}
@@ -59,7 +58,6 @@ const CustomDrawer = (props) => {
             <DrawerButton
               routeName={i18n.t("wineries")}
               icon={<WineriesIcon width={24} height={24} />}
-              isSelected={selectedItem === i18n.t("wineries")}
               onPress={() => {
                 handleItemPress(i18n.t("wineries"));
               }}
@@ -67,7 +65,6 @@ const CustomDrawer = (props) => {
             <DrawerButton
               routeName={i18n.t("events")}
               icon={<EventsIcon width={24} height={24} />}
-              isSelected={selectedItem === i18n.t("events")}
               onPress={() => {
                 handleItemPress(i18n.t("events"));
               }}
@@ -75,7 +72,6 @@ const CustomDrawer = (props) => {
             <DrawerButton
               routeName={i18n.t("news")}
               icon={<NewsIcon width={24} height={24} />}
-              isSelected={selectedItem === i18n.t("news")}
               onPress={() => {
                 handleItemPress(i18n.t("news"));
               }}
@@ -83,7 +79,6 @@ const CustomDrawer = (props) => {
             <DrawerButton
               routeName={i18n.t("about")}
               icon={<NewsIcon width={24} height={24} />}
-              isSelected={selectedItem === i18n.t("about")}
               onPress={() => {
                 handleItemPress(i18n.t("about"));
               }}
@@ -91,7 +86,6 @@ const CustomDrawer = (props) => {
             <DrawerButton
               routeName={i18n.t("settings")}
               icon={<SettingsIcon width={24} height={24} />}
-              isSelected={selectedItem === i18n.t("settings")}
               onPress={() => {
                 handleItemPress(i18n.t("settings"));
               }}

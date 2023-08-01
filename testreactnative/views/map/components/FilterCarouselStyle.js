@@ -10,35 +10,30 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     paddingBottom: 10,
-    paddingTop:10,
-   
-    
+    paddingTop: 10,
   },
   slideContent: {
     width: "100%",
-    
   },
-  selectedButton:{
+  selectedButton: {
     backgroundColor: "#352269",
     alignItems: "center",
     borderRadius: 35,
     height: 50,
     padding: 10,
     flexDirection: "row",
-    marginRight:2,
-    marginLeft:10,
-    marginTop:15
-    
-    
+    marginRight: 2,
+    marginLeft: 10,
+    marginTop: 15,
   },
   textContainer: {
     height: "100%",
   },
   text: {
     fontSize: 13,
-    color:'#352269',
+    color: "#352269",
     textAlign: "center",
-    marginRight:5
+    marginRight: 5,
   },
   icon: {
     backgroundColor: "rgba(236,236,236,1)",
@@ -47,13 +42,13 @@ export const styles = StyleSheet.create({
     height: 50,
     padding: 10,
     flexDirection: "row",
-    backgroundColor:'white',
-    marginRight:2,
-    marginLeft:10,
-    marginTop:15,
-    marginBottom:25
+    backgroundColor: "white",
+    marginRight: 2,
+    marginLeft: 10,
+    marginTop: 15,
+    marginBottom: 25,
   },
-  container:{
+  container: {
     backgroundColor: "rgba(236,236,236,1)",
-  }
+  },
 });

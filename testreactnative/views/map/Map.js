@@ -317,14 +317,12 @@ const Map = ({ setShowMap }) => {
             enableHandlePanningGesture={false}
             enableContentPanningGesture={false}
           >
-            <View style={styles.bottomSheetHeader}>
-              <TouchableOpacity
-                style={styles.bottomSheetHeaderButton}
-                onPress={() => bottomSheetRef.current.close()}
-              >
-                <Ionicons name="close" size={30} color="black" />
-              </TouchableOpacity>
-            </View>
+            <TouchableOpacity
+              style={styles.bottomSheetHeaderButton}
+              onPress={() => bottomSheetRef.current.close()}
+            >
+              <CloseIcon width={24} height={24} />
+            </TouchableOpacity>
 
             <MapCarousel
               data={filteredMarkers}
