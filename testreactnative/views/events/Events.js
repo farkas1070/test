@@ -40,7 +40,7 @@ const Events = () => {
 
   return (
     <SafeAreaView style={styles.maincontainer}>
-      <View style={{  flexDirection: "row" }}>
+      <View style={{  flexDirection: "row",backgroundColor:'#F0EEEF' }}>
         <SearchBar onSearch={setSearchText} />
       </View>
 

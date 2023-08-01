@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     header:{
-        backgroundColor: 'white',
+        backgroundColor: '#F0EEEF',
         
         
     }

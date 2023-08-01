@@ -11,7 +11,7 @@ const FilterCarousel = () => {
   const width = Dimensions.get("window").width;
   const [services] = useContext(ServicesContext);
 
-  const itemWidth = width / 5;
+  const itemWidth = width / 2;
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
   const [loaded] = useFonts({
     HKGrotesk: HKGrotesk,
@@ -28,12 +28,12 @@ const FilterCarousel = () => {
     const isSelected = selectedButtonIndex === index;
 
     return (
-      <TouchableOpacity key={index} style={[styles.slide, { width: itemWidth }]} onPress={() => handleButtonPress(index)}>
-        <View style={[isSelected ? styles.selectedButton : styles.icon]}>
+      
+        <TouchableOpacity key={index} style={[isSelected ? styles.selectedButton : styles.icon ]} onPress={() => handleButtonPress(index)}>
           <SvgCssUri uri={isSelected? item.acf.icon: item.acf.icon_2} width={60} height={60} />
           <Text style={[styles.text, { fontFamily: 'HKGrotesk', color: isSelected ? 'white' : '#352269' }]}>{item.name}</Text>
-        </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      
     );
   };
 

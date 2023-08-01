@@ -3,6 +3,7 @@ import React from "react";
 import { styles } from "./CardStyle";
 import { useNavigation } from "@react-navigation/core";
 import Placeholder from "../../../assets/placeholder.png";
+import LocationIcon from "../../../assets/wineryassets/locationIcon.svg"
 const Card = ({ item, index }) => {
   const navigation = useNavigation();
   return (

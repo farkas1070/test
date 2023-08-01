@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     width: "100%",
     paddingBottom: 10,
     paddingTop:10,
-    marginHorizontal: 30,
+   
     
   },
   slideContent: {
@@ -25,15 +25,20 @@ export const styles = StyleSheet.create({
     height: 50,
     padding: 10,
     flexDirection: "row",
+    marginRight:2,
+    marginLeft:10,
+    marginTop:15
+    
     
   },
   textContainer: {
     height: "100%",
   },
   text: {
-    fontSize: 10,
+    fontSize: 13,
     color:'#352269',
     textAlign: "center",
+    marginRight:5
   },
   icon: {
     backgroundColor: "rgba(236,236,236,1)",
@@ -42,7 +47,11 @@ export const styles = StyleSheet.create({
     height: 50,
     padding: 10,
     flexDirection: "row",
-    backgroundColor:'white'
+    backgroundColor:'white',
+    marginRight:2,
+    marginLeft:10,
+    marginTop:15,
+    marginBottom:25
   },
   container:{
     backgroundColor: "rgba(236,236,236,1)",
