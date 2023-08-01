@@ -18,7 +18,9 @@ const News = () => {
 
   return (
     <SafeAreaView style={styles.maincontainer}>
+      <View style={styles.header}>
       <SearchBar onSearch={setSearchText} />
+      </View>
 
       <ScrollView
         style={styles.container}

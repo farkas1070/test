@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     paddingBottom: 10,
+    paddingTop:10,
     marginHorizontal: 30,
   },
   slideContent: {
