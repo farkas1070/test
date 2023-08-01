@@ -38,9 +38,7 @@ const MapViewContainer = ({
       provider={PROVIDER_GOOGLE}
       customMapStyle={Mapstyle}
       onMapReady={() => {
-        setTimeout(() => {
-          setMapReady(true);
-        }, 5000);
+        setMapReady(true);
         jumpToPointOfInterest();
       }}
       onRegionChangeComplete={async (region) => {

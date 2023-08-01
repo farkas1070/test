@@ -4,6 +4,7 @@ import {
   View,
   useWindowDimensions,
   ScrollView,
+  ImageBackground,
 } from "react-native";
 import React, { useState, useEffect, useRef, useContext, useMemo } from "react";
 import * as Location from "expo-location";
@@ -30,6 +31,7 @@ import FilterIcon from "../../assets/mapassets/filterIcon.svg";
 import ToursIcon from "../../assets/mapassets/toursIcon.svg";
 import LocationIcon from "../../assets/mapassets/Location.svg";
 import CloseIcon from "../../assets/mapassets/Close.svg";
+import { set } from "react-native-reanimated";
 const Map = ({ setShowMap }) => {
   const mapRef = useRef(null);
   const markerRef = useRef([]);
@@ -50,7 +52,7 @@ const Map = ({ setShowMap }) => {
   const bottomSheetToursRef = useRef(null);
   const snapPoints = useMemo(() => ["1%", "50%"], []);
   const toursSnapPoints = useMemo(() => ["50%", "75", "100%"], []);
-  const filterSnapPoints = useMemo(() => ["50%", "75%", "100%"], []);
+  const filterSnapPoints = useMemo(() => ["50%"], []);
 
   const [position, setPosition] = useState({
     latitude: 47.6828354,
@@ -228,7 +230,7 @@ const Map = ({ setShowMap }) => {
       <ToursModal
         modalVisible={modalVisible}
         closeModal={closeModal}
-        tours={tours}
+        tours={currentTour ? [currentTour] : tours}
         handleshowTour={handleShowTour}
       />
 
@@ -339,11 +341,17 @@ const Map = ({ setShowMap }) => {
               index={0}
               snapPoints={filterSnapPoints}
               style={styles.bottomSheet}
+              handleIndicatorStyle={{
+                backgroundColor: "rgba(0, 0, 0, 0)",
+              }}
             >
               <View style={styles.bottomSheetFilterHeader}>
                 <Text style={styles.title}>Show on map</Text>
-                <TouchableOpacity>
-                  <Text>Clear all</Text>
+                <TouchableOpacity
+                  style={styles.bottomSheetFilterClose}
+                  onPress={() => bottomSheetFilterRef.current.close()}
+                >
+                  <CloseIcon width={24} height={24} />
                 </TouchableOpacity>
               </View>
               <View style={styles.bottomSheetFilterBody}>
@@ -356,14 +364,9 @@ const Map = ({ setShowMap }) => {
               </View>
 
               <View style={styles.bottomSheetFooter}>
-                <TouchableOpacity style={styles.bottomSheetFilterButton}>
-                  <Text>Show selected</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.bottomSheetFilterClose}
-                  onPress={() => bottomSheetFilterRef.current.close()}
-                >
-                  <Text>Cancel</Text>
+                <Text style={{ color: "#FF8882" }}>Clear all</Text>
+                <TouchableOpacity style={styles.bottomSheetSelectButton}>
+                  <Text style={{ color: "white" }}>Show selected</Text>
                 </TouchableOpacity>
               </View>
             </BottomSheetModal>
@@ -376,9 +379,21 @@ const Map = ({ setShowMap }) => {
               backgroundStyle={{
                 backgroundColor: "#FFBD54",
               }}
+              handleIndicatorStyle={{
+                backgroundColor: "rgba(0, 0, 0, 0)",
+              }}
             >
               <View style={styles.bottomSheetFilterHeader}>
-                <Text style={styles.title}>Wine tours</Text>
+                <Text
+                  style={{
+                    color: "white",
+                    marginLeft: 10,
+                    fontWeight: "bold",
+                    fontSize: 16,
+                  }}
+                >
+                  Wine tours
+                </Text>
 
                 <TouchableOpacity
                   onPress={() => bottomSheetToursRef.current.dismiss()}
@@ -394,10 +409,16 @@ const Map = ({ setShowMap }) => {
                       key={index}
                       style={styles.bottomSheetTourButton}
                       onPress={() => {
-                        bottomSheetToursRef.current.close();
-                        handleShowTour(tour);
+                        setCurrentTour(tour);
+                        modalVisible ? closeModal() : openModal();
+                        bottomSheetToursRef.current.dismiss();
                       }}
                     >
+                      <ImageBackground
+                        source={{ uri: tour.logo }}
+                        style={styles.tourImage}
+                        imageStyle={{ borderRadius: 10 }}
+                      ></ImageBackground>
                       <View style={styles.hashtagContainer}>
                         <Text style={styles.hashtagText}>#</Text>
                       </View>
