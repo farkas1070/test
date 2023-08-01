@@ -6,6 +6,7 @@ import BackIcon from "../../../assets/wineryassets/backIcon.svg"
 import MapIcon from "../../../assets/wineryassets/mapIcon.svg"
 import { useNavigation } from '@react-navigation/native';
 import Placeholder from "../../../assets/placeholder.png";
+import { SafeAreaView } from 'react-native-safe-area-context';
 const TopHeader = ({ item }) => {
     const navigation = useNavigation();
   return (

@@ -16,9 +16,6 @@ import { tagsStyles } from "./ContentStyle";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { SvgCssUri } from "react-native-svg";
 import { I18nContext } from "../../context/GlobalContext";
-import TopHeaderImage from "../../components/TopHeaderImage";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { Ionicons } from "@expo/vector-icons";
 import TopHeader from "./components/TopHeader";
 import WebshopIcon from "../../assets/wineryassets/webshopIcon.svg";
 import HKGrotesk from "../../fonts/HankenGrotesk-Regular.ttf";
@@ -54,123 +51,144 @@ const Winery = ({ route }) => {
   }
 
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <TopHeader item={winery.banner} />
+    <>
+      <View>
+        <ScrollView>
+          <TopHeader item={winery.banner} />
 
-        <View style={styles.topTextContainer}>
-          <Image
-            style={styles.image}
-            resizeMode="contain"
-            source={winery.logo ? { uri: winery.logo } : Placeholder}
-          />
-          <TouchableOpacity style={styles.webshopButton}>
-            <WebshopIcon width={60} height={60}></WebshopIcon>
-          </TouchableOpacity>
-          <View style={styles.topContainer}>
-            <Text style={[styles.nameText, { fontFamily: "HKGrotesk" }]}>
-              {winery.title}
-            </Text>
-            <View style={styles.socialIconsContainer}>
-              <FontAwesome5
-                name="facebook"
-                size={30}
-                color="white"
-                style={styles.icon}
-              />
-              <FontAwesome5
-                name="instagram"
-                size={30}
-                color="white"
-                style={styles.icon}
-              />
-              <FontAwesome5
-                name="linkedin"
-                size={30}
-                color="white"
-                style={styles.icon}
-              />
-            </View>
-            <View style={styles.infoContainer}>
-              <LocationIcon
-                width={20}
-                height={20}
-                style={styles.locationIcon}
-              />
-              <View style={styles.adressContainer}>
-                <Text
-                  style={[styles.mainAdressText, { fontFamily: "HKGrotesk" }]}
-                >
-                  {winery.connection.adress
-                    ? winery.connection.adress
-                    : "Nincs Cím Megadva"}
-                </Text>
-                <Text
-                  style={[styles.subAdressText, { fontFamily: "HKGrotesk" }]}
-                >
-                  {winery.connection.telephone
-                    ? winery.connection.telephone
-                    : "Nincs Telefon Megadva"}
-                </Text>
-                <Text
-                  style={[styles.subAdressText, { fontFamily: "HKGrotesk" }]}
-                >
-                  {winery.connection.email
-                    ? winery.connection.email
-                    : "Nincs E-mail cím Megadva"}
-                </Text>
+          <View style={styles.topTextContainer}>
+            <Image
+              style={styles.image}
+              resizeMode="contain"
+              source={winery.logo ? { uri: winery.logo } : Placeholder}
+            />
+            <TouchableOpacity style={styles.webshopButton}>
+              <WebshopIcon width={60} height={60}></WebshopIcon>
+            </TouchableOpacity>
+            <View style={styles.topContainer}>
+              <Text style={[styles.nameText, { fontFamily: "HKGrotesk" }]}>
+                {winery.title}
+              </Text>
+              <View style={styles.mainSocialIconsContainer}>
+                <View style={styles.socialIconsContainer}>
+                <FontAwesome5
+                  name="facebook"
+                  size={30}
+                  color="white"
+                  style={styles.icon}
+                />
+                <FontAwesome5
+                  name="instagram"
+                  size={30}
+                  color="white"
+                  style={styles.icon}
+                />
+                <FontAwesome5
+                  name="linkedin"
+                  size={30}
+                  color="white"
+                  style={styles.icon}
+                />
+                </View>
+                {winery.map.lat != undefined && winery.map.lng != undefined && (
+                <TouchableOpacity onPress={() => {
+                  openGoogleMaps();
+                }} style={styles.takeToGoogleButton}>
+                <MaterialCommunityIcons name="google-maps" size={30} color="#FFBD54" />
+                </TouchableOpacity>)
+                }
               </View>
-            </View>
-            <View style={styles.websiteContainer}>
-              <LocationIcon
-                width={20}
-                height={20}
-                style={styles.locationIcon}
-              />
-              <View style={styles.adressContainer}>
-                <Text style={[styles.websiteText, { fontFamily: "HKGrotesk" }]}>
-                  {winery.connection.website}
-                </Text>
+              <View style={styles.infoContainer}>
+                <LocationIcon
+                  width={20}
+                  height={20}
+                  style={styles.locationIcon}
+                />
+                <View style={styles.adressContainer}>
+                  <Text
+                    style={[styles.mainAdressText, { fontFamily: "HKGrotesk" }]}
+                  >
+                    {winery.connection.adress
+                      ? winery.connection.adress
+                      : "Nincs Cím Megadva"}
+                  </Text>
+                  <Text
+                    style={[styles.subAdressText, { fontFamily: "HKGrotesk" }]}
+                  >
+                    {winery.connection.telephone
+                      ? winery.connection.telephone
+                      : "Nincs Telefon Megadva"}
+                  </Text>
+                  <Text
+                    style={[styles.subAdressText, { fontFamily: "HKGrotesk" }]}
+                  >
+                    {winery.connection.email
+                      ? winery.connection.email
+                      : "Nincs E-mail cím Megadva"}
+                  </Text>
+                  
+                </View>
               </View>
+              {winery.connection.website == "" ? (
+                <></>
+              ) : (
+                <View style={styles.infoContainer}>
+                  <LocationIcon
+                    width={20}
+                    height={20}
+                    style={styles.locationIcon}
+                  />
+                  <View style={styles.adressContainer}>
+                    <Text
+                      style={[styles.websiteText, { fontFamily: "HKGrotesk" }]}
+                    >
+                      {winery.connection.website}
+                    </Text>
+                  </View>
+                </View>
+              )}
             </View>
           </View>
-        </View>
-        <RenderHtml
-          contentWidth={width}
-          source={source}
-          tagsStyles={tagsStyles}
-        />
-        <View style={styles.mainservicecontainer}>
-          {winery.services?.map((service, index) => {
-            return (
-              <View style={{ alignItems: "center" }}>
-                <View key={index} style={styles.servicecontainer}>
-                  <SvgCssUri uri={service.acf.icon_2} width={65} height={65} />
-                </View>
-                <View style={{ marginVertical: 10 }}>
-                  <Text style={styles.servicetext}>{service.name}</Text>
-                </View>
-              </View>
-            );
-          })}
-        </View>
-        {winery.map.lat != undefined && winery.map.lng != undefined && (
-          <TouchableOpacity
-            style={styles.opengooglemapsbutton}
-            onPress={() => {
-              openGoogleMaps();
-            }}
-          >
-            <MaterialCommunityIcons
-              name="google-maps"
-              size={30}
-              color="black"
-            />
-            <Text>Mutasd a térképen</Text>
-          </TouchableOpacity>
-        )}
-      </ScrollView>
-    </SafeAreaView>
+          <RenderHtml
+            contentWidth={width}
+            source={source}
+            tagsStyles={tagsStyles}
+          />
+          <View style={styles.bottomPurpleContainer}>
+            <View style={styles.serviceTextContainer}>
+            <Text style={[styles.servicesText, {fontFamily:'HKGrotesk'}]}>Szolgáltatások</Text>
+            </View>
+            <View style={styles.mainservicecontainer}>
+              {winery.services?.map((service, index) => {
+                return (
+                  <View style={styles.serviceWrapper} key={index}>
+                    <View style={styles.servicecontainer}>
+                      <SvgCssUri
+                        uri={service.acf.icon}
+                        width={80}
+                        height={80}
+                      />
+                    </View>
+                    <View >
+                      <Text
+                        style={[
+                          styles.servicetext,
+                          { fontFamily: "HKGrotesk" },
+                        ]}
+                      >
+                        {service.name.charAt(0).toUpperCase() +
+                          service.name.slice(1)}
+                      </Text>
+                    </View>
+                  </View>
+                );
+              })}
+            </View>
+          </View>
+          
+        </ScrollView>
+      </View>
+    </>
   );
 };
 

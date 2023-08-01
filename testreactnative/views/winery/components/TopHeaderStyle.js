@@ -7,19 +7,19 @@ export const styles = StyleSheet.create({
         height: 350,
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
-        marginTop: 10,
+        
       },
       imageContainer: {},
       backContainer: {
         position: "absolute",
-        top: 30,
+        top: 40,
         left: 15,
         justifyContent: "center",
         alignItems: "center",
       },
       viewOnMap:{
         position:'absolute',
-        top: 30,
+        top: 40,
         right:10,
         flexDirection:'row',
         justifyContent: "center",

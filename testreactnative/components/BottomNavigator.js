@@ -1,4 +1,4 @@
-import { View, TouchableOpacity, Image, Text } from "react-native";
+import { View, TouchableOpacity, Image, Text, Platform  } from "react-native";
 
 import React, { useState, useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -56,7 +56,7 @@ const BottomNavigator = () => {
             height: 60,
             paddingBottom: 10,
             paddingTop: 10,
-            marginBottom: 20,
+            marginBottom: Platform.OS === 'ios' ? 20 : 0,
             
             backgroundColor: "#F5F5F5",
           },

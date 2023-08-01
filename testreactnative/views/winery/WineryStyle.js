@@ -21,24 +21,21 @@ export const styles = StyleSheet.create({
     alignSelf: "center",
     marginBottom: 50,
   },
-  mainservicecontainer: {
+
+  bottomPurpleContainer: {
+    width: "100%",
+    backgroundColor: "#352269",
+  },
+  serviceTextContainer: {
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 30,
-    flex: 1,
-    flexWrap: "wrap",
-    flexDirection: "row",
-    rowGap: 10,
-    columnGap: 10,
+    marginTop:30
   },
-  servicecontainer: {
-    borderRadius: 50,
-    borderWidth: 2,
-    borderColor: "grey",
-    marginTop: 10,
-    alignItems: "center",
-    padding: 10,
+  servicesText:{
+    color:'rgba(255, 255, 255, 0.40)',
+    fontSize:26,
+    letterSpacing:2
   },
   topTextContainer: {
     width: "100%",
@@ -62,13 +59,12 @@ export const styles = StyleSheet.create({
   },
   infoContainer: {
     flexDirection: "row",
-
     marginLeft: 20,
-    height: 90,
-    borderBottomWidth: 1,
-    borderBottomColor: "white",
-    marginBottom: 10,
+    paddingBottom: 30,
+    borderTopWidth: 1,
+    borderTopColor: "white",
     marginRight: 20,
+    paddingTop: 15,
   },
   infoContainer2: {
     flexDirection: "row",
@@ -86,15 +82,18 @@ export const styles = StyleSheet.create({
     backgroundColor: "#352269",
     width: "100%",
   },
-  socialIconsContainer: {
+  mainSocialIconsContainer: {
     flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginLeft: 20,
     marginTop: 10,
-    marginBottom: 30,
-    borderBottomWidth: 1,
+    marginBottom: 25,
+
     marginRight: 20,
-    height: 80,
-    borderBottomColor: "white",
+  },
+  socialIconsContainer: {
+    flexDirection: "row",
   },
   icon: {
     marginRight: 12,
@@ -114,15 +113,47 @@ export const styles = StyleSheet.create({
   subAdressText: {
     color: "rgba(250, 250, 250, 0.60)",
   },
-  websiteContainer: {
-    flexDirection: "row",
 
-    marginLeft: 20,
-
-    marginBottom: 30,
-    marginRight: 20,
-  },
   websiteText: {
     color: "white",
+  },
+  bottomPurpleContainer: {
+    width: "100%",
+    backgroundColor: "#352269",
+  },
+  mainservicecontainer: {
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 30,
+    flexWrap: "wrap",
+    flexDirection: "row",
+    paddingHorizontal: 20, // Add horizontal padding
+  },
+  serviceWrapper: {
+    width: "33.33%", // Three columns in a row (100% / 3 = 33.33%)
+    alignItems: "center",
+    justifyContent: "flex-start",
+    padding: 10,
+    height: 170,
+  },
+  servicecontainer: {
+    borderColor: "grey",
+    marginTop: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 10,
+  },
+  servicetext: {
+    // You may need to adjust the text styles to fit your needs
+    color: "rgba(255, 255, 255, 0.90)",
+    fontSize: 16,
+    textAlign: "center",
+  },
+  takeToGoogleButton: {
+    borderWidth: 1,
+    borderRadius: 1000,
+    padding: 10,
+    borderColor: "#FF8882",
   },
 });
