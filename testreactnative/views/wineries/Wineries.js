@@ -18,21 +18,20 @@ import ListIcon from "../../assets/mapassets/mapIcon.svg";
 import HankenGrotesk from "../../fonts/HankenGrotesk-Regular.ttf";
 import { useFonts } from "expo-font";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { FontsContext } from "../../context/GlobalContext.js";
 const Wineries = () => {
   const [wineries, setWineries] = useContext(WineriesContext);
   const [searchText, setSearchText] = useState("");
   const [showMap, setShowMap] = useState(false);
-
+  const fontsLoaded = useContext(FontsContext);
   const filterItems = () => {
     return wineries.filter((item) =>
       item.title.toLowerCase().includes(searchText.toLowerCase())
     );
   };
-  const [loaded] = useFonts({
-    HKGrotesk: HankenGrotesk,
-  });
+  
 
-  if (!loaded) {
+  if (!fontsLoaded) {
     return null;
   }
 

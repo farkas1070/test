@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
   },
   toptext: {
     fontSize: 25,
-    fontWeight: "bold",
+    color:'#FF8882',
     marginLeft: 20,
     marginTop: 20,
     marginBottom: 10,

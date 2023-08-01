@@ -6,12 +6,12 @@ import {
   Linking,
 } from "react-native";
 import React from "react";
-import Placeholder from "../../assets/placeholder.png";
+
 import { styles } from "./EventStyle";
 import TopHeaderImage from "../../components/TopHeaderImage";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { SafeAreaView } from "react-native-safe-area-context";
+
 
 const Event = ({ route }) => {
   const navigation = useNavigation();

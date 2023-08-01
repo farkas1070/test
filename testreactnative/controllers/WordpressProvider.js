@@ -11,7 +11,7 @@ export const getDataByUrl = async (url) => {
   }
 };
 
-export const getWineries2 = async (language) => {
+export const getWineries = async (language) => {
   const data = await getDataByUrl(
     `https://soproniborvidek.nemethmark.com/wp-json/wp/v2/wineries?_embed&per_page=100&lang=${language}`
   );

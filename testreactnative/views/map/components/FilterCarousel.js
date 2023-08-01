@@ -6,18 +6,15 @@ import { ServicesContext } from "../../../context/GlobalContext";
 import { SvgCssUri } from "react-native-svg";
 import { useFonts } from "expo-font";
 import HKGrotesk from "../../../fonts/HankenGrotesk-Regular.ttf";
-
+import { FontsContext } from "../../../context/GlobalContext";
 const FilterCarousel = () => {
   const width = Dimensions.get("window").width;
   const [services] = useContext(ServicesContext);
-
+  const fontsLoaded = useContext(FontsContext);
   const itemWidth = width / 2;
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
-  const [loaded] = useFonts({
-    HKGrotesk: HKGrotesk,
-  });
-
-  if (!loaded) {
+  
+  if (!fontsLoaded) {
     return null;
   }
   const handleButtonPress = (index) => {

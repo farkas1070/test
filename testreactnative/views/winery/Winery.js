@@ -22,14 +22,14 @@ import HKGrotesk from "../../fonts/HankenGrotesk-Regular.ttf";
 import { useFonts } from "expo-font";
 import { FontAwesome5 } from "@expo/vector-icons";
 import LocationIcon from "../../assets/wineryassets/locationIcon.svg";
-
+import { FontsContext } from "../../context/GlobalContext";
 const Winery = ({ route }) => {
   const { width } = useWindowDimensions();
   const winery = route.params.item;
   const source = {
     html: winery.content,
   };
-  
+  const fontsLoaded = useContext(FontsContext);
 
   const [i18n] = useContext(I18nContext);
 
@@ -43,11 +43,9 @@ const Winery = ({ route }) => {
       );
     }
   };
-  const [loaded] = useFonts({
-    HKGrotesk: HKGrotesk,
-  });
+  
 
-  if (!loaded) {
+  if (!fontsLoaded) {
     return null;
   }
 

@@ -15,7 +15,7 @@ import LoadingComponent from "./components/LoadingComponent";
 import MapViewContainer from "./components/MapViewContainer";
 import MapCarousel from "./components/MapCarousel";
 import ToursModal from "./components/ToursModal";
-import FilterButtons from "./components/FilterButtons";
+
 import CurrentWineTour from "./components/CurrentWineTour";
 import { Ionicons } from "@expo/vector-icons";
 import BottomSheet from "@gorhom/bottom-sheet";
@@ -32,6 +32,8 @@ import ToursIcon from "../../assets/mapassets/toursIcon.svg";
 import LocationIcon from "../../assets/mapassets/Location.svg";
 import CloseIcon from "../../assets/mapassets/Close.svg";
 import { set } from "react-native-reanimated";
+import { FontsContext } from "../../context/GlobalContext.js";
+
 const Map = ({ setShowMap }) => {
   const mapRef = useRef(null);
   const markerRef = useRef([]);
@@ -53,7 +55,7 @@ const Map = ({ setShowMap }) => {
   const snapPoints = useMemo(() => ["1%", "50%"], []);
   const toursSnapPoints = useMemo(() => ["50%", "75", "100%"], []);
   const filterSnapPoints = useMemo(() => ["50%"], []);
-
+  const fontsLoaded = useContext(FontsContext);
   const [position, setPosition] = useState({
     latitude: 47.6828354,
     longitude: 16.5813035,
@@ -217,11 +219,9 @@ const Map = ({ setShowMap }) => {
   const handleBottomSheetFilter = () => {
     bottomSheetFilterRef.current.present();
   };
-  const [loaded] = useFonts({
-    HKGrotesk: HankenGrotesk,
-  });
+  
 
-  if (!loaded) {
+  if (!fontsLoaded) {
     return null;
   }
 

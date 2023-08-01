@@ -12,7 +12,8 @@ export const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 25,
-    fontWeight: "bold",
+    
+    color:'#352269',
     marginBottom: 6,
   },
   excerptText: {
@@ -23,6 +24,6 @@ export const styles = StyleSheet.create({
     height: 20,
     width: "100%",
     borderBottomWidth: 1,
-    borderBottomColor: "#A8A8A8",
+    borderBottomColor: "#FFCECC",
   },
 });

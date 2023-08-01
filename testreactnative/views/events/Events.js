@@ -8,15 +8,15 @@ import moment from "moment";
 import { EventsContext } from "../../context/GlobalContext.js";
 import SearchBar from "./components/Search";
 import { SafeAreaView } from "react-native-safe-area-context";
-import HKGrotesk from "../../fonts/HankenGrotesk-Regular.ttf"
-import { useFonts } from "expo-font";
+import { FontsContext } from "../../context/GlobalContext.js";
+
 const Events = () => {
   const [showListFirst, setShowListFirst] = useState(true);
   const [currentDate, setCurrentDate] = useState(new Date().toDateString());
   const [events, setEvents] = useContext(EventsContext);
   const [searchText, setSearchText] = useState("");
   const [currentEvents, setCurrentEvents] = useState([])
-
+  const fontsLoaded = useContext(FontsContext);
   useEffect(() => {
     // Filter events to find those with dates equal to the currentDate
       events.map((event) => {
@@ -40,11 +40,9 @@ const Events = () => {
       item.title.toLowerCase().includes(searchText.toLowerCase())
     );
   };
-  const [loaded] = useFonts({
-    HKGrotesk: HKGrotesk,
-  });
+  
 
-  if (!loaded) {
+  if (!fontsLoaded) {
     return null;
   }
   

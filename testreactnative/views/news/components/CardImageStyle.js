@@ -18,6 +18,6 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   readmoretext: {
-    color: "#696969",
+    color: "#FF8882",
   },
 });
