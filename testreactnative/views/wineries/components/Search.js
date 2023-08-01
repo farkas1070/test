@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { I18nContext } from "../../../context/GlobalContext";
 import { styles } from "./SearchStyle";
 import { useNavigation } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons";
 import MenuIcon from "../../../assets/menuassets/Menu";
 
 const SearchBar = ({ onSearch }) => {
@@ -31,12 +32,18 @@ const SearchBar = ({ onSearch }) => {
       >
         <MenuIcon width={24} height={24} />
       </TouchableOpacity>
-      <TextInput
-        style={styles.searchInput}
-        onChangeText={handleSearch}
-        placeholder={i18n.t("search")}
-        value={searchText}
-      />
+      <View style={styles.searchbarcontainer}>
+        <TouchableOpacity style={styles.searchButton}>
+          <Ionicons name="search" size={24} color="#A8A8A8" />
+        </TouchableOpacity>
+        <TextInput
+          style={styles.searchInput}
+          onChangeText={handleSearch}
+          placeholder={i18n.t("search")}
+          placeholderTextColor="#A8A8A8"
+          value={searchText}
+        />
+      </View>
     </View>
   );
 };

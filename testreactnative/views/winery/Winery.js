@@ -29,6 +29,7 @@ const Winery = ({ route }) => {
   const source = {
     html: winery.content,
   };
+  console.log(winery.services)
 
   const [i18n] = useContext(I18nContext);
 
@@ -71,32 +72,39 @@ const Winery = ({ route }) => {
               </Text>
               <View style={styles.mainSocialIconsContainer}>
                 <View style={styles.socialIconsContainer}>
-                <FontAwesome5
-                  name="facebook"
-                  size={30}
-                  color="white"
-                  style={styles.icon}
-                />
-                <FontAwesome5
-                  name="instagram"
-                  size={30}
-                  color="white"
-                  style={styles.icon}
-                />
-                <FontAwesome5
-                  name="linkedin"
-                  size={30}
-                  color="white"
-                  style={styles.icon}
-                />
+                  <FontAwesome5
+                    name="facebook"
+                    size={30}
+                    color="white"
+                    style={styles.icon}
+                  />
+                  <FontAwesome5
+                    name="instagram"
+                    size={30}
+                    color="white"
+                    style={styles.icon}
+                  />
+                  <FontAwesome5
+                    name="linkedin"
+                    size={30}
+                    color="white"
+                    style={styles.icon}
+                  />
                 </View>
                 {winery.map.lat != undefined && winery.map.lng != undefined && (
-                <TouchableOpacity onPress={() => {
-                  openGoogleMaps();
-                }} style={styles.takeToGoogleButton}>
-                <MaterialCommunityIcons name="google-maps" size={30} color="#FFBD54" />
-                </TouchableOpacity>)
-                }
+                  <TouchableOpacity
+                    onPress={() => {
+                      openGoogleMaps();
+                    }}
+                    style={styles.takeToGoogleButton}
+                  >
+                    <MaterialCommunityIcons
+                      name="google-maps"
+                      size={30}
+                      color="#FFBD54"
+                    />
+                  </TouchableOpacity>
+                )}
               </View>
               <View style={styles.infoContainer}>
                 <LocationIcon
@@ -126,7 +134,6 @@ const Winery = ({ route }) => {
                       ? winery.connection.email
                       : "Nincs E-mail cím Megadva"}
                   </Text>
-                  
                 </View>
               </View>
               {winery.connection.website == "" ? (
@@ -154,38 +161,43 @@ const Winery = ({ route }) => {
             source={source}
             tagsStyles={tagsStyles}
           />
-          <View style={styles.bottomPurpleContainer}>
-            <View style={styles.serviceTextContainer}>
-            <Text style={[styles.servicesText, {fontFamily:'HKGrotesk'}]}>Szolgáltatások</Text>
-            </View>
-            <View style={styles.mainservicecontainer}>
-              {winery.services?.map((service, index) => {
-                return (
-                  <View style={styles.serviceWrapper} key={index}>
-                    <View style={styles.servicecontainer}>
-                      <SvgCssUri
-                        uri={service.acf.icon}
-                        width={80}
-                        height={80}
-                      />
+          {winery.services !== undefined &&
+            <View style={styles.bottomPurpleContainer}>
+              <View style={styles.serviceTextContainer}>
+                <Text
+                  style={[styles.servicesText, { fontFamily: "HKGrotesk" }]}
+                >
+                  Szolgáltatások
+                </Text>
+              </View>
+              <View style={styles.mainservicecontainer}>
+                {winery.services?.map((service, index) => {
+                  return (
+                    <View style={styles.serviceWrapper} key={index}>
+                      <View style={styles.servicecontainer}>
+                        <SvgCssUri
+                          uri={service.acf.icon}
+                          width={80}
+                          height={80}
+                        />
+                      </View>
+                      <View>
+                        <Text
+                          style={[
+                            styles.servicetext,
+                            { fontFamily: "HKGrotesk" },
+                          ]}
+                        >
+                          {service.name.charAt(0).toUpperCase() +
+                            service.name.slice(1)}
+                        </Text>
+                      </View>
                     </View>
-                    <View >
-                      <Text
-                        style={[
-                          styles.servicetext,
-                          { fontFamily: "HKGrotesk" },
-                        ]}
-                      >
-                        {service.name.charAt(0).toUpperCase() +
-                          service.name.slice(1)}
-                      </Text>
-                    </View>
-                  </View>
-                );
-              })}
+                  );
+                })}
+              </View>
             </View>
-          </View>
-          
+          }
         </ScrollView>
       </View>
     </>

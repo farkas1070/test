@@ -5,7 +5,7 @@ import {
   Keyboard,
   TouchableOpacity,
   Text,
-  SafeAreaView,
+  
 } from "react-native";
 import React, { useState, useContext } from "react";
 import { styles } from "./WineriesStyle";
@@ -17,6 +17,7 @@ import Header from "./components/Header";
 import ListIcon from "../../assets/mapassets/mapIcon.svg";
 import HankenGrotesk from "../../fonts/HankenGrotesk-Regular.ttf";
 import { useFonts } from "expo-font";
+import { SafeAreaView } from "react-native-safe-area-context";
 const Wineries = () => {
   const [wineries, setWineries] = useContext(WineriesContext);
   const [searchText, setSearchText] = useState("");
@@ -36,7 +37,7 @@ const Wineries = () => {
   }
 
   return (
-    <SafeAreaView style={styles.maincontainer}>
+    <View style={styles.maincontainer}>
       <Header setSearchText={setSearchText} />
       {showMap ? (
         <Map setShowMap={setShowMap} />
@@ -60,7 +61,7 @@ const Wineries = () => {
           </View>
         </TouchableWithoutFeedback>
       )}
-    </SafeAreaView>
+    </View>
   );
 };
 
