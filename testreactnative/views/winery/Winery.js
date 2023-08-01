@@ -29,7 +29,7 @@ const Winery = ({ route }) => {
   const source = {
     html: winery.content,
   };
-  console.log(winery.services)
+  
 
   const [i18n] = useContext(I18nContext);
 

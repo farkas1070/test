@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     height: "100%",
   },
   header:{
-    paddingRight: 10,
+    
   },
   container: {
     backgroundColor: "#fff",

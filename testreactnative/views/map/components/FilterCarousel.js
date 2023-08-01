@@ -1,24 +1,39 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { styles } from "./FilterCarouselStyle";
-import { View, Dimensions, Text, FlatList } from "react-native";
+import { View, Dimensions, Text, FlatList, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { ServicesContext } from "../../../context/GlobalContext";
 import { SvgCssUri } from "react-native-svg";
+import { useFonts } from "expo-font";
+import HKGrotesk from "../../../fonts/HankenGrotesk-Regular.ttf";
 
 const FilterCarousel = () => {
   const width = Dimensions.get("window").width;
   const [services] = useContext(ServicesContext);
 
   const itemWidth = width / 5;
+  const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
+  const [loaded] = useFonts({
+    HKGrotesk: HKGrotesk,
+  });
 
-  const renderItem = ({ item }) => {
+  if (!loaded) {
+    return null;
+  }
+  const handleButtonPress = (index) => {
+    setSelectedButtonIndex(index);
+  };
+
+  const renderItem = ({ item, index }) => {
+    const isSelected = selectedButtonIndex === index;
+
     return (
-      <View style={[styles.slide, { width: itemWidth }]}>
-        <View style={[styles.icon]}>
-          <SvgCssUri uri={item.acf.icon_2} width={60} height={60} />
-          <Text style={styles.text}>{item.name}</Text>
+      <TouchableOpacity key={index} style={[styles.slide, { width: itemWidth }]} onPress={() => handleButtonPress(index)}>
+        <View style={[isSelected ? styles.selectedButton : styles.icon]}>
+          <SvgCssUri uri={isSelected? item.acf.icon: item.acf.icon_2} width={60} height={60} />
+          <Text style={[styles.text, { fontFamily: 'HKGrotesk', color: isSelected ? 'white' : '#352269' }]}>{item.name}</Text>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
 
@@ -27,7 +42,7 @@ const FilterCarousel = () => {
       <FlatList
         data={services}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item, index) => index.toString()}
         horizontal
         showsHorizontalScrollIndicator={false}
       />

@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
     position: "relative",
     top: 0,
     width: "100%",
-    backgroundColor: "white",
+    backgroundColor: "#F7F7F7",
   },
   slide: {
     alignItems: "center",
@@ -12,16 +12,27 @@ export const styles = StyleSheet.create({
     paddingBottom: 10,
     paddingTop:10,
     marginHorizontal: 30,
+    
   },
   slideContent: {
     width: "100%",
+    
+  },
+  selectedButton:{
+    backgroundColor: "#352269",
+    alignItems: "center",
+    borderRadius: 35,
+    height: 50,
+    padding: 10,
+    flexDirection: "row",
+    
   },
   textContainer: {
     height: "100%",
   },
   text: {
     fontSize: 10,
-    fontWeight: "bold",
+    color:'#352269',
     textAlign: "center",
   },
   icon: {
@@ -31,5 +42,9 @@ export const styles = StyleSheet.create({
     height: 50,
     padding: 10,
     flexDirection: "row",
+    backgroundColor:'white'
   },
+  container:{
+    backgroundColor: "rgba(236,236,236,1)",
+  }
 });

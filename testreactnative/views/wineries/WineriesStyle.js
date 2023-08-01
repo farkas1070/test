@@ -3,6 +3,7 @@ export const styles = StyleSheet.create({
   maincontainer: {
     flex: 1,
     position: "relative",
+    backgroundColor:'#F7F7F7'
   },
 
   image: {
