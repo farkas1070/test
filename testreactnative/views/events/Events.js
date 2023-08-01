@@ -1,5 +1,5 @@
 import { Text, View, TouchableOpacity, ScrollView, Image } from "react-native";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext,useEffect } from "react";
 import { Agenda } from "react-native-calendars";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./EventsStyle";
@@ -8,11 +8,28 @@ import moment from "moment";
 import { EventsContext } from "../../context/GlobalContext.js";
 import SearchBar from "./components/Search";
 import { SafeAreaView } from "react-native-safe-area-context";
+import HKGrotesk from "../../fonts/HankenGrotesk-Regular.ttf"
+import { useFonts } from "expo-font";
 const Events = () => {
   const [showListFirst, setShowListFirst] = useState(true);
-  const [currentDate, setCurrentDate] = useState("2023-06-20");
+  const [currentDate, setCurrentDate] = useState(new Date().toDateString());
   const [events, setEvents] = useContext(EventsContext);
   const [searchText, setSearchText] = useState("");
+  const [currentEvents, setCurrentEvents] = useState([])
+
+  useEffect(() => {
+    // Filter events to find those with dates equal to the currentDate
+      events.map((event) => {
+      const dateRange = getDatesInRange(
+        event.start_date.originalStartDate,
+        event.end_date.originalEndDate
+      );
+      setCurrentEvents(dateRange);
+      
+    });
+    console.log(currentEvents)
+    
+  }, []);
 
   function showDifferentLayout() {
     setShowListFirst(!showListFirst);
@@ -23,6 +40,14 @@ const Events = () => {
       item.title.toLowerCase().includes(searchText.toLowerCase())
     );
   };
+  const [loaded] = useFonts({
+    HKGrotesk: HKGrotesk,
+  });
+
+  if (!loaded) {
+    return null;
+  }
+  
 
   function getDatesInRange(startDate, endDate) {
     const start = moment(startDate);
@@ -70,7 +95,9 @@ const Events = () => {
         )}
         {showListFirst ? (
           <ScrollView style={{ marginBottom: 70 }}>
-            <Text>Közelgő Esemény</Text>
+            <View style={styles.currentEventContainer}>
+            <Text style={[styles.currentEventText,{fontFamily:'HKGrotesk'}]}>Jelenleg Zajló Esemény/Események:</Text>
+            </View>
 
             {filterItems().map((item, index) => {
               return <Card item={item} index={index} key={index} />;

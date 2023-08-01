@@ -18,7 +18,7 @@ const Event = ({ route }) => {
   const startDate = new Date(route.params.item.start_date.originalStartDate);
   const endDate = new Date(route.params.item.end_date.originalEndDate);
   return (
-    <SafeAreaView>
+    <View>
       <ScrollView>
         <TopHeaderImage item={route.params.item.image} />
         <Text style={styles.eventTitle}>{route.params.item.title}</Text>
@@ -110,7 +110,7 @@ const Event = ({ route }) => {
           {route.params.item.url}
         </Text>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 

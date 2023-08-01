@@ -9,18 +9,22 @@ export const styles = StyleSheet.create({
         borderTopRightRadius: 10,
         
       },
-      imageContainer: {},
+      
       backContainer: {
-        position: "absolute",
-        top: 40,
-        left: 15,
+        
         justifyContent: "center",
         alignItems: "center",
+        marginLeft:20,
+        marginTop:20,
+      },
+      buttonContainer:{
+        width:'100%',
+        flexDirection:'row',
+        justifyContent: 'space-between',
       },
       viewOnMap:{
-        position:'absolute',
-        top: 40,
-        right:10,
+        marginTop:20,
+        marginRight:5,
         flexDirection:'row',
         justifyContent: "center",
         alignItems: "center",

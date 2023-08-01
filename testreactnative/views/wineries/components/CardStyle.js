@@ -3,7 +3,7 @@ export const styles = StyleSheet.create({
   card: {
     flexDirection: "row",
     backgroundColor: "#fff",
-    borderRadius: 8,
+    borderRadius: 15,
     marginVertical: 8,
     marginHorizontal: 10,
     padding: 8,
@@ -12,25 +12,34 @@ export const styles = StyleSheet.create({
   imageContainer: {
     padding: 8,
   },
+  addressContainer:{
+    flexDirection:'row',
+    
+  },
   image: {
     width: 100,
     height: 100,
-    borderRadius: 8,
+    borderRadius: 100,
   },
   textContainer: {
     flex: 1,
     paddingHorizontal: 8,
     marginTop: 5,
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
   },
   title: {
-    fontSize: 18,
-    fontWeight: "bold",
+    fontSize: 21,
+    
+    
+    
     marginBottom: 4,
   },
   description: {
     fontSize: 14,
     color: "#666",
+    marginLeft:5,
+    marginRight:10,
+    textAlign:'left',
   },
   phonetext: {
     marginBottom: 10,

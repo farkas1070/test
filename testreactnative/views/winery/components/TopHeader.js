@@ -1,4 +1,4 @@
-import { Text, View, Image, TouchableOpacity } from "react-native";
+import { Text, View, Image, TouchableOpacity,ImageBackground } from "react-native";
 import React from "react";
 import { styles } from "./TopHeaderStyle";
 import { Ionicons } from "@expo/vector-icons";
@@ -10,8 +10,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 const TopHeader = ({ item }) => {
   const navigation = useNavigation();
   return (
-    <View style={styles.imageContainer}>
-      <Image style={styles.image} source={item ? { uri: item } : Placeholder} />
+    <ImageBackground
+      source={item ? { uri: item } : Placeholder}
+      resizeMode="cover"
+      style={styles.image}
+    >
+      <SafeAreaView style={styles.buttonContainer}>
+      
       <TouchableOpacity
         style={styles.backContainer}
         onPress={() => {
@@ -29,7 +34,8 @@ const TopHeader = ({ item }) => {
         <MapIcon width={30} height={30} style={styles.mapIcon}></MapIcon>
         <Text style={styles.viewOnMapText}>View on Map</Text>
       </TouchableOpacity>
-    </View>
+      </SafeAreaView>
+    </ImageBackground>
   );
 };
 

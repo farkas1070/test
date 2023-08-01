@@ -84,7 +84,16 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     padding: 10,
     borderRadius: 50,
-    top: 20,
+    top: -15,
     right: 10,
   },
+  currentEventText:{
+    color:'#FF8882',
+    marginTop:60,
+    marginLeft:20,
+    fontSize:20
+  },
+  currentEventContainer:{
+    flexDirection:'column'
+  }
 });

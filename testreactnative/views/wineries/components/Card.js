@@ -3,9 +3,19 @@ import React from "react";
 import { styles } from "./CardStyle";
 import { useNavigation } from "@react-navigation/core";
 import Placeholder from "../../../assets/placeholder.png";
-import LocationIcon from "../../../assets/wineryassets/locationIcon.svg"
+import LocationIcon from "../../../assets/wineryassets/greyLocationIcon.svg";
+import HKGrotesk from "../../../fonts/HankenGrotesk-Regular.ttf"
+import { useFonts } from "expo-font";
+
 const Card = ({ item, index }) => {
   const navigation = useNavigation();
+  const [loaded] = useFonts({
+    HKGrotesk: HKGrotesk,
+  });
+
+  if (!loaded) {
+    return null;
+  }
   return (
     <TouchableOpacity
       style={styles.card}
@@ -13,7 +23,6 @@ const Card = ({ item, index }) => {
         navigation.navigate("Winery", { item: item });
       }}
     >
-      {/* Image with padding */}
       <View style={styles.imageContainer}>
         <Image
           source={item.logo ? { uri: item.logo } : Placeholder}
@@ -22,18 +31,13 @@ const Card = ({ item, index }) => {
         />
       </View>
 
-      {/* Text */}
       <View style={styles.textContainer}>
         <View>
-          <Text style={styles.title}>{item.title}</Text>
-          <Text style={styles.description}>{item.connection.adress}</Text>
+          <Text style={[styles.title,{fontFamily:"HKGrotesk"}]}>{item.title}</Text>
         </View>
-        <View>
-          <Text style={styles.phonetext}>
-            {item.connection.telephone == ""
-              ? "nincs telefon"
-              : item.connection.telephone}
-          </Text>
+        <View style={styles.addressContainer}>
+          <LocationIcon width={18} height={18}></LocationIcon>
+          <Text style={[styles.description,{fontFamily:"HKGrotesk"}]}>{item.connection.adress}</Text>
         </View>
       </View>
     </TouchableOpacity>
