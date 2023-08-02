@@ -1,10 +1,11 @@
-import { Text, View, useWindowDimensions, FlatList, Image } from "react-native";
+import { Text, View, useWindowDimensions,  Image } from "react-native";
 import React, { useContext } from "react";
 import { styles } from "./WineryCarouselStyle";
 import { WineriesContext } from "../../../context/GlobalContext";
 import WineryCard from "./WineryCard";
 import { FontsContext } from "../../../context/GlobalContext";
 import WineIcon from "../../../assets/homepageicons/whiteWineryIcon.svg"
+import { FlatList } from "react-native-gesture-handler";
 const WineryCarousel = () => {
   const [wineries] = useContext(WineriesContext);
 

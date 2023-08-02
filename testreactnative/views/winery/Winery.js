@@ -41,7 +41,6 @@ const Winery = ({ route }) => {
       );
     }
   };
-  
 
   if (!fontsLoaded) {
     return null;
@@ -49,7 +48,7 @@ const Winery = ({ route }) => {
 
   return (
     <>
-      <View>
+      <View style={styles.mainContainer}>
         <ScrollView>
           <TopHeader item={winery.banner} />
 
@@ -102,6 +101,8 @@ const Winery = ({ route }) => {
                   </TouchableOpacity>
                 )}
               </View>
+            </View>
+            <View style={{ backgroundColor: "white" }}>
               <View style={styles.infoContainer}>
                 <LocationIcon
                   width={20}
@@ -135,7 +136,7 @@ const Winery = ({ route }) => {
               {winery.connection.website == "" ? (
                 <></>
               ) : (
-                <View style={styles.infoContainer}>
+                <View style={styles.infoContainer2}>
                   <LocationIcon
                     width={20}
                     height={20}
@@ -152,12 +153,21 @@ const Winery = ({ route }) => {
               )}
             </View>
           </View>
+          {winery.connection.ownerphoto &&
+          <View style={styles.ownerPictureContainer}>
+            <Image
+              source={{ uri: winery.connection.ownerphoto }}
+              style={styles.ownerImage}
+            />
+          
+          </View>
+          }
           <RenderHtml
             contentWidth={width}
             source={source}
             tagsStyles={tagsStyles}
           />
-          {winery.services !== undefined &&
+          {winery.services !== undefined && (
             <View style={styles.bottomPurpleContainer}>
               <View style={styles.serviceTextContainer}>
                 <Text
@@ -168,15 +178,11 @@ const Winery = ({ route }) => {
               </View>
               <View style={styles.mainservicecontainer}>
                 {winery.services?.map((service, index) => {
-                  console.log(service)
+                  console.log(service);
                   return (
                     <View style={styles.serviceWrapper} key={index}>
                       <View style={styles.servicecontainer}>
-                        <SvgCssUri
-                          uri={service.icon1}
-                          width={80}
-                          height={80}
-                        />
+                        <SvgCssUri uri={service.icon1} width={80} height={80} />
                       </View>
                       <View>
                         <Text
@@ -194,7 +200,7 @@ const Winery = ({ route }) => {
                 })}
               </View>
             </View>
-          }
+          )}
         </ScrollView>
       </View>
     </>

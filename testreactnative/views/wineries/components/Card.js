@@ -1,19 +1,16 @@
 import { Text, View, Image, TouchableOpacity } from "react-native";
-import React from "react";
+import React,{useContext} from "react";
 import { styles } from "./CardStyle";
 import { useNavigation } from "@react-navigation/core";
 import Placeholder from "../../../assets/placeholder.png";
 import LocationIcon from "../../../assets/wineryassets/greyLocationIcon.svg";
-import HKGrotesk from "../../../fonts/HankenGrotesk-Regular.ttf"
-import { useFonts } from "expo-font";
-
+import { FontsContext } from "../../../context/GlobalContext";
 const Card = ({ item, index }) => {
   const navigation = useNavigation();
-  const [loaded] = useFonts({
-    HKGrotesk: HKGrotesk,
-  });
+  const fontsLoaded = useContext(FontsContext);
 
-  if (!loaded) {
+
+  if (!fontsLoaded) {
     return null;
   }
   return (

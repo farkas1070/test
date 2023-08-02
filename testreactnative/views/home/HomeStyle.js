@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   maincontainer: {
     flex: 1,
-    backgroundColor: "#FAFAFA",
+    backgroundColor: "#F0EEEF",
 
     alignItems: "center",
     width: "100%",
@@ -76,7 +76,6 @@ export const styles = StyleSheet.create({
   
   exploreSection: {
     width: "100%",
-    
   },
   exploreText: {
     fontSize: 20,

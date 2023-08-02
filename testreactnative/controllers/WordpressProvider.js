@@ -51,6 +51,7 @@ export const getWineries = async (language) => {
         telephone: item?.acf?.kapcsolat?.telefon,
         website: item?.acf?.banner?.weboldal,
         email: item?.acf?.kapcsolat?.["e-mail"],
+        ownerphoto:item?.acf?.kapcsolat?.tulajdonos_kep?.url,
 
         social: {
           facebook: item?.acf?.szocialis_mediak?.facebook,

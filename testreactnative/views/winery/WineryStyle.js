@@ -5,6 +5,10 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 8,
   },
+  mainContainer:{
+    backgroundColor:'white',
+    flexGrow:1
+  },
   content: {
     fontSize: 14,
   },
@@ -61,18 +65,27 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     marginLeft: 20,
     paddingBottom: 30,
-    borderTopWidth: 1,
-    borderTopColor: "white",
+    
     marginRight: 20,
-    paddingTop: 15,
+    paddingTop: 40,
   },
   infoContainer2: {
     flexDirection: "row",
-    width: "100%",
-    marginLeft: 10,
-    marginTop: 10,
-    marginBottom: 10,
+    marginLeft: 20,
+    paddingBottom: 30,
+    
+    marginRight: 20,
+    paddingTop: 10,
   },
+  ownerPictureContainer:{
+    width:'100%',
+    
+  },
+  ownerImage:{
+    width:'100%',
+    height:400
+  },
+  
   webshopButton: {
     position: "absolute",
     top: -80,
@@ -107,15 +120,15 @@ export const styles = StyleSheet.create({
     marginLeft: 20,
   },
   mainAdressText: {
-    color: "#FAFAFA",
+    color: "#352269",
     fontSize: 16,
   },
   subAdressText: {
-    color: "rgba(250, 250, 250, 0.60)",
+    color: "#9D97B7",
   },
 
   websiteText: {
-    color: "white",
+    color: "#352269",
   },
   bottomPurpleContainer: {
     width: "100%",
