@@ -21,7 +21,13 @@ export const getWineries = async (language) => {
   const wineriesData = data.map((item) => {
     // Extracting individual services
     const services = item?._embedded?.["wp:term"] || [];
-
+    const servicesArray = item?._embedded?.["wp:term"]?.[0]?.map((service) => ({
+      icon1: service.acf.icon,
+      icon2: service.acf.icon_2,
+      name: service.name,
+    }));
+    console.log(servicesArray)
+    
     services.forEach((service) => {
       service.forEach((innerService) => {
         if (innerService !== undefined) {
@@ -38,7 +44,7 @@ export const getWineries = async (language) => {
       banner: item?.acf?.banner?.banner_hatter?.url,
       owner_name: item?.acf?.kapcsolat?.tulajdonos_nev,
       type: item?.type,
-      services: item?._embedded?.["wp:term"]?.[0],
+      services: servicesArray,
 
       connection: {
         adress: item?.acf?.kapcsolat?.cim,

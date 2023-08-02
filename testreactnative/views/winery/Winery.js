@@ -18,8 +18,6 @@ import { SvgCssUri } from "react-native-svg";
 import { I18nContext } from "../../context/GlobalContext";
 import TopHeader from "./components/TopHeader";
 import WebshopIcon from "../../assets/wineryassets/webshopIcon.svg";
-import HKGrotesk from "../../fonts/HankenGrotesk-Regular.ttf";
-import { useFonts } from "expo-font";
 import { FontAwesome5 } from "@expo/vector-icons";
 import LocationIcon from "../../assets/wineryassets/locationIcon.svg";
 import { FontsContext } from "../../context/GlobalContext";
@@ -170,11 +168,12 @@ const Winery = ({ route }) => {
               </View>
               <View style={styles.mainservicecontainer}>
                 {winery.services?.map((service, index) => {
+                  console.log(service)
                   return (
                     <View style={styles.serviceWrapper} key={index}>
                       <View style={styles.servicecontainer}>
                         <SvgCssUri
-                          uri={service.acf.icon}
+                          uri={service.icon1}
                           width={80}
                           height={80}
                         />

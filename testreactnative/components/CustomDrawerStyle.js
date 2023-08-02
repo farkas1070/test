@@ -56,4 +56,7 @@ export const styles = StyleSheet.create({
     top: -50,
     right: -20,
   },
+  privacyPolicy:{
+    color:'#352269'
+  }
 });

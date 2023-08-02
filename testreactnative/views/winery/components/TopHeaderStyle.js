@@ -7,11 +7,9 @@ export const styles = StyleSheet.create({
         height: 350,
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
-        
       },
       
       backContainer: {
-        
         justifyContent: "center",
         alignItems: "center",
         marginLeft:20,
@@ -31,7 +29,6 @@ export const styles = StyleSheet.create({
         backgroundColor: 'rgba(255, 255, 255, 0.75)',
         borderRadius:10,
         padding:4
-
       },
       mapIcon:{
         marginRight:10,
