@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
   },
   slide: {
     justifyContent: "center",
-    backgroundColor: "rgba(255,255,255,1)",
+    backgroundColor: "rgba(255,255,255,0.95)",
     borderRadius: 20,
     margin: 10,
   },

@@ -12,9 +12,8 @@ export const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 25,
-    
-    color:'#352269',
-    marginBottom: 6,
+    fontWeight: "bold",
+    color: "#352269",
   },
   excerptText: {
     color: "#696969",
