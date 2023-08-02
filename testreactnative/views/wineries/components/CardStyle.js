@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     color: "#666",
     marginLeft:5,
-    marginRight:10,
+    marginRight:20,
     textAlign:'left',
   },
   phonetext: {

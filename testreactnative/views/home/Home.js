@@ -11,7 +11,7 @@ import { FontsContext } from "../../context/GlobalContext";
 const Home = () => {
   const [news, setNews] = useContext(NewsContext);
   const latestNews = news[0];
-  console.log(latestNews);
+
   const fontsLoaded = useContext(FontsContext);
 
   if (!fontsLoaded) {
@@ -47,16 +47,17 @@ const Home = () => {
         <View style={styles.wineriesCarouselSection}>
           <WineryCarousel />
         </View>
+        <View style={styles.lookForWineriesSection}>
+          <ServiceCarousel />
+        </View>
         <View style={styles.eventsection}>
-          <Text style={styles.eventtext}>Upcoming Events</Text>
+          <View style={styles.eventsTopContainer}>
+            <Text style={styles.upcomingEventsText}>UPCOMING EVENTS</Text>
+            <Text style={styles.seeMoreText}>See all</Text>
+          </View>
           <View style={styles.carouselcontainer}>
             <EventCarousel />
           </View>
-        </View>
-
-        <View style={styles.lookForWineriesSection}>
-          <Text style={styles.lookForWineriesText}>Look For Winery to</Text>
-          <ServiceCarousel />
         </View>
       </ScrollView>
     </View>

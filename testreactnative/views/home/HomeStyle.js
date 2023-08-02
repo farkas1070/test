@@ -60,8 +60,21 @@ export const styles = StyleSheet.create({
     borderBottomColor:'#D9D9D9',
 
   },
+  eventsTopContainer:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'flex-end',
+    
+    marginLeft:10,
+    marginRight:10
+  },
   seeMoreText:{
       color:'#FF8882',
+  },
+  upcomingEventsText:{
+    color:'#FF8882',
+    fontSize:20,
+    letterSpacing:2
   },
   
   shorttitletext: {
@@ -86,13 +99,7 @@ export const styles = StyleSheet.create({
   lookForWineriesSection: {
     width: "100%",
   },
-  lookForWineriesText: {
-    fontSize: 20,
-    marginLeft: 20,
-
-    fontSize: 22,
-    marginTop: 30,
-  },
+  
   wineriesCarouselSection: {
     width: "100%",
     marginTop:40,
