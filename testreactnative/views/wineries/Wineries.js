@@ -5,19 +5,14 @@ import {
   Keyboard,
   TouchableOpacity,
   Text,
-  
 } from "react-native";
 import React, { useState, useContext } from "react";
 import { styles } from "./WineriesStyle";
 import Card from "./components/Card";
 import { WineriesContext } from "../../context/GlobalContext.js";
 import Map from "../../views/map/Map.js";
-import { Ionicons } from "@expo/vector-icons";
 import Header from "./components/Header";
 import ListIcon from "../../assets/mapassets/mapIcon.svg";
-import HankenGrotesk from "../../fonts/HankenGrotesk-Regular.ttf";
-import { useFonts } from "expo-font";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { FontsContext } from "../../context/GlobalContext.js";
 const Wineries = () => {
   const [wineries, setWineries] = useContext(WineriesContext);
@@ -29,7 +24,6 @@ const Wineries = () => {
       item.title.toLowerCase().includes(searchText.toLowerCase())
     );
   };
-  
 
   if (!fontsLoaded) {
     return null;
@@ -51,6 +45,7 @@ const Wineries = () => {
             <TouchableOpacity
               style={styles.mapbutton}
               onPress={() => setShowMap(true)}
+              activeOpacity={0.9}
             >
               <Text style={[styles.mapButtonText, { fontFamily: "HKGrotesk" }]}>
                 Map

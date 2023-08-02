@@ -32,6 +32,12 @@ const MapViewContainer = ({
   return (
     <MapView
       ref={mapRef}
+      initialRegion={{
+        latitude: 46.5,
+        longitude: 16.2,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      }}
       style={styles.map}
       showsMyLocationButton={false}
       showsUserLocation={true}
@@ -40,10 +46,6 @@ const MapViewContainer = ({
       onMapReady={() => {
         setMapReady(true);
         jumpToPointOfInterest();
-      }}
-      onRegionChangeComplete={async (region) => {
-        setCurrentLatDelta(region.latitudeDelta);
-        setCurrentLongDelta(region.longitudeDelta);
       }}
       onPress={() => {
         handleMapPress();

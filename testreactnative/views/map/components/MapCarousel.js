@@ -1,11 +1,10 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import Carousel from "react-native-snap-carousel-v4";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { styles } from "./MapCarouselStyle";
 import Placeholder from "../../../assets/placeholder.png";
 import { useNavigation } from "@react-navigation/core";
-import { FontAwesome5 } from "@expo/vector-icons";
+import RightArrowIcon from "../../../assets/mapassets/RightArrow.svg";
 
 const MapCarousel = ({
   data,
@@ -44,6 +43,22 @@ const MapCarousel = ({
             <View>
               <Text>Open Hours</Text>
             </View>
+            <TouchableOpacity
+              style={styles.showButton}
+              onPress={() => {
+                navigation.navigate("Winery", { item: item });
+              }}
+            >
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}
+              >
+                <Text style={styles.showButtonText}>Show</Text>
+                <RightArrowIcon width={18} height={18} />
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
       </View>

@@ -1,9 +1,6 @@
 import React, { useContext, useState } from "react";
 import { View, TouchableOpacity, Linking, Image, Text } from "react-native";
-import {
-  DrawerContentScrollView,
-  DrawerItemList,
-} from "@react-navigation/drawer";
+import { DrawerContentScrollView } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./CustomDrawerStyle";
 import { useNavigation } from "@react-navigation/native";
@@ -29,7 +26,7 @@ const CustomDrawer = (props) => {
 
   return (
     <View style={styles.container}>
-      <DrawerContentScrollView {...props}>
+      <DrawerContentScrollView {...props} scrollEnabled={false}>
         <View style={styles.circlesContainer}>
           <View style={styles.yellowCircleContainer}>
             <Subtract width={142} height={142} />

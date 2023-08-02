@@ -3,7 +3,6 @@ import {
   Text,
   View,
   useWindowDimensions,
-  ScrollView,
   ImageBackground,
 } from "react-native";
 import React, { useState, useEffect, useRef, useContext, useMemo } from "react";
@@ -17,7 +16,6 @@ import MapCarousel from "./components/MapCarousel";
 import ToursModal from "./components/ToursModal";
 
 import CurrentWineTour from "./components/CurrentWineTour";
-import { Ionicons } from "@expo/vector-icons";
 import BottomSheet from "@gorhom/bottom-sheet";
 import {
   BottomSheetModal,
@@ -25,13 +23,11 @@ import {
 } from "@gorhom/bottom-sheet";
 import { MaterialIcons } from "@expo/vector-icons";
 import ListIcon from "../../assets/mapassets/listIcon.svg";
-import HankenGrotesk from "../../fonts/HankenGrotesk-Regular.ttf";
-import { useFonts } from "expo-font";
 import FilterIcon from "../../assets/mapassets/filterIcon.svg";
 import ToursIcon from "../../assets/mapassets/toursIcon.svg";
 import LocationIcon from "../../assets/mapassets/Location.svg";
 import CloseIcon from "../../assets/mapassets/Close.svg";
-import { set } from "react-native-reanimated";
+import CarouselCloseIcon from "../../assets/mapassets/CarouselClose.svg";
 import { FontsContext } from "../../context/GlobalContext.js";
 
 const Map = ({ setShowMap }) => {
@@ -46,8 +42,8 @@ const Map = ({ setShowMap }) => {
   const [tourfilter, setTourFilter] = useState("None");
   const [modalVisible, setModalVisible] = useState(false);
   const [currentTour, setCurrentTour] = useState(null);
-  const [currentLatDelta, setCurrentLatDelta] = useState(0.1);
-  const [currentLongDelta, setCurrentLongDelta] = useState(0.1);
+  const [currentLatDelta, setCurrentLatDelta] = useState(0.5);
+  const [currentLongDelta, setCurrentLongDelta] = useState(0.5);
   const [showCurrentWineTour, setShowCurrentWineTour] = useState(false);
   const bottomSheetRef = useRef(null);
   const bottomSheetFilterRef = useRef(null);
@@ -59,8 +55,8 @@ const Map = ({ setShowMap }) => {
   const [position, setPosition] = useState({
     latitude: 47.6828354,
     longitude: 16.5813035,
-    latitudeDelta: 0.1,
-    longitudeDelta: 0.1,
+    latitudeDelta: 0.5,
+    longitudeDelta: 0.5,
   });
 
   if (currentLatDelta > 0.01) setCurrentLatDelta(0.005);
@@ -161,10 +157,15 @@ const Map = ({ setShowMap }) => {
           longitude: marker.map.lng,
         }));
 
-      mapRef.current.fitToCoordinates(coordinates, {
-        edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
-        animated: true,
-      });
+      // Hozzáadunk egy kis késleltetést az iOS-en
+      const delay = Platform.OS === "ios" ? 1 : 0;
+
+      setTimeout(() => {
+        mapRef.current.fitToCoordinates(coordinates, {
+          edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
+          animated: true,
+        });
+      }, delay);
     }
   };
 
@@ -219,7 +220,6 @@ const Map = ({ setShowMap }) => {
   const handleBottomSheetFilter = () => {
     bottomSheetFilterRef.current.present();
   };
-  
 
   if (!fontsLoaded) {
     return null;
@@ -297,6 +297,7 @@ const Map = ({ setShowMap }) => {
           <TouchableOpacity
             style={styles.listChangeButton}
             onPress={handleShowMap}
+            activeOpacity={0.9}
           >
             <Text style={[styles.buttonText, { fontFamily: "HKGrotesk" }]}>
               Lista
@@ -321,7 +322,7 @@ const Map = ({ setShowMap }) => {
               style={styles.bottomSheetHeaderButton}
               onPress={() => bottomSheetRef.current.close()}
             >
-              <CloseIcon width={24} height={24} />
+              <CarouselCloseIcon width={24} height={24} />
             </TouchableOpacity>
 
             <MapCarousel
@@ -413,7 +414,7 @@ const Map = ({ setShowMap }) => {
                       }}
                     >
                       <ImageBackground
-                        source={{ uri: tour.logo }}
+                        source={{ uri: tour.mappin }}
                         style={styles.tourImage}
                         imageStyle={{ borderRadius: 10 }}
                       ></ImageBackground>

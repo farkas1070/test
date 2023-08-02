@@ -43,7 +43,7 @@ const BottomNavigator = () => {
     navigation.openDrawer();
   };
   if (!fontsLoaded) {
-    return null; 
+    return null;
   }
   return (
     <React.Fragment>
@@ -55,14 +55,13 @@ const BottomNavigator = () => {
             paddingBottom: 10,
             paddingTop: 10,
             marginBottom: Platform.OS === "ios" ? 20 : 0,
-
             backgroundColor: "#F5F5F5",
           },
           tabBarActiveTintColor: "#FF8882",
           tabBarInactiveTintColor: "#9E9E9E",
           tabBarLabelStyle: {
             fontSize: 11,
-            fontFamily:'HKGrotesk'
+            fontFamily: "HKGrotesk",
           },
         }}
       >
