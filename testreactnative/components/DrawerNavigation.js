@@ -26,7 +26,7 @@ const DrawerNavigator = () => {
         drawerType: "front",
         drawerStyle: {
           backgroundColor: "#fff",
-          width: "75%",
+          width: 300,
         },
       }}
     >
