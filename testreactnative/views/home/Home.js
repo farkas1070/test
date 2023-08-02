@@ -6,38 +6,57 @@ import ExploreCarousel from "./components/ExploreCarousel";
 import ServiceCarousel from "./components/ServiceCarousel";
 import WineryCarousel from "./components/WineryCarousel";
 import { NewsContext } from "../../context/GlobalContext";
-
+import Header from "./components/Header";
+import { FontsContext } from "../../context/GlobalContext";
 const Home = () => {
   const [news, setNews] = useContext(NewsContext);
+  const latestNews = news[0];
+  console.log(latestNews);
+  const fontsLoaded = useContext(FontsContext);
+
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
     <View style={styles.maincontainer}>
-      <ScrollView style={styles.scrollView}>
+      <Header></Header>
+
+      <ScrollView style={styles.scrollView} horizontal={false}>
+        <View style={styles.exploreSection}>
+          <ExploreCarousel />
+        </View>
+        <View style={styles.latestnewssection}>
+          <View style={styles.topContainer}>
+            <Text style={[styles.latestnewstext, { fontFamily: "HKGrotesk" }]}>
+              Latest News
+            </Text>
+            <Text style={[styles.seeMoreText, { fontFamily: "HKGrotesk" }]}>
+              See all
+            </Text>
+          </View>
+          <View style={styles.latestContainer}>
+            <Text
+              style={[styles.shortDateText, { fontFamily: "HKGrotesk" }]}
+            >{`${latestNews.date.day}, ${latestNews.date.month}, ${latestNews.date.year}`}</Text>
+            <Text style={[styles.shorttitletext, { fontFamily: "HKGrotesk" }]}>
+              {latestNews.title}
+            </Text>
+          </View>
+        </View>
+
+        <View style={styles.wineriesCarouselSection}>
+          <WineryCarousel />
+        </View>
         <View style={styles.eventsection}>
           <Text style={styles.eventtext}>Upcoming Events</Text>
           <View style={styles.carouselcontainer}>
             <EventCarousel />
           </View>
-          <View style={styles.latestnewssection}>
-            <View style={styles.underlineview}>
-              <Text style={styles.latestnewstext}>Latest News</Text>
-            </View>
-          </View>
-          <View style={styles.dateAndTitleContainer}>
-            <Text style={styles.shortDateText}>{news[0].title}</Text>
-            <Text style={styles.shorttitletext}>Short title of news</Text>
-          </View>
         </View>
 
-        <View style={styles.exploreSection}>
-          <Text style={styles.exploreText}>Explore</Text>
-          <ExploreCarousel />
-        </View>
         <View style={styles.lookForWineriesSection}>
           <Text style={styles.lookForWineriesText}>Look For Winery to</Text>
           <ServiceCarousel />
-        </View>
-        <View style={styles.wineriesCarouselSection}>
-          <WineryCarousel />
         </View>
       </ScrollView>
     </View>

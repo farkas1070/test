@@ -1,12 +1,23 @@
-import { Text, View, useWindowDimensions, FlatList, Image } from "react-native";
-import React, { useRef } from "react";
-import { styles } from "./ExploreCarouselStyle";
-import Carousel from "react-native-snap-carousel-v4";
-import ExploreCard from "./ExploreCard";
+import {
+  Text,
+  View,
 
+  
+  ImageBackground,
+} from "react-native";
+import React, { useRef,useContext,useState } from "react";
+import { styles } from "./ExploreCarouselStyle";
+import { FlatList } from "react-native-gesture-handler";
+import ExploreCard from "./ExploreCard";
+import { FontsContext } from "../../../context/GlobalContext";
 const ExploreCarousel = () => {
-  const carouselRef = useRef(null);
-  const { width } = useWindowDimensions();
+  
+  const fontsLoaded = useContext(FontsContext);
+  
+  
+  if (!fontsLoaded) {
+    return null;
+  }
   const data = [
     {
       id: "1",
@@ -45,15 +56,26 @@ const ExploreCarousel = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      source={{
+        uri: "https://www.thetopvillas.com/blog/wp-content/uploads/2018/07/wine-featured.jpg",
+      }}
+      resizeMode="cover"
+      style={[styles.container]}
+    >
+      <View style={styles.overlay} />
+      <Text style={[styles.exploreText,{fontFamily:'Karma'}]}>Discover {"\n"}the Wine Region</Text>
+      <View style={styles.flatListContainer}>
       <FlatList
         data={data}
+        disableVirtualization={true}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
       />
-    </View>
+      </View>
+    </ImageBackground>
   );
 };
 

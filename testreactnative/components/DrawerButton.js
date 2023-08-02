@@ -1,17 +1,14 @@
 import { Text, TouchableOpacity } from "react-native";
 import React, { useContext } from "react";
-import { I18nContext } from "../context/GlobalContext";
 import { useNavigation } from "@react-navigation/native";
 import { styles } from "./DrawerButtonStyle";
-import { useFonts } from "expo-font";
-import Catamaran from "../fonts/Catamaran-Regular.ttf";
+import { FontsContext } from "../context/GlobalContext";
 const DrawerButton = ({ routeName, icon, isSelected, onPress }) => {
   const navigation = useNavigation();
-  const [loaded] = useFonts({
-    Catamaran: Catamaran,
-  });
+  const fontsLoaded = useContext(FontsContext);
+  
 
-  if (!loaded) {
+  if (!fontsLoaded) {
     return null;
   }
   return (

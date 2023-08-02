@@ -22,6 +22,7 @@ const DrawerNavigator = () => {
       initialRouteName={i18n.t("home")}
       screenOptions={{
         drawerPosition: "left",
+        swipeEdgeWidth: 0,
         drawerType: "front",
         drawerStyle: {
           backgroundColor: "#fff",

@@ -60,7 +60,9 @@ export const GlobalContextProvider = (props) => {
         });
         await Font.loadAsync({
           HKGrotesk: require("../fonts/HankenGrotesk-Regular.ttf"),
+          HKGroteskBold:require("../fonts/HankenGrotesk-Bold.ttf"),
           Catamaran: require("../fonts/Catamaran-Regular.ttf"),
+          Karma: require("../fonts/Karma-SemiBold.ttf"),
         });
         setFontsLoaded(true);
         setLoading(false);

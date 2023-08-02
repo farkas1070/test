@@ -17,4 +17,13 @@ export const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 20,
   },
+  winemakersText:{
+    fontSize:22,
+    letterSpacing:2,
+    color:'white',
+    marginLeft:10
+  },
+  icon:{
+    marginBottom:20
+  }
 });

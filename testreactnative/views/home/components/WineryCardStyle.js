@@ -2,19 +2,35 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   cardContainer: {
-    height: 300,
-    backgroundColor: "white",
-    width: 200,
-    marginLeft: 20,
-    marginRight: 20,
+    height: 200,
+    backgroundColor: "#F0EEEF",
+    width: 100,
+    marginLeft: 10,
+    marginRight: 10,
     marginBottom: 30,
-    borderWidth: 1,
-    borderColor: "#D9D9D9",
+    
     borderRadius: 10,
   },
+  imageContainer:{
+    width:'100%',
+    height:110,
+    
+    alignItems:'center',
+    justifyContent:'flex-end'
+    
+  },
   carouselImage: {
-    width: "100%",
-    height: "70%",
+    width: "90%",
+    height: "95%",
+    
     borderRadius: 10,
+  },
+  titleText:{
+    fontSize:17,
+    color:'black'
+  },
+  textContainer:{
+    width:'100%',
+    padding:5
   },
 });

@@ -13,10 +13,10 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "black",
   },
-  image: {
+  handleScroll: {
+    backgroundColor: "white",
     width: 200,
-    height: 150,
-    marginLeft: 10,
+    height: 60,
   },
 
   container: {
@@ -37,8 +37,20 @@ export const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   text: {
-    color: "white",
+    color: "#342767",
     fontSize: 20,
     marginLeft: 15,
   },
+  cardContainer: {
+    width: 160,
+    height: 120,
+    backgroundColor: "white",
+    marginLeft:10,
+    marginRight:10,
+    borderRadius:10
+  },
+  icon:{
+    marginLeft:20,
+    marginTop:20
+  }
 });

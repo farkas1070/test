@@ -70,6 +70,7 @@ const BottomNavigator = () => {
           name={i18n.t("home")[0]}
           component={Home}
           options={{
+            headerShown: false,
             tabBarIcon: ({ focused }) =>
               focused ? (
                 <HomeFilledIcon width={24} height={24} />
@@ -77,41 +78,7 @@ const BottomNavigator = () => {
                 <HomeIcon width={24} height={24} />
               ),
 
-            headerTitle: () => (
-              <SvgCssUri
-                uri={
-                  "https://soproniborvidek.hu/wp-content/uploads/2020/11/soproniborvidek_logo_color_fekvo.svg"
-                }
-                width={140}
-                height={100}
-              />
-            ),
-            headerStyle: {
-              height: 100,
-              backgroundColor: "#F5F5F5",
-            },
-            headerTitleAlign: "center",
-
-            headerRight: () => (
-              <TouchableOpacity
-                style={styles.searchbutton}
-                onPress={() => {
-                  openModal();
-                }}
-              >
-                <Ionicons name="search" size={24} color="#A8A8A8" />
-              </TouchableOpacity>
-            ),
-            headerLeft: () => (
-              <TouchableOpacity
-                style={{ paddingLeft: 10 }}
-                onPress={() => {
-                  openMenu();
-                }}
-              >
-                <MenuIcon width={24} height={24} />
-              </TouchableOpacity>
-            ),
+            
           }}
         />
 

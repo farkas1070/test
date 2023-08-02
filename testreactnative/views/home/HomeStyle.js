@@ -15,6 +15,7 @@ export const styles = StyleSheet.create({
 
   eventsection: {
     width: "100%",
+    marginTop:60,
 
     flexDirection: "column",
   },
@@ -28,40 +29,54 @@ export const styles = StyleSheet.create({
     marginTop: 20,
   },
   latestnewssection: {
-    marginLeft: 10,
-    width: "100%",
-    marginTop: 40,
+    
+    
+    marginTop: 110,
     alignItems: "center",
+    
+    flexDirection:'column',
+    
+    
+    marginLeft:10,
+    marginRight:10
+    
   },
   latestnewstext: {
-    fontSize: 20,
-
+    fontSize: 18,
+    color:'#FF8882',
     marginBottom: 10,
 
-    fontWeight: "bold",
+    
   },
-  underlineview: {
-    borderBottomColor: "#EEEEEE",
-    borderBottomWidth: 1,
+  latestContainer:{
+    width:'100%',
+    marginLeft:40
+  },
+  topContainer:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    width:'100%',
+    borderBottomWidth:1,
+    borderBottomColor:'#D9D9D9',
 
-    width: "100%",
   },
+  seeMoreText:{
+      color:'#FF8882',
+  },
+  
   shorttitletext: {
     fontSize: 24,
-    marginLeft: 30,
+    
   },
   shortDateText: {
     fontSize: 18,
-    marginLeft: 30,
+    color:'#A8A8A8',
     marginTop: 10,
   },
-  dateAndTitleContainer: {
-    width: "100%",
-    flexDirection: "column",
-  },
+  
   exploreSection: {
     width: "100%",
-    marginTop: 30,
+    
   },
   exploreText: {
     fontSize: 20,
@@ -81,5 +96,7 @@ export const styles = StyleSheet.create({
   },
   wineriesCarouselSection: {
     width: "100%",
+    marginTop:40,
+    backgroundColor:'#352269'
   },
 });
