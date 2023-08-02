@@ -26,8 +26,8 @@ export const getWineries = async (language) => {
       icon2: service.acf.icon_2,
       name: service.name,
     }));
-    
-    
+    console.log(servicesArray);
+
     services.forEach((service) => {
       service.forEach((innerService) => {
         if (innerService !== undefined) {
@@ -41,6 +41,7 @@ export const getWineries = async (language) => {
       title: item?.title?.rendered,
       content: item?.content?.rendered,
       logo: item?.acf?.banner?.boraszat_logo?.sizes?.medium,
+      mapping: item?.acf?.banner?.boraszat_logo?.sizes?.thumbnail,
       banner: item?.acf?.banner?.banner_hatter?.url,
       owner_name: item?.acf?.kapcsolat?.tulajdonos_nev,
       type: item?.type,
@@ -73,7 +74,6 @@ export const getWineries = async (language) => {
 
   return { wineriesData, uniqueServices };
 };
-
 
 export const getEvents = async (language) => {
   const data = await getDataByUrl(

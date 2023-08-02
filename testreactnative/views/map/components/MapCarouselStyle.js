@@ -38,4 +38,17 @@ export const styles = StyleSheet.create({
     width: "55%",
     justifyContent: "space-evenly",
   },
+  showButton: {
+    color: "#FF8882",
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "flex-end",
+    marginRight: 20,
+  },
+  showButtonText: {
+    color: "#FF8882",
+    fontWeight: "500",
+    fontSize: 16,
+    marginRight: 5,
+  },
 });

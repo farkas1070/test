@@ -3,7 +3,6 @@ export const styles = StyleSheet.create({
   searchContainer: {
     width: "100%",
     height: 70,
-
     padding: 10,
     justifyContent: "space-between",
     alignItems: "center",
@@ -32,7 +31,6 @@ export const styles = StyleSheet.create({
     width: "80%",
     height: 40,
     backgroundColor: "white",
-
     borderRadius: 20,
     padding: 10,
   },

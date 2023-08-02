@@ -17,9 +17,8 @@ const FilterCarousel = () => {
   const width = Dimensions.get("window").width;
   const [services] = useContext(ServicesContext);
   const fontsLoaded = useContext(FontsContext);
-  const itemWidth = width / 2;
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
-  
+
   if (!fontsLoaded) {
     return null;
   }
