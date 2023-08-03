@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
-    height: 300,
+    height: 320,
     width: "100%",
   },
   overlay: {
@@ -26,6 +26,10 @@ export const styles = StyleSheet.create({
     color: "white",
     marginLeft: 20,
     fontSize:32,
-    marginTop:100
+    
   },
+  textContainer:{
+    position:'absolute',
+    bottom:80
+  }
 });

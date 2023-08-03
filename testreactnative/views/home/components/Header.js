@@ -6,6 +6,7 @@ import MenuIcon from "../../../assets/menuassets/Menu.svg";
 import { SvgCssUri } from "react-native-svg";
 import { Ionicons } from '@expo/vector-icons'; 
 import { SafeAreaView } from "react-native-safe-area-context";
+
 const Header = () => {
   const navigation = useNavigation();
   return (
