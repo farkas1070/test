@@ -5,6 +5,8 @@ import { FlatList } from "react-native-gesture-handler";
 import ExploreCard from "./ExploreCard";
 import { FontsContext } from "../../../context/GlobalContext";
 import HomepagePic from "../../../assets/homepagePic2.jpg";
+import { LinearGradient } from 'expo-linear-gradient';
+
 const ExploreCarousel = () => {
   const fontsLoaded = useContext(FontsContext);
 
@@ -54,6 +56,13 @@ const ExploreCarousel = () => {
       resizeMode="cover"
       style={[styles.container]}
     >
+      <LinearGradient
+        // Background Linear Gradient
+        colors={['transparent', 'rgba(240, 238, 239, 1)']}
+        style={styles.background}
+        start={{ x: 0.5, y: 0.6 }} // Adjust the y value to change the start position (0 = top, 1 = bottom)
+        end={{ x: 0.5, y: 1 }} // End at the bottom of the container
+      >
       <View style={styles.textContainer}>
         <Text style={[styles.exploreText, { fontFamily: "Karma" }]}>
           Discover {"\n"}the Wine Region
@@ -69,6 +78,7 @@ const ExploreCarousel = () => {
           showsHorizontalScrollIndicator={false}
         />
       </View>
+      </LinearGradient>
     </ImageBackground>
   );
 };

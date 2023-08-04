@@ -25,11 +25,15 @@ export const styles = StyleSheet.create({
   exploreText: {
     color: "white",
     marginLeft: 20,
-    fontSize:32,
+    fontSize:38,
     
   },
   textContainer:{
     position:'absolute',
     bottom:80
+  },
+  background:{
+    width:'100%',
+    height:'100%'
   }
 });
