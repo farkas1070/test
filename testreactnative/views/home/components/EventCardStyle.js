@@ -21,6 +21,12 @@ export const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 10,
   },
+  dateText:{
+    fontSize: 12,
+    color: "#FF8882",
+    marginLeft: 10,
+    marginTop: 10,
+  },
   carouselImage: {
     width: "100%",
     height: "100%",

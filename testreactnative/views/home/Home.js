@@ -25,6 +25,15 @@ const Home = () => {
         <View style={styles.exploreSection}>
           <ExploreCarousel />
         </View>
+        <View style={styles.eventsection}>
+          <View style={styles.eventsTopContainer}>
+            <Text style={styles.upcomingEventsText}>UPCOMING EVENTS</Text>
+            <Text style={styles.seeMoreText}>See all</Text>
+          </View>
+          <View style={styles.carouselcontainer}>
+            <EventCarousel />
+          </View>
+        </View>
         <View style={styles.latestnewssection}>
           <View style={styles.topContainer}>
             <Text style={[styles.latestnewstext, { fontFamily: "HKGrotesk" }]}>
@@ -50,15 +59,7 @@ const Home = () => {
         <View style={styles.lookForWineriesSection}>
           <ServiceCarousel />
         </View>
-        <View style={styles.eventsection}>
-          <View style={styles.eventsTopContainer}>
-            <Text style={styles.upcomingEventsText}>UPCOMING EVENTS</Text>
-            <Text style={styles.seeMoreText}>See all</Text>
-          </View>
-          <View style={styles.carouselcontainer}>
-            <EventCarousel />
-          </View>
-        </View>
+       
       </ScrollView>
     </View>
   );

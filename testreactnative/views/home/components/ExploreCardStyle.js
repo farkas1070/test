@@ -45,8 +45,7 @@ export const styles = StyleSheet.create({
     width: 160,
     height: 120,
     backgroundColor: "white",
-    marginLeft:10,
-    marginRight:10,
+    
     borderRadius:10
   },
   icon:{

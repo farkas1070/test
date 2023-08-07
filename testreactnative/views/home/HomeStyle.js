@@ -15,8 +15,7 @@ export const styles = StyleSheet.create({
 
   eventsection: {
     width: "100%",
-    marginTop:60,
-
+    marginTop:50,
     flexDirection: "column",
   },
   eventtext: {
@@ -31,7 +30,7 @@ export const styles = StyleSheet.create({
   latestnewssection: {
     
     
-    marginTop: 110,
+    marginTop: 50,
     alignItems: "center",
     
     flexDirection:'column',

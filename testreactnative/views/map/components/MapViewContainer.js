@@ -9,7 +9,6 @@ import MapView, {
 import Placeholder from "../../../assets/placeholder.png";
 import { Mapstyle } from "../CustomMapStyle";
 import { styles } from "./MapViewContainerStyle";
-import BottomMarker from "../../../assets/markerbottom.png";
 import MapPin from "../../../assets/mapassets/mapPin.svg"
 
 const MapViewContainer = ({

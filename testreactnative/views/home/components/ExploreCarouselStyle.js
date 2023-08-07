@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
-    height: 320,
+    height: 350,
     width: "100%",
   },
   overlay: {
@@ -18,19 +18,20 @@ export const styles = StyleSheet.create({
     position: "absolute",
     flexDirection: "row",
     justifyContent: "space-between",
-    bottom: -60,
-    left: 0,
+    bottom: 0,
+    left:0,
     right: 0,
+    
   },
   exploreText: {
     color: "white",
-    marginLeft: 20,
+    marginLeft: 24,
     fontSize:38,
     
   },
   textContainer:{
     position:'absolute',
-    bottom:80
+    bottom:120
   },
   background:{
     width:'100%',

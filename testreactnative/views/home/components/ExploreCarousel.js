@@ -59,7 +59,7 @@ const ExploreCarousel = () => {
         // Background Linear Gradient
         colors={["transparent", "rgba(240, 238, 239, 1)"]}
         style={styles.background}
-        start={{ x: 0.5, y: 0.6 }} // Adjust the y value to change the start position (0 = top, 1 = bottom)
+        start={{ x: 0.5, y: 0.7 }} // Adjust the y value to change the start position (0 = top, 1 = bottom)
         end={{ x: 0.5, y: 1 }} // End at the bottom of the container
       >
         <View style={styles.textContainer}>
