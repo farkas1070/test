@@ -10,7 +10,7 @@ import Placeholder from "../../../assets/placeholder.png";
 import { Mapstyle } from "../CustomMapStyle";
 import { styles } from "./MapViewContainerStyle";
 import BottomMarker from "../../../assets/markerbottom.png";
-import MapPin from "../../../assets/mapassets/MapPin";
+import MapPin from "../../../assets/mapassets/mapPin.svg"
 
 const MapViewContainer = ({
   mapRef,
@@ -83,16 +83,15 @@ const MapViewContainer = ({
               source={poi.logo ? { uri: poi.logo } : Placeholder}
               style={styles.markerimage}
             />
-            <Image
-              source={BottomMarker}
-              style={{
-                bottom: 0,
-                width: 50,
+            <MapPin width={20} height={20} style={{
+                bottom: -3,
+                
+                
                 position: "absolute",
-                height: 20,
+                
                 zIndex: -1,
-              }}
-            />
+              }} ></MapPin>
+            
           </View>
           <Callout style={styles.callout} tooltip={true}>
             <Text>{poi.title}</Text>

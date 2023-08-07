@@ -133,12 +133,13 @@ export const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
-    borderColor: "coral",
-    borderWidth: 2,
+    borderColor: "#FF8882",
+    borderWidth: 3,
     marginBottom: 10,
   },
   markerContainer: {
     width: 50,
+    alignItems:'center',
     height: 60,
   },
 });
