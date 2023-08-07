@@ -6,9 +6,10 @@ import ExploreCard from "./ExploreCard";
 import { FontsContext } from "../../../context/GlobalContext";
 import HomepagePic from "../../../assets/homepagePic2.jpg";
 import { LinearGradient } from "expo-linear-gradient";
-
+import { I18nContext } from "../../../context/GlobalContext";
 const ExploreCarousel = () => {
   const fontsLoaded = useContext(FontsContext);
+  const [i18n] = useContext(I18nContext);
 
   if (!fontsLoaded) {
     return null;
