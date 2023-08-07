@@ -9,9 +9,8 @@ import MapView, {
 import Placeholder from "../../../assets/placeholder.png";
 import { Mapstyle } from "../CustomMapStyle";
 import { styles } from "./MapViewContainerStyle";
-import MapPin from "../../../assets/mapassets/mapPin.svg"
-import PlaceholderImage from "../../../assets/homepageicons/placeholderImage.jpg"
-
+import MapPin from "../../../assets/mapassets/mapPin.svg";
+import PlaceholderImage from "../../../assets/homepageicons/placeholderImage.jpg";
 
 const MapViewContainer = ({
   mapRef,

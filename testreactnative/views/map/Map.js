@@ -14,7 +14,6 @@ import LoadingComponent from "./components/LoadingComponent";
 import MapViewContainer from "./components/MapViewContainer";
 import MapCarousel from "./components/MapCarousel";
 import ToursModal from "./components/ToursModal";
-
 import CurrentWineTour from "./components/CurrentWineTour";
 import BottomSheet from "@gorhom/bottom-sheet";
 import {
@@ -30,7 +29,7 @@ import CloseIcon from "../../assets/mapassets/Close.svg";
 import CarouselCloseIcon from "../../assets/mapassets/CarouselClose.svg";
 import { FontsContext } from "../../context/GlobalContext.js";
 
-const Map = ({ setShowMap }) => {
+const Map = ({ setShowMap, search }) => {
   const mapRef = useRef(null);
   const markerRef = useRef([]);
   const carouselRef = useRef(null);
@@ -61,6 +60,13 @@ const Map = ({ setShowMap }) => {
 
   if (currentLatDelta > 0.01) setCurrentLatDelta(0.005);
   if (currentLongDelta > 0.01) setCurrentLongDelta(0.005);
+
+  const [filteredMarkers, setFilteredMarkers] = useState([]);
+
+  useEffect(() => {
+    const filteredItems = search();
+    setFilteredMarkers(filteredItems);
+  }, [search]);
 
   const openModal = () => {
     setModalVisible(true);
@@ -96,18 +102,17 @@ const Map = ({ setShowMap }) => {
 
   const filterMarkers = (type) => {
     if (type === "sight") {
-      return pointsOfInterest.filter(
+      return filteredMarkers.filter(
         (poi) => poi.type === "sight" && poi.map.lat !== undefined
       );
     } else if (type === "wineries") {
-      return pointsOfInterest.filter(
+      return filteredMarkers.filter(
         (poi) => poi.type === "wineries" && poi.map.lat !== undefined
       );
     } else {
-      return pointsOfInterest.filter((point) => point.map.lat !== undefined);
+      return filteredMarkers.filter((point) => point.map.lat !== undefined);
     }
   };
-  const filteredMarkers = filterMarkers(filter);
 
   const filterTours = (name) => {
     if (name === "None") {

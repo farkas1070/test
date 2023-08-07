@@ -33,7 +33,7 @@ const Wineries = () => {
     <View style={styles.maincontainer}>
       <Header setSearchText={setSearchText} />
       {showMap ? (
-        <Map setShowMap={setShowMap} />
+        <Map setShowMap={setShowMap} search={filterItems} />
       ) : (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
           <View style={styles.maincontainer}>
