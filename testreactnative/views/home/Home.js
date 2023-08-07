@@ -1,4 +1,4 @@
-import { Text, View, ScrollView } from "react-native";
+import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import React, { useContext } from "react";
 import { styles } from "./HomeStyle";
 import EventCarousel from "./components/EventCarousel";
@@ -8,9 +8,13 @@ import WineryCarousel from "./components/WineryCarousel";
 import { NewsContext } from "../../context/GlobalContext";
 import Header from "./components/Header";
 import { FontsContext } from "../../context/GlobalContext";
+import { useNavigation } from "@react-navigation/native";
+import { I18nContext } from "../../context/GlobalContext";
 const Home = () => {
   const [news, setNews] = useContext(NewsContext);
   const latestNews = news[0];
+  const navigation = useNavigation();
+  const [i18n] = useContext(I18nContext);
 
   const fontsLoaded = useContext(FontsContext);
 
@@ -28,11 +32,17 @@ const Home = () => {
         <View style={styles.latestnewssection}>
           <View style={styles.topContainer}>
             <Text style={[styles.latestnewstext, { fontFamily: "HKGrotesk" }]}>
-              Latest News
+              {i18n.t("latestnews")}
             </Text>
-            <Text style={[styles.seeMoreText, { fontFamily: "HKGrotesk" }]}>
-              See all
-            </Text>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate(i18n.t("news"));
+              }}
+            >
+              <Text style={[styles.seeMoreText, { fontFamily: "HKGrotesk" }]}>
+                {i18n.t("seeall")}
+              </Text>
+            </TouchableOpacity>
           </View>
           <View style={styles.latestContainer}>
             <Text
@@ -52,8 +62,16 @@ const Home = () => {
         </View>
         <View style={styles.eventsection}>
           <View style={styles.eventsTopContainer}>
-            <Text style={styles.upcomingEventsText}>UPCOMING EVENTS</Text>
-            <Text style={styles.seeMoreText}>See all</Text>
+            <Text style={styles.upcomingEventsText}>
+              {i18n.t("upcomingevents")}
+            </Text>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate(i18n.t("events"));
+              }}
+            >
+              <Text style={styles.seeMoreText}>{i18n.t("seeall")}</Text>
+            </TouchableOpacity>
           </View>
           <View style={styles.carouselcontainer}>
             <EventCarousel />

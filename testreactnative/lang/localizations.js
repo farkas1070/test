@@ -37,6 +37,12 @@ const hu = {
   phone: "Telefon",
   website: "Weboldal",
   about: "Rólunk",
+  seeall: "Összes",
+  latestnews: "Legfrissebb hírek",
+  upcomingevents: "Közelgő események",
+  discover: "Fedezd fel",
+  thewinemakers: "borászainkat",
+  lookforwineries: "Keresd meg a borászatot, ahol",
 };
 
 const en = {
@@ -76,6 +82,12 @@ const en = {
   phone: "Phone",
   website: "Website",
   about: "About",
+  seeall: "See all",
+  latestnews: "Latest news",
+  upcomingevents: "Upcoming events",
+  discover: "Discover",
+  thewinemakers: "The winemakers",
+  lookforwineries: "Look for the winery where",
 };
 
 const de = {
@@ -115,6 +127,12 @@ const de = {
   phone: "Telefon",
   website: "Webseite",
   about: "Über Uns",
+  seeall: "Alle anzeigen",
+  latestnews: "Neueste Nachrichten",
+  upcomingevents: "Kommende Veranstaltungen",
+  discover: "Entdecken",
+  thewinemakers: "Die Winzer",
+  lookforwineries: "Suchen Sie das Weingut, in dem",
 };
 
 export { hu, en, de };
