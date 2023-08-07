@@ -7,34 +7,68 @@ export const styles = StyleSheet.create({
     zIndex: 1,
   },
   eventTitle: {
-    fontSize: 20,
-    fontWeight: "bold",
-    marginLeft: 10,
+    fontSize: 26,
+    color:'#352269',
+    marginLeft: 16,
     marginBottom: 10,
-    marginTop: 10,
+    marginTop: 24,
+  },
+  eventLocation:{
+    
+    flexDirection:'row',
+    alignItems: 'flex-start',
+    marginBottom:20,
+    borderBottomWidth:1,
+    borderBottomColor:'#C4C4C4',
+    paddingBottom:20,
+    marginLeft:20,
+    marginRight:20
   },
   eventInfo: {
-    padding: 10,
+    padding: 16,
     flexDirection: "row",
   },
   eventStartDate: {
     fontSize: 20,
-    fontWeight: "bold",
+    
+    color:'#352269',
     marginHorizontal: 10,
   },
   eventEndDate: {
     fontSize: 20,
-    fontWeight: "bold",
+    color:'#352269',
+    
     marginHorizontal: 10,
   },
   eventStartHour: {
     marginHorizontal: 10,
+    color:'#352269',
+  },
+  addText:{
+    
+      marginHorizontal: 15,
+      marginVertical: 10,
+      color:'#FF8882'
+    
+  },
+  startText:{
+    color:'#9D97B7',
+    
+    fontSize:14,
+    marginHorizontal: 10,
+  },
+  endText:{
+    color:'#9D97B7',
+    marginTop:7,
+    fontSize:14,
+    marginHorizontal: 10,
   },
   eventEndHour: {
     marginHorizontal: 10,
+    color:'#352269',
   },
   backContainer: {
-    backgroundColor: "lightgray",
+    backgroundColor: "#F0EEEF",
     marginVertical: 10,
   },
   eventDatails: {
@@ -45,12 +79,22 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     marginVertical: 10,
   },
+  eventDetails:{
+
+  },
+  
   eventDetailsTitle: {
-    fontSize: 20,
-    marginVertical: 10,
-    marginHorizontal: 15,
+    fontSize:17,
+    color:'#352269',
+    marginLeft:15
+    
+  },
+  eventDetails:{
+    marginLeft:20,
+    color:'#9D97B7'
   },
   eventDetailsText: {
-    marginHorizontal: 15,
+    marginHorizontal: 20,
+    color:'#696969'
   },
 });

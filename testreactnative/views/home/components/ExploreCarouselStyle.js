@@ -22,6 +22,7 @@ export const styles = StyleSheet.create({
     left:0,
     right: 0,
     
+    
   },
   exploreText: {
     color: "white",

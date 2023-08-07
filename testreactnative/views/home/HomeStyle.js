@@ -16,11 +16,12 @@ export const styles = StyleSheet.create({
   eventsection: {
     width: "100%",
     marginTop:50,
+    
     flexDirection: "column",
   },
   eventtext: {
     fontSize: 22,
-    marginLeft: 10,
+    marginLeft: 16,
     marginTop: 20,
     fontWeight: "bold",
   },
@@ -36,8 +37,8 @@ export const styles = StyleSheet.create({
     flexDirection:'column',
     
     
-    marginLeft:10,
-    marginRight:10
+    marginLeft:16,
+    marginRight:16
     
   },
   latestnewstext: {
@@ -64,7 +65,7 @@ export const styles = StyleSheet.create({
     justifyContent:'space-between',
     alignItems:'flex-end',
     
-    marginLeft:10,
+    
     marginRight:10
   },
   seeMoreText:{
@@ -73,7 +74,8 @@ export const styles = StyleSheet.create({
   upcomingEventsText:{
     color:'#FF8882',
     fontSize:20,
-    letterSpacing:2
+    letterSpacing:2,
+    marginLeft:16
   },
   
   shorttitletext: {
@@ -97,6 +99,7 @@ export const styles = StyleSheet.create({
   },
   lookForWineriesSection: {
     width: "100%",
+    marginBottom:30
   },
   
   wineriesCarouselSection: {

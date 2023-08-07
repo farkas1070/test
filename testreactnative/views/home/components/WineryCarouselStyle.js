@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 20,
-    marginLeft: 10,
+    marginLeft: 16,
     marginTop: 20,
   },
   winemakersText:{

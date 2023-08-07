@@ -10,7 +10,7 @@ import Placeholder from "../../../assets/placeholder.png";
 import { Mapstyle } from "../CustomMapStyle";
 import { styles } from "./MapViewContainerStyle";
 import MapPin from "../../../assets/mapassets/mapPin.svg"
-
+import PlaceholderImage from "../../../assets/homepageicons/placeholderImage.jpg"
 
 
 const MapViewContainer = ({
@@ -81,7 +81,8 @@ const MapViewContainer = ({
         >
           <View style={styles.markerContainer}>
             <Image
-              source={poi.logo ? { uri: poi.logo } : Placeholder}
+              source={poi.logo ? { uri: poi.logo } : PlaceholderImage}
+              resizeMode="cover"
               style={styles.markerimage}
             />
             <MapPin

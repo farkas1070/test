@@ -45,8 +45,13 @@ const ExploreCarousel = () => {
     },
   ];
 
-  const renderItem = ({ item }) => {
-    return <ExploreCard item={item} />;
+  const renderItem = ({ item,index }) => {
+    
+    if (index === data.length -1) {
+      return <ExploreCard item={item} last={true}/>;
+    } 
+    return <ExploreCard item={item} last={false} />;
+    
   };
 
   return (
@@ -71,7 +76,8 @@ const ExploreCarousel = () => {
         <View style={styles.flatListContainer}>
           <FlatList
             data={data}
-            disableVirtualization={true}
+            
+            
             renderItem={renderItem}
             keyExtractor={(item) => item.id}
             horizontal={true}

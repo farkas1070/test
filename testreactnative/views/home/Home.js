@@ -32,7 +32,9 @@ const Home = () => {
         <View style={styles.eventsection}>
           <View style={styles.eventsTopContainer}>
             <Text style={styles.upcomingEventsText}>UPCOMING EVENTS</Text>
+            <TouchableOpacity onPress={()=>{navigation.navigate(i18n.t("events"))}}>
             <Text style={styles.seeMoreText}>See all</Text>
+            </TouchableOpacity>
           </View>
           <View style={styles.carouselcontainer}>
             <EventCarousel />
@@ -70,23 +72,7 @@ const Home = () => {
           <ServiceCarousel />
         </View>
 
-        <View style={styles.eventsection}>
-          <View style={styles.eventsTopContainer}>
-            <Text style={styles.upcomingEventsText}>
-              {i18n.t("upcomingevents")}
-            </Text>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate(i18n.t("events"));
-              }}
-            >
-              <Text style={styles.seeMoreText}>{i18n.t("seeall")}</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.carouselcontainer}>
-            <EventCarousel />
-          </View>
-        </View>
+        
 
       </ScrollView>
     </View>

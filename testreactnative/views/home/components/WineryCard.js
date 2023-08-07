@@ -26,7 +26,7 @@ const WineryCard = ({ item }) => {
         />
       </View>
       <View style={styles.textContainer}>
-        <Text style={[styles.titleText, { fontFamily: "HKGrotesk" }]}>
+        <Text style={[styles.titleText, { fontFamily: "HKGroteskBold" }]}>
           {item.title}
         </Text>
       </View>

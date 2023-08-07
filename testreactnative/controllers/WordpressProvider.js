@@ -113,6 +113,7 @@ export const getEvents = async (language) => {
         image: item?.image?.sizes?.medium?.url,
         description: item?.description?.replace(/<\/?[^>]+(>|$)/g, ""),
         url: item.url,
+        location:item?.venue?.venue
       };
     });
   } else {

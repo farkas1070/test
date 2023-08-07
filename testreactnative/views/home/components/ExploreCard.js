@@ -9,7 +9,7 @@ import ToursIcon from "../../../assets/homepageicons/toursIcon.svg";
 import NewsIcon from "../../../assets/homepageicons/newsIcon.svg";
 import { useNavigation } from "@react-navigation/native";
 
-const ExploreCard = ({ item }) => {
+const ExploreCard = ({ item,last }) => {
   const navigation = useNavigation();
   const fontsLoaded = useContext(FontsContext);
 
@@ -38,7 +38,7 @@ const ExploreCard = ({ item }) => {
   }
   return (
     <TouchableOpacity
-      style={styles.cardContainer}
+      style={[styles.cardContainer, (last && styles.lastCardContainer)]}
       onPress={() => {
         navigation.navigate(item.navigate);
       }}

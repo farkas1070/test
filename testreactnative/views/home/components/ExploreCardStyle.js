@@ -45,8 +45,12 @@ export const styles = StyleSheet.create({
     width: 160,
     height: 120,
     backgroundColor: "white",
+    marginLeft:16,
     
     borderRadius:10
+  },
+  lastCardContainer:{
+    marginRight:16
   },
   icon:{
     marginLeft:20,
