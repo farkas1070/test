@@ -1,16 +1,23 @@
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, TouchableOpacity } from "react-native";
 import React, { useContext } from "react";
 import { styles } from "./WineryCardStyle";
 import Placeholder from "../../../assets/placeholder.png";
 import { FontsContext } from "../../../context/GlobalContext";
+import { useNavigation } from "@react-navigation/native";
 const WineryCard = ({ item }) => {
   const fontsLoaded = useContext(FontsContext);
+  const navigation = useNavigation();
 
   if (!fontsLoaded) {
     return null;
   }
   return (
-    <View style={styles.cardContainer}>
+    <TouchableOpacity
+      style={styles.cardContainer}
+      onPress={() => {
+        navigation.navigate("Winery", { item: item });
+      }}
+    >
       <View style={styles.imageContainer}>
         <Image
           resizeMode="cover"
@@ -19,9 +26,11 @@ const WineryCard = ({ item }) => {
         />
       </View>
       <View style={styles.textContainer}>
-      <Text style={[styles.titleText,{fontFamily:'HKGrotesk'}]}>{item.title}</Text>
+        <Text style={[styles.titleText, { fontFamily: "HKGrotesk" }]}>
+          {item.title}
+        </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
