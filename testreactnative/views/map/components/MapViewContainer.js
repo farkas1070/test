@@ -11,6 +11,8 @@ import { Mapstyle } from "../CustomMapStyle";
 import { styles } from "./MapViewContainerStyle";
 import MapPin from "../../../assets/mapassets/mapPin.svg"
 
+
+
 const MapViewContainer = ({
   mapRef,
   markerRef,
@@ -82,15 +84,17 @@ const MapViewContainer = ({
               source={poi.logo ? { uri: poi.logo } : Placeholder}
               style={styles.markerimage}
             />
-            <MapPin width={20} height={20} style={{
+            <MapPin
+              width={20}
+              height={20}
+              style={{
                 bottom: -3,
-                
-                
+
                 position: "absolute",
-                
+
                 zIndex: -1,
-              }} ></MapPin>
-            
+              }}
+            ></MapPin>
           </View>
           <Callout style={styles.callout} tooltip={true}>
             <Text>{poi.title}</Text>

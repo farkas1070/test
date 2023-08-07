@@ -7,11 +7,8 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import { ServicesContext } from "../../../context/GlobalContext";
 import { SvgCssUri } from "react-native-svg";
-import { useFonts } from "expo-font";
-import HKGrotesk from "../../../fonts/HankenGrotesk-Regular.ttf";
 import { FontsContext } from "../../../context/GlobalContext";
 const FilterCarousel = () => {
   const width = Dimensions.get("window").width;
