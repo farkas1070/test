@@ -23,7 +23,7 @@ const Home = () => {
   }
   return (
     <View style={styles.maincontainer}>
-      <Header></Header>
+      <Header />
 
       <ScrollView style={styles.scrollView} horizontal={false}>
         <View style={styles.exploreSection}>

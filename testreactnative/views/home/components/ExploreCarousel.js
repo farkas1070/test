@@ -1,5 +1,5 @@
 import { Text, View, ImageBackground } from "react-native";
-import React, { useRef, useContext, useState } from "react";
+import React, { useContext } from "react";
 import { styles } from "./ExploreCarouselStyle";
 import { FlatList } from "react-native-gesture-handler";
 import ExploreCard from "./ExploreCard";
@@ -64,7 +64,8 @@ const ExploreCarousel = () => {
       >
         <View style={styles.textContainer}>
           <Text style={[styles.exploreText, { fontFamily: "Karma" }]}>
-            Discover {"\n"}the Wine Region
+            {i18n.t("discover")} {"\n"}
+            {i18n.t("thewineregion")}
           </Text>
         </View>
         <View style={styles.flatListContainer}>

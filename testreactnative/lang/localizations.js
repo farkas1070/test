@@ -43,6 +43,7 @@ const hu = {
   discover: "Fedezd fel",
   thewinemakers: "borászainkat",
   lookforwineries: "Keresd meg a borászatot, ahol",
+  thewineregion: "a Soproni Borvidéket",
 };
 
 const en = {
@@ -88,6 +89,7 @@ const en = {
   discover: "Discover",
   thewinemakers: "The winemakers",
   lookforwineries: "Look for the winery where",
+  thewineregion: "the Sopron Wine Region",
 };
 
 const de = {
@@ -133,6 +135,7 @@ const de = {
   discover: "Entdecken",
   thewinemakers: "Die Winzer",
   lookforwineries: "Suchen Sie das Weingut, in dem",
+  thewineregion: "das Soproner Weinbaugebiet",
 };
 
 export { hu, en, de };
