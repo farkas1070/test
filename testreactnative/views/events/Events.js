@@ -63,8 +63,8 @@ const Events = () => {
         <SearchBar onSearch={setSearchText} />
       </View>
 
-      <View style={{ width: "100%", flexGrow: 1, backgroundColor: "#f0eeef" }}>
-        <View style={{width:'100%',flexDirection: "row", justifyContent:'space-between',alignItems:'center',paddingTop:30}}>
+      <View style={{ width: "100%", flexGrow: 1, backgroundColor: "#f0eeef",marginBottom:70 }}>
+        <View style={{width:'100%',flexDirection: "row", justifyContent:'space-between',alignItems:'center',marginTop:10}}>
           <View style={styles.currentEventContainer}>
             <Text
               style={[styles.currentEventText, { fontFamily: "HKGrotesk" }]}
