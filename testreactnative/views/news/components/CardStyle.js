@@ -12,8 +12,13 @@ export const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 25,
-    fontWeight: "bold",
+    
     color: "#352269",
+  },
+  image: {
+    width: "100%",
+    height: 160,
+    borderRadius: 10,
   },
   excerptText: {
     color: "#696969",

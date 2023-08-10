@@ -13,6 +13,7 @@ import RenderHtml from "react-native-render-html";
 import { tagsStyles } from "./HtmlContentStyle";
 import Placeholder from "../../assets/placeholder.png";
 import { FontsContext } from "../../context/GlobalContext";
+
 const New = ({ route }) => {
   const item = route.params.item;
   const source = {

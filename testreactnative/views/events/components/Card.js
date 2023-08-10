@@ -28,7 +28,7 @@ const Card = ({ item, index }) => {
       
       <Text style={[styles.cardDescription,{fontFamily:'HKGrotesk'}]}>
       {item.start_date.month} {item.start_date.day},{" "}{startDate.toLocaleTimeString([], {hour: "2-digit",minute: "2-digit",hour12: false, // Use 24-hour format
-})} - {item.start_date.month} {item.start_date.day},{" "}{startDate.toLocaleTimeString([], {hour: "2-digit",minute: "2-digit",hour12: false, // Use 24-hour format
+})} - {item.end_date.month} {item.end_date.day},{" "}{startDate.toLocaleTimeString([], {hour: "2-digit",minute: "2-digit",hour12: false, // Use 24-hour format
 })}
       </Text>
       

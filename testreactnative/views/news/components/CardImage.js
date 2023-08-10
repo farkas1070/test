@@ -2,7 +2,7 @@ import { Text, View, Image } from "react-native";
 import React,{useContext} from "react";
 import { styles } from "./CardImageStyle";
 import Placeholder from "../../../assets/placeholder.png";
-
+import PlaceholderImage from "../../../assets/newsassets/placeholderImage.jpg"
 import { FontsContext } from "../../../context/GlobalContext";
 const CardImage = ({ item }) => {
   const fontsLoaded = useContext(FontsContext);
@@ -13,10 +13,8 @@ const CardImage = ({ item }) => {
 
   return (
     <View>
-      <Image source={item ? { uri: item } : Placeholder} style={styles.image} />
-      <View style={styles.readMoreTag}>
-        <Text style={[styles.readmoretext,{fontFamily:'HKGrotesk'}]}>Read More</Text>
-      </View>
+      <Image resizeMode="contain" source={item ? { uri: item } : PlaceholderImage} style={styles.image} />
+      
     </View>
   );
 };
