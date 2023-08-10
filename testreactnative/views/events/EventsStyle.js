@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   maincontainer: {
     flex: 1,
-    backgroundColor: "#F0EEEF",
+    backgroundColor: "white",
     width: "100%",
     height: "100%",
   },
@@ -75,25 +75,22 @@ export const styles = StyleSheet.create({
   },
 
   changeButton: {
-    marginRight: 20,
-    position: "absolute",
+    marginRight: 12,
+    
     zIndex: 1100000,
-    marginTop: 20,
-    backgroundColor: "#A8A8A8",
+    
+    
     justifyContent: "center",
     alignItems: "center",
     padding: 10,
     borderRadius: 50,
-    top: -15,
-    right: 10,
+    
   },
   currentEventText:{
-    color:'#FF8882',
-    marginTop:60,
-    marginLeft:20,
+    color:'#9D97B7',
+    
+    marginLeft:10,
     fontSize:20
   },
-  currentEventContainer:{
-    flexDirection:'column'
-  }
+  
 });

@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     borderBottomWidth: 1,
     borderBottomColor: "#D9D9D9",
-    backgroundColor: "#F0EEEF",
+    backgroundColor: "white",
   },
   searchbarcontainer: {
     borderColor: "#A8A8A8",

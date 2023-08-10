@@ -44,7 +44,11 @@ const Event = ({ route }) => {
               </Text>
 
               <Text style={styles.eventStartHour}>
-                {startDate.toLocaleTimeString("hu-HU")}
+                {startDate.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false, // Use 24-hour format
+  })}
               </Text>
               <Text style={[styles.endText, { fontFamily: "HKGrotesk" }]}>
                 End
@@ -56,7 +60,11 @@ const Event = ({ route }) => {
                 {route.params.item.end_date.month} {route.params.item.end_date.day},{" "}{route.params.item.end_date.year}
               </Text>
               <Text style={styles.eventEndHour}>
-                {endDate.toLocaleTimeString("hu-HU")}
+                {endDate.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false, // Use 24-hour format
+  })}
               </Text>
             </View>
           </View>

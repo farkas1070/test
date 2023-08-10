@@ -1,7 +1,6 @@
 import { Text, View, TouchableOpacity, ScrollView, Image } from "react-native";
-import React, { useState, useContext,useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Agenda } from "react-native-calendars";
-import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./EventsStyle";
 import Card from "./components/Card";
 import moment from "moment";
@@ -9,26 +8,25 @@ import { EventsContext } from "../../context/GlobalContext.js";
 import SearchBar from "./components/Search";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FontsContext } from "../../context/GlobalContext.js";
-
+import IconCalendar from "../../assets/eventassets/iconCalendar.svg"
+import ListIcon from "../../assets/eventassets/listIcon.svg"
 const Events = () => {
   const [showListFirst, setShowListFirst] = useState(true);
   const [currentDate, setCurrentDate] = useState(new Date().toDateString());
   const [events, setEvents] = useContext(EventsContext);
   const [searchText, setSearchText] = useState("");
-  const [currentEvents, setCurrentEvents] = useState([])
+  const [currentEvents, setCurrentEvents] = useState([]);
   const fontsLoaded = useContext(FontsContext);
   useEffect(() => {
     // Filter events to find those with dates equal to the currentDate
-      events.map((event) => {
+    events.map((event) => {
       const dateRange = getDatesInRange(
         event.start_date.originalStartDate,
         event.end_date.originalEndDate
       );
       setCurrentEvents(dateRange);
-      
     });
-    console.log(currentEvents)
-    
+    console.log(currentEvents);
   }, []);
 
   function showDifferentLayout() {
@@ -40,12 +38,10 @@ const Events = () => {
       item.title.toLowerCase().includes(searchText.toLowerCase())
     );
   };
-  
 
   if (!fontsLoaded) {
     return null;
   }
-  
 
   function getDatesInRange(startDate, endDate) {
     const start = moment(startDate);
@@ -63,40 +59,37 @@ const Events = () => {
 
   return (
     <SafeAreaView style={styles.maincontainer}>
-      <View style={{  flexDirection: "row",backgroundColor:'#F0EEEF' }}>
+      <View style={{ flexDirection: "row", backgroundColor: "#F0EEEF" }}>
         <SearchBar onSearch={setSearchText} />
       </View>
 
-      <View style={{ width: "100%", flexGrow: 1 }}>
-        {showListFirst ? (
-          <TouchableOpacity style={styles.changeButton}>
-            <Ionicons
-              name="calendar"
-              size={30}
-              color="white"
-              onPress={() => {
-                showDifferentLayout();
-              }}
-            />
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity style={styles.changeButton}>
-            <Ionicons
-              name="list"
-              size={30}
-              color="white"
-              onPress={() => {
-                showDifferentLayout();
-              }}
-            />
-          </TouchableOpacity>
-        )}
+      <View style={{ width: "100%", flexGrow: 1, backgroundColor: "#f0eeef" }}>
+        <View style={{width:'100%',flexDirection: "row", justifyContent:'space-between',alignItems:'center',paddingTop:30}}>
+          <View style={styles.currentEventContainer}>
+            <Text
+              style={[styles.currentEventText, { fontFamily: "HKGrotesk" }]}
+            >
+              Minden esemény
+            </Text>
+          </View>
+          {showListFirst ? (
+            <TouchableOpacity style={styles.changeButton} onPress={() => {
+              showDifferentLayout();
+            }}>
+              <IconCalendar width={30} height={30}></IconCalendar>
+              
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity style={styles.changeButton} onPress={() => {
+              showDifferentLayout();
+            }}>
+              <ListIcon width={30} height={30}></ListIcon>
+              
+            </TouchableOpacity>
+          )}
+        </View>
         {showListFirst ? (
           <ScrollView style={{ marginBottom: 70 }}>
-            <View style={styles.currentEventContainer}>
-            <Text style={[styles.currentEventText,{fontFamily:'HKGrotesk'}]}>Jelenleg Zajló Esemény/Események:</Text>
-            </View>
-
             {filterItems().map((item, index) => {
               return <Card item={item} index={index} key={index} />;
             })}

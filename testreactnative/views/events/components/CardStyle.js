@@ -17,16 +17,17 @@ export const styles = StyleSheet.create({
   },
   cardImage: {
     width: "100%",
-    height: 200,
+    height: 160,
     borderRadius: 10,
     marginBottom: 10,
   },
   cardTitle: {
     fontSize: 20,
-    fontWeight: "bold",
+    color:'#352269',
     marginBottom: 5,
   },
   cardDescription: {
     fontSize: 16,
+    color:'#9D97B7'
   },
 });
