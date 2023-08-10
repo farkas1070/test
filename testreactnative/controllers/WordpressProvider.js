@@ -26,7 +26,7 @@ export const getWineries = async (language) => {
       icon2: service.acf.icon_2,
       name: service.name,
     }));
-    console.log(servicesArray);
+    
 
     services.forEach((service) => {
       service.forEach((innerService) => {

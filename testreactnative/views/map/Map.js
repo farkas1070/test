@@ -28,7 +28,7 @@ import LocationIcon from "../../assets/mapassets/Location.svg";
 import CloseIcon from "../../assets/mapassets/Close.svg";
 import CarouselCloseIcon from "../../assets/mapassets/CarouselClose.svg";
 import { FontsContext } from "../../context/GlobalContext.js";
-
+import FilterCarousel from "./components/FilterCarousel";
 const Map = ({ setShowMap, search }) => {
   const mapRef = useRef(null);
   const markerRef = useRef([]);
@@ -291,7 +291,9 @@ const Map = ({ setShowMap, search }) => {
           >
             <ToursIcon width={24} height={24} />
           </TouchableOpacity>
-
+          <View style={{ position: "absolute", width: "100%", top: 0 }}>
+            <FilterCarousel />
+          </View>
           <TouchableOpacity
             style={styles.filterButton}
             onPress={handleBottomSheetFilter}

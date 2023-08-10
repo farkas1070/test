@@ -14,6 +14,7 @@ import Map from "../../views/map/Map.js";
 import Header from "./components/Header";
 import ListIcon from "../../assets/mapassets/mapIcon.svg";
 import { FontsContext } from "../../context/GlobalContext.js";
+import FilterCarousel from "../map/components/FilterCarousel";
 const Wineries = () => {
   const [wineries, setWineries] = useContext(WineriesContext);
   const [searchText, setSearchText] = useState("");
@@ -32,6 +33,7 @@ const Wineries = () => {
   return (
     <View style={styles.maincontainer}>
       <Header setSearchText={setSearchText} />
+      { !showMap &&<FilterCarousel />}
       {showMap ? (
         <Map setShowMap={setShowMap} search={filterItems} />
       ) : (

@@ -9,7 +9,7 @@ import MapView, {
 import Placeholder from "../../../assets/placeholder.png";
 import { Mapstyle } from "../CustomMapStyle";
 import { styles } from "./MapViewContainerStyle";
-import MapPin from "../../../assets/mapassets/mapPin.svg";
+import MapPin from "../../../assets/mapassets/MapPin.svg";
 import PlaceholderImage from "../../../assets/homepageicons/placeholderImage.jpg";
 
 const MapViewContainer = ({
@@ -52,6 +52,7 @@ const MapViewContainer = ({
         console.log("map pressed");
       }}
     >
+      
       {showtours &&
         filterTours(tourfilter).map((tour, index) => (
           <Polyline
@@ -78,6 +79,7 @@ const MapViewContainer = ({
           }}
           tracksViewChanges={!mapReady}
         >
+          
           <View style={styles.markerContainer}>
             <Image
               source={poi.logo ? { uri: poi.logo } : PlaceholderImage}

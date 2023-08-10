@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
     position: "relative",
     top: 0,
     width: "100%",
-    backgroundColor: "#F7F7F7",
+    backgroundColor: "rgba(247, 247, 247, 0.5)",
   },
   slide: {
     alignItems: "center",

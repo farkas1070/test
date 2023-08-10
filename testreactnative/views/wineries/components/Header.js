@@ -9,7 +9,7 @@ const Header = ({ setSearchText }) => {
     //iosen saferaeaview bug
     <SafeAreaView style={styles.header}>
       <SearchBar onSearch={setSearchText} />
-      <FilterCarousel />
+      
     </SafeAreaView>
   );
 };
