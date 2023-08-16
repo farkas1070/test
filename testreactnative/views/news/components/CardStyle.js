@@ -3,16 +3,16 @@ export const styles = StyleSheet.create({
   card: {
     width: "90%",
     borderRadius: 8,
-    marginTop: 30,
+    marginTop: 25,
   },
   dateText: {
     color: "#A8A8A8",
     fontSize: 15,
-    marginBottom: 2,
+    marginBottom: 5,
   },
   titleText: {
     fontSize: 25,
-    
+    marginBottom:20,
     color: "#352269",
   },
   image: {

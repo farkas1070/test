@@ -22,7 +22,7 @@ const MapCarousel = ({
         <View style={styles.slideContent}>
           <View
             style={{
-              width: "45%",
+              width: "40%",
               height: "100%",
               justifyContent: "center",
               alignItems: "flex-end",

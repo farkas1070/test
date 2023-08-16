@@ -28,6 +28,8 @@ export const styles = StyleSheet.create({
   },
   cardDescription: {
     fontSize: 16,
+    marginTop:5,
+    marginBottom:5,
     color:'#9D97B7'
   },
 });

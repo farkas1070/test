@@ -26,10 +26,10 @@ export const styles = StyleSheet.create({
     textAlign: "left",
   },
   image: {
-    width: "92%",
-    height: "84%",
+    width: "90%",
+    height: "90%",
 
-    borderRadius: 20,
+    borderRadius: 200,
     resizeMode: "contain",
   },
 

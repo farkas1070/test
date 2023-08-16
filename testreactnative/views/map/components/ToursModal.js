@@ -21,8 +21,8 @@ const ToursModal = ({ modalVisible, closeModal, tours, handleshowTour }) => {
         <View style={styles.modalContent}>
           {tours.map((tour, index) => {
             return (
-              <>
-                <View style={styles.imagecontainer}>
+              <React.Fragment key={index}>
+                <View  style={styles.imagecontainer}>
                   <Image style={styles.tourimage} source={{ uri: tour.logo }} />
                   <View style={styles.upperbuttonscontainer}></View>
                   <View style={styles.maininfocontainer}>
@@ -70,7 +70,7 @@ const ToursModal = ({ modalVisible, closeModal, tours, handleshowTour }) => {
                     <Text style={styles.content}>Start Tour</Text>
                   </TouchableOpacity>
                 </View>
-              </>
+                </React.Fragment>
             );
           })}
         </View>

@@ -3,4 +3,7 @@ export const tagsStyles = {
     whiteSpace: "normal",
     color: "gray",
   },
+  p: {
+    marginTop:0
+  }
 };

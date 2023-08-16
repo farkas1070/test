@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { styles } from "./CardStyle";
 import { useNavigation } from "@react-navigation/core";
-import CardImage from "./CardImage";
+
 import RenderHtml from "react-native-render-html";
 import { tagsStyles } from "./ContentExcerptStyle";
 import { FontsContext } from "../../../context/GlobalContext";

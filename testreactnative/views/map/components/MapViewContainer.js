@@ -11,7 +11,7 @@ import { Mapstyle } from "../CustomMapStyle";
 import { styles } from "./MapViewContainerStyle";
 import MapPin from "../../../assets/mapassets/MapPin.svg";
 import PlaceholderImage from "../../../assets/homepageicons/placeholderImage.jpg";
-
+import PressedMapPin from "../../../assets/mapassets/mapPinPressed.svg"
 const MapViewContainer = ({
   mapRef,
   markerRef,
@@ -26,9 +26,10 @@ const MapViewContainer = ({
   setCurrentLatDelta,
   setCurrentLongDelta,
   handleMapPress,
+  activeMarkerIndex
 }) => {
   const [mapReady, setMapReady] = useState(false);
-
+  
   return (
     <MapView
       ref={mapRef}
@@ -41,6 +42,7 @@ const MapViewContainer = ({
       style={styles.map}
       showsMyLocationButton={false}
       showsUserLocation={true}
+      toolbarEnabled={false}
       provider={PROVIDER_GOOGLE}
       customMapStyle={Mapstyle}
       onMapReady={() => {
@@ -66,7 +68,7 @@ const MapViewContainer = ({
         ))}
       {filterMarkers(filter).map((poi, index) => (
         <Marker
-          key={index}
+        key={ `${index}${Date.now()}` }
           ref={(ref) => (markerRef.current[index] = ref)}
           coordinate={{
             latitude: poi.map.lat,
@@ -84,8 +86,22 @@ const MapViewContainer = ({
             <Image
               source={poi.logo ? { uri: poi.logo } : PlaceholderImage}
               resizeMode="cover"
-              style={styles.markerimage}
+              style={[styles.markerimage,{borderColor: activeMarkerIndex === index ? "#696969" : "#FF8882",}]}
             />
+            {
+              activeMarkerIndex === index ?
+              <PressedMapPin
+              width={20}
+              height={20}
+              style={{
+                bottom: -3,
+
+                position: "absolute",
+
+                zIndex: -1,
+              }}
+            ></PressedMapPin>
+            :
             <MapPin
               width={20}
               height={20}
@@ -97,6 +113,9 @@ const MapViewContainer = ({
                 zIndex: -1,
               }}
             ></MapPin>
+
+            }
+            
           </View>
           <Callout style={styles.callout} tooltip={true}>
             <Text>{poi.title}</Text>

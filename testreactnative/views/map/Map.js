@@ -47,7 +47,7 @@ const Map = ({ setShowMap, search }) => {
   const bottomSheetRef = useRef(null);
   const bottomSheetFilterRef = useRef(null);
   const bottomSheetToursRef = useRef(null);
-  const snapPoints = useMemo(() => ["1%", "50%"], []);
+  const snapPoints = useMemo(() => ["1%", "35%"], []);
   const toursSnapPoints = useMemo(() => ["50%", "75", "100%"], []);
   const filterSnapPoints = useMemo(() => ["50%"], []);
   const fontsLoaded = useContext(FontsContext);
@@ -252,11 +252,13 @@ const Map = ({ setShowMap, search }) => {
             tourfilter={tourfilter}
             filterMarkers={filterMarkers}
             filter={filter}
+            
             handleCarouselSnap={handleCarouselSnap}
             handleMarkerPress={handleMarkerPress}
             setCurrentLatDelta={setCurrentLatDelta}
             setCurrentLongDelta={setCurrentLongDelta}
             handleMapPress={handleMapPress}
+            activeMarkerIndex={activeMarkerIndex}
           />
           {/*
           <FilterButtons
