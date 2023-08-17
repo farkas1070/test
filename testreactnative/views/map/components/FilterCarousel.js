@@ -17,24 +17,33 @@ const FilterCarousel = () => {
   const fontsLoaded = useContext(FontsContext);
   const [selectedButtonIndex, setSelectedButtonIndex] = useState(null);
   const [wineries, setWineries] = useContext(WineriesContext);
-  
+  const [filteredWineries, setFilteredWineries] = useState([...wineries]);
+
   if (!fontsLoaded) {
     return null;
   }
 
   const handleButtonPress = (index, selected) => {
-    console.log(index);
+    console.log("fileteredwineries lentgh: " + filteredWineries.length);
+    console.log("wineries lentgh: " + wineries.length);
+
     if (selectedButtonIndex === index) {
       setSelectedButtonIndex(-1);
+      setFilteredWineries(wineries);
     } else {
       setSelectedButtonIndex(index);
-      setWineries(wineries.filter((winery) => {
-        // Check if services is defined and not null before filtering
+      const testFiltered = filteredWineries.filter((winery) => {
         if (winery.services && winery.services !== null) {
-          return winery.services.some((service) => service.name.toLowerCase() === selected.name.toLowerCase());
+          return winery.services.some(
+            (service) =>
+              service.name.toLowerCase() === selected.name.toLowerCase()
+          );
+        } else {
+          return false;
         }
-        return false; // Skip wineries with undefined or null services
-      }));
+        
+      });
+      setWineries(testFiltered);
     }
   };
 
