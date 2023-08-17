@@ -9,12 +9,13 @@ export const LoadingContext = createContext();
 export const ServicesContext = createContext();
 export const I18nContext = createContext();
 export const FontsContext = createContext();
+
+
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   getWineries,
   getEvents,
   getNews,
-  getWineries2,
 } from "../controllers/WordpressProvider";
 
 import * as Font from "expo-font";
@@ -43,6 +44,7 @@ export const GlobalContextProvider = (props) => {
 
         await getWineries(storedlanguage).then((response) => {
           const { wineriesData, uniqueServices } = response;
+          
 
           if (!wineriesData || !uniqueServices) {
             setWineries(false);
@@ -84,6 +86,7 @@ export const GlobalContextProvider = (props) => {
               <LoadingContext.Provider value={[loading, setLoading]}>
                 <I18nContext.Provider value={[i18n, setI18n]}>
                   <FontsContext.Provider value={fontsLoaded}>
+                    
                     {props.children}
                   </FontsContext.Provider>
                 </I18nContext.Provider>

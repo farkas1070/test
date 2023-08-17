@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     marginRight: 10,
     marginLeft: 10,
-    marginTop: 10,
+    marginTop: 5,
     marginBottom: 5,
   },
   textContainer: {
@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "white",
     marginRight: 10,
     marginLeft: 10,
-    marginTop: 10,
+    marginTop:5,
     marginBottom: 5,
   },
   container: {

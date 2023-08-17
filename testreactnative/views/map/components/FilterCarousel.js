@@ -9,18 +9,33 @@ import {
 } from "react-native";
 import { ServicesContext } from "../../../context/GlobalContext";
 import { SvgCssUri } from "react-native-svg";
-import { FontsContext } from "../../../context/GlobalContext";
+import { FontsContext, WineriesContext } from "../../../context/GlobalContext";
+
 const FilterCarousel = () => {
   const width = Dimensions.get("window").width;
   const [services] = useContext(ServicesContext);
   const fontsLoaded = useContext(FontsContext);
-  const [selectedButtonIndex, setSelectedButtonIndex] = useState(0);
-
+  const [selectedButtonIndex, setSelectedButtonIndex] = useState(null);
+  const [wineries, setWineries] = useContext(WineriesContext);
+  
   if (!fontsLoaded) {
     return null;
   }
-  const handleButtonPress = (index) => {
-    setSelectedButtonIndex(index);
+
+  const handleButtonPress = (index, selected) => {
+    console.log(index);
+    if (selectedButtonIndex === index) {
+      setSelectedButtonIndex(-1);
+    } else {
+      setSelectedButtonIndex(index);
+      setWineries(wineries.filter((winery) => {
+        // Check if services is defined and not null before filtering
+        if (winery.services && winery.services !== null) {
+          return winery.services.some((service) => service.name.toLowerCase() === selected.name.toLowerCase());
+        }
+        return false; // Skip wineries with undefined or null services
+      }));
+    }
   };
 
   const renderItem = ({ item, index }) => {
@@ -30,7 +45,7 @@ const FilterCarousel = () => {
       <TouchableOpacity
         key={index}
         style={[isSelected ? styles.selectedButton : styles.icon]}
-        onPress={() => handleButtonPress(index)}
+        onPress={() => handleButtonPress(index, item)}
       >
         <SvgCssUri
           uri={isSelected ? item.acf.icon : item.acf.icon_2}

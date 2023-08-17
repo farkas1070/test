@@ -101,6 +101,7 @@ const StackNavigator = () => {
         component={About}
         options={{
           headerTintColor: "black",
+          headerShown: false,
           headerTitleAlign: "center",
           headerTitleStyle: {
             textAlign: "center",

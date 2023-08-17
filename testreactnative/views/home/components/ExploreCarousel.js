@@ -7,6 +7,7 @@ import { FontsContext } from "../../../context/GlobalContext";
 import HomepagePic from "../../../assets/homepagePic2.jpg";
 import { LinearGradient } from "expo-linear-gradient";
 import { I18nContext } from "../../../context/GlobalContext";
+import BackgroundPic from "../../../assets/homePagePic3.jpg"
 const ExploreCarousel = () => {
   const fontsLoaded = useContext(FontsContext);
   const [i18n] = useContext(I18nContext);
@@ -56,17 +57,19 @@ const ExploreCarousel = () => {
 
   return (
     <ImageBackground
-      source={HomepagePic}
+      source={BackgroundPic}
       resizeMode="cover"
       style={[styles.container]}
     >
+      
       <LinearGradient
         // Background Linear Gradient
-        colors={["transparent", "rgba(240, 238, 239, 1)"]}
+        colors={["rgba(53, 34, 105, 0.35)", "rgba(240, 238, 239, 1)"]}
         style={styles.background}
         start={{ x: 0.5, y: 0.7 }} // Adjust the y value to change the start position (0 = top, 1 = bottom)
         end={{ x: 0.5, y: 1 }} // End at the bottom of the container
       >
+        
         <View style={styles.textContainer}>
           <Text style={[styles.exploreText, { fontFamily: "Karma" }]}>
             {i18n.t("discover")} {"\n"}

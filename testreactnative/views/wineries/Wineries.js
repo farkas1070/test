@@ -47,7 +47,7 @@ const Wineries = () => {
             <TouchableOpacity
               style={styles.mapbutton}
               onPress={() => setShowMap(true)}
-              activeOpacity={0.9}
+              
             >
               <Text style={[styles.mapButtonText, { fontFamily: "HKGrotesk" }]}>
                 Map

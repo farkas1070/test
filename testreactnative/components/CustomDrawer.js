@@ -14,7 +14,7 @@ import WineriesIcon from "../assets/navigatorassets/Wineries";
 import EventsIcon from "../assets/navigatorassets/Events";
 import NewsIcon from "../assets/navigatorassets/News";
 import SettingsIcon from "../assets/menuassets/Settings";
-
+import AboutIcon from "../assets/menuassets/aboutIcon.svg"
 const CustomDrawer = (props) => {
   const navigation = useNavigation();
   const [i18n, setI18n] = useContext(I18nContext);
@@ -75,7 +75,7 @@ const CustomDrawer = (props) => {
             />
             <DrawerButton
               routeName={i18n.t("about")}
-              icon={<NewsIcon width={24} height={24} />}
+              icon={<AboutIcon width={24} height={24} />}
               onPress={() => {
                 handleItemPress(i18n.t("about"));
               }}

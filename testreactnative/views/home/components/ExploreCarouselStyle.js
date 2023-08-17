@@ -5,10 +5,7 @@ export const styles = StyleSheet.create({
     height: 350,
     width: "100%",
   },
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(53, 34, 105, 0.4)",
-  },
+  
   carousel: {
     positon: "absolute",
     width: "100%",
@@ -27,15 +24,16 @@ export const styles = StyleSheet.create({
   exploreText: {
     color: "white",
     marginLeft: 24,
-    fontSize:38,
+    fontSize:34,
     
   },
   textContainer:{
     position:'absolute',
-    bottom:120
+    bottom:140
   },
   background:{
     width:'100%',
-    height:'100%'
+    height:'100%',
+    
   }
 });

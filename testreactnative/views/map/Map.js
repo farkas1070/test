@@ -306,7 +306,7 @@ const Map = ({ setShowMap, search }) => {
           <TouchableOpacity
             style={styles.listChangeButton}
             onPress={handleShowMap}
-            activeOpacity={0.9}
+            
           >
             <Text style={[styles.buttonText, { fontFamily: "HKGrotesk" }]}>
               Lista
