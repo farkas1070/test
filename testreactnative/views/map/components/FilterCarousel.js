@@ -29,7 +29,7 @@ const FilterCarousel = () => {
 
     if (selectedButtonIndex === index) {
       setSelectedButtonIndex(-1);
-      setFilteredWineries(wineries);
+      setWineries(filteredWineries);
     } else {
       setSelectedButtonIndex(index);
       const testFiltered = filteredWineries.filter((winery) => {
