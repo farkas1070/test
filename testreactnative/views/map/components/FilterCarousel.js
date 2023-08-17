@@ -35,7 +35,7 @@ const FilterCarousel = () => {
       const testFiltered = filteredWineries.filter((winery) => {
         if (winery.services && winery.services !== null) {
           return winery.services.some(
-            (service) =>
+            (service) => 
               service.name.toLowerCase() === selected.name.toLowerCase()
           );
         } else {
