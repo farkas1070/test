@@ -112,6 +112,7 @@ export const styles = StyleSheet.create({
   bottomSheet: {
     marginBottom: 10,
     
+    
   },
   bottomSheetHeaderButton: {
     alignSelf: "flex-end",

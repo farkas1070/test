@@ -47,7 +47,7 @@ const Map = ({ setShowMap, search }) => {
   const bottomSheetRef = useRef(null);
   const bottomSheetFilterRef = useRef(null);
   const bottomSheetToursRef = useRef(null);
-  const snapPoints = useMemo(() => ["1%", "35%"], []);
+  const snapPoints = useMemo(() => ["1%", "25%"], []);
   const toursSnapPoints = useMemo(() => ["50%", "75", "100%"], []);
   const filterSnapPoints = useMemo(() => ["50%"], []);
   const fontsLoaded = useContext(FontsContext);
@@ -225,6 +225,9 @@ const Map = ({ setShowMap, search }) => {
   const handleBottomSheetFilter = () => {
     bottomSheetFilterRef.current.present();
   };
+  const closeBottomSheet = () => {
+    bottomSheetRef.current.close()
+  }
 
   if (!fontsLoaded) {
     return null;
@@ -327,12 +330,7 @@ const Map = ({ setShowMap, search }) => {
             enableHandlePanningGesture={false}
             enableContentPanningGesture={false}
           >
-            <TouchableOpacity
-              style={styles.bottomSheetHeaderButton}
-              onPress={() => bottomSheetRef.current.close()}
-            >
-              <CarouselCloseIcon width={24} height={24} />
-            </TouchableOpacity>
+            
 
             <MapCarousel
               data={filteredMarkers}
@@ -341,6 +339,7 @@ const Map = ({ setShowMap, search }) => {
               carouselRef={carouselRef}
               handleCarouselSnap={handleCarouselSnap}
               width={width}
+              onBottomSheetClose={closeBottomSheet}
             />
           </BottomSheet>
           <BottomSheetModalProvider>

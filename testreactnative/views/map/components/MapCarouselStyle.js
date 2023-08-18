@@ -1,11 +1,11 @@
 import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   carousel: {
-    height: "85%",
+    height: "100%",
   },
   slide: {
     justifyContent: "center",
-    backgroundColor: "rgba(255,255,255,0.95)",
+    backgroundColor: "rgba(255,255,255,1)",
     borderRadius: 20,
     margin: 10,
   },
@@ -50,5 +50,17 @@ export const styles = StyleSheet.create({
     fontWeight: "500",
     fontSize: 16,
     marginRight: 5,
+  },
+  closeButton: {
+    position: "absolute",
+    top: 5,
+    right: -10,
+    borderRadius: 200,
+    backgroundColor: "grey",
+    width: 30,
+    height: 30,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f0eeef",
   },
 });

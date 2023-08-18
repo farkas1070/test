@@ -5,6 +5,8 @@ import { styles } from "./MapCarouselStyle";
 import Placeholder from "../../../assets/placeholder.png";
 import { useNavigation } from "@react-navigation/core";
 import RightArrowIcon from "../../../assets/mapassets/RightArrow.svg";
+import CloseIcon from "../../../assets/mapassets/closeCarouselIcon.svg";
+import { Ionicons } from '@expo/vector-icons'; 
 
 const MapCarousel = ({
   data,
@@ -13,6 +15,7 @@ const MapCarousel = ({
   carouselRef,
   handleCarouselSnap,
   width,
+  onBottomSheetClose
 }) => {
   const navigation = useNavigation();
 
@@ -34,6 +37,9 @@ const MapCarousel = ({
             />
           </View>
           <View style={styles.textContainer}>
+            <TouchableOpacity style={styles.closeButton} onPress={()=>{onBottomSheetClose()}}>
+            <Ionicons name="close" size={22} color="#9c97b7" />
+            </TouchableOpacity>
             <View>
               <Text style={styles.text}>{item.title}</Text>
               <Text style={styles.descriptionText}>
