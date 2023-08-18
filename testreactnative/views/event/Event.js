@@ -40,15 +40,17 @@ const Event = ({ route }) => {
               <Text
                 style={[styles.eventStartDate, { fontFamily: "HKGroteskBold" }]}
               >
-                {route.params.item.start_date.month} {route.params.item.start_date.day},{" "}{route.params.item.start_date.year}
+                {route.params.item.start_date.month}{" "}
+                {route.params.item.start_date.day},{" "}
+                {route.params.item.start_date.year}
               </Text>
 
               <Text style={styles.eventStartHour}>
                 {startDate.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false, // Use 24-hour format
-  })}
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: false, // Use 24-hour format
+                })}
               </Text>
               <Text style={[styles.endText, { fontFamily: "HKGrotesk" }]}>
                 End
@@ -56,15 +58,16 @@ const Event = ({ route }) => {
               <Text
                 style={[styles.eventEndDate, { fontFamily: "HKGroteskBold" }]}
               >
-                
-                {route.params.item.end_date.month} {route.params.item.end_date.day},{" "}{route.params.item.end_date.year}
+                {route.params.item.end_date.month}{" "}
+                {route.params.item.end_date.day},{" "}
+                {route.params.item.end_date.year}
               </Text>
               <Text style={styles.eventEndHour}>
                 {endDate.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false, // Use 24-hour format
-  })}
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: false, // Use 24-hour format
+                })}
               </Text>
             </View>
           </View>
@@ -101,8 +104,10 @@ const Event = ({ route }) => {
             </Text>
           </View>
         </View>
-        <View >
-          <Text style={[styles.eventDetails,{fontFamily:'HKGrotesk'}]}>Details</Text>
+        <View>
+          <Text style={[styles.eventDetails, { fontFamily: "HKGrotesk" }]}>
+            Details
+          </Text>
           <Text style={styles.eventDetailsText}>
             {route.params.item.description}
           </Text>
@@ -110,7 +115,7 @@ const Event = ({ route }) => {
 
         <Text style={styles.eventDetailsTitle}>Website</Text>
         <Text
-          style={styles.eventDetailsText}
+          style={styles.websiteText}
           onPress={() => Linking.openURL(route.params.item.url)}
         >
           {route.params.item.url}

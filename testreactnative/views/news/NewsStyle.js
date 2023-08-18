@@ -37,7 +37,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     borderRadius: 8,
     marginBottom: 16,
-    elevation: 2,
+    
   },
   textinput: {
     height: 40,

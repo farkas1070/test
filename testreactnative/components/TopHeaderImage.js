@@ -6,12 +6,13 @@ import { useNavigation } from "@react-navigation/native";
 import Placeholder from "../assets/placeholder.png";
 import { SafeAreaView } from "react-native-safe-area-context";
 import BackIcon from "../assets/wineryassets/backIcon.svg";
+import PlaceholderImage from "../assets/eventassets/placeholderImage.jpg"
 const TopHeaderImage = ({ item }) => {
   const navigation = useNavigation();
   return (
     <ImageBackground
-      source={item ? { uri: item } : Placeholder}
-      resizeMode="cover"
+      source={item ? { uri: item } : PlaceholderImage}
+      resizeMode="stretch"
       style={styles.image}
     >
       <SafeAreaView>

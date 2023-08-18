@@ -4,6 +4,7 @@ export const styles = StyleSheet.create({
     width: "90%",
     borderRadius: 8,
     marginTop: 25,
+    
   },
   dateText: {
     color: "#A8A8A8",

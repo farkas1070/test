@@ -86,7 +86,8 @@ export const styles = StyleSheet.create({
   eventDetailsTitle: {
     fontSize:17,
     color:'#352269',
-    marginLeft:15
+    marginLeft:15,
+    marginTop:10
     
   },
   eventDetails:{
@@ -95,6 +96,14 @@ export const styles = StyleSheet.create({
   },
   eventDetailsText: {
     marginHorizontal: 20,
-    color:'#696969'
+    color:'#696969',
+    marginTop:20
   },
+  websiteText:{
+    marginHorizontal: 20,
+    color:'#696969',
+    marginTop:10,
+    marginBottom:40,
+    textDecorationLine: 'underline'
+  }
 });
