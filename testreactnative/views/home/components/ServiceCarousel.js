@@ -6,18 +6,21 @@ import { SvgCssUri } from "react-native-svg";
 import { FontsContext } from "../../../context/GlobalContext";
 import { FlatList } from "react-native-gesture-handler";
 import { I18nContext } from "../../../context/GlobalContext";
+import { useNavigation } from "@react-navigation/native";
+
 const ExploreCarousel = () => {
   const [services, setServices] = useContext(ServicesContext);
+  const navigation = useNavigation();
   const fontsLoaded = useContext(FontsContext);
   const [i18n] = useContext(I18nContext);
-
+  
   if (!fontsLoaded) {
     return null;
   }
   const renderItem = ({ item }) => {
     
     return (
-      <TouchableOpacity style={styles.serviceContainer}>
+      <TouchableOpacity style={styles.serviceContainer} onPress={() => {navigation.navigate(i18n.t("wineries"), { filterWineries: true, service: item.name })}}>
         <View style={styles.imageContainer}>
           <SvgCssUri uri={item.icon1} width={90} height={90} />
           <Text style={[styles.servicetext, { fontFamily: "HKGroteskBold" }]}>
@@ -36,7 +39,7 @@ const ExploreCarousel = () => {
       <FlatList
         data={services}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.name}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
       />
