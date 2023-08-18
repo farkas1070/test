@@ -24,8 +24,7 @@ const FilterCarousel = () => {
   }
 
   const handleButtonPress = (index, selected) => {
-    console.log("fileteredwineries lentgh: " + filteredWineries.length);
-    console.log("wineries lentgh: " + wineries.length);
+    
 
     if (selectedButtonIndex === index) {
       setSelectedButtonIndex(-1);
@@ -57,7 +56,7 @@ const FilterCarousel = () => {
         onPress={() => handleButtonPress(index, item)}
       >
         <SvgCssUri
-          uri={isSelected ? item.acf.icon : item.acf.icon_2}
+          uri={isSelected ? item.icon1 : item.icon2}
           width={60}
           height={60}
         />

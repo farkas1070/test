@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text,TouchableOpacity } from "react-native";
 import React, { useContext } from "react";
 import { styles } from "./ServiceCarouselStyle";
 import { ServicesContext } from "../../../context/GlobalContext";
@@ -15,15 +15,16 @@ const ExploreCarousel = () => {
     return null;
   }
   const renderItem = ({ item }) => {
+    
     return (
-      <View style={styles.serviceContainer}>
+      <TouchableOpacity style={styles.serviceContainer}>
         <View style={styles.imageContainer}>
-          <SvgCssUri uri={item.acf.icon} width={90} height={90} />
+          <SvgCssUri uri={item.icon1} width={90} height={90} />
           <Text style={[styles.servicetext, { fontFamily: "HKGroteskBold" }]}>
             {item.name}
           </Text>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
 

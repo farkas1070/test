@@ -14,12 +14,13 @@ export const getDataByUrl = async (url) => {
 export const getWineries = async (language) => {
   const data = await getDataByUrl(
     `https://soproniborvidek.nemethmark.com/wp-json/wp/v2/wineries?_embed&per_page=100&lang=${language}`
-  );
+  );  
+  // allservices elokeszitese hogy elmentunk minden servicet egy arrayba
+  const allServicesSet = new Set(); 
 
-  const allServicesSet = new Set(); // Use Set to store unique services
 
   const wineriesData = data.map((item) => {
-    // Extracting individual services
+    // wineriesData elokészítése, valamint a map során az allservicest feltöltjük adatokkal hogy utána márcsak a uniqe dolgokat kelljen handlelelni
     const services = item?._embedded?.["wp:term"] || [];
     const servicesArray = item?._embedded?.["wp:term"]?.[0]?.map((service) => ({
       icon1: service.acf.icon,
@@ -31,7 +32,13 @@ export const getWineries = async (language) => {
     services.forEach((service) => {
       service.forEach((innerService) => {
         if (innerService !== undefined) {
-          allServicesSet.add(innerService);
+          
+          
+          allServicesSet.add({
+            icon1: innerService.acf.icon,
+            icon2: innerService.acf.icon_2,
+            name: innerService.name,
+          })
         }
       });
     });
