@@ -36,32 +36,16 @@ const Wineries = ({ route }) => {
     return null;
   }
 
-  useEffect(() => {
-    const filterWineries = () => {
-      const testFiltered = filteredWineries.filter((winery) => {
-        if (winery.services && winery.services !== null) {
-          return winery.services.some(
-            (service) =>
-              service.name.toLowerCase() === passedServiceProp.toLowerCase()
-          );
-        } else {
-          return false;
-        }
-      });
-      setWineries(testFiltered);
-    };
-    if (filterWineriesProp) {
-      console.log(passedServiceProp);
-      filterWineries();
-    }
-  }, [passedServiceProp]);
+  
 
   return (
     <View style={styles.maincontainer}>
       <Header setSearchText={setSearchText} />
-      {!showMap && <FilterCarousel />}
+      <View style={{ position: "relative", width: "100%", top: 0 }}>
+      <FilterCarousel shouldFilterAutomatically={filterWineriesProp} passedService={passedServiceProp} />
+      </View>
       {showMap ? (
-        <Map setShowMap={setShowMap} search={filterItems} />
+        <Map setShowMap={setShowMap} search={filterItems}  />
       ) : (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
           <View style={styles.maincontainer}>

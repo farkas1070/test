@@ -296,9 +296,7 @@ const Map = ({ setShowMap, search }) => {
           >
             <ToursIcon width={24} height={24} />
           </TouchableOpacity>
-          <View style={{ position: "absolute", width: "100%", top: 0 }}>
-            <FilterCarousel />
-          </View>
+          
           <TouchableOpacity
             style={styles.filterButton}
             onPress={handleBottomSheetFilter}

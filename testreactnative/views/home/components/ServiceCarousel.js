@@ -20,7 +20,7 @@ const ExploreCarousel = () => {
   const renderItem = ({ item }) => {
     
     return (
-      <TouchableOpacity style={styles.serviceContainer} onPress={() => {navigation.navigate(i18n.t("wineries"), { filterWineries: true, service: item.name })}}>
+      <TouchableOpacity style={styles.serviceContainer} onPress={() => {navigation.navigate(i18n.t("wineries"), { filterWineries: true, service: item })}}>
         <View style={styles.imageContainer}>
           <SvgCssUri uri={item.icon1} width={90} height={90} />
           <Text style={[styles.servicetext, { fontFamily: "HKGroteskBold" }]}>

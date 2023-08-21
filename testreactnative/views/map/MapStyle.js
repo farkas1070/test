@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    
   },
   map: {
     flex: 1,
@@ -46,7 +47,7 @@ export const styles = StyleSheet.create({
   },
   toursButton: {
     position: "absolute",
-    top: 150,
+    top: 100,
     right: 15,
     backgroundColor: "#FFBD54",
     borderRadius: 40,
@@ -57,7 +58,7 @@ export const styles = StyleSheet.create({
   },
   filterButton: {
     position: "absolute",
-    top: 80,
+    top: 30,
     right: 15,
     backgroundColor: "white",
     borderRadius: 40,
