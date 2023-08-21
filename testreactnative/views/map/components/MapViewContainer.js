@@ -66,9 +66,9 @@ const MapViewContainer = ({
             strokeWidth={4}
           />
         ))}
-      {filterMarkers(filter).map((poi, index) => (
+      {filterMarkers.map((poi, index) => (
         <Marker
-        key={ `${index}${Date.now()}` }
+          key={ `${index}${Date.now()}` }
           ref={(ref) => (markerRef.current[index] = ref)}
           coordinate={{
             latitude: poi.map.lat,
