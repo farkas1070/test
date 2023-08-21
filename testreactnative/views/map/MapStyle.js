@@ -113,11 +113,11 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
     
     
+    
+    
   },
-  bottomSheetHeaderButton: {
-    alignSelf: "flex-end",
-    marginRight: 10,
-  },
+  
+  
   bottomSheetFooter: {
     flexDirection: "row",
     justifyContent: "space-between",

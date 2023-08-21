@@ -59,7 +59,7 @@ const Wineries = ({ route }) => {
   return (
     <View style={styles.maincontainer}>
       <Header setSearchText={setSearchText} />
-      {!showMap && <FilterCarousel />}
+      {!showMap && <FilterCarousel shouldFilterAutomatically={filterWineriesProp} passedService={passedServiceProp} />}
       {showMap ? (
         <Map setShowMap={setShowMap} search={filterItems} />
       ) : (

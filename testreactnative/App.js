@@ -5,6 +5,7 @@ import StackNavigator from "./components/StackNavigator";
 import React from "react";
 
 export default function App() {
+  
   return (
     <NavigationContainer>
       <GlobalContextProvider>

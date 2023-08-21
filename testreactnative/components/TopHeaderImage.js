@@ -6,6 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import Placeholder from "../assets/placeholder.png";
 import { SafeAreaView } from "react-native-safe-area-context";
 import BackIcon from "../assets/wineryassets/backIcon.svg";
+import ArrowIcon from "../assets/eventassets/arrowIcon.svg"
 import PlaceholderImage from "../assets/eventassets/placeholderImage.jpg"
 const TopHeaderImage = ({ item }) => {
   const navigation = useNavigation();
@@ -17,7 +18,7 @@ const TopHeaderImage = ({ item }) => {
     >
       <SafeAreaView>
         <TouchableOpacity onPress={()=>{navigation.goBack()}}>
-          <BackIcon width={40} height={40} style={styles.backButton}></BackIcon>
+          <ArrowIcon width={35} height={35} style={styles.backButton}></ArrowIcon>
         </TouchableOpacity>
       </SafeAreaView>
     </ImageBackground>

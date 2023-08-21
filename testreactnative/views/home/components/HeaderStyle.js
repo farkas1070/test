@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   header: {
     width: "100%",
-    
+    height:100,
     backgroundColor:'white',
     flexDirection:'row',
     justifyContent: 'center',
@@ -29,11 +29,12 @@ export const styles = StyleSheet.create({
     
     width:44,
     height:44,
-    borderRadius: 10,
+    borderRadius: 50,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor:'white',
     marginRight: 10,
+    backgroundColor:'#f5f5f5'
   },
   menuButton:{
     marginLeft:10

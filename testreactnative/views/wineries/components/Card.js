@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/core";
 import Placeholder from "../../../assets/placeholder.png";
 import LocationIcon from "../../../assets/wineryassets/greyLocationIcon.svg";
 import { FontsContext } from "../../../context/GlobalContext";
+import PlaceholderPic from "../../../assets/homepageicons/placeholderImage.jpg";
 const Card = ({ item, index }) => {
   const navigation = useNavigation();
   const fontsLoaded = useContext(FontsContext);
@@ -22,7 +23,7 @@ const Card = ({ item, index }) => {
     >
       <View style={styles.imageContainer}>
         <Image
-          source={item.logo ? { uri: item.logo } : Placeholder}
+          source={item.logo ? { uri: item.logo } : PlaceholderPic}
           style={styles.image}
           resizeMode="cover"
         />

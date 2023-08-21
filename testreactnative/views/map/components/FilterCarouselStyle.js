@@ -24,8 +24,19 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     marginRight: 10,
     marginLeft: 10,
-    marginTop: 5,
-    marginBottom: 5,
+    marginTop: 11,
+    marginBottom: 11,
+    ...Platform.select({
+      ios: {
+        shadowColor: 'rgba(0, 0, 0, 0.10)',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 1,
+        shadowRadius: 4,
+      },
+      android: {
+        elevation: 4,
+      },
+    }),
   },
   textContainer: {
     height: "100%",
@@ -36,7 +47,7 @@ export const styles = StyleSheet.create({
     textAlign: "center",
     marginRight: 5,
   },
-  icon: {
+  unselectedButton: {
     backgroundColor: "rgba(236,236,236,1)",
     alignItems: "center",
     borderRadius: 35,
@@ -46,8 +57,19 @@ export const styles = StyleSheet.create({
     backgroundColor: "white",
     marginRight: 10,
     marginLeft: 10,
-    marginTop:5,
-    marginBottom: 5,
+    marginTop:11,
+    marginBottom: 11,
+    ...Platform.select({
+      ios: {
+        shadowColor: 'rgba(0, 0, 0, 0.10)',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 1,
+        shadowRadius: 4,
+      },
+      android: {
+        elevation: 3,
+      },
+    }),
   },
   container: {
     backgroundColor: "rgba(236,236,236,1)",

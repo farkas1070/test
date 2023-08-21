@@ -47,7 +47,7 @@ const Map = ({ setShowMap, search }) => {
   const bottomSheetRef = useRef(null);
   const bottomSheetFilterRef = useRef(null);
   const bottomSheetToursRef = useRef(null);
-  const snapPoints = useMemo(() => ["1%", "25%"], []);
+  const snapPoints = useMemo(() => ["1%", "28%"], []);
   const toursSnapPoints = useMemo(() => ["50%", "75", "100%"], []);
   const filterSnapPoints = useMemo(() => ["50%"], []);
   const fontsLoaded = useContext(FontsContext);
@@ -318,14 +318,23 @@ const Map = ({ setShowMap, search }) => {
           </TouchableOpacity>
           <BottomSheet
             ref={bottomSheetRef}
+            
             index={0}
             snapPoints={snapPoints}
             style={styles.bottomSheet}
             backgroundStyle={{
               backgroundColor: "rgba(0, 0, 0, 0.0)",
+             
             }}
+            
             handleIndicatorStyle={{
               backgroundColor: "rgba(0, 0, 0, 0)",
+              height:0
+              
+            }}
+            handleStyle={{
+              height:0,
+              padding:0
             }}
             enableHandlePanningGesture={false}
             enableContentPanningGesture={false}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import Carousel from "react-native-snap-carousel-v4";
 import { styles } from "./MapCarouselStyle";
@@ -6,8 +6,9 @@ import Placeholder from "../../../assets/placeholder.png";
 import { useNavigation } from "@react-navigation/core";
 import RightArrowIcon from "../../../assets/mapassets/RightArrow.svg";
 import CloseIcon from "../../../assets/mapassets/closeCarouselIcon.svg";
-import { Ionicons } from '@expo/vector-icons'; 
-
+import { Ionicons } from "@expo/vector-icons";
+import { FontsContext } from "../../../context/GlobalContext";
+import LocationIcon from "../../../assets/mapassets/carouselLocationIcon.svg"
 const MapCarousel = ({
   data,
   activeMarkerIndex,
@@ -15,9 +16,13 @@ const MapCarousel = ({
   carouselRef,
   handleCarouselSnap,
   width,
-  onBottomSheetClose
+  onBottomSheetClose,
 }) => {
   const navigation = useNavigation();
+  const fontsLoaded = useContext(FontsContext);
+  if (!fontsLoaded) {
+    return null;
+  }
 
   const renderItem = ({ item }) => {
     return (
@@ -37,18 +42,28 @@ const MapCarousel = ({
             />
           </View>
           <View style={styles.textContainer}>
-            <TouchableOpacity style={styles.closeButton} onPress={()=>{onBottomSheetClose()}}>
-            <Ionicons name="close" size={22} color="#9c97b7" />
+            <TouchableOpacity
+              style={styles.closeButton}
+              onPress={() => {
+                onBottomSheetClose();
+              }}
+            >
+              <Ionicons name="close" size={22} color="#9c97b7" />
             </TouchableOpacity>
-            <View>
-              <Text style={styles.text}>{item.title}</Text>
-              <Text style={styles.descriptionText}>
-                {item.connection.adress}
+            
+              <Text style={[styles.text, { fontFamily: "HKGroteskBold" }]}>
+                {item.title}
               </Text>
-            </View>
-            <View>
-              <Text>Open Hours</Text>
-            </View>
+              <View style={{width:'100%',flexDirection:'row'}}>
+                <LocationIcon width={20} height={20} ></LocationIcon>
+                <Text
+                  style={[styles.descriptionText, { fontFamily: "HKGrotesk" }]}
+                >
+                  {item.connection.adress}
+                </Text>
+              </View>
+            
+
             <TouchableOpacity
               style={styles.showButton}
               onPress={() => {

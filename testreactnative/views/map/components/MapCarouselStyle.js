@@ -15,14 +15,15 @@ export const styles = StyleSheet.create({
     height: "100%",
   },
   descriptionText: {
-    fontSize: 16,
-    marginTop: 5,
+    fontSize: 14,
+    marginBottom:25,
     textAlign: "left",
+    color:'#9D97B7'
   },
   text: {
-    fontSize: 16,
-
-    fontWeight: "bold",
+    fontSize: 20,
+    marginTop:15,
+    color:'#352269',
     textAlign: "left",
   },
   image: {
@@ -36,10 +37,13 @@ export const styles = StyleSheet.create({
   textContainer: {
     padding: 10,
     width: "55%",
-    justifyContent: "space-evenly",
+    justifyContent: "space-between",
   },
   showButton: {
     color: "#FF8882",
+    position:'absolute',
+    right:-20,
+    bottom:10,
     width: "100%",
     justifyContent: "center",
     alignItems: "flex-end",
@@ -53,8 +57,8 @@ export const styles = StyleSheet.create({
   },
   closeButton: {
     position: "absolute",
-    top: 5,
-    right: -10,
+    top: 20,
+    right: -5,
     borderRadius: 200,
     backgroundColor: "grey",
     width: 30,
