@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { styles } from "./FilterCarouselStyle";
 import {
   View,
@@ -11,7 +11,7 @@ import { ServicesContext } from "../../../context/GlobalContext";
 import { SvgCssUri } from "react-native-svg";
 import { FontsContext, WineriesContext } from "../../../context/GlobalContext";
 
-const FilterCarousel = ({ shouldFilterAutomatically, passedService }) => {
+const FilterCarousel = () => {
   const width = Dimensions.get("window").width;
   const [services] = useContext(ServicesContext);
   const fontsLoaded = useContext(FontsContext);
@@ -24,6 +24,8 @@ const FilterCarousel = ({ shouldFilterAutomatically, passedService }) => {
   }
 
   const handleButtonPress = (index, selected) => {
+    
+
     if (selectedButtonIndex === index) {
       setSelectedButtonIndex(-1);
       setWineries(filteredWineries);
@@ -32,22 +34,17 @@ const FilterCarousel = ({ shouldFilterAutomatically, passedService }) => {
       const testFiltered = filteredWineries.filter((winery) => {
         if (winery.services && winery.services !== null) {
           return winery.services.some(
-            (service) =>
+            (service) => 
               service.name.toLowerCase() === selected.name.toLowerCase()
           );
         } else {
           return false;
         }
+        
       });
       setWineries(testFiltered);
     }
   };
-  
-  useEffect(() => {
-    if (shouldFilterAutomatically) {
-      handleButtonPress();
-    }
-  }, [passedService]);
 
   const renderItem = ({ item, index }) => {
     const isSelected = selectedButtonIndex === index;
