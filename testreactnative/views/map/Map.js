@@ -198,12 +198,12 @@ const Map = ({ setShowMap, search }) => {
 
   const handleCarouselSnap = (index) => {
     setActiveMarkerIndex(index);
-    markerRef.current[index].showCallout()
+    markerRef.current[index].showCallout();
     
     setTimeout(() => {
       mapRef.current.animateToRegion({
-        latitude: filteredMarkers[index].map.lat,
-        longitude: filteredMarkers[index].map.lng,
+        latitude: filterMarkers(filter)[index].map.lat,
+        longitude: filterMarkers(filter)[index].map.lng,
         latitudeDelta: currentLatDelta,
         longitudeDelta: currentLongDelta,
       });
@@ -255,6 +255,7 @@ const Map = ({ setShowMap, search }) => {
             tourfilter={tourfilter}
             filterMarkers={filteredMarkers}
             filter={filter}
+            
             handleCarouselSnap={handleCarouselSnap}
             handleMarkerPress={handleMarkerPress}
             setCurrentLatDelta={setCurrentLatDelta}
