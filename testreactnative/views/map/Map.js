@@ -64,7 +64,8 @@ const Map = ({ setShowMap, search }) => {
   const [filteredMarkers, setFilteredMarkers] = useState([]);
 
   useEffect(() => {
-    const filteredItems = search();
+    const filteredItems = search().filter((point) => point.map.lat !== undefined)
+    
     setFilteredMarkers(filteredItems);
   }, [search]);
 
