@@ -199,7 +199,6 @@ const Map = ({ setShowMap, search }) => {
   const handleCarouselSnap = (index) => {
     setActiveMarkerIndex(index);
     markerRef.current[index].showCallout()
-    
     setTimeout(() => {
       mapRef.current.animateToRegion({
         latitude: filteredMarkers[index].map.lat,

@@ -54,7 +54,6 @@ const MapViewContainer = ({
         console.log("map pressed");
       }}
     >
-      
       {showtours &&
         filterTours(tourfilter).map((tour, index) => (
           <Polyline

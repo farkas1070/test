@@ -8,9 +8,7 @@ export const styles = StyleSheet.create({
     flexDirection:'row',
     justifyContent: 'center',
     alignContent: 'center'
-    
-    
-    
+
   },
   safeAreaView:{
     backgroundColor: "#F5F5F5",
@@ -21,7 +19,6 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     width:'100%',
     justifyContent: "space-between",
-    alignItems: "center",
     marginTop:10,
     marginBottom:10
   },
