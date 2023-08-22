@@ -41,6 +41,11 @@ const Winery = ({ route }) => {
       );
     }
   };
+  const openWebshopLink = () => {
+    if (winery.connection.webshop !== "") {
+      Linking.openURL(winery.connection.webshop);
+    }
+  };
 
   if (!fontsLoaded) {
     return null;
@@ -58,9 +63,11 @@ const Winery = ({ route }) => {
               resizeMode="contain"
               source={winery.logo ? { uri: winery.logo } : Placeholder}
             />
-            <TouchableOpacity style={styles.webshopButton}>
-              <WebshopIcon width={60} height={60}></WebshopIcon>
-            </TouchableOpacity>
+            {winery.connection.webshop !== "" && (
+              <TouchableOpacity style={styles.webshopButton} onPress={()=>{openWebshopLink()}}>
+                <WebshopIcon width={60} height={60}></WebshopIcon>
+              </TouchableOpacity>
+            )}
             <View style={styles.topContainer}>
               <Text style={[styles.nameText, { fontFamily: "HKGrotesk" }]}>
                 {winery.title}
@@ -153,15 +160,14 @@ const Winery = ({ route }) => {
               )}
             </View>
           </View>
-          {winery.connection.ownerphoto &&
-          <View style={styles.ownerPictureContainer}>
-            <Image
-              source={{ uri: winery.connection.ownerphoto }}
-              style={styles.ownerImage}
-            />
-          
-          </View>
-          }
+          {winery.connection.ownerphoto && (
+            <View style={styles.ownerPictureContainer}>
+              <Image
+                source={{ uri: winery.connection.ownerphoto }}
+                style={styles.ownerImage}
+              />
+            </View>
+          )}
           <RenderHtml
             contentWidth={width}
             source={source}
