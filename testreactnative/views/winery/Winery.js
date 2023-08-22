@@ -41,12 +41,11 @@ const Winery = ({ route }) => {
       );
     }
   };
-  const openWebshopLink = () => {
-    if (winery.connection.webshop !== "") {
-      Linking.openURL(winery.connection.webshop);
+  const openLink = (link) => {
+    if (link !== "") {
+      Linking.openURL(link);
     }
   };
-
   if (!fontsLoaded) {
     return null;
   }
@@ -64,7 +63,7 @@ const Winery = ({ route }) => {
               source={winery.logo ? { uri: winery.logo } : Placeholder}
             />
             {winery.connection.webshop !== "" && (
-              <TouchableOpacity style={styles.webshopButton} onPress={()=>{openWebshopLink()}}>
+              <TouchableOpacity style={styles.webshopButton} onPress={()=>{openLink(winery.connection.webshop)}}>
                 <WebshopIcon width={60} height={60}></WebshopIcon>
               </TouchableOpacity>
             )}
@@ -150,11 +149,13 @@ const Winery = ({ route }) => {
                     style={styles.locationIcon}
                   />
                   <View style={styles.adressContainer}>
+                    <TouchableOpacity onPress={() => {openLink(winery.connection.website)}}>
                     <Text
                       style={[styles.websiteText, { fontFamily: "HKGrotesk" }]}
                     >
                       {winery.connection.website}
                     </Text>
+                    </TouchableOpacity>
                   </View>
                 </View>
               )}
