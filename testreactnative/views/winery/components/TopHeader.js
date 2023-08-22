@@ -13,11 +13,12 @@ import MapIcon from "../../../assets/wineryassets/mapIcon.svg";
 import { useNavigation } from "@react-navigation/native";
 import Placeholder from "../../../assets/placeholder.png";
 import { SafeAreaView } from "react-native-safe-area-context";
+import PlaceholderImage from "../../../assets/eventassets/placeholderImage.jpg";
 const TopHeader = ({ item }) => {
   const navigation = useNavigation();
   return (
     <ImageBackground
-      source={item ? { uri: item } : Placeholder}
+      source={item ? { uri: item } : PlaceholderImage}
       resizeMode="cover"
       style={styles.image}
     >
