@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     backgroundColor:'white',
     flexDirection:'row',
     justifyContent: 'center',
-    alignContent: 'center'
+    alignItems: 'center'
 
   },
   safeAreaView:{
@@ -20,7 +20,9 @@ export const styles = StyleSheet.create({
     width:'100%',
     justifyContent: "space-between",
     marginTop:10,
-    marginBottom:10
+    marginBottom:10,
+   
+    alignItems: "center",
   },
   searchbutton: {
     

@@ -21,6 +21,7 @@ import WebshopIcon from "../../assets/wineryassets/webshopIcon.svg";
 import { FontAwesome5 } from "@expo/vector-icons";
 import LocationIcon from "../../assets/wineryassets/locationIcon.svg";
 import { FontsContext } from "../../context/GlobalContext";
+import PlaceholderImage from "../../assets/homepageicons/placeholderImage.jpg"
 const Winery = ({ route }) => {
   const { width } = useWindowDimensions();
   const winery = route.params.item;
@@ -60,7 +61,7 @@ const Winery = ({ route }) => {
             <Image
               style={styles.image}
               resizeMode="contain"
-              source={winery.logo ? { uri: winery.logo } : Placeholder}
+              source={winery.logo ? { uri: winery.logo } : PlaceholderImage}
             />
             {winery.connection.webshop !== "" && (
               <TouchableOpacity style={styles.webshopButton} onPress={()=>{openLink(winery.connection.webshop)}}>

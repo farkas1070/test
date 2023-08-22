@@ -30,7 +30,7 @@ const SearchBar = ({ onSearch }) => {
           navigation.openDrawer();
         }}
       >
-        <MenuIcon width={24} height={24} />
+        <MenuIcon width={30} height={30} />
       </TouchableOpacity>
       <View style={styles.searchbarcontainer}>
         <TouchableOpacity style={styles.searchButton}>

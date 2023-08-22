@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   searchContainer: {
     width: "100%",
-    height: 70,
+    height: 75,
 
     padding: 10,
     justifyContent: "space-between",

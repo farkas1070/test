@@ -8,7 +8,7 @@ import {
 import React from "react";
 import { styles } from "./TopHeaderStyle";
 import { Ionicons } from "@expo/vector-icons";
-import BackIcon from "../../../assets/wineryassets/backIcon.svg";
+import BackIcon from "../../../assets/eventassets/arrowIcon.svg";
 import MapIcon from "../../../assets/wineryassets/mapIcon.svg";
 import { useNavigation } from "@react-navigation/native";
 import Placeholder from "../../../assets/placeholder.png";
@@ -29,7 +29,7 @@ const TopHeader = ({ item }) => {
             navigation.goBack();
           }}
         >
-          <BackIcon width={40} height={40}></BackIcon>
+          <BackIcon width={30} height={30}></BackIcon>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.viewOnMap}
