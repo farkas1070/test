@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
-import React from "react";
+import React,{useContext} from "react";
 import { styles } from "./TopHeaderStyle";
 import { Ionicons } from "@expo/vector-icons";
 import BackIcon from "../../../assets/eventassets/arrowIcon.svg";
@@ -14,11 +14,14 @@ import { useNavigation } from "@react-navigation/native";
 import Placeholder from "../../../assets/placeholder.png";
 import { SafeAreaView } from "react-native-safe-area-context";
 import PlaceholderImage from "../../../assets/eventassets/placeholderImage.jpg";
+import { I18nContext } from "../../../context/GlobalContext";
+
 const TopHeader = ({ item }) => {
   const navigation = useNavigation();
+  const [i18n] = useContext(I18nContext);
   return (
     <ImageBackground
-      source={item ? { uri: item } : PlaceholderImage}
+      source={item.banner ? { uri: item.banner } : PlaceholderImage}
       resizeMode="cover"
       style={styles.image}
     >
@@ -34,7 +37,7 @@ const TopHeader = ({ item }) => {
         <TouchableOpacity
           style={styles.viewOnMap}
           onPress={() => {
-            navigation.goBack();
+            navigation.navigate(i18n.t("wineries"), { winery:item, shouldShowMapFirst:true })
           }}
         >
           <MapIcon width={30} height={30} style={styles.mapIcon}></MapIcon>

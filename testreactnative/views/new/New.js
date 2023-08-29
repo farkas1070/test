@@ -8,10 +8,8 @@ import {
 import React,{useContext} from "react";
 import { styles } from "./NewStyle";
 import TopHeaderImage from "../../components/TopHeaderImage";
-import { SafeAreaView } from "react-native-safe-area-context";
 import RenderHtml from "react-native-render-html";
 import { tagsStyles } from "./HtmlContentStyle";
-import Placeholder from "../../assets/placeholder.png";
 import { FontsContext } from "../../context/GlobalContext";
 
 const New = ({ route }) => {

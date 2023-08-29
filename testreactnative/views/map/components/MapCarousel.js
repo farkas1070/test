@@ -5,10 +5,10 @@ import { styles } from "./MapCarouselStyle";
 import Placeholder from "../../../assets/placeholder.png";
 import { useNavigation } from "@react-navigation/core";
 import RightArrowIcon from "../../../assets/mapassets/RightArrow.svg";
-import CloseIcon from "../../../assets/mapassets/closeCarouselIcon.svg";
 import { Ionicons } from "@expo/vector-icons";
 import { FontsContext } from "../../../context/GlobalContext";
 import LocationIcon from "../../../assets/mapassets/carouselLocationIcon.svg"
+
 const MapCarousel = ({
   data,
   activeMarkerIndex,
@@ -30,7 +30,7 @@ const MapCarousel = ({
         <View style={styles.slideContent}>
           <View
             style={{
-              width: "40%",
+              width: "30%",
               height: "100%",
               justifyContent: "center",
               alignItems: "flex-end",

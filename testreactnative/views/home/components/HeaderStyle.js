@@ -18,14 +18,12 @@ export const styles = StyleSheet.create({
   topContainer:{
     flexDirection: "row",
     width:'100%',
-    justifyContent: "space-between",
+    justifyContent: "center",
     marginTop:10,
     marginBottom:10,
-   
     alignItems: "center",
   },
   searchbutton: {
-    
     width:44,
     height:44,
     borderRadius: 50,
@@ -36,6 +34,9 @@ export const styles = StyleSheet.create({
     backgroundColor:'#f5f5f5'
   },
   menuButton:{
-    marginLeft:10
+    marginLeft:10,
+    position:'absolute',
+    left:0,
+    top:5,
   }
 });

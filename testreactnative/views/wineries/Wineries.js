@@ -22,7 +22,8 @@ const Wineries = ({ route }) => {
   
   const filterWineriesProp = route.params?.filterWineries || false;
   const passedServiceProp = route.params?.service || false;
-  console.log(typeof filterWineriesProp);
+  const shouldShowMapFirst = route.params?.shouldShowMapFirst || false;
+  const mapFilterWineryData = route.params?.winery || false;
   const [searchText, setSearchText] = useState("");
   const [showMap, setShowMap] = useState(false);
   const fontsLoaded = useContext(FontsContext);
@@ -35,6 +36,11 @@ const Wineries = ({ route }) => {
   if (!fontsLoaded) {
     return null;
   }
+  useEffect(()=>{
+    if(shouldShowMapFirst) {
+      setShowMap(true)
+    }
+  },[mapFilterWineryData])
 
   
 

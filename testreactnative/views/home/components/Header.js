@@ -4,9 +4,8 @@ import { useNavigation } from "@react-navigation/native";
 import { styles } from "./HeaderStyle";
 import MenuIcon from "../../../assets/menuassets/Menu.svg";
 import { SvgCssUri } from "react-native-svg";
-import { Ionicons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
-import SearchIcon from "../../../assets/homepageicons/searchIcon.svg"
+
 const Header = () => {
   const navigation = useNavigation();
   return (
@@ -27,9 +26,6 @@ const Header = () => {
           width={150}
           height={40}
         />
-        <TouchableOpacity style={styles.searchbutton} onPress={() => {}}>
-          <SearchIcon width={16} height={16}></SearchIcon>
-        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );

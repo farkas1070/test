@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import React, { useContext } from "react";
 import { styles } from "./WineryStyle";
-import Placeholder from "../../assets/placeholder.png";
 import RenderHtml from "react-native-render-html";
 import { useWindowDimensions } from "react-native";
 import { tagsStyles } from "./ContentStyle";
@@ -22,6 +21,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import LocationIcon from "../../assets/wineryassets/locationIcon.svg";
 import { FontsContext } from "../../context/GlobalContext";
 import PlaceholderImage from "../../assets/homepageicons/placeholderImage.jpg"
+
 const Winery = ({ route }) => {
   const { width } = useWindowDimensions();
   const winery = route.params.item;
@@ -29,7 +29,6 @@ const Winery = ({ route }) => {
     html: winery.content,
   };
   const fontsLoaded = useContext(FontsContext);
-
   const [i18n] = useContext(I18nContext);
 
   const openGoogleMaps = async () => {
@@ -50,12 +49,13 @@ const Winery = ({ route }) => {
   if (!fontsLoaded) {
     return null;
   }
+  
 
   return (
     <>
       <View style={styles.mainContainer}>
         <ScrollView>
-          <TopHeader item={winery.banner} />
+          <TopHeader item={winery} />
 
           <View style={styles.topTextContainer}>
             <Image
