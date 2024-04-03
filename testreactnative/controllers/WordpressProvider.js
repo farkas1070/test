@@ -13,8 +13,10 @@ export const getDataByUrl = async (url) => {
 
 export const getWineries = async (language) => {
   const data = await getDataByUrl(
-    `https://soproniborvidek.nemethmark.com/wp-json/wp/v2/wineries?_embed&per_page=100&lang=${language}`
+    `https://soproniborvidek.hu/wp-json/wp/v2/wineries?_embed&per_page=100&valami=lol5&lang=${language}`
   );  
+
+
   // allservices elokeszitese hogy elmentunk minden servicet egy arrayba
   const allServicesSet = new Set(); 
 
@@ -27,6 +29,8 @@ export const getWineries = async (language) => {
       icon2: service.acf.icon_2,
       name: service.name,
     }));
+
+  
     
 
     services.forEach((service) => {
@@ -85,7 +89,7 @@ export const getWineries = async (language) => {
 
 export const getEvents = async (language) => {
   const data = await getDataByUrl(
-    `https://soproniborvidek.effixdev.com/wp-json/tribe/events/v1/events/?page=1&per_page=50&start_date=2020-06-16%2000%3A00%3A00&end_date=2025-06-16%2023%3A59%3A59&status=publish&fbclid=IwAR0aMf0stRm9O43LVog8yDtdS8FJoDrRRE-Pst82PM-QF06CnTubn9Mjo0Y&lang=${language}`
+    `https://soproniborvidek.hu/wp-json/tribe/events/v1/events/?page=1&per_page=50&start_date=2020-06-16%2000%3A00%3A00&end_date=2030-06-16%2023%3A59%3A59&status=publish&lang=${language}`
   );
   if (data !== null) {
     return data.events.map((item) => {
@@ -131,7 +135,7 @@ export const getEvents = async (language) => {
 
 export const getNews = async (language) => {
   const data = await getDataByUrl(
-    `https://soproniborvidek.nemethmark.com/wp-json/wp/v2/posts?_embed&per_page=100&fbclid=IwAR1mdpYOIyVbxj20sInh_LdNCRvyJg3lATQpxUOvdzSnaGBmodr_94UZCuI&lang=${language}`
+    `https://soproniborvidek.hu/wp-json/wp/v2/posts?_embed&per_page=100&lang=${language}`
   );
 
   if (data !== null) {
